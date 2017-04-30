@@ -61,11 +61,25 @@ class CategoryController extends Controller
 
 
     /*Edit category*/
-    public function getEdit(){
-    	return view('admin.cate.edit');
+    public function getEdit($id){
+
+        $category = Category::where('id',$id)->get();
+
+    	return view('admin.cate.edit', compact('category'));
     }
 
-    public function postEdit($id){
+    public function postEdit(CategoryRequest $request){
+        $data = new Category;
 
+        $data->name = $request -> input('name');
+        $data->alias = convert_vi_to_en($request -> input('name'));
+        $data->order = $request -> input('order');
+        $data->parent_id = $request -> input('parent_id');
+        $data->keywords = $request -> input('keywords');
+        $data->description = $request -> input('description');
+
+        if($data->save()){
+            return redirect() -> route('admin.cate.show') -> with(['flash_level' =>'success', 'flash_message' => 'Edit category successfully']);
+        }
     }
 }

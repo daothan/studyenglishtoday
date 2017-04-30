@@ -46,16 +46,10 @@
 
 							</div>
 
-							<div class="form-group {{$errors->has('order') ? 'has-error' : null}}">
+							<div class="form-group">
 
 								<label for="">Category Order</label>
 								<input type="text" class="form-control" id="" name="order" placeholder="Please Enter Category Order" value="{{old('order')}}">
-
-								@if($errors->has('order'))
-									<span class="help-block">
-										<strong>{{$errors->first('order')}}</strong>
-									</span>
-								@endif
 
 							</div>
 

@@ -12,28 +12,76 @@
 					</div>
 					<div class="panel-body">
 
-						<form action="" method="POST" class="form-horizontal" role="form">
+						@foreach($category as $data)
+						<form action="{{route('admin.cate.getEdit',$data->id)}}" method="POST" class="form-horizontal" role="form">
+
+							{{csrf_field()}}
 
 							<div class="form-group">
 								<label for="">Category Parent</label>
 								<select name="parent_id" class="form-control" autofocus>
-									<option selected value="0">Please Choose Category Parent..</option>
+									<option hidden selected value="{{$data["id"]}}">{{$data["name"]}}</option>
+									<option >Please Choose Category Parent..</option>
+									<?php cate_parent($category);?>
 								</select>
 							</div>
 
+							<div class="form-group {{$errors->has('name') ? 'has-error' : null}}">
+								<label>Category Name</label>
+								<input class="form-control" name="name" value="{{$data["name"]}}"></input>
+
+								@if($errors->has('name'))
+									<span class="help-block">
+										<strong>{{$errors->first('name')}}</strong>
+									</span>
+								@endif
+							</div>
+
+							<div class="form-group {{$errors->has('order') ? 'has-error' : null}}">
+								<label>Category Order</label>
+								<input class="form-control" name="order" value="{{$data["order"]}}"></input>
+
+								@if($errors->has('order'))
+									<span class="help-block">
+										<strong>{{$errors->first('order')}}</strong>
+									</span>
+								@endif
+							</div>
+
+							<div class="form-group {{$errors->has('keywords') ? 'has-error' : null}}">
+								<label>Category Keywords</label>
+								<input class="form-control" name="keywords" value="{{$data["keywords"]}}"></input>
+
+								@if($errors->has('keywords'))
+									<span class="form-control">
+										<strong>{{$errors->first('keywords')}}</strong>
+									</span>
+								@endif
+							</div>
+
+							<div class="form-group {{$errors->has('description') ? 'has-error' : null}}">
+								<label>Category Description</label>
+								<input class="form-control" name="description" value="{{$data["description"]}}"></input>
+
+								@if($errors->has('description'))
+									<span class="help-block">
+										<strong>{{$errors->first('description')}}</strong>
+									</span>
+								@endif
+							</div>
+
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary">Submit</button>
+								<button type="submit" class="btn btn-primary">Edit</button>
 							</div>
 
 						</form>
+						@endforeach
 					</div>
+
+					<a href="{{route('admin.cate.show')}}"><button class="btn btn-info pull-right">Show Categories</button></a>
 				</div>
 			</div>
 		</div>
 	</div>
-
-
-
-
 
 @stop
