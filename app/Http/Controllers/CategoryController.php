@@ -17,16 +17,17 @@ class CategoryController extends Controller
 
 	/*Add category*/
     public function getAdd(){
-    	return view('admin/cate/add');
+        $parent = Category::select('id', 'name', 'parent_id') -> get() -> toArray();
+    	return view('admin/cate/add', compact('parent'));
     }
 
     public function postAdd(CategoryRequest $request){
     	$data = new Category;
 
     	$data->name = $request -> input('name');
-    	$data->alias = $request -> input('name');
+    	$data->alias = convert_vi_to_en($request -> input('name'));
     	$data->order = $request -> input('order');
-    	$data->parent_id = 1;
+    	$data->parent_id = $request -> input('parent_id');
     	$data->keywords = $request -> input('keywords');
     	$data->description = $request -> input('description');
 

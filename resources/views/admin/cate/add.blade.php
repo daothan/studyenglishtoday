@@ -17,9 +17,11 @@
 							<div class="form-group {{$errors->has('parent_id') ? 'has-error' : null}}">
 
 								<label>Category Parent</label>
-								<select name="parent_id" id="inputPa" class="form-control" Placeholder="Please choose categody" autofocus value="{{(collect(old('parent_id')))}}">
+								<select name="parent_id" id="inputPa" class="form-control" autofocus >
 									<option disabled selected hidden>Please Choose Category...</option>
-									<option value="listening" >Listening</option>
+
+									<?php cate_parent($parent); ?>
+
 								</select>
 
 								@if($errors->has('parent_id'))
@@ -87,7 +89,7 @@
 
 							<button type="submit" class="btn btn-success">Add</button>
 
-							<button type="reset" class="btn btn-warning">Reset</button>
+							<button type="reset " class="btn btn-warning">Reset</button>
 
 						</form>
 

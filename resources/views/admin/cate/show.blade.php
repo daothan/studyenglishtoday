@@ -18,7 +18,7 @@
 							<th>Name</th>
 							<th>Alias</th>
 							<th>Order</th>
-							<th>Parent_id</th>
+							<th>Parent_name</th>
 							<th>Keywords</th>
 							<th>Description</th>
 							<th>&nbsp&nbsp Edit</th>
@@ -34,7 +34,7 @@
 							<td>{{$category->name}}</td>
 							<td>{{$category->alias}}</td>
 							<td>{{$category->order}}</td>
-							<td>{{$category->parent_id}}</td>
+							<td>{{$category->name}}</td>
 							<td>{{$category->keywords}}</td>
 							<td>{{$category->description}}</td>
 

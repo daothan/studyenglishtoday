@@ -23,8 +23,7 @@ class CategoryRequest extends FormRequest
             'name' => 'required|unique:categories,name|max:50',
             'order'=> 'required|numeric',
             'keywords' =>'required',
-            'description' => 'required',
-            'parent_id' =>'required'
+            'description' => 'required'
 
         ];
     }

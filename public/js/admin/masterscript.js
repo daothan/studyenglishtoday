@@ -1,3 +1,3 @@
 
 
-$('div.alert').delay(3000).slideUp();
+$('div.alert').delay(10000).slideUp();
