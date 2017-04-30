@@ -1,5 +1,6 @@
 @extends('admin/layouts/adminmaster')
 
+
 @section('content')
 
 	<div class="container">
@@ -14,7 +15,7 @@
 
 					<thead>
 						<tr>
-							<th>ID</th>
+							<th>No</th>
 							<th>Name</th>
 							<th>Alias</th>
 							<th>Order</th>
@@ -28,27 +29,46 @@
 
 					<tbody>
 
+					<?php $no =0; ?>
 					@foreach($data as $category)
+					<?php $no++; ?>
 						<tr>
-							<th>{{$category->id}}</th>
+							<th>{{$no}}</th>
 							<td>{{$category->name}}</td>
 							<td>{{$category->alias}}</td>
 							<td>{{$category->order}}</td>
-							<td>{{$category->name}}</td>
+
+							<td>
+								@if($category["parent_id"] == 0)
+									{{"None"}}
+								@else
+									<?php
+										$parent = DB::table('categories')->where('id', $category["parent_id"])->first();
+										echo $parent->name;
+									?>
+								@endif
+							</td>
 							<td>{{$category->keywords}}</td>
 							<td>{{$category->description}}</td>
 
 							<th>
-								<span class="glyphicon glyphicon-trash"></span>
-								<button class="btn btn-link ">Delete</button>
+								<span class="glyphicon glyphicon-pencil"></span>
+								<a href="{{route('admin.cate.getEdit',$category->id)}}"><button class="btn btn-link">Edit</button></a>
 							</th>
 
 							<th>
-								<span class="glyphicon glyphicon-pencil"></span>
-								<button class="btn btn-link">Edit</button>
+								<form action="{{route('admin.cate.delete',$category->id)}}" method="POST" role="form">
+									{{csrf_field()}}
+									<input type="hidden" name="method" value="DELETE">
+									<input type="hidden" name="id" value="{{$category->id}}">
+									<span class="glyphicon glyphicon-trash"></span>
+									<button onclick="return confirmdelete('Are you sure you want to delete - {{$category->name}} - ?')" type="submit" id="delete" class="btn btn-link">Delete</button>
+								</form>
+
 							</th>
 						</tr>
 					@endforeach
+
 					</tbody>
 				</table>
 

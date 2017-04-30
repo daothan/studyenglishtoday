@@ -1,3 +1,11 @@
 
 
-$('div.alert').delay(10000).slideUp();
+$('div.alert').delay(5000).slideUp();
+
+
+function confirmdelete(msg){
+	if (window.confirm(msg)){
+		return true;
+	}
+	return false;
+}

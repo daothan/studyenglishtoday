@@ -12,13 +12,13 @@
 					</div>
 
 					<div class="panel-body">
-						<form action="{{route('admin.cate.getAdd')}}" method="POST" role="form">
+						<form action="{{route('admin.cate.postAdd')}}" method="POST" role="form">
 
 							<div class="form-group {{$errors->has('parent_id') ? 'has-error' : null}}">
 
 								<label>Category Parent</label>
 								<select name="parent_id" id="inputPa" class="form-control" autofocus >
-									<option disabled selected hidden>Please Choose Category...</option>
+									<option  selected value="0">Please Choose Category...</option>
 
 									<?php cate_parent($parent); ?>
 

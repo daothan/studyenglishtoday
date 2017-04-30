@@ -5,14 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use App\Category;
+use Illuminate\Support\MessageBag;
 
 
 class CategoryController extends Controller
 {
 	/*Show categories*/
 	public function show(){
-		$data = Category::all();
-		return view ('admin/cate/show', compact('data'));
+		$data = Category::orderBy('id', 'DESC')->get();
+
+		return view ('admin.cate.show', compact('data'));
 	}
 
 	/*Add category*/
@@ -36,8 +38,34 @@ class CategoryController extends Controller
     	}
     }
 
+    /*Delete Category*/
+    public function delete($id){
+
+        $parent = Category::where('parent_id',$id)->count();
+
+        if($parent == 0){
+            $category = Category::find($id);
+            $category->delete($id);
+
+            return redirect() -> route('admin.cate.show') -> with(['flash_level'=>'danger', 'flash_message'=> 'Delete successfully']);
+        }else{
+            echo "<script type='text/javascript'>
+                alert('Sorry ! You can not delete this category ');
+                window.location ='";
+                    echo route('admin.cate.show');
+                echo "'
+                </script>";
+        }
+
+    }
+
+
     /*Edit category*/
-    public function editcate(){
-    	return view('admin/cate/edit');
+    public function getEdit(){
+    	return view('admin.cate.edit');
+    }
+
+    public function postEdit($id){
+
     }
 }
