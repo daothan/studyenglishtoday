@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use App\Category;
 use Illuminate\Support\MessageBag;
+use Validator;
 
 
 class CategoryController extends Controller
@@ -64,12 +65,22 @@ class CategoryController extends Controller
     public function getEdit($id){
 
         $category = Category::where('id',$id)->get();
+        $parent = Category::select('id', 'name', 'parent_id') -> get() -> toArray();
 
-    	return view('admin.cate.edit', compact('category'));
+    	return view('admin.cate.edit', compact('category','parent'));
     }
 
-    public function postEdit(CategoryRequest $request){
+    public function postEdit(Request $request){
         $data = new Category;
+
+        $rules=[
+            'name'=>'required'
+        ];
+        $message=[
+            'name.required' => 'Name can not null'
+        ];
+
+        $validator=Validator::make($request->all(), $rules, $message);
 
         $data->name = $request -> input('name');
         $data->alias = convert_vi_to_en($request -> input('name'));
@@ -78,8 +89,12 @@ class CategoryController extends Controller
         $data->keywords = $request -> input('keywords');
         $data->description = $request -> input('description');
 
-        if($data->save()){
-            return redirect() -> route('admin.cate.show') -> with(['flash_level' =>'success', 'flash_message' => 'Edit category successfully']);
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }else{
+            if($data->save()){
+                return redirect() -> route('admin.cate.show') -> withErrors($validator)->with(['flash_level' =>'success', 'flash_message' => 'Edit category successfully']);
+            }
         }
     }
 }

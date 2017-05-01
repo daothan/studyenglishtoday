@@ -46,10 +46,16 @@
 
 							</div>
 
-							<div class="form-group">
+							<div class="form-group {{$errors->has('order') ? 'has-error' : null}}">
 
 								<label for="">Category Order</label>
 								<input type="text" class="form-control" id="" name="order" placeholder="Please Enter Category Order" value="{{old('order')}}">
+
+								@if($errors->has('order'))
+									<span class="help-block">
+										<strong>{{$errors->first('order')}}</strong>
+									</span>
+								@endif
 
 							</div>
 
@@ -69,8 +75,7 @@
 							<div class="form-group {{$errors->has('description') ? 'has-error' : null}}">
 
 								<label for="">Category Description</label>
-								<input name=description class="form-control" Placeholder="Please Enter Category Description" value="{{old('description')}}">
-
+								<textarea class="form-control" name="description" rows="3">{{old('description')}}</textarea>
 								@if($errors->has('description'))
 									<span class="help-block">
 										<strong>{{$errors->first('description')}}</strong>

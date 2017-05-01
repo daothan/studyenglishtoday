@@ -20,15 +20,15 @@
 							<div class="form-group">
 								<label for="">Category Parent</label>
 								<select name="parent_id" class="form-control" autofocus>
-									<option hidden selected value="{{$data["id"]}}">{{$data["name"]}}</option>
+									<option hidden selected value="{{old('parent_id',isset($data) ? $data['name'] : null)}}">{{$data["name"]}}</option>
 									<option >Please Choose Category Parent..</option>
-									<?php cate_parent($category);?>
+									<?php cate_parent($parent); ?>
 								</select>
 							</div>
 
 							<div class="form-group {{$errors->has('name') ? 'has-error' : null}}">
 								<label>Category Name</label>
-								<input class="form-control" name="name" value="{{$data["name"]}}"></input>
+								<input class="form-control" name="name" value="{{old('name',isset($data["name"]) ? $data['name'] : null)}}"></input>
 
 								@if($errors->has('name'))
 									<span class="help-block">
@@ -39,7 +39,7 @@
 
 							<div class="form-group {{$errors->has('order') ? 'has-error' : null}}">
 								<label>Category Order</label>
-								<input class="form-control" name="order" value="{{$data["order"]}}"></input>
+								<input class="form-control" name="order" value="{{old('order', isset($data) ? $data['order'] : null)}}"></input>
 
 								@if($errors->has('order'))
 									<span class="help-block">
@@ -50,7 +50,7 @@
 
 							<div class="form-group {{$errors->has('keywords') ? 'has-error' : null}}">
 								<label>Category Keywords</label>
-								<input class="form-control" name="keywords" value="{{$data["keywords"]}}"></input>
+								<input class="form-control" name="keywords" value="{{old('keywords', isset($data) ? $data['keywords'] : null)}}"></input>
 
 								@if($errors->has('keywords'))
 									<span class="form-control">
@@ -61,7 +61,7 @@
 
 							<div class="form-group {{$errors->has('description') ? 'has-error' : null}}">
 								<label>Category Description</label>
-								<input class="form-control" name="description" value="{{$data["description"]}}"></input>
+								<textarea class="form-control" name="description" row="3">{{old('description', isset($data) ? $data["description"] : null)}}</textarea>
 
 								@if($errors->has('description'))
 									<span class="help-block">

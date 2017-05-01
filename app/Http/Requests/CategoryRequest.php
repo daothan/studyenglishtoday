@@ -24,7 +24,6 @@ class CategoryRequest extends FormRequest
             'order'=> 'required|numeric',
             'keywords' =>'required',
             'description' => 'required'
-
         ];
     }
 
