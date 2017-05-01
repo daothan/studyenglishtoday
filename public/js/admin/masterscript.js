@@ -1,6 +1,6 @@
 
 
-$('div.alert').delay(5000).slideUp();
+$('div.alert').delay(3000).slideUp();
 
 
 function confirmdelete(msg){

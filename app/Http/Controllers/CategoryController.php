@@ -70,8 +70,7 @@ class CategoryController extends Controller
     	return view('admin.cate.edit', compact('category','parent'));
     }
 
-    public function postEdit(Request $request){
-        $data = new Category;
+    public function postEdit(Request $request, $id){
 
         $rules=[
             'name'=>'required'
@@ -81,6 +80,8 @@ class CategoryController extends Controller
         ];
 
         $validator=Validator::make($request->all(), $rules, $message);
+
+        $data = Category::find($id);
 
         $data->name = $request -> input('name');
         $data->alias = convert_vi_to_en($request -> input('name'));
