@@ -88,7 +88,7 @@
 
 							<button type="submit" class="btn btn-success">Add</button>
 
-							<button type="reset " class="btn btn-warning">Reset</button>
+							<button class="btn btn-warning" type="reset">Reset</button>
 
 						</form>
 
