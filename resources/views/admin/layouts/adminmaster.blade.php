@@ -9,6 +9,7 @@
 	<script type="text/javascript" src="{{URL::asset('public/editor/bootstrap/js/bootstrap.min.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/ckeditor/ckeditor.js')}}" ></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/ckfinder/ckfinder.js')}}" ></script>
+	<script type="text/javascript" src="{{url('public/editor/master/masterscript.js')}}"></script>
 
 </head>
 <body>
@@ -75,9 +76,6 @@
 		@yield('content')
 
 	</div>
-
-
-	<script type="text/javascript" src="{{url('public/js/admin/masterscript.js')}}"></script>
 
 </body>
 </html>

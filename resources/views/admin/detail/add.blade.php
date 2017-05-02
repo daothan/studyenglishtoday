@@ -4,7 +4,7 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+		<div class="col-md-10 col-md-offset-1">
 			<div class="panel">
 				<div class="panel">
 					<div class="panel-title">
@@ -21,10 +21,12 @@
 						<div class="form-group">
 							<label>Introduce</label>
 							<textarea class="form-control" name="introduce" rows="3" placeholder="Please enter introduce"></textarea>
+							<script type="text/javascript">ckeditor("introduce", "config", "basic")</script>
 						</div>
 						<div class="form-group">
 							<label>Content</label>
-							<textarea class="form-control ckeditor" name="content" rows="3" placeholder="Please enter content"></textarea>
+							<textarea class="form-control" name="content" id="content" rows="3" placeholder="Please enter content" ></textarea>
+							<script type="text/javascript">ckeditor("content", "config", "standard")</script>
 						</div>
 
 						<div class="form-group">
@@ -40,7 +42,10 @@
 						<div class="form-group">
 							<label>Description Details</label>
 							<textarea class="form-control" name="description" rows="3" placeholder="Please enter description"></textarea>
+							<script type="text/javascript">ckeditor("description", "config", "basic")</script>
 						</div>
+
+						{{csrf_field()}}
 
 						<div class="form-group">
 							<div class="col-sm-10 col-sm-offset-2">
