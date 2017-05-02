@@ -4,9 +4,12 @@
 	<meta charset="UTF-8">
 	<title>Admin</title>
 	<!-- Latest compiled and minified CSS & JS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<script src="//code.jquery.com/jquery.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/bootstrap/css/bootstrap.min.css')}}">
+	<script type="text/javascript" src="{{URL::asset('public/editor/jquery/jquery-3.2.1.min.js')}}"></script>
+	<script type="text/javascript" src="{{URL::asset('public/editor/bootstrap/js/bootstrap.min.js')}}"></script>
+	<script type="text/javascript" src="{{URL::asset('public/editor/ckeditor/ckeditor.js')}}" ></script>
+	<script type="text/javascript" src="{{URL::asset('public/editor/ckfinder/ckfinder.js')}}" ></script>
+
 </head>
 <body>
 	<div id="wrapper">

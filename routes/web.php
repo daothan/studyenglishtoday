@@ -18,6 +18,8 @@ Route::get('/', function () {
 /*Admin Page*/
 
 Route::group(['prefix' => 'admin'], function(){
+
+	/*Cate Pages*/
 	Route::group(['prefix' =>'cate'], function(){
 
 		/*Show categories*/
@@ -36,5 +38,16 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::get('edit/{id}', ['as'=>'admin.cate.getEdit', 'uses'=>'CategoryController@getEdit']);
 
 		Route::post('edit/{id}', ['as' => 'admin.cate.postEdit', 'uses' => 'CategoryController@postEdit']);
+	});
+
+	/*Detail Pages*/
+	Route::group(['prefix' => 'detail'], function(){
+
+		/*Show details*/
+		Route::get('show',['as'=>'admin.detail.show','uses'=>'DetailController@show']);
+
+		/*Add details*/
+		Route::get('add',['as'=>'admin.detail.getAdd', 'uses'=>'DetailController@getAdd']);
+		Route::post('add',['as'=>'admin.detail.postAdd', 'uses'=>'DetailController@postAdd']);
 	});
 });

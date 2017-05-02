@@ -61,7 +61,7 @@
 
 							<div class="form-group {{$errors->has('description') ? 'has-error' : null}}">
 								<label>Category Description</label>
-								<textarea class="form-control" name="description" row="3">{{old('description', isset($data) ? $data["description"] : null)}}</textarea>
+								<textarea class="form-control" name="description" row="3" placeholder="Please enter description">{{old('description', isset($data) ? $data["description"] : null)}}</textarea>
 
 								@if($errors->has('description'))
 									<span class="help-block">
@@ -72,7 +72,10 @@
 
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary">Edit</button>
+
+								<button class="btn btn-warning" type="reset">Reset</button>
 							</div>
+
 
 						</form>
 						@endforeach

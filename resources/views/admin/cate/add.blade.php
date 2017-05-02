@@ -75,7 +75,7 @@
 							<div class="form-group {{$errors->has('description') ? 'has-error' : null}}">
 
 								<label for="">Category Description</label>
-								<textarea class="form-control" name="description" rows="3">{{old('description')}}</textarea>
+								<textarea class="form-control" name="description" rows="3" placeholder="Please enter description">{{old('description')}}</textarea>
 								@if($errors->has('description'))
 									<span class="help-block">
 										<strong>{{$errors->first('description')}}</strong>
