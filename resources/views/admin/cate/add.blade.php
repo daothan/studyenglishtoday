@@ -18,9 +18,11 @@
 
 								<label>Category Parent</label>
 								<select name="parent_id" id="inputPa" class="form-control" autofocus >
-									<option  selected value="0">Please Choose Category...</option>
+									o
+									<option disabled selected hidden>Please Choose Catgeory...</option>
+									<option value="0">Parent Category</option>
 
-									<?php cate_parent($parent); ?>
+									<?php cate_parent($parent,0,"-",old('parent_id')); ?>
 
 								</select>
 

@@ -49,5 +49,15 @@ Route::group(['prefix' => 'admin'], function(){
 		/*Add details*/
 		Route::get('add',['as'=>'admin.detail.getAdd', 'uses'=>'DetailController@getAdd']);
 		Route::post('add',['as'=>'admin.detail.postAdd', 'uses'=>'DetailController@postAdd']);
+
+		/*Edit details*/
+		Route::get('edit/{id}', ['as'=>'admin.detail.getEdit', 'uses'=>'DetailController@getEdit']);
+		Route::post('edit/{id}', ['as'=>'admin.detail.postEdit', 'uses'=>'DetailController@postEdit']);
+
+		/*Delete details*/
+		Route::post('delete/{id}', ['as'=>'admin.detail.delete', 'uses'=>'DetailController@delete']);
+
+		/*View Content*/
+		Route::get('content/{id}',['as'=>'admin.detail.content', 'uses'=>'DetailController@content']);
 	});
 });

@@ -20,9 +20,8 @@
 							<div class="form-group">
 								<label for="">Category Parent</label>
 								<select name="parent_id" class="form-control" autofocus>
-									<option hidden selected value="{{old('parent_id',isset($data) ? $data['name'] : null)}}">{{$data["name"]}}</option>
-									<option >Please Choose Category Parent..</option>
-									<?php cate_parent($parent); ?>
+									<option value="0">Parent Category</option>
+									<?php cate_parent($parent,0,"-",$data["parent_id"]); ?>
 								</select>
 							</div>
 

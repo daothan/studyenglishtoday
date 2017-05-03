@@ -27,12 +27,12 @@ class CategoryController extends Controller
     public function postAdd(CategoryRequest $request){
     	$data = new Category;
 
-    	$data->name = $request -> input('name');
-    	$data->alias = convert_vi_to_en($request -> input('name'));
-    	$data->order = $request -> input('order');
-    	$data->parent_id = $request -> input('parent_id');
-    	$data->keywords = $request -> input('keywords');
-    	$data->description = $request -> input('description');
+        $data->name        = $request -> input('name');
+        $data->alias       = convert_vi_to_en($request -> input('name'));
+        $data->order       = $request -> input('order');
+        $data->parent_id   = $request -> input('parent_id');
+        $data->keywords    = $request -> input('keywords');
+        $data->description = $request -> input('description');
 
     	if($data->save()){
     		return redirect() -> route('admin.cate.show') -> with(['flash_level' =>'success', 'flash_message' => 'Add category successfully']);

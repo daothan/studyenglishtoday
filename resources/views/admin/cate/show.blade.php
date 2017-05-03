@@ -4,17 +4,19 @@
 @section('content')
 
 	<div class="container">
-		<div class="panel panel-primary">
+		<div class="panel">
 
-			<div class="panel-heading">
-				<h3 class="panel-title">Show categories</h3>
+			<div class="panel">
+				<div class="col-md-offset-5">
+					<h2><strong>Show details</strong></h2>
+				</div>
 			</div>
 
 			<div class="panel-body">
-				<table class="table table-bordered">
+				<table class="table table-striped table-bordered table-hover">
 
 					<thead>
-						<tr>
+						<tr align="center">
 							<th>No</th>
 							<th>Name</th>
 							<th>Alias</th>
@@ -32,12 +34,13 @@
 					<?php $no =0; ?>
 					@foreach($data as $category)
 					<?php $no++; ?>
-						<tr>
+
+						<tr class="odd gradeX" align="center">
 							<th>{{$no}}</th>
 							<td>{{$category->name}}</td>
 							<td>{{$category->alias}}</td>
 							<td>{{$category->order}}</td>
-
+							<!-- Show parent category -->
 							<td>
 								@if($category["parent_id"] == 0)
 									{{"None"}}
@@ -50,19 +53,17 @@
 							</td>
 							<td>{{$category->keywords}}</td>
 							<td>{{$category->description}}</td>
-
+							<!-- Edit -->
 							<th>
-								<span class="glyphicon glyphicon-pencil"></span>
-								<a href="{{route('admin.cate.getEdit',$category->id)}}"><button class="btn btn-link">Edit</button></a>
+								<a href="{{route('admin.cate.getEdit',$category->id)}}"><button class="btn btn-link"><span class="glyphicon glyphicon-pencil">&nbsp</span>Edit</button></a>
 							</th>
-
+							<!-- Delete -->
 							<th>
 								<form action="{{route('admin.cate.delete',$category->id)}}" method="POST" role="form">
 									{{csrf_field()}}
 									<input type="hidden" name="method" value="DELETE">
 									<input type="hidden" name="id" value="{{$category->id}}">
-									<span class="glyphicon glyphicon-trash"></span>
-									<button onclick="return confirmdelete('Are you sure you want to delete - {{$category->name}} - ?')" type="submit" id="delete" class="btn btn-link">Delete</button>
+									<button onclick="return confirmdelete('Are you sure you want to delete - {{$category->name}} - ?')" type="submit" id="delete" class="btn btn-link"><span class="glyphicon glyphicon-trash">&nbsp</span>Delete</button>
 								</form>
 
 							</th>

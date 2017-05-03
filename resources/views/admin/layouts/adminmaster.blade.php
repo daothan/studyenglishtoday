@@ -5,11 +5,13 @@
 	<title>Admin</title>
 	<!-- Latest compiled and minified CSS & JS -->
 	<link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/bootstrap/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/css/master.css')}}">
+
 	<script type="text/javascript" src="{{URL::asset('public/editor/jquery/jquery-3.2.1.min.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/bootstrap/js/bootstrap.min.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/ckeditor/ckeditor.js')}}" ></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/ckfinder/ckfinder.js')}}" ></script>
-	<script type="text/javascript" src="{{url('public/editor/master/masterscript.js')}}"></script>
+	<script type="text/javascript" src="{{URL::asset('public/editor/master_script/masterscript.js')}}"></script>
 
 </head>
 <body>
@@ -61,17 +63,17 @@
 
 
 		<div class="container">
-			<div class="row">
+			<div class="panel">
 				<div class="col-md-6 col-md-offset-3">
 					@if(Session::has('flash_message'))
 						<div class="alert alert-{{Session::get('flash_level')}}">
-							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-							<strong>{{Session::get('flash_message')}}</strong> 
+							<strong>{{Session::get('flash_message')}}</strong>
 						</div>
 					@endif
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript">$('div.alert').delay(3000).slideUp();</script>
 
 		@yield('content')
 
