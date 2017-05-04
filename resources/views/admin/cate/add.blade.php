@@ -4,11 +4,12 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-
+			<div class="col-md-10 col-md-offset-1 col-centered">
 				<div class="panel">
 					<div class="panel">
-						<h2 class="panel-tittle">Add Category</h2>
+						<div class="panel-title col-md-offset-5">
+							<h2>Add Category</h2>
+						</div>
 					</div>
 
 					<div class="panel-body">
