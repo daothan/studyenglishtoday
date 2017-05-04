@@ -7,6 +7,10 @@ use App\Http\Requests\DetailRequest;
 
 use App\Detail;
 use App\Category;
+use App\DetailImage;
+use Validator;
+
+use File;
 
 class DetailController extends Controller
 {
@@ -30,14 +34,19 @@ class DetailController extends Controller
         $data->tittle      = $request->input('tittle');
         $data->alias       = convert_vi_to_en($request->input('tittle'));
         $data->introduce   = $request->input('introduce');
-        $data->content     = htmlentities($request->input('content'));
+        $data->content     = $request->input('content');
         $data->images      = $file_name;
         $data->keywords    = $request->input('keywords');
         $data->description = $request->input('description');
         $data->user_id     = 1;
         $data->cate_id     = $request->input('cate_id');
 
-        $request->file('images')->move('storage/uploads/image_uploads/',$file_name);
+        $folder = 'storage/uploads/detail_images/' . $request->input('tittle');
+
+        if(!file_exists($folder)){
+            File::makeDirectory($folder, 0777, true);
+        }
+        $request->file('images')->move($folder,$file_name);
 
         if($data->save()){
             return redirect()->route('admin.detail.show')->with(['flash_level'=>'success', 'flash_message'=>'Add detail successfully']);
@@ -46,20 +55,73 @@ class DetailController extends Controller
 
     /*Edit details*/
     public function getEdit($id){
+        $cate_parent = Category::select('id','name', 'parent_id')->get()->toArray();
+        $detail = Detail::where('id', $id)->get();
 
+        $detail_image = Detail::find($id)->detailimage->toArray();
+
+        return view('admin.detail.edit', compact('cate_parent', 'detail', 'detail_image'));
     }
 
-    public function postEdit($id){
+    public function postEdit($id, Request $request){
+        $rules = [
+            'tittle' => 'required'
+        ];
 
+        $messages = [
+            'tittle.required' => 'Tittle can not be empty.'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        $detail = Detail::find($id);
+
+        $current_image = ('storage/uploads/detail_images/'.$detail["tittle"].'/'.$detail["images"]);
+
+        if(!empty($request->file('images'))){
+
+            $file_name = $request->file('images')->getClientOriginalName();
+
+            $detail->images  = $file_name;
+            $detail->save();
+            $request->file('images')->move('storage/uploads/detail_images/'.$detail["tittle"].'/',$file_name);
+
+            if(File::exists($current_image)){
+                File::delete($current_image);
+            }
+        }
+
+        /*$file_name           = $request->file('file_name')->getClientOriginalName();*/
+        $detail->tittle      = $request->input('tittle');
+        $detail->alias       = convert_vi_to_en($request->input('tittle'));
+        $detail->introduce   = $request->input('introduce');
+        $detail->content     = htmlentities($request->input('content'));
+        $detail->keywords    = $request->input('keywords');
+        $detail->description = $request->input('description');
+        $detail->user_id     = 1;
+        $detail->cate_id     = $request->input('cate_id');
+
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }else{
+            if($detail->save()){
+                return redirect()->route('admin.detail.show')->with(['flash_level'=>'success', 'flash_message'=>'Edit detail successfully.']);
+            }
+        }
     }
 
     /*Delete detail*/
     public function delete($id){
-        $parent = Detail::where('cate_id', $id)->count();
-        if($parent==0){
-            $detail = Detail::find($id);
-            $detail->delete();
-
+        /*Delete images from detail_images*/
+        $detail_images = Detail::find($id)->detailimage->toArray();
+        foreach($detail_images as $value){
+            File::delete('storage/uploads/detail_images/'.$value["images"]);
+        }
+        /*Delete images from details*/
+        $detail = Detail::find($id);
+        File::deleteDirectory('storage/uploads/detail_images/'.$detail->tittle);
+        if($detail->delete($id)){
             return redirect()->route('admin.detail.show')->with(['flash_level'=>'danger', 'flash_message'=>'Delete successfully']);
         }else{
             echo "<script type='text/javascript'>
@@ -73,6 +135,7 @@ class DetailController extends Controller
 
     /*View Content*/
     public function content($id){
-        
+        $content = Detail::where('id',$id)->get();
+        return view('admin.detail.content', compact('content'));
     }
 }

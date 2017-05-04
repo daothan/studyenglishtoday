@@ -12,6 +12,6 @@ class DetailImage extends Model
     public $timestamps = false;
 
     public function detail(){
-    	$this -> belongTo('App\Detail');
+    	return $this -> belongTo('App\Detail');
     }
 }

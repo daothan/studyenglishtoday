@@ -19,9 +19,9 @@
 							<th>Parent category</th>
 							<th>Data</th>
 							<th>User</th>
+							<th>View Content</th>
 							<th>Edit</th>
 							<th>Delete</th>
-							<th>View Content</th>
 						</tr>
 					</thead>
 
@@ -55,6 +55,12 @@
 									echo $user->email;
 								?>
 							</td>
+							<!-- Show Content -->
+							<td>
+								<a href="{{route('admin.detail.content', $data->id)}}">
+									<button class="btn btn-link"><span class="glyphicon glyphicon-list-alt">&nbsp</span>View Content</button>
+								</a>
+							</td>
 							<!-- Edit -->
 							<td>
 								<a href="{{route('admin.detail.getEdit', $data->id)}}">
@@ -70,14 +76,7 @@
 									<button class="btn btn-link" id="delete" type="submit" onclick="return confirmdelete('Are you sure you want to delete -{{$data->tittle}}- ?')"><span class="glyphicon glyphicon-trash">&nbsp</span>Delete</button>
 								</form>
 							</td>
-							<!-- Show Content -->
-							<td>
-								<a href="{{route('admin.detail.content', $data->id)}}">
-									<button class="btn btn-link"><span class="glyphicon glyphicon-list-alt">&nbsp</span>View Content</button>
-								</a>
-							</td>
 						</tr>
-						<tr>{{stripslashes($data->content)}}</tr>
 						@endforeach
 					</tbody>
 				</table>

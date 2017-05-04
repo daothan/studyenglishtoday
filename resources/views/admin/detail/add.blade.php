@@ -7,7 +7,7 @@
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel">
 				<div class="panel">
-					<div class="panel-title">
+					<div class="panel-title col-md-offset-5">
 						<h2>Add Details</h2>
 					</div>
 				</div>
@@ -89,7 +89,7 @@
 
 						{{csrf_field()}}
 
-						<button type="submit" class="btn btn-primary">Submit</button>
+						<button class="btn btn-primary" type="submit">Submit</button>
 
 						<button class="btn btn-warning" type="reset">Reset</button>
 

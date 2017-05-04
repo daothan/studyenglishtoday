@@ -13,7 +13,6 @@ function ckeditor(name, config, toolbar){
 
 	config = {};
 	config.entities_latin = false;
-	config.htmlEncodeOutput = true;
 	config.filebrowserBrowseUrl ='../../public/editor/ckfinder/ckfinder.html';
 	config.filebrowserImageBrowseUrl = '../../public/editor/ckfinder/ckfinder.html';
 

@@ -12,14 +12,14 @@ class Detail extends Model
     public $timestamps = true;
 
     public function category(){
-    	$this -> belongTo('App\Category');
+    	return $this -> belongTo('App\Category');
     }
 
     public function detailimage(){
-    	$this -> hasMany('App\DetailImage');
+    	return $this -> hasMany('App\DetailImage');
     }
 
     public function user(){
-    	$this -> belongTo('App\User');
+    	return $this -> belongTo('App\User');
     }
 }

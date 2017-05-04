@@ -76,7 +76,7 @@ class CategoryController extends Controller
             'name'=>'required'
         ];
         $message=[
-            'name.required' => 'Name can not null'
+            'name.required' => 'Name can not be empty.'
         ];
 
         $validator=Validator::make($request->all(), $rules, $message);

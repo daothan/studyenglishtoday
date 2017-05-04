@@ -12,6 +12,6 @@ class Category extends Model
     //public $timestamps = false;
 
     public function detail(){
-    	$this -> hasMany('App\Detail');
+    	return $this -> hasMany('App\Detail');
     }
 }

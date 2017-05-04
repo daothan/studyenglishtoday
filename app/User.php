@@ -31,6 +31,6 @@ class User extends Authenticatable
     public $timestamps = false;
 
     public function detail(){
-        $this -> hasMany('App\user');
+        return $this -> hasMany('App\user');
     }
 }

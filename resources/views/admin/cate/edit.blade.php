@@ -70,7 +70,7 @@
 							</div>
 
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary">Edit</button>
+								<button class="btn btn-primary" type="submit">Update</button>
 
 								<button class="btn btn-warning" type="reset">Reset</button>
 							</div>
