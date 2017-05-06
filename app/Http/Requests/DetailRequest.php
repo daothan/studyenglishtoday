@@ -24,25 +24,25 @@ class DetailRequest extends FormRequest
     public function rules()
     {
         return [
-            'cate_id' => 'required',
-            'tittle' => 'required|unique:details,tittle',
-            'content' => 'required',
-            'images' => 'required|image',
+            'cate_id'  => 'required',
+            'tittle'   => 'required|unique:details,tittle',
+            'content'  => 'required',
+            'images'   => 'required|image',
             'keywords' => 'required'
         ];
     }
 
     public function messages(){
         return [
-            'cate_id.required' => 'Please choose parent category.',
+            'cate_id.required'  => 'Please choose parent category.',
 
-            'tittle.required' => 'Please enter tittle.',
-            'tittle.unique' => 'Tittle has already exist.',
+            'tittle.required'   => 'Please enter tittle.',
+            'tittle.unique'     => 'Tittle has already exist.',
 
-            'content.required' => 'Please enter content.',
+            'content.required'  => 'Please enter content.',
 
-            'images.required' => 'Please choose pictures.',
-            'images.image' => 'The images must be an image.',
+            'images.required'   => 'Please choose pictures.',
+            'images.image'      => 'The images must be an image.',
 
             'keywords.required' => 'Please enter keywords.'
         ];

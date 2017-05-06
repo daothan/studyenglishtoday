@@ -6,9 +6,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-offset-0 col-centered">
-				<div class="panel">
-					<div class="col-md-offset-5">
-						<h2><strong>Show details</strong></h2>
+				<div class="panel-title">
+					<div class="col-centered">
+						<h2 align="center"><strong>Show details</strong></h2><hr>
 					</div>
 				</div>
 
@@ -17,15 +17,15 @@
 
 						<thead>
 							<tr align="center">
-								<th>No</th>
-								<th>Name</th>
-								<th>Alias</th>
-								<th>Order</th>
-								<th>Parent_name</th>
-								<th>Keywords</th>
-								<th>Description</th>
-								<th>&nbsp&nbsp Edit</th>
-								<th>&nbsp&nbsp Delete</th>
+								<th class="text-center">No</th>
+								<th class="text-center">Name</th>
+								<th class="text-center">Date</th>
+								<th class="text-center">Order</th>
+								<th class="text-center">Parent_name</th>
+								<th class="text-center">Keywords</th>
+								<th class="text-center">Description</th>
+								<th class="text-center">Edit</th>
+								<th class="text-center">Delete</th>
 							</tr>
 						</thead>
 
@@ -36,9 +36,19 @@
 						<?php $no++; ?>
 
 							<tr class="odd gradeX" align="center">
-								<th>{{$no}}</th>
+								<th class="text-center">{{$no}}</th>
+
 								<td>{{$category->name}}</td>
-								<td>{{$category->alias}}</td>
+
+									<!-- Show Date -->
+								<td>
+								<?php
+									echo \Carbon\Carbon::createFromTimestamp(strtotime($category["created_at"]))->diffForHumans();
+								?>
+								</td>
+
+								</td>
+
 								<td>{{$category->order}}</td>
 								<!-- Show parent category -->
 								<td>
@@ -54,11 +64,11 @@
 								<td>{{$category->keywords}}</td>
 								<td>{{$category->description}}</td>
 								<!-- Edit -->
-								<th>
+								<th class="text-center">
 									<a href="{{route('admin.cate.getEdit',$category->id)}}"><button class="btn btn-link"><span class="glyphicon glyphicon-pencil">&nbsp</span>Edit</button></a>
 								</th>
 								<!-- Delete -->
-								<th>
+								<th class="text-center">
 									<form action="{{route('admin.cate.delete',$category->id)}}" method="POST" role="form">
 										{{csrf_field()}}
 										<input type="hidden" name="method" value="DELETE">

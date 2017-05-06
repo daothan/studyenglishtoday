@@ -39,27 +39,6 @@ class CategoryController extends Controller
     	}
     }
 
-    /*Delete Category*/
-    public function delete($id){
-
-        $parent = Category::where('parent_id',$id)->count();
-
-        if($parent == 0){
-            $category = Category::find($id);
-            $category->delete($id);
-
-            return redirect() -> route('admin.cate.show') -> with(['flash_level'=>'danger', 'flash_message'=> 'Delete successfully']);
-        }else{
-            echo "<script type='text/javascript'>
-                alert('Sorry ! You can not delete this category ');
-                window.location ='";
-                    echo route('admin.cate.show');
-                echo "'
-                </script>";
-        }
-
-    }
-
 
     /*Edit category*/
     public function getEdit($id){
@@ -83,11 +62,11 @@ class CategoryController extends Controller
 
         $data = Category::find($id);
 
-        $data->name = $request -> input('name');
-        $data->alias = convert_vi_to_en($request -> input('name'));
-        $data->order = $request -> input('order');
-        $data->parent_id = $request -> input('parent_id');
-        $data->keywords = $request -> input('keywords');
+        $data->name        = $request -> input('name');
+        $data->alias       = convert_vi_to_en($request -> input('name'));
+        $data->order       = $request -> input('order');
+        $data->parent_id   = $request -> input('parent_id');
+        $data->keywords    = $request -> input('keywords');
         $data->description = $request -> input('description');
 
         if($validator->fails()){
@@ -98,4 +77,26 @@ class CategoryController extends Controller
             }
         }
     }
+
+    /*Delete Category*/
+    public function delete($id){
+
+        $parent = Category::where('parent_id',$id)->count();
+
+        if($parent == 0){
+            $category = Category::find($id);
+            $category->delete($id);
+
+            return redirect() -> route('admin.cate.show') -> with(['flash_level'=>'danger', 'flash_message'=> 'Delete successfully']);
+        }else{ /*If having parent category, can not deleting*/
+            echo "<script type='text/javascript'>
+                alert('Sorry ! You can not delete this category ');
+                window.location ='";
+                    echo route('admin.cate.show');
+                echo "'
+                </script>";
+        }
+
+    }
+
 }

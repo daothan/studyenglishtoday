@@ -5,11 +5,11 @@
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2 col-centered">
 					@foreach($content as $data)
-						<div class="panel-tittle">
-							<h2><strong>{!!htmlspecialchars_decode($data["tittle"])!!}</strong></h2>
+						<div class="panel-title">
+							<h2><strong>{!!htmlspecialchars_decode($data["title"])!!}</strong></h2>
 						</div>
 						<div class="panel-heading">
-							<img src="{{asset('storage/uploads/detail_images/'.$data["tittle"].'/'.$data["images"])}}">
+							<img src="{{asset('storage/uploads/detail_images/'.$data["title"].'/'.$data["images"])}}">
 							{!!htmlspecialchars_decode($data["introduce"])!!}
 						</div>
 						<div class="panel-body">
