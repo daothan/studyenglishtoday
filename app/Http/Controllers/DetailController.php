@@ -66,17 +66,20 @@ class DetailController extends Controller
     }
 
     public function postEdit($id, Request $request){
+
+        $detail = Detail::find($id);
+
         $rules = [
-            'title' => 'required'
+            'title' => 'required|unique:details,title,'.$id
         ];
 
         $messages = [
-            'title.required' => 'title can not be empty.'
+            'title.required' => 'Title can not be empty.',
+            'title.unique' => 'Title is exist.'
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
 
-        $detail = Detail::find($id);
 
         $current_image = ('storage/uploads/detail_images/'.$detail["title"].'/'.$detail["images"]);
 
@@ -100,7 +103,7 @@ class DetailController extends Controller
         $detail->content     = htmlentities($request->input('content'));
         $detail->keywords    = $request->input('keywords');
         $detail->description = $request->input('description');
-        $detail->user_id     = 1;
+        $detail->user_id     = 3;
         $detail->cate_id     = $request->input('cate_id');
 
 

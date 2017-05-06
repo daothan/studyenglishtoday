@@ -5,11 +5,13 @@
 	<div class="container">
 		<div class="row ">
 			<div class="col-md-6 col-md-offset-3">
-				<div class="panel-title col-md-offset-5"">
-					<h2 align="content">Add Users</h2>
+				<div class="panel-title">
+					<div class="col-centered">
+						<h2 align="center">Add Users</h2>
+					</div>
 				</div><hr>
 				<div class="panel-body">
-					<form action="{{route('admin.user.getAdd')}}" method="POST" class="form-horizontal" role="form">
+					<form action="{{route('admin.user.postAdd')}}" method="POST" class="form-horizontal" role="form">
 							<!-- Add Name -->
 							<div class="form-group {{$errors->has('name') ? 'has-error' : null}}">
 								<label>Username</label>
@@ -35,7 +37,7 @@
 							<!-- Add Password -->
 							<div class="form-group {{$errors->has('password') ? 'has-error' : null}}">
 								<label>Password</label>
-								<input type="password" class="form-control" name="password" placeholder="Password"></input>
+								<input type="password" class="form-control" name="password" placeholder="Please enter password"></input>
 								@if($errors->has('password'))
 									<span class="help-block">
 										<i>{{$errors->first('password')}}</i>
