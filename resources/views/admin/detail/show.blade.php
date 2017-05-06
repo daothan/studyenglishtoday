@@ -5,24 +5,24 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-offset-0 col-centered">
-				<div class="panel">
-					<div class="col-md-offset-5">
-						<h2><strong>Show details</strong></h2>
+				<div class="panel-tittle">
+					<div class="col-centered">
+						<h2 align="center"><strong>Show details</strong></h2><hr>
 					</div>
 				</div>
 
 				<div class="panel-body">
 					<table class="table table-striped table-bordered table-hover">
 						<thead>
-							<tr align="center">
+							<tr>
 								<th>No</th>
-								<th>Tittle</th>
-								<th>Parent category</th>
-								<th>Data</th>
-								<th>User</th>
-								<th>View Content</th>
-								<th>Edit</th>
-								<th>Delete</th>
+								<th class="text-center">Title</th>
+								<th class="text-center">Parent category</th>
+								<th class="text-center">Date</th>
+								<th class="text-center">User</th>
+								<th class="text-center">View Content</th>
+								<th class="text-center">Edit</th>
+								<th class="text-center">Delete</th>
 							</tr>
 						</thead>
 
@@ -32,8 +32,8 @@
 							<?php $no++;?>
 
 							<tr class="odd gradeX" align="center">
-								<th>{{$no}}</th>
-								<td>{{$data->tittle}}</td>
+								<th class="text-center">{{$no}}</th>
+								<td>{{$data->title}}</td>
 
 								<!-- Show parent category -->
 								<td>
@@ -63,18 +63,18 @@
 									</a>
 								</td>
 								<!-- Edit -->
-								<td>
+								<td class="text-center">
 									<a href="{{route('admin.detail.getEdit', $data->id)}}">
 										<button class="btn btn-link"><span class="glyphicon glyphicon-pencil">&nbsp</span>Edit</button>
 									</a>
 								</td>
 								<!-- Delete -->
-								<td>
+								<td class="text-center">
 									<form action="{{route('admin.detail.delete',$data->id)}}" method="POST" role="form">
 										{{csrf_field()}}
 										<input type="hidden" name="method" value="DELETE">
 										<input type="hidden" name="id" value="{{$data->id}}">
-										<button class="btn btn-link" id="delete" type="submit" onclick="return confirmdelete('Are you sure you want to delete -{{$data->tittle}}- ?')"><span class="glyphicon glyphicon-trash">&nbsp</span>Delete</button>
+										<button class="btn btn-link" id="delete" type="submit" onclick="return confirmdelete('Are you sure you want to delete :{{$data->title}} ?')"><span class="glyphicon glyphicon-trash">&nbsp</span>Delete</button>
 									</form>
 								</td>
 							</tr>

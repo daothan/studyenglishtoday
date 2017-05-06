@@ -20,10 +20,10 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'parent_id' => 'required',
-            'name' => 'required|unique:categories,name|max:50',
-            'order'=> 'required|numeric',
-            'keywords' =>'required',
+            'parent_id'   => 'required',
+            'name'        => 'required|unique:categories,name|max:50',
+            'order'       => 'required|numeric',
+            'keywords'    =>'required',
             'description' => 'required'
         ];
     }
@@ -31,15 +31,15 @@ class CategoryRequest extends FormRequest
     public function messages()
     {
         return [
-            'parent_id.required' => 'Please choose category.',
-            'name.required' => 'Please enter name.',
-            'name.unique' => 'Name is exists.',
-            'name.max' => 'Name must less than 50 characters.',
+            'parent_id.required'   => 'Please choose category.',
+            'name.required'        => 'Please enter name.',
+            'name.unique'          => 'Name is exists.',
+            'name.max'             => 'Name must less than 50 characters.',
 
-            'order.required' => 'Please enter order.',
-            'order.numeric' => 'Order must be numeric.',
+            'order.required'       => 'Please enter order.',
+            'order.numeric'        => 'Order must be numeric.',
 
-            'keywords.required' => 'Please enter keywords.',
+            'keywords.required'    => 'Please enter keywords.',
 
             'description.required' => 'Please enter description.'
         ];

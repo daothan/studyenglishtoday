@@ -60,4 +60,22 @@ Route::group(['prefix' => 'admin'], function(){
 		/*View Content*/
 		Route::get('content/{id}',['as'=>'admin.detail.content', 'uses'=>'DetailController@content']);
 	});
+
+	/*User Pages*/
+	Route::group(['prefix'=>'user'], function(){
+
+		/*Show Users*/
+		Route::get('show',['as'=>'admin.user.show', 'uses'=>'UserController@show']);
+
+		/*Add Users*/
+		Route::get('add',['as'=>'admin.user.getAdd', 'uses'=>'UserController@getAdd']);
+		Route::post('add',['as'=>'admin.user.postAdd', 'uses'=>'UserController@postAdd']);
+
+		/*Edit Users*/
+		Route::get('edit/{id}',['as'=>'admin.user.getEdit', 'uses'=>'UserController@getEdit']);
+		Route::post('edit/{id}',['as'=>'admin.user.postEdit', 'uses'=>'UserController@postEdit']);
+
+		/*Delete User*/
+		Route::post('delete/{id}', ['as'=>'admin.user.delete','uses'=>'UserController@delete']);
+	});
 });

@@ -28,7 +28,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     public function detail(){
         return $this -> hasMany('App\user');
