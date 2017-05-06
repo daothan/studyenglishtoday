@@ -59,8 +59,14 @@
 							<!-- Add Level -->
 							<div class="form-group {{$errors->has('level') ? 'has-error' : null}}">
 								<label>User Level</label><br>
-								<input type="radio" name="level" value="0" {{old('level')=="0" ? 'checked='.'"'.'checked'.'"':''}}> Admin
-								<input type="radio" name="level" value="1" {{ old('level')=="1" ? 'checked='.'"'.'checked'.'"' : '' }}> Member
+
+								<label class="radio-inline">
+									<input type="radio" name="level" value="1" {{old('level')=="1" ? 'checked='.'"'.'checked'.'"':''}}> Admin
+								</label>
+
+								<label class="radio-inline">
+									<input type="radio" name="level" value="2" {{ old('level')=="2" ? 'checked='.'"'.'checked'.'"' : '' }}> Member
+								</label>
 
 								@if($errors->has('level'))
 									<span class="help-block">

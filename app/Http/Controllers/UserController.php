@@ -24,7 +24,6 @@ class UserController extends Controller
     }
 
     public function postAdd(UserRequest $request){
-print_r($errors);die;
         $data = new User;
         $data->name     = $request->input('name');
         $data->email    = $request->input('email');
@@ -46,16 +45,12 @@ print_r($errors);die;
     public function postEdit($id, Request $request){
 
         $rules = [
-            'name'                  => 'required|unique:users,name,'.$id,
             'email'                 => 'required|unique:users,email,'.$id,
             'password'              => 'required|confirmed|min:6',
             'password_confirmation' => 'required'
         ];
 
         $messages = [
-            'name.required'                  => 'Please enter username.',
-            'name.unique'                    => 'Username is exist.',
-
             'email.required'                 => 'Please enter email.',
             'email.unique'                   => 'Email is exist.',
 
@@ -68,7 +63,6 @@ print_r($errors);die;
         $validator = Validator::make($request->all(), $rules, $messages);
 
         $user = User::find($id);
-        $user->name     = $request->input('name');
         $user->email    = $request->input('email');
         $user->password = bcrypt($request->input('password'));
         $user->level    = $request->input('level');

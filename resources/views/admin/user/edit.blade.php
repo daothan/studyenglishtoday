@@ -18,7 +18,7 @@
 						<!-- Edit Username -->
 						<div class="form-group {{$errors->has('name') ? 'has-error' : null}}">
 							<label>Username</label>
-							<input class="form-control" type="text" name="name" value="{{old('name', isset($data['name']) ? $data['name'] : null)}}"></input>
+							<input class="form-control" type="text" name="name" value="{{old('name', isset($data['name']) ? $data['name'] : null)}}" disabled></input>
 							@if($errors->has('name'))
 								<span class="help-block">
 									<i>{{$errors->first('name')}}</i>
@@ -60,15 +60,27 @@
 
 						<!-- Edit Level -->
 						<div class="form-group">
-							<label>Edit Level</label>
-							<input type="radio" name="level" value="0">
-							@if($data["level"]==0)
-								checked = 'checked';
-							@endif
-							Admin
+							<label>Edit Level</label><br>
+
+							<label class="radio-inline">
+								<input type="radio" name="level" value="1"
+								@if($data["level"]==1)
+									checked = "checked"
+								@endif
+								>Admin
+							</label>
+
+							<label class="radio-inline">
+								<input type="radio" name="level" value="2"
+								@if($data["level"]==2)
+									checked="checked"
+								@endif
+								>Member
+							</label>
 						</div>
 						<div class="form-group">
-							<button type="submit" class="btn btn-primary">Submit</button>
+							<button type="submit" class="btn btn-success">Submit</button>
+								<button type="reset" class="btn btn-warning">Reset</button>
 						</div>
 					</form>
 					@endforeach

@@ -32,7 +32,13 @@
 								<th class="text-center">{{$no}}</th>
 								<td class="text-center">{{$data->name}}</td>
 								<td class="text-center">{{$data->email}}</td>
-								<td class="text-center">{{$data->level}}</td>
+
+								<!-- Show level -->
+								<td class="text-center">
+								@if($data["level"]==0) <?php echo "Super_Admin";?> @endif
+								@if($data["level"]==1) <?php echo "Admin";?> @endif
+								@if($data["level"]==2) <?php echo "Member";?> @endif
+								</td>
 
 								<!-- Show date -->
 								<td class="text-center">
