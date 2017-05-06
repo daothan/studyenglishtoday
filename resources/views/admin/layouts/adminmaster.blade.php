@@ -37,10 +37,10 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">Dashboard</a></li>
-						<li><a href="#">Category</a></li>
-						<li><a href="#">Product</a></li>
-						<li><a href="#">User</a></li>
+						<li class="active"><a href="" onclick="window.location.reload(true);">Dashboard</a></li>
+						<li><a href="{{route('admin.cate.show')}}">Category</a></li>
+						<li><a href="{{route('admin.detail.show')}}">Detail</a></li>
+						<li><a href="{{route('admin.user.show')}}">User</a></li>
 					</ul>
 					<ul class="nav navbar-nav pull-right">
 						<li class="dropdown">

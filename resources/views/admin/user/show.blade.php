@@ -61,7 +61,8 @@
 							@endforeach
 						</tbody>
 					</table>
-				</div>
+				</div><hr>
+				<a href="{{route('admin.user.getAdd')}}"><button class="btn btn-success pull-right">Add Account</button></a>
 			</div>
 		</div>
 	</div>

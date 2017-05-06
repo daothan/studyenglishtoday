@@ -31,17 +31,17 @@ class DetailController extends Controller
         $data = new Detail;
 
         $file_name         = $request->file('images')->getClientOriginalName();
-        $data->tittle      = $request->input('tittle');
-        $data->alias       = convert_vi_to_en($request->input('tittle'));
+        $data->title      = $request->input('title');
+        $data->alias       = convert_vi_to_en($request->input('title'));
         $data->introduce   = $request->input('introduce');
         $data->content     = $request->input('content');
         $data->images      = $file_name;
         $data->keywords    = $request->input('keywords');
         $data->description = $request->input('description');
-        $data->user_id     = 1;
+        $data->user_id     = 3;
         $data->cate_id     = $request->input('cate_id');
 
-        $folder = 'storage/uploads/detail_images/' . $request->input('tittle');
+        $folder = 'storage/uploads/detail_images/' . $request->input('title');
 
         if(!file_exists($folder)){
             File::makeDirectory($folder, 0777, true);
@@ -50,6 +50,8 @@ class DetailController extends Controller
 
         if($data->save()){
             return redirect()->route('admin.detail.show')->with(['flash_level'=>'success', 'flash_message'=>'Add detail successfully']);
+        }else{
+            echo "error";die;
         }
     }
 
@@ -65,18 +67,18 @@ class DetailController extends Controller
 
     public function postEdit($id, Request $request){
         $rules = [
-            'tittle' => 'required'
+            'title' => 'required'
         ];
 
         $messages = [
-            'tittle.required' => 'Tittle can not be empty.'
+            'title.required' => 'title can not be empty.'
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
 
         $detail = Detail::find($id);
 
-        $current_image = ('storage/uploads/detail_images/'.$detail["tittle"].'/'.$detail["images"]);
+        $current_image = ('storage/uploads/detail_images/'.$detail["title"].'/'.$detail["images"]);
 
         if(!empty($request->file('images'))){
 
@@ -84,7 +86,7 @@ class DetailController extends Controller
 
             $detail->images  = $file_name;
             $detail->save();
-            $request->file('images')->move('storage/uploads/detail_images/'.$detail["tittle"].'/',$file_name);
+            $request->file('images')->move('storage/uploads/detail_images/'.$detail["title"].'/',$file_name);
 
             if(File::exists($current_image)){
                 File::delete($current_image);
@@ -92,8 +94,8 @@ class DetailController extends Controller
         }
 
         /*$file_name           = $request->file('file_name')->getClientOriginalName();*/
-        $detail->tittle      = $request->input('tittle');
-        $detail->alias       = convert_vi_to_en($request->input('tittle'));
+        $detail->title      = $request->input('title');
+        $detail->alias       = convert_vi_to_en($request->input('title'));
         $detail->introduce   = $request->input('introduce');
         $detail->content     = htmlentities($request->input('content'));
         $detail->keywords    = $request->input('keywords');
@@ -120,7 +122,7 @@ class DetailController extends Controller
         }
         /*Delete images from details*/
         $detail = Detail::find($id);
-        File::deleteDirectory('storage/uploads/detail_images/'.$detail->tittle);
+        File::deleteDirectory('storage/uploads/detail_images/'.$detail->title);
         if($detail->delete($id)){
             return redirect()->route('admin.detail.show')->with(['flash_level'=>'danger', 'flash_message'=>'Delete successfully']);
         }else{

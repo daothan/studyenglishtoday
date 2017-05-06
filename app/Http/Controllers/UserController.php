@@ -29,7 +29,7 @@ class UserController extends Controller
         $data->level    = $request->input('level');
 
         if($data->save()){
-    	   return redirect()->back()->with(['flash_level'=>'success', 'flash_message'=>'Add user successfully.']);
+    	   return redirect()->route('admin.user.show')->with(['flash_level'=>'success', 'flash_message'=>'Add user successfully.']);
         }
     }
 
