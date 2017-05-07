@@ -78,12 +78,8 @@ Route::group(['prefix' => 'admin'], function(){
 
 
 
-/*Authentication*/
-
-Route::get('auth/register',['as'=>'getRegister','uses'=>'AuthController@getRegister']);
-
-Route::post('auth/register',['as'=>'postRegister','uses'=>'AuthController@postRegister']);
-
-Route::get('auth/login',['as'=>'getLogin','uses'=>'Auth\LoginController@getLogin']);
-
-Route::post('auth/login',['as'=>'postLogin','uses'=>'Auth\LoginController@postLogin']);
+/*Account*/
+	/*Login*/
+	Route::get('login', ['as'=>'account.getLogin', 'uses'=>'LoginController@getLogin']);
+	Route::post('login',['as'=>'account.postLogin','uses'=>'LoginController@postLogin']);
+	Route::get('logout',['as'=>'account.logout', 'uses'=>'LoginController@logout']);

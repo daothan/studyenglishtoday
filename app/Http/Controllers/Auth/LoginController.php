@@ -29,7 +29,11 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+
+    protected function redirectTo()
+    {
+        return redirect()->route('admin.cate.show');
+    }
 
     /**
      * Create a new controller instance.
