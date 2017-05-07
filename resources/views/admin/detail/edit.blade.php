@@ -73,14 +73,14 @@
 						</div>
 
 						<div class="form-group">
-							<button class="btn btn-primary" type="submit">Update</button>
+							<button class="btn btn-basis" type="submit">Update</button>
 							<button class="btn btn-warning" type="reset">Reset</button>
 						</div>
 
 					</form>
 				@endforeach
 
-				<a href="{{route('admin.detail.show')}}"><button class="btn btn-info pull-right">Show Details</button></a>
+				<a href="{{route('admin.detail.show')}}"><button class="btn btn-default pull-right">Show Details</button></a>
 
 
 				</div>

@@ -84,7 +84,7 @@
 					</table>
 
 					<a href="{{route('admin.cate.getAdd')}}">
-						<button type="button" class="btn btn-success pull-right">Add Category</button>
+						<button type="button" class="btn btn-default pull-right">Add Category</button>
 					</a>
 
 				</div>

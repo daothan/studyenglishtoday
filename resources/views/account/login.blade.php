@@ -37,14 +37,14 @@
 								<div class="col-md-6 col-md-offset-3">
 									<div class="checkbox">
 										<label>
-											<input type="checkbox" name="remember" {{old('remember') ? 'checked' : ''}}>Remember me
+											<input type="checkbox" name="remember">Remember me
 										</label>
 									</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-md-6 col-md-offset-3">
-									<button type="submit" class="btn btn-primary">Login</button>
+									<button type="submit" class="btn btn-basis btn-block"></span> Login</button>
 								</div>
 							</div>
 						</form>

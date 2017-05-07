@@ -79,7 +79,7 @@
 							</label>
 						</div>
 						<div class="form-group">
-							<button type="submit" class="btn btn-success">Submit</button>
+							<button type="submit" class="btn btn-basis">Submit</button>
 								<button type="reset" class="btn btn-warning">Reset</button>
 						</div>
 					</form>

@@ -84,7 +84,7 @@
 				</div>
 			</div>
 		</div>
-			<a href="{{url('admin/detail/add')}}"><button class="btn btn-info pull-right">Add Detail</button></a>
+			<a href="{{url('admin/detail/add')}}"><button class="btn btn-default pull-right">Add Detail</button></a>
 	</div>
 
 @stop

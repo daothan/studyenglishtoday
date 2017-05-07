@@ -88,14 +88,14 @@
 
 						{{csrf_field()}}
 
-						<button type="submit" class="btn btn-success">Add</button>
+						<button type="submit" class="btn btn-basis">Add</button>
 
 						<button class="btn btn-warning" type="reset">Reset</button>
 
 					</form>
 
 					<a href="{{route('admin.cate.show')}}">
-						<button class="btn btn-info pull-right">Show categories</button>
+						<button class="btn btn-default pull-right">Show categories</button>
 					</a>
 
 				</div>

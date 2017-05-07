@@ -36,42 +36,52 @@
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="" onclick="window.location.reload(true);">Dashboard</a></li>
-						<li><a href="{{route('admin.cate.show')}}">Category</a></li>
-						<li><a href="{{route('admin.detail.show')}}">Detail</a></li>
-						<li><a href="{{route('admin.user.show')}}">User</a></li>
-					</ul>
-					<ul class="nav navbar-nav pull-right">
-						<li class="{{isset(Auth::user()->name) ? 'dropdown' : 'hidden' }}">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{isset(Auth::user()->name) ? Auth::user()->name : null}}<b class="caret"></b></a>
-							<ul class="dropdown-menu" >
-								<li><a href="#">Profile</a></li>
-								<li><a href="{{route('account.logout')}}">Log out</a></li>
-							</ul>
+					<ul class="nav navbar-nav ">
+						<li><a href="" onclick="window.location.reload(true);">Dashboard</a></li>
+
+						<li class="{{(url()->current()==route('admin.cate.show')) ? 'active' : ''}}">
+							<a href="{{route('admin.cate.show')}}">Category</a>
 						</li>
 
-						<li class="{{isset(Auth::user()->name) || (url()->current()==route('account.getLogin')) ? 'hidden' : 'dropdown'}}">
-							<a href="{{route('account.getLogin')}}" ><button class="btn btn-success">Login</button></a>
+						<li class="{{(url()->current()==route('admin.detail.show')) ? 'active' : ''}}">
+							<a href="{{route('admin.detail.show')}}">Detail</a>
+						</li>
+
+						<li class="{{(url()->current()==route('admin.user.show')) ? 'active' : ''}}">
+							<a href="{{route('admin.user.show')}}">User</a>
 						</li>
 					</ul>
-					<form class="navbar-form pull-right" role="search">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Search">
-						</div>
-						<button type="submit" class="btn btn-default">Search</button>
-					</form>
+					<ul class="nav navbar-nav pull-right">
+						<li class="{{isset(Auth::user()->name) ? 'btn-group' : 'hidden'}}">
+						    <a data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i><strong>  {{isset(Auth::user()->name) ? Auth::user()->name : ''}}</strong></a>
+						    <ul class="dropdown-menu panel-transparent">
+						    	<li><a href=""><i class="glyphicon glyphicon-info-sign"></i> Detail</a></li>
+						    	<li><a href=""><i class="glyphicon glyphicon-pencil"></i> Edit</a></li>
+						    	<li><a href="{{route('account.logout')}}"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
+						    </ul>
+						</li>
+
+						<li class="{{isset(Auth::user()->name) || (url()->current()==route('account.getLogin')) ? 'hidden' : null}}">
+							<a href="{{route('account.getLogin')}}"><i class="glyphicon glyphicon-user"></i>  <strong>Login</strong></a>
+						</li>
+					</ul>
 				</div><!-- /.navbar-collapse -->
 			</div>
 		</nav>
 
 
 		<div class="container">
+			<form class="{{(url()->current()==route('account.getLogin')) ? 'hidden':'navbar-form pull-right'}}" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search">
+					<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+				</div>
+			</form>
 			<div class="panel">
 				<div class="col-md-6 col-md-offset-3">
 					@if(Session::has('flash_message'))
-						<div class="alert alert-{{Session::get('flash_level')}}">
-							<strong>{{Session::get('flash_message')}}</strong>
+						<div class="alert alert-{{Session::get('flash_level')}} col-centered">
+							<p class="text-center"><strong>{{Session::get('flash_message')}}</strong></p>
 						</div>
 					@endif
 				</div>
