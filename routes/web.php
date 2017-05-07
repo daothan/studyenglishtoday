@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 /*Admin Page*/
 
 Route::group(['prefix' => 'admin'], function(){
@@ -79,3 +75,11 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::post('delete/{id}', ['as'=>'admin.user.delete','uses'=>'UserController@delete']);
 	});
 });
+
+
+
+/*Account*/
+	/*Login*/
+	Route::get('login', ['as'=>'account.getLogin', 'uses'=>'LoginController@getLogin']);
+	Route::post('login',['as'=>'account.postLogin','uses'=>'LoginController@postLogin']);
+	Route::get('logout',['as'=>'account.logout', 'uses'=>'LoginController@logout']);

@@ -26,7 +26,7 @@
 
 						<div class="form-group {{$errors->has('title') ? 'has-error' : null}}">
 							<label>Title</label>
-							<input type="text" name="title" class="form-control" value="{{$data["title"]}}">
+							<input type="text" name="title" class="form-control" value="{{old('title',isset($data["title"]) ? $data['title'] : null)}}">
 
 							@if($errors->has('title'))
 								<span class="help-block">
@@ -37,13 +37,13 @@
 
 						<div class="form-group">
 							<label>Introduce</label>
-							<textarea class="form-control" name="introduce" rows="3">{{$data["introduce"]}}</textarea>
+							<textarea class="form-control" name="introduce" rows="3">{{old('introduce',isset($data["introduce"]) ? $data["introduce"] : null)}}</textarea>
 							<script type="text/javascript"> ckeditor("introduce", "config", "basic")</script>
 						</div>
 
 						<div class="form-group">
 							<label>Content</label>
-							<textarea class="form-control" name="content" rows="3">{{$data["content"]}}</textarea>
+							<textarea class="form-control" name="content" rows="3">{{old('content',isset($data["content"]) ? $data['content'] : null)}}</textarea>
 							<script type="text/javascript"> ckeditor("content", "config", "standard")</script>
 						</div>
 
@@ -63,12 +63,12 @@
 
 						<div class="form-group">
 							<label>Detail Keywords</label>
-							<input class="form-control" name="keywords" value="{{$data["keywords"]}}"></input>
+							<input class="form-control" name="keywords" value="{{old('keywords', isset($data['keywords']) ? $data['keywords'] : null)}}"></input>
 						</div>
 
 						<div class="form-group">
 							<label>Detail Description</label>
-							<textarea class="form-control" name="description">{{$data["description"]}}</textarea>
+							<textarea class="form-control" name="description">{{old('description', isset($data['description']) ? $data['description'] : null)}}</textarea>
 							<script type="text/javascript">ckeditor("description", "config", "basic")</script>
 						</div>
 

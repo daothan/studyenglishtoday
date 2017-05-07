@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+use App\Http\Requests\LoginRequest;
+use Auth;
+use App\User;
+
 class LoginController extends Controller
 {
     /*
@@ -25,7 +29,11 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+
+    protected function redirectTo()
+    {
+        return redirect()->route('admin.cate.show');
+    }
 
     /**
      * Create a new controller instance.
@@ -35,5 +43,20 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function getLogin(){
+        return view('admin.login.login');
+    }
+    public function postLogin(LoginRequest $request){
+        $login = array(
+            'name'     => $request->input('name'),
+            'password' =>$request->input('password')
+            );
+        if(Auth::attempt($login)){
+            return redirect()->route('admin.cate.show');
+        }else{
+            return redirect()->route('getLogin')->with(['flash_level'=>'danger', 'flash_message'=>'Username or Password wrong.'])->withInput();
+        }
     }
 }

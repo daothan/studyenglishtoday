@@ -25,7 +25,7 @@ class DetailRequest extends FormRequest
     {
         return [
             'cate_id'  => 'required',
-            'tittle'   => 'required|unique:details,tittle',
+            'title'   => 'required|unique:details,title',
             'content'  => 'required',
             'images'   => 'required|image',
             'keywords' => 'required'
@@ -36,8 +36,8 @@ class DetailRequest extends FormRequest
         return [
             'cate_id.required'  => 'Please choose parent category.',
 
-            'tittle.required'   => 'Please enter tittle.',
-            'tittle.unique'     => 'Tittle has already exist.',
+            'title.required'   => 'Please enter title.',
+            'title.unique'     => 'Title has already exist.',
 
             'content.required'  => 'Please enter content.',
 

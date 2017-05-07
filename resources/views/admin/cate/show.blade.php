@@ -8,7 +8,7 @@
 			<div class="col-md-offset-0 col-centered">
 				<div class="panel-title">
 					<div class="col-centered">
-						<h2 align="center"><strong>Show details</strong></h2><hr>
+						<h2 align="center"><strong>Show categories</strong></h2><hr>
 					</div>
 				</div>
 

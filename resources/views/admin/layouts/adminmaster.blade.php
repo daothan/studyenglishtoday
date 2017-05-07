@@ -37,18 +37,22 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">Dashboard</a></li>
-						<li><a href="#">Category</a></li>
-						<li><a href="#">Product</a></li>
-						<li><a href="#">User</a></li>
+						<li class="active"><a href="" onclick="window.location.reload(true);">Dashboard</a></li>
+						<li><a href="{{route('admin.cate.show')}}">Category</a></li>
+						<li><a href="{{route('admin.detail.show')}}">Detail</a></li>
+						<li><a href="{{route('admin.user.show')}}">User</a></li>
 					</ul>
 					<ul class="nav navbar-nav pull-right">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">User <b class="caret"></b></a>
-							<ul class="dropdown-menu">
+						<li class="{{isset(Auth::user()->name) ? 'dropdown' : 'hidden' }}">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{isset(Auth::user()->name) ? Auth::user()->name : null}}<b class="caret"></b></a>
+							<ul class="dropdown-menu" >
 								<li><a href="#">Profile</a></li>
-								<li><a href="#">Log out</a></li>
+								<li><a href="{{route('account.logout')}}">Log out</a></li>
 							</ul>
+						</li>
+
+						<li class="{{isset(Auth::user()->name) || (url()->current()==route('account.getLogin')) ? 'hidden' : 'dropdown'}}">
+							<a href="{{route('account.getLogin')}}" ><button class="btn btn-success">Login</button></a>
 						</li>
 					</ul>
 					<form class="navbar-form pull-right" role="search">
