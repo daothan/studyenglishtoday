@@ -20,10 +20,10 @@ class CheckLogin
         if(Auth::check()){
             $user_level= Auth::user()->level;
 
-            if($user_level<=2){/*If admin*/
+            if($user_level<=1){/*If admin*/
                 return $next($request);
             }return redirect()->route('home');
         }
-        return redirect()->route('account.getLogin');
+        return redirect()->route('home');
     }
 }

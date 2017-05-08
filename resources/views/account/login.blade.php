@@ -13,9 +13,9 @@
 					<div class="panel-body">
 						<form action="{{route('account.getLogin')}}" method="POST" class="form-horizontal" role="form">
 
-							<div class="form-group {{$errors->has('name') ? 'has-error' : null}}">
+							<div class="form-group">
 								<label class="col-md-3 control-label">Username</label>
-								<div class="col-md-6">
+								<div class="col-md-6 {{$errors->has('name') ? 'has-error' : null}}">
 									<input class="form-control" type="text" name="name" placeholder="Please enter username" value="{{old('name')}}" autofocus></input>
 									<span class="help-block">
 										<i>{{$errors->first('name')}}</i>
@@ -23,9 +23,9 @@
 								</div>
 							</div>
 
-							<div class="form-group {{$errors->has('password') ? 'has-error' : null}}">
+							<div class="form-group">
 								<label for="Password" class="col-md-3 control-label">Password</label>
-								<div class="col-md-6">
+								<div class="col-md-6 {{$errors->has('password') ? 'has-error' : null}}">
 									<input class="form-control" type="password" name="password" placeholder="Please enter password"></input>
 									<span class="help-block">
 										<i>{{$errors->first('password')}}</i>

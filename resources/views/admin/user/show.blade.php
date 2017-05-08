@@ -68,7 +68,7 @@
 						</tbody>
 					</table>
 				</div><hr>
-				<a href="{{route('admin.user.getAdd')}}"><button class="btn btn-default pull-right">Add Account</button></a>
+				<a href="{{route('admin.user.getAdd')}}" class="{{(Auth::user()->level)<2 ? '' : 'hidden'}}"><button class="btn btn-default pull-right">Add Account</button></a>
 			</div>
 		</div>
 	</div>

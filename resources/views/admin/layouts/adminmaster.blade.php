@@ -31,13 +31,13 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">Admin</a>
+					<a class="navbar-brand" href="" onclick="Window.location.reload(true);">Admin</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
 					<ul class="nav navbar-nav ">
-						<li><a href="" onclick="window.location.reload(true);">Dashboard</a></li>
+						<li><a href="{{route('home')}}">Home</a></li>
 
 						<li class="{{(url()->current()==route('admin.cate.show')) ? 'active' : ''}}">
 							<a href="{{route('admin.cate.show')}}">Category</a>
@@ -70,32 +70,46 @@
 						</li>
 
 						<li class="{{isset(Auth::user()->name) || (url()->current()==route('account.getLogin')) ? 'hidden' : null}}">
-							<a href="{{route('account.getLogin')}}"><i class="glyphicon glyphicon-user"></i>  <strong>Login</strong></a>
+							<a href="{{route('account.getLogin')}}"><strong>Login</strong></a>
+						</li><li class="{{isset(Auth::user()->name) || (url()->current()==route('account.getRegister')) ? 'hidden' : null}}">
+							<a href="{{route('account.getRegister')}}"><strong>Register</strong></a>
 						</li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</div>
 		</nav>
 
+			<!-- Level -->
+			@if(isset(Auth::user()->name))
+			<h4 align="center">
+				<i class="text-info">
+					You are
+					@if(Auth::user()->level==0) <?php echo "Super_Admin";?> @endif
+					@if(Auth::user()->level==1) <?php echo "Admin";?> @endif
+					@if(Auth::user()->level==2) <?php echo "Member";?> @endif
+					{{Auth::user()->name}}
+				</i>
+			</h4>
+			@endif
 
 		<div class="container">
-			<form class="{{(url()->current()==route('account.getLogin')) ? 'hidden':'navbar-form pull-right'}}" role="search">
+			<!-- Search -->
+			<form class="{{(url()->current()==route('account.getLogin')) || (url()->current()==route('account.getRegister')) ? 'hidden':'navbar-form pull-right'}}" role="search">
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Search">
 					<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
 				</div>
 			</form>
-			<div class="panel">
-				<div class="col-md-6 col-md-offset-3">
-					@if(Session::has('flash_message'))
-						<div class="alert alert-{{Session::get('flash_level')}} col-centered">
-							<p class="text-center"><strong>{{Session::get('flash_message')}}</strong></p>
-						</div>
-					@endif
-				</div>
+
+			<!-- Show Flash -->
+			<div class="col-md-6 col-md-offset-3">
+				@if(Session::has('flash_message'))
+					<h3 class="flash text-center text-{{Session::get('flash_level')}}"><strong><i>{{Session::get('flash_message')}}</i></strong></h3>
+				@endif
 			</div>
+			<script type="text/javascript">$('h3.flash').delay(3000).slideUp();</script>
+
 		</div>
-		<script type="text/javascript">$('div.alert').delay(3000).slideUp();</script>
 
 		@yield('content')
 

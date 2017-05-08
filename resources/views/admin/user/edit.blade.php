@@ -12,6 +12,7 @@
 				<div class="panel-body">
 					@foreach($user as $data)
 					<form action="{{route('admin.user.getEdit', $data->id)}}" method="POST" class="form-horizontal" role="form">
+
 						<!-- Token -->
 						{{csrf_field()}}
 
@@ -58,26 +59,6 @@
 							@endif
 						</div>
 
-						<!-- Edit Level -->
-						<div class="form-group">
-							<label>Edit Level</label><br>
-
-							<label class="radio-inline">
-								<input type="radio" name="level" value="1"
-								@if($data["level"]==1)
-									checked = "checked"
-								@endif
-								>Admin
-							</label>
-
-							<label class="radio-inline">
-								<input type="radio" name="level" value="2"
-								@if($data["level"]==2)
-									checked="checked"
-								@endif
-								>Member
-							</label>
-						</div>
 						<div class="form-group">
 							<button type="submit" class="btn btn-basis">Submit</button>
 								<button type="reset" class="btn btn-warning">Reset</button>

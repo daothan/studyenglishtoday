@@ -60,7 +60,7 @@ class UserController extends Controller
             }
         }
         if($user_current_login==1){
-            if($user_current_id == $user_id || $user_level >=1){ /*Admin have permission editing themself and member*/
+            if($user_current_id == $user_id || $user_level >1){ /*Admin have permission editing themself and member*/
                 return view('admin.user.edit', compact('user'));
             }else{
                 echo "<script type='text/javascript'>
@@ -98,7 +98,7 @@ class UserController extends Controller
         $user               = User::find($id);
         $user->email    = $request->input('email');
         $user->password = bcrypt($request->input('password'));
-        $user->level    = $request->input('level');
+        $user->level    = $user->level;
 
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();

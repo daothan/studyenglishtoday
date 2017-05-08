@@ -76,12 +76,16 @@ Route::group(['prefix' => 'admin', 'middleware'=>CheckLogin::class], function(){
 	});
 });
 
-
-
-Route::get('home',['as'=>'home', 'uses'=>'HomeController@index']);
 /*Account*/
 	/*Login*/
 	Route::get('login', ['as'=>'account.getLogin', 'uses'=>'LoginController@getLogin']);
 	Route::post('login',['as'=>'account.postLogin','uses'=>'LoginController@postLogin']);
 	/*Logout*/
 	Route::get('logout',['as'=>'account.logout', 'uses'=>'LoginController@logout']);
+
+	/*Register*/
+	Route::get('register',['as'=>'account.getRegister', 'uses'=>'RegisterController@getRegister']);
+	Route::post('register',['as'=>'account.postRegister', 'uses'=>'RegisterController@postRegister']);
+
+/*Home page*/
+	Route::get('home',['as'=>'home', 'uses'=>'HomeController@index']);
