@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Middleware\CheckLogin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +13,7 @@
 
 /*Admin Page*/
 
-Route::group(['prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin', 'middleware'=>CheckLogin::class], function(){
 
 	/*Cate Pages*/
 	Route::group(['prefix' =>'cate'], function(){
@@ -78,8 +78,10 @@ Route::group(['prefix' => 'admin'], function(){
 
 
 
+Route::get('home',['as'=>'home', 'uses'=>'HomeController@index']);
 /*Account*/
 	/*Login*/
 	Route::get('login', ['as'=>'account.getLogin', 'uses'=>'LoginController@getLogin']);
 	Route::post('login',['as'=>'account.postLogin','uses'=>'LoginController@postLogin']);
+	/*Logout*/
 	Route::get('logout',['as'=>'account.logout', 'uses'=>'LoginController@logout']);

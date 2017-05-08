@@ -17,7 +17,7 @@
 						</div>
 					@endforeach
 			</div>
-			<a href="{{route('admin.detail.show')}}"><button class="btn btn-success pull-right">Show details</button></a>
+			<a href="{{route('admin.detail.show')}}"><button class="btn btn-default pull-right">Show details</button></a>
 		</div>
 	</div>
 

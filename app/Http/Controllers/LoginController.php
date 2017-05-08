@@ -13,17 +13,26 @@ class LoginController extends Controller
 		$this->middleware('auth',['except'=>'logout']);
 	}*/
 
+
+    public function __construct()
+    {
+    	$this->middleware('guest')->except('logout');
+    }
+
     public function getLogin(){
-    	return view('account.login');
+
+        return view('account/login');
     }
 
     public function postLogin(LoginRequest $request){
 
 		$name     = $request->input('name');
 		$password = $request->input('password');
+		$level    = 1; /*admin*/
 
-    	if(Auth::attempt(['name'=>$name, 'password'=>$password])){
-    		return redirect()->route('admin.cate.show');
+    	if(Auth::attempt(['name'=>$name, 'password'=>$password],$request->has('remember'))){
+    		return redirect()->route('admin.cate.show')->with(['flash_level'=>'success', 'flash_message'=>'Welcome '.$name]);
+
     	}else{
     		return redirect()->back()->with(['flash_level'=>'danger', 'flash_message'=>'Username or Password wrong .'])->withInput();
     	}

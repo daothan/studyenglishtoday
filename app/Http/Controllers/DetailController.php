@@ -9,6 +9,7 @@ use App\Detail;
 use App\Category;
 use App\DetailImage;
 use Validator;
+use Auth;
 
 use File;
 
@@ -38,7 +39,7 @@ class DetailController extends Controller
         $data->images      = $file_name;
         $data->keywords    = $request->input('keywords');
         $data->description = $request->input('description');
-        $data->user_id     = 3;
+        $data->user_id     = Auth::user()->id;
         $data->cate_id     = $request->input('cate_id');
 
         $folder = 'storage/uploads/detail_images/' . $request->input('title');
@@ -103,7 +104,7 @@ class DetailController extends Controller
         $detail->content     = htmlentities($request->input('content'));
         $detail->keywords    = $request->input('keywords');
         $detail->description = $request->input('description');
-        $detail->user_id     = 3;
+        $detail->user_id     = Auth::user()->id;
         $detail->cate_id     = $request->input('cate_id');
 
 

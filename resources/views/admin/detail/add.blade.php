@@ -88,13 +88,13 @@
 
 					{{csrf_field()}}
 
-					<button class="btn btn-primary" type="submit">Submit</button>
+					<button class="btn btn-basis" type="submit">Submit</button>
 
 					<button class="btn btn-warning" type="reset">Reset</button>
 
 				</form>
 
-				<a href="{{route('admin.detail.show')}}"><button class="btn btn-info pull-right">Show details</button></a>
+				<a href="{{route('admin.detail.show')}}"><button class="btn btn-default pull-right">Show details</button></a>
 
 			</div>
 		</div>

@@ -68,7 +68,7 @@
 						</tbody>
 					</table>
 				</div><hr>
-				<a href="{{route('admin.user.getAdd')}}"><button class="btn btn-success pull-right">Add Account</button></a>
+				<a href="{{route('admin.user.getAdd')}}"><button class="btn btn-default pull-right">Add Account</button></a>
 			</div>
 		</div>
 	</div>

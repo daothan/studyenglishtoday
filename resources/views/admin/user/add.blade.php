@@ -80,11 +80,11 @@
 
 							<!-- Submit -->
 							<div class="form-group">
-								<button type="submit" class="btn btn-success">Submit</button>
+								<button type="submit" class="btn btn-basis">Submit</button>
 								<button type="reset" class="btn btn-warning">Reset</button>
 							</div>
 					</form><hr>
-					<a href="{{route('admin.user.show')}}"><button class="btn btn-info pull-right">Show Users</button></a>
+					<a href="{{route('admin.user.show')}}"><button class="btn btn-default pull-right">Show Users</button></a>
 				</div>
 			</div>
 		</div>

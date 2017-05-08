@@ -71,7 +71,7 @@
 						</div>
 
 						<div class="form-group">
-							<button class="btn btn-primary" type="submit">Update</button>
+							<button class="btn btn-basis" type="submit">Update</button>
 
 							<button class="btn btn-warning" type="reset">Reset</button>
 						</div>
@@ -81,7 +81,7 @@
 					@endforeach
 				</div>
 
-				<a href="{{route('admin.cate.show')}}"><button class="btn btn-info pull-right">Show Categories</button></a>
+				<a href="{{route('admin.cate.show')}}"><button class="btn btn-default pull-right">Show Categories</button></a>
 			</div>
 		</div>
 	</div>

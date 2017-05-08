@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Detail;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return redirect()->back();route('admin.cate.show');
+        $content = Detail::where('id',2)->get();
+        return view('admin.detail.content', compact('content'));
     }
 }

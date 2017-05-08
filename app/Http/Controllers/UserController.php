@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use Validator;
+use Auth;
 
 use App\User;
 
@@ -38,6 +39,29 @@ class UserController extends Controller
     /*Edit User*/
     public function getEdit($id){
         $user = User::where('id',$id)->get();
+        foreach($user as $user){
+            $user_id    = $user["id"];
+            $user_level = $user["level"];
+        }
+        $user_current_login = Auth::user()->level;
+        $user_current_id    = Auth::user()->id;
+       // print_r($user_current_id);die;
+
+        /*Member can not edit other member or admin, super admin*/
+        if($user_current_login==2){
+            if($user_current_id == $user_id && $user_level >=2){
+            }else{
+                
+                return redirect()->route('admin.user.show')->with(['flash_level'=>'success', 'flash_message'=>'Update user successfully.']);
+            }
+        }
+        if($user_current_login==1){
+
+        }
+        if($user_current_login==0){
+
+        }
+
 
         return view('admin.user.edit', compact('user'));
     }
@@ -60,9 +84,9 @@ class UserController extends Controller
 
             'password_confirmation.required' => 'Please enter password.'
         ];
-        $validator = Validator::make($request->all(), $rules, $messages);
+        $validator          = Validator::make($request->all(), $rules, $messages);
 
-        $user = User::find($id);
+        $user               = User::find($id);
         $user->email    = $request->input('email');
         $user->password = bcrypt($request->input('password'));
         $user->level    = $request->input('level');
@@ -78,25 +102,44 @@ class UserController extends Controller
 
     /*Delete User*/
     public function delete($id){
-        $user_id = User::where('id',$id)->get()->toArray();
+        $user_current_login = Auth::user()->level;
+        $user_id            = User::where('id',$id)->get()->toArray();
 
         foreach ($user_id as $value) {
-            $check_admin = $value["level"];
+            $admin_id = $value["level"];
         }
 
-        if($check_admin == 0){ /*If admin, do not have permission deleting*/
-
+        if($user_current_login == 2){ /*If member, do not have permission deleting*/
             echo "<script type='text/javascript'>
-                alert('Sorry ! You can not delete admin account ! ');
+                alert('Sorry ! You do not have permission to delete account ! ');
                 window.location ='";echo route('admin.user.show');
                 echo "'
                 </script>";
 
-        }else{
-            $user = User::find($id);
-            $user -> delete($id);
+        }elseif($user_current_login == 1){ /*If admin, have permision deleting member*/
+            if($admin_id>=2){
+                $user = User::find($id);
+                $user -> delete($id);
 
-            return redirect()->route('admin.user.show')->with(['flash_level'=>'danger', 'flash_message'=>'Delete successfully.']);
+                return redirect()->route('admin.user.show')->with(['flash_level'=>'danger', 'flash_message'=>'Delete successfully.']);
+            }else{
+                echo "<script type='text/javascript'>
+                    alert('Sorry ! You just have permision to delete admin and super admin !');
+                    window.location='";echo route('admin.user.show'); echo "'
+                </script>";
+            }
+        }elseif($user_current_login == 0){
+            if($admin_id>=1){ /*Super admin can delete member and admin*/
+                $user = User::find($id);
+                $user -> delete($id);
+                 return redirect()->route('admin.user.show')->with(['flash_level'=>'danger', 'flash_message'=>'Delete successfully.']);
+            }else{/*Cannot delete super admin*/
+                echo "<script type='text/javascript'>
+                    alert('Sorry ! You do not have permision to delete super admin !');
+                    window.location='";echo route('admin.user.show'); echo "'
+                </script>";
+            }
         }
+
     }
 }
