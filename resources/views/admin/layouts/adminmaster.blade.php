@@ -55,7 +55,15 @@
 						<li class="{{isset(Auth::user()->name) ? 'btn-group' : 'hidden'}}">
 						    <a data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i><strong>  {{isset(Auth::user()->name) ? Auth::user()->name : ''}}</strong></a>
 						    <ul class="dropdown-menu panel-transparent">
-						    	<li><a href=""><i class="glyphicon glyphicon-info-sign"></i> Detail</a></li>
+						    	<li>
+						    		<a href=""><i class="glyphicon glyphicon-star-empty"></i>
+						    			<i>
+								    		{{(isset(Auth::user()->level) && (Auth::user()->level=='0')) ? 'Super Admin' :''}}
+								    		{{(isset(Auth::user()->level) && (Auth::user()->level=='1')) ? 'Admin':''}}
+								    		{{(isset(Auth::user()->level) && (Auth::user()->level=='2')) ? 'Member':''}}
+							    		</i>
+						    		</a>
+						    	</li>
 						    	<li><a href=""><i class="glyphicon glyphicon-pencil"></i> Edit</a></li>
 						    	<li><a href="{{route('account.logout')}}"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
 						    </ul>
