@@ -64,7 +64,7 @@
 							    		</i>
 						    		</a>
 						    	</li>
-						    	<li><a href=""><i class="glyphicon glyphicon-pencil"></i> Edit</a></li>
+						    	<li><a href="{{isset(Auth::user()->name) ? route('admin.user.getEdit',Auth::user()->id) : null}}"><i class="glyphicon glyphicon-pencil"></i> Edit</a></li>
 						    	<li><a href="{{route('account.logout')}}"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
 						    </ul>
 						</li>

@@ -39,31 +39,40 @@ class UserController extends Controller
     /*Edit User*/
     public function getEdit($id){
         $user = User::where('id',$id)->get();
-        foreach($user as $user){
-            $user_id    = $user["id"];
-            $user_level = $user["level"];
+        foreach($user as $user_login){
+            $user_id    = $user_login["id"]; /*Id of user which you are wanting to edit*/
+            $user_level = $user_login["level"]; /*Level of user which you are wanting to edit*/
         }
-        $user_current_login = Auth::user()->level;
-        $user_current_id    = Auth::user()->id;
-       // print_r($user_current_id);die;
+        $user_current_login = Auth::user()->level; /*Level of user which you are logging in*/
+        $user_current_id    = Auth::user()->id; /*Id of user which you are logging in*/
 
         /*Member can not edit other member or admin, super admin*/
-        if($user_current_login==2){
-            if($user_current_id == $user_id && $user_level >=2){
+        if($user_current_login == 2){
+            if($user_current_id == $user_id){ /*Member just have permission editing themself*/
+                return view('admin.user.edit', compact('user'));
+
             }else{
-                
-                return redirect()->route('admin.user.show')->with(['flash_level'=>'success', 'flash_message'=>'Update user successfully.']);
+                echo "<script type='text/javascript'>
+                alert('Sorry ! You can not edit this account  ');
+                window.location ='";echo route('admin.user.show');
+                echo "'
+                </script>";
             }
         }
         if($user_current_login==1){
-
+            if($user_current_id == $user_id || $user_level >=1){ /*Admin have permission editing themself and member*/
+                return view('admin.user.edit', compact('user'));
+            }else{
+                echo "<script type='text/javascript'>
+                alert('Sorry ! You can not edit this account !');
+                window.location='"; echo route('admin.user.show');
+                echo "'
+                </script>";
+            }
         }
-        if($user_current_login==0){
-
+        if($user_current_login==0){/*Super admin can edit any account*/
+            return view('admin.user.edit', compact('user'));
         }
-
-
-        return view('admin.user.edit', compact('user'));
     }
 
     public function postEdit($id, Request $request){

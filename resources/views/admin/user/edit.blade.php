@@ -38,7 +38,7 @@
 
 						<!-- Edit Password -->
 						<div class="form-group {{$errors->has('password') ? 'has-error' : null}}">
-							<label>Password</label>
+							<label>New password</label>
 							<input class="form-control" type="password" name="password" value="{{old('password')}}"></input>
 							@if($errors->has('password'))
 								<span class="help-block">
@@ -49,7 +49,7 @@
 
 						<!-- Confirm password -->
 						<div class="form-group {{$errors->has('password_confirmation') ? 'has-error' : null}}">
-							<label>Confim password</label>
+							<label>Confim new password</label>
 							<input class="form-control" type="password" name="password_confirmation"></input>
 							@if($errors->has('password_confirmation'))
 								<span class="help-block">
