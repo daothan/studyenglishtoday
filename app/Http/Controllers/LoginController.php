@@ -31,7 +31,7 @@ class LoginController extends Controller
 		$level    = 1; /*admin*/
 
     	if(Auth::attempt(['name'=>$name, 'password'=>$password],$request->has('remember'))){
-    		return redirect('admin')->with(['flash_level'=>'success', 'flash_message'=>'Welcome '.$name]);
+    		return redirect()->route('admin.cate.show')->with(['flash_level'=>'success', 'flash_message'=>'Welcome '.$name]);
 
     	}else{
     		return redirect()->back()->with(['flash_level'=>'danger', 'flash_message'=>'Username or Password wrong .'])->withInput();

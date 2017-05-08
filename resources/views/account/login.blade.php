@@ -11,8 +11,8 @@
 					</div>
 
 					<div class="panel-body">
-						<form action="{{route('account.postLogin')}}" method="POST" class="form-horizontal" role="form">
-							{{csrf_field()}}
+						<form action="{{route('account.getLogin')}}" method="POST" class="form-horizontal" role="form">
+
 							<div class="form-group {{$errors->has('name') ? 'has-error' : null}}">
 								<label class="col-md-3 control-label">Username</label>
 								<div class="col-md-6">
@@ -32,7 +32,7 @@
 									</span>
 								</div>
 							</div>
-
+							{{csrf_field()}}
 							<div class="form-group">
 								<div class="col-md-6 col-md-offset-3">
 									<div class="checkbox">
