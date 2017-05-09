@@ -1,4 +1,4 @@
-@extends('admin.layouts.adminmaster')
+@extends('admin.layouts.adminlayout')
 
 @section('content')
 
@@ -60,7 +60,7 @@
 							<div class="form-group {{$errors->has('level') ? 'has-error' : null}}">
 								<label>User Level</label><br>
 
-								<label class="radio-inline {{(Auth::user()->level<=1) ? '':'hidden'}}">
+								<label class="radio-inline {{(Auth::user()->level<1) ? '':'hidden'}}">
 									<input type="radio" name="level" value="1" {{old('level')=="1" ? 'checked='.'"'.'checked'.'"':''}}"> Admin
 								</label>
 

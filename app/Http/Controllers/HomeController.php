@@ -9,6 +9,16 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('admin.layouts.adminmaster');
+        return view('home');
+    }
+
+    public function home_member()
+    {
+        return view('member.home');
+    }
+
+    public function dashboard()
+    {
+        return view('admin.dashboard.index');
     }
 }

@@ -31,9 +31,9 @@ class LoginController extends Controller
 
     	if(Auth::attempt(['name'=>$name, 'password'=>$password],$request->has('remember'))){
             if(Auth::user()->level>1){
-    		  return redirect()->route('home')->with(['flash_level'=>'info', 'flash_message'=>'Welcome '.$name]);
+    		  return redirect()->route('member.home')->with(['flash_level'=>'info', 'flash_message'=>'Welcome '.$name]);
             }else{
-                return redirect()->route('admin.user.show')->with(['flash_level'=>'info', 'flash_message'=>'Welcome '.$name]);
+                return redirect()->route('admin.dashboard')->with(['flash_level'=>'info', 'flash_message'=>'Welcome '.$name]);
             }
 
     	}else{

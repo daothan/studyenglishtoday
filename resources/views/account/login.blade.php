@@ -1,14 +1,14 @@
-@extends('admin.layouts.adminmaster')
+@extends('layouts.layout')
 
 @section('content')
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
-				<div class="panel panel-default">
-					<div class="panel-heading rol-centered">
-						<h2 align="center">Login</h2>
-					</div>
+	<div class="page-wrapper">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title" align="center">Please Sign In</h3>
+                    </div>
 
 					<div class="panel-body">
 						<form action="{{route('account.getLogin')}}" method="POST" class="form-horizontal" role="form">

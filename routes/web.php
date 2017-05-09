@@ -1,5 +1,5 @@
 <?php
-use App\Http\Middleware\CheckLogin;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,9 +11,29 @@ use App\Http\Middleware\CheckLogin;
 |
 */
 
+
+
+/*Account*/
+	/*Login*/
+	Route::get('login', ['as'=>'account.getLogin', 'uses'=>'LoginController@getLogin']);
+	Route::post('login',['as'=>'account.postLogin','uses'=>'LoginController@postLogin']);
+	/*Logout*/
+	Route::get('logout',['as'=>'account.logout', 'uses'=>'LoginController@logout']);
+
+	/*Register*/
+	Route::get('register',['as'=>'account.getRegister', 'uses'=>'RegisterController@getRegister']);
+	Route::post('register',['as'=>'account.postRegister', 'uses'=>'RegisterController@postRegister']);
+
+/*Home page*/
+	Route::get('home',['as'=>'home', 'uses'=>'HomeController@index']);
+
+
+
 /*Admin Page*/
 
-Route::group(['prefix' => 'admin', 'middleware'=>CheckLogin::class], function(){
+Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
+
+	Route::get('dashboard',['as'=>'admin.dashboard', 'uses'=>'HomeController@dashboard']);
 
 	/*Cate Pages*/
 	Route::group(['prefix' =>'cate'], function(){
@@ -63,6 +83,9 @@ Route::group(['prefix' => 'admin', 'middleware'=>CheckLogin::class], function(){
 		/*Show Users*/
 		Route::get('show',['as'=>'admin.user.show', 'uses'=>'UserController@show']);
 
+		/*Show information User*/
+		Route::get('information/{id}', ['as'=>'admin.user.information', 'uses'=>'UserController@information']);
+
 		/*Add Users*/
 		Route::get('add',['as'=>'admin.user.getAdd', 'uses'=>'UserController@getAdd']);
 		Route::post('add',['as'=>'admin.user.postAdd', 'uses'=>'UserController@postAdd']);
@@ -76,16 +99,18 @@ Route::group(['prefix' => 'admin', 'middleware'=>CheckLogin::class], function(){
 	});
 });
 
-/*Account*/
-	/*Login*/
-	Route::get('login', ['as'=>'account.getLogin', 'uses'=>'LoginController@getLogin']);
-	Route::post('login',['as'=>'account.postLogin','uses'=>'LoginController@postLogin']);
-	/*Logout*/
-	Route::get('logout',['as'=>'account.logout', 'uses'=>'LoginController@logout']);
 
-	/*Register*/
-	Route::get('register',['as'=>'account.getRegister', 'uses'=>'RegisterController@getRegister']);
-	Route::post('register',['as'=>'account.postRegister', 'uses'=>'RegisterController@postRegister']);
+/*Member pages*/
+Route::group(['prefix'=>'member', 'middleware'=>'checkmember'],function(){
+	/*Home page*/
+	Route::get('home', ['as'=>'member.home', 'uses'=>'HomeController@home_member']);
 
-/*Home page*/
-	Route::get('home',['as'=>'home', 'uses'=>'HomeController@index']);
+	/*Show information User*/
+	Route::get('information/{id}', ['as'=>'account.information', 'uses'=>'UserController@information']);
+
+	/*Edit Users*/
+	Route::get('edit/{id}',['as'=>'account.getEdit', 'uses'=>'UserController@getEdit']);
+	Route::post('edit/{id}',['as'=>'account.postEdit', 'uses'=>'UserController@postEdit']);
+
+});
+

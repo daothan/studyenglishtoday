@@ -18,6 +18,11 @@ class UserController extends Controller
     	return view('admin.user.show', compact('user'));
     }
 
+    /*Show information User*/
+    public function information($id){
+        $user = User::where('id',$id) -> get();
+        return view('admin.user.information', compact('user'));
+    }
     /*Add users*/
     public function getAdd(){
 

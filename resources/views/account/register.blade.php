@@ -1,11 +1,14 @@
-@extends('admin.layouts.adminmaster')
+@extends('layouts.layout')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+
+    <div class="page-wrapper">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title" align="center">Please Register</h3>
+                    </div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('account.getRegister') }}">
                         {{ csrf_field() }}
@@ -55,7 +58,7 @@
                         <div class="form-group">
                             <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
 
-                            <div class="col-md-6 {{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                            <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                             </div>
                         </div>

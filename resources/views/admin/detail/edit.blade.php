@@ -1,9 +1,10 @@
-@extends('admin.layouts/adminmaster')
+@extends('admin.layouts/adminlayout')
 
 @section('content')
-	<div class="container">
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
+
+	<div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
 				<div class="panel-title">
 					<div class="col-centered">
 						<h2 align="center">Edit Details</h2><hr>
