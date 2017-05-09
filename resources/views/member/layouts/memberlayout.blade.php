@@ -240,7 +240,7 @@
 
                         <!-- Dashboard -->
                         <li>
-                            <a href="{{route('home')}}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
 
                         <!-- Tables -->
@@ -248,13 +248,13 @@
                             <a href=""><i class="fa fa-table fa-fw "></i> Tables <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="">Users</a>
+                                    <a href="{{route('admin.user.show')}}">Users</a>
                                 </li>
                                 <li>
-                                    <a href="">Categories</a>
+                                    <a href="{{route('admin.cate.show')}}">Categories</a>
                                 </li>
                                 <li>
-                                    <a href="">Details</a>
+                                    <a href="{{route('admin.detail.show')}}">Details</a>
                                 </li>
                             </ul>
                         </li>
@@ -265,13 +265,13 @@
                             <a href=""><i class="fa fa-edit fa-fw"></i> Add <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="}">Users</a>
+                                    <a href="{{route('admin.user.getAdd')}}">Users</a>
                                 </li>
                                 <li>
-                                    <a href="">Categories</a>
+                                    <a href="{{route('admin.cate.getAdd')}}">Categories</a>
                                 </li>
                                 <li>
-                                    <a href="">Details</a>
+                                    <a href="{{route('admin.detail.getAdd')}}">Details</a>
                                 </li>
                             </ul>
                         </li>

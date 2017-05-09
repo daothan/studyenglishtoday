@@ -21,8 +21,8 @@ class CheckMember
 
             if($user_level == 2){/*Member*/
                 return $next($request);
-            }
+            }return redirect()->route('admin.dashboard');
         }
-        return redirect()->route('home');
+        return redirect()->route('account.getLogin');
     }
 }

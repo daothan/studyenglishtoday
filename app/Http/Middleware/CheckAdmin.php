@@ -24,6 +24,6 @@ class CheckAdmin
                 return $next($request);
             }return redirect()->route('member.home');
         }
-        return redirect()->route('home');
+        return redirect()->route('account.getLogin');
     }
 }

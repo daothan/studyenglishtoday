@@ -38,25 +38,28 @@
 						</div>
 
 						<!-- Edit Password -->
-						<div class="form-group {{$errors->has('password') ? 'has-error' : null}}">
-							<label>New password</label>
-							<input class="form-control" type="password" name="password" value="{{old('password')}}"></input>
-							@if($errors->has('password'))
-								<span class="help-block">
-									<i>{{$errors->first('password')}}</i>
-								</span>
-							@endif
-						</div>
+						<div class="{{(Auth::user()->id == $data->id) ? '' : 'hidden' }}">
+							<!-- Edit Password -->
+							<div class="form-group {{$errors->has('password') ? 'has-error' : null}}">
+								<label>New password</label>
+								<input class="form-control" type="password" name="password" value="{{old('password')}}"></input>
+								@if($errors->has('password'))
+									<span class="help-block">
+										<i>{{$errors->first('password')}}</i>
+									</span>
+								@endif
+							</div>
 
-						<!-- Confirm password -->
-						<div class="form-group {{$errors->has('password_confirmation') ? 'has-error' : null}}">
-							<label>Confim new password</label>
-							<input class="form-control" type="password" name="password_confirmation"></input>
-							@if($errors->has('password_confirmation'))
-								<span class="help-block">
-									<i>{{$errors->first('password_confirmation')}}</i>
-								</span>
-							@endif
+							<!-- Confirm password -->
+							<div class="form-group {{$errors->has('password_confirmation') ? 'has-error' : null}}">
+								<label>Confim new password</label>
+								<input class="form-control" type="password" name="password_confirmation"></input>
+								@if($errors->has('password_confirmation'))
+									<span class="help-block">
+										<i>{{$errors->first('password_confirmation')}}</i>
+									</span>
+								@endif
+							</div>
 						</div>
 
 						<div class="form-group">
