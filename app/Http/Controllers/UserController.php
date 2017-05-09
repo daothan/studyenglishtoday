@@ -21,7 +21,28 @@ class UserController extends Controller
     /*Show information User*/
     public function information($id){
         $user = User::where('id',$id) -> get();
-        return view('admin.user.information', compact('user'));
+        foreach($user as $user_login){
+            $user_id = $user_login["id"];
+            $user_level = $user_login["level"];
+        }
+        $user_current_id = Auth::user()->id;
+        $user_current_level = Auth::user()->level;
+
+        if($user_current_level == 1){
+            if($user_current_id == $user_id || $user_level >1){
+                return view('admin.user.information', compact('user'));
+            }else{
+                echo "<script type='text/javascript'>
+                alert('Sorry ! You can not see this account information !');
+                window.location ='";echo route('admin.user.show');
+                echo "'
+                </script>";
+            }
+        }
+
+        if($user_current_level == 0){
+            return view('admin.user.information', compact('user'));
+        }
     }
     /*Add users*/
     public function getAdd(){

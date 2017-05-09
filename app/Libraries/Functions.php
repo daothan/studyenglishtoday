@@ -35,6 +35,17 @@
 		$str=str_replace(' ','-',$str);
 		return $str;
 	}
+	function convert_title($str){
+		$str = trim($str);
+		if($str=="") return "";
+		$str = str_replace('"','',$str);
+		$str = str_replace("'",'',$str);
+		$str = stripUnicode($str);
+		$str = mb_convert_case($str,MB_CASE_TITLE,'utf-8');
+		/*MB_CASE_UPPER, MB_CASE_TITLE, MB_CASE_LOWER*/
+		$str=str_replace(' ','&nbsp',$str);
+		return $str;
+	}
 
 	function cate_parent($data, $parent = 0, $str="-", $select=0){
 		foreach ($data as $value){

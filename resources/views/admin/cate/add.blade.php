@@ -2,17 +2,24 @@
 
 @section('content')
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3 col-centered">
-				<div class="panel-title">
-					<div class="col-centered">
-						<h2 align="center">Add Category</h2><hr>
-					</div>
-				</div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header" align="center">Categories</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 align="center">Add Category</h4>
+                </div>
+                <!-- /.panel-heading -->
 
 				<div class="panel-body">
-					<form action="{{route('admin.cate.postAdd')}}" method="POST" role="form">
+					<form action="{{route('admin.cate.postAdd')}}" method="POST" >
 
 						<div class="form-group {{$errors->has('parent_id') ? 'has-error' : null}}">
 
@@ -88,19 +95,22 @@
 
 						{{csrf_field()}}
 
-						<button type="submit" class="btn btn-basis">Add</button>
-
-						<button class="btn btn-warning" type="reset">Reset</button>
+						<!-- Submit -->
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-basis">Add</button>
+							<button type="reset" class="btn btn-warning">Reset</button>
+                        </div>
 
 					</form>
 
 					<a href="{{route('admin.cate.show')}}">
-						<button class="btn btn-default pull-right">Show categories</button>
+						<button class="btn btn-basis pull-right">Show categories</button>
 					</a>
+					<a href="{{URL::previous()}}"><button class="btn btn-basis">Back</button></a>
 
 				</div>
-			</div>
 		</div>
 	</div>
+
 
 @stop

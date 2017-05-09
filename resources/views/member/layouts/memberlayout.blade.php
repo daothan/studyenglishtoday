@@ -282,19 +282,21 @@
         </nav>
 
         <!-- Show Flash Message -->
-        <div class="container">
-            <!-- Show Flash -->
-            <div class="col-md-6 col-md-offset-3">
-                @if(Session::has('flash_message'))
-                    <h3 class="flash text-center text-{{Session::get('flash_level')}}"><strong><i>{{Session::get('flash_message')}}</i></strong></h3>
-                @endif
-            </div>
-            <script type="text/javascript">$('h3.flash').delay(3000).slideUp();</script>
+        <div id="page-wrapper">
+                <!-- Show Flash -->
+                <div class="col-md-6 col-md-offset-3">
+                    @if(Session::has('flash_message'))
+                        <h3 class="flash text-center text-{{Session::get('flash_level')}}"><strong><i>{{Session::get('flash_message')}}</i></strong></h3>
+                    @endif
+                </div>
+                <script type="text/javascript">$('h3.flash').delay(3000).slideUp();</script>
 
+            <!-- End Show Flash Message -->
+            @yield('content')
         </div>
+
         <!-- End Show Flash Message -->
 
-        @yield('content')
 
         <!-- Show Order Tables -->
         <script>

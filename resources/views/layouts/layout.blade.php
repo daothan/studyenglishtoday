@@ -18,6 +18,8 @@
     <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/admin_interface/dist/css/sb-admin-2.css')}}">
     <!-- Custom Fonts -->
     <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/admin_interface/vendor/font-awesome/css/font-awesome.min.css')}}">
+    <!-- Upload Css -->
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/css/uploads.css')}}">
 
 
 
@@ -57,7 +59,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">STUDYING ENGLISH</a>
+                <a class="navbar-brand">STUDYING ENGLISH</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -265,7 +267,7 @@
                             <a href=""><i class="fa fa-edit fa-fw"></i> Add <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="}">Users</a>
+                                    <a href="">Users</a>
                                 </li>
                                 <li>
                                     <a href="">Categories</a>
@@ -281,20 +283,20 @@
             </div>
         </nav>
 
-        <!-- Show Flash Message -->
-        <div class="container">
-            <!-- Show Flash -->
-            <div class="col-md-6 col-md-offset-3">
-                @if(Session::has('flash_message'))
-                    <h3 class="flash text-center text-{{Session::get('flash_level')}}"><strong><i>{{Session::get('flash_message')}}</i></strong></h3>
-                @endif
-            </div>
-            <script type="text/javascript">$('h3.flash').delay(3000).slideUp();</script>
+        <div id="page-wrapper">
+            <!-- Show Flash Message -->
+                <!-- Show Flash -->
+                <div class="col-md-6 col-md-offset-3">
+                    @if(Session::has('flash_message'))
+                        <h3 class="flash text-center text-{{Session::get('flash_level')}}"><strong><i>{{Session::get('flash_message')}}</i></strong></h3>
+                    @endif
+                </div>
+                <script type="text/javascript">$('h3.flash').delay(3000).slideUp();</script>
 
+            <!-- End Show Flash Message -->
+
+            @yield('content')
         </div>
-        <!-- End Show Flash Message -->
-
-        @yield('content')
 
         <!-- Show Order Tables -->
         <script>

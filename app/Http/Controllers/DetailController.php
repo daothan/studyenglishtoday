@@ -32,7 +32,7 @@ class DetailController extends Controller
         $data = new Detail;
 
         $file_name         = $request->file('images')->getClientOriginalName();
-        $data->title      = $request->input('title');
+        $data->title       = $request->input('title');
         $data->alias       = convert_vi_to_en($request->input('title'));
         $data->introduce   = $request->input('introduce');
         $data->content     = $request->input('content');

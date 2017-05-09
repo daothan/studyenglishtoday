@@ -14,7 +14,7 @@ class HomeController extends Controller
 
     public function home_member()
     {
-        return view('member.home');
+        return view('member.home_member');
     }
 
     public function dashboard()
