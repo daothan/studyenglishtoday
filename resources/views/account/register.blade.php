@@ -2,13 +2,18 @@
 
 @section('content')
 
-    <div class="page-wrapper">
+    <div id="page-wrapper">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <div class="login-panel panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title" align="center">Please Register</h3>
-                    </div>
+            <div class="col-lg-12">
+                <h1 class="page-header" align="center"></h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Register</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('account.getRegister') }}">
                         {{ csrf_field() }}
