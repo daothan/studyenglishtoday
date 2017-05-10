@@ -29,7 +29,7 @@
 
 					<div class="form-group {{$errors->has('title') ? 'has-error' : null}}">
 						<label>Title</label>
-						<textarea type="text" name="title" class="form-control" rows="3" placeholder="Please enter title.." value="{{old('title')}}"></textarea>
+						<textarea type="text" name="title" class="form-control" rows="3">{{old('title')}}</textarea>
 						<script type="text/javascript">ckeditor("title", "config", "basic")</script>
 
 						@if($errors->has('title'))

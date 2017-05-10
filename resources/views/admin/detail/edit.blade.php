@@ -27,7 +27,8 @@
 
 					<div class="form-group {{$errors->has('title') ? 'has-error' : null}}">
 						<label>Title</label>
-						<input type="text" name="title" class="form-control" value="{{old('title',isset($data["title"]) ? $data['title'] : null)}}">
+						<textarea name="title" class="form-control" rows="3" >{{old('title',isset($data["title"]) ? $data['title'] : null)}}</textarea>
+						<script type="text/javascript">ckeditor("title", "config", "basic")</script>
 
 						@if($errors->has('title'))
 							<span class="help-block">

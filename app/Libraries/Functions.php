@@ -46,7 +46,12 @@
 		$str=str_replace(' ','&nbsp',$str);
 		return $str;
 	}
+	function clean($content) {
+	   $string = str_replace(' ', '-', $content); // Replaces all spaces with hyphens.
+	   $string = preg_replace('/[^A-Za-z0-9\-]/', '', $content); // Removes special chars.
 
+	   return preg_replace('/-+/', '-', $string); // Replaces multiple hyphens with single one.
+	}
 	function cate_parent($data, $parent = 0, $str="-", $select=0){
 		foreach ($data as $value){
 
