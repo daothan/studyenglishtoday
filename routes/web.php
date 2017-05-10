@@ -27,6 +27,11 @@
 /*Home page*/
 	Route::get('home',['as'=>'home', 'uses'=>'HomeController@index']);
 
+/*User interface*/
+	Route::group(['prefix'=>'user'], function(){
+		Route::get('home',['as'=>'user.home', 'uses'=>'HomeController@user_interface']);
+	});
+
 
 
 /*Admin Page*/

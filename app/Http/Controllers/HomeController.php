@@ -21,4 +21,8 @@ class HomeController extends Controller
     {
         return view('admin.dashboard.index');
     }
+
+    public function user_interface(){
+        return view('user_interface.user_home');
+    }
 }
