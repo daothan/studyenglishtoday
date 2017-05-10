@@ -36,8 +36,8 @@ body a:focus {
     height: inherit;
     padding:0.6em 3em 0em 3em;
     font-size: 0.6em;
-    color: #f44336 !important;
-    font-weight: 1000;
+    color: #4c53a4cc !important;
+    font-weight: 900;
     letter-spacing: 2px;
     line-height: inherit;
 }
@@ -1803,5 +1803,10 @@ h3.w3ls-hdg {
 ul.w3list-style {
     width: 100%;
 }
+}
+
+.user{
+    margin-right: 30px;
+    padding: 0px 10px 0px 10px;
 }
 /*-- //responsive-design --*/

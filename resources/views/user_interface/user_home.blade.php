@@ -25,7 +25,7 @@
 <body>
 
 	<!-- navbar -->
-	<div class="navbar-wrapper">
+	<div  class="navbar-wrapper">
 		<div class="container">
 			<nav class="navbar navbar-inverse navbar-static-top navbar-fixed-top">
 				<div class="container">
@@ -36,12 +36,12 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<h1 class="w3ls-logo"><a class="navbar-brand">Free English</a></h1>
+						<h1 class="w3ls-logo"><a class="navbar-brand"><strong>Free English</strong></a></h1>
 					</div>
 
 					<div id="navbar" class="navbar-collapse collapse ">
 						<ul class="nav navbar-nav">
-							<li><a href="">Home</a></li>
+							<li><a href="#top">Home</a></li>
 							<li><a href="#newest_post" class="scroll">Newest Posts</a></li>
 							<li><a href="#listening_cate" class="scroll">Listening</a></li>
 							<li><a href="#reading_cate" class="scroll">Reading</a></li>
@@ -51,16 +51,15 @@
 						</ul>
 
 						<!-- Sign Up and Login -->
-						<ul class="nav navbar-nav navbar-right">
+						<ul class="nav navbar-nav navbar-right user">
+
+							<li class="{{isset(Auth::user()->name) || (url()->current()==route('account.getRegister')) ? 'hidden' : null}}">
+					        	<a href="#login" class="scroll">Login <span class="glyphicon glyphicon-log-in"></span></a>
+					        </li>
+
 					        <li class="{{isset(Auth::user()->name) || (url()->current()==route('account.getLogin')) ? 'hidden' : null}}">
-					        	<a href="{{route('account.getLogin')}}"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+					        	<a href="#login" class="scroll"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
 					        </li>
-
-					        <li class="{{isset(Auth::user()->name) || (url()->current()==route('account.getRegister')) ? 'hidden' : null}}">
-					        	<a href="{{route('account.getRegister')}}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-					        </li>
-					        <li><a href="#login" class="scroll">Login</a></li>
-
 					    </ul>
 
 						<!-- User -->
@@ -657,7 +656,15 @@
 		$(document).ready(function() {
 			$().UItoTop({ easingType: 'easeOutQuart' });
 		});
+
+		/*Home top*/
+		 $("a[href='#top']").click(function() {
+		     $("html, body").animate({ scrollTop: 0 }, "slow");
+		     return false;
+		  });
+
 	</script>
+
 
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/jquery.nicescroll.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/scripts.js')}}"></script>
