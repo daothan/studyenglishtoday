@@ -104,9 +104,9 @@
                         </div>
 					</form><hr>
 					<a href="{{route('admin.user.show')}}"><button class="btn btn-basis pull-right">Show Users</button></a>
-				</div>
-			</div>
-            <a href="{{URL::previous()}}"><button class="btn btn-basis">Back</button></a>
+                    <a href="{{URL::previous()}}"><button class="btn btn-basis">Back</button></a>
+                </div>
+            </div>
 		</div>
 	</div>
 

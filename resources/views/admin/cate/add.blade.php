@@ -96,10 +96,10 @@
 						{{csrf_field()}}
 
 						<!-- Submit -->
-                        <div class="form-group">
+                        <div class="form-group"><hr>
                             <button type="submit" class="btn btn-basis">Add</button>
 							<button type="reset" class="btn btn-warning">Reset</button>
-                        </div>
+                        </div><hr>
 
 					</form>
 
