@@ -29,7 +29,7 @@
 
 					<div class="form-group {{$errors->has('title') ? 'has-error' : null}}">
 						<label>Title</label>
-						<textarea type="text" name="title" class="form-control" rows="3">{{old('title')}}</textarea>
+						<textarea type="text" name="title" class="form-control" id="title" rows="3">{{old('title')}}</textarea>
 						<script type="text/javascript">ckeditor("title", "config", "basic")</script>
 
 						@if($errors->has('title'))
@@ -41,13 +41,13 @@
 
 					<div class="form-group">
 						<label>Introduce</label>
-						<textarea class="form-control" name="introduce" rows="3" placeholder="Please enter introduce">{{old('introduce')}}</textarea>
+						<textarea class="form-control" name="introduce" id="introduce" rows="3">{{old('introduce')}}</textarea>
 						<script type="text/javascript">ckeditor("introduce", "config", "basic")</script>
 					</div>
 
 					<div class="form-group {{$errors->has('content') ? 'has-error' : null}}">
 						<label>Content</label>
-						<textarea class="form-control" name="content" id="content" rows="3" placeholder="Please enter content">{{old('content')}}</textarea>
+						<textarea class="form-control" name="content" id="content" rows="3">{{old('content')}}</textarea>
 						<script type="text/javascript">ckeditor("content", "config", "standard")</script>
 
 						@if($errors->has('content'))
@@ -81,10 +81,16 @@
 						<input  class="form-control" type="text" name="keywords" placeholder="Please enter keywords" value="{{old('keywords')}}">
 					</div>
 
-					<div class="form-group">
+					<div class="form-group {{$errors->has('content') ? 'has-error' : null}}">
 						<label>Description Details</label>
-						<textarea class="form-control" name="description" rows="3" placeholder="Please enter description">{{old('description')}}</textarea>
+						<textarea class="form-control" name="description" id="description" rows="3">{{old('description')}}</textarea>
 						<script type="text/javascript">ckeditor("description", "config", "basic")</script>
+
+						@if($errors->has('content'))
+							<span class="help-block">
+								<i>{{$errors->first('content')}}</i>
+							</span>
+						@endif
 					</div>
 
 					{{csrf_field()}}

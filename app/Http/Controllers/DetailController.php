@@ -42,7 +42,8 @@ class DetailController extends Controller
         $data->user_id     = Auth::user()->id;
         $data->cate_id     = $request->input('cate_id');
 
-        $folder = 'storage/uploads/detail_images/' . convert_title($request->input('title'));
+        $folder_create = convert_vi_to_en(strip_tags($request->input('title')));
+        $folder = 'storage/uploads/detail_images/' .$folder_create;
 
         if(!file_exists($folder)){
             File::makeDirectory($folder, 0777, true);
@@ -80,10 +81,9 @@ class DetailController extends Controller
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
-		$folder_create = convert_title($request->input('title'));
-		$a = utf8_encode($request->input('title'));
-		dd($a);die;
-        $current_image = ('storage/uploads/detail_images/'.'aaa'.'/'.$detail["images"]);
+		$folder_create = convert_vi_to_en(strip_tags($request->input('title')));
+
+        $current_image = ('storage/uploads/detail_images/'.$folder_create.'/'.$detail["images"]);
 
         if(!empty($request->file('images'))){
 
@@ -91,7 +91,7 @@ class DetailController extends Controller
 
             $detail->images  = $file_name;
             $detail->save();
-            $request->file('images')->move('storage/uploads/detail_images/'.'aaa'.'/',$file_name);
+            $request->file('images')->move('storage/uploads/detail_images/'.$folder_create.'/',$file_name);
 
             if(File::exists($current_image)){
                 File::delete($current_image);

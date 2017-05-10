@@ -28,6 +28,18 @@ class UserController extends Controller
         $user_current_id = Auth::user()->id;
         $user_current_level = Auth::user()->level;
 
+        if($user_current_level == 2){
+            if($user_current_id == $user_id || $user_level >1){
+                return view('admin.user.information', compact('user'));
+            }else{
+                echo "<script type='text/javascript'>
+                alert('Sorry ! You can not see this account information !');
+                window.location ='";echo route('admin.user.show');
+                echo "'
+                </script>";
+            }
+        }
+
         if($user_current_level == 1){
             if($user_current_id == $user_id || $user_level >1){
                 return view('admin.user.information', compact('user'));

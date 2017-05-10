@@ -60,7 +60,7 @@
 							<input type="text" hidden name="current_image" value="{{$data["images"]}}" >
 							<input type="text" class="form-control" readonly name="file_name" value="{{$data["images"]}}">
 						</div>
-						<img id='img-upload' class="img-rounded pull-right" src="{{asset('storage/uploads/detail_images/'.$data["title"].'/'.$data["images"])}}"/>
+						<img id='img-upload' class="img-rounded pull-right" src="{{asset('storage/uploads/detail_images/'.convert_vi_to_en(strip_tags($data["title"])).'/'.$data["images"])}}"/>
 					</div>
 
 					<div class="form-group">
@@ -69,8 +69,8 @@
 					</div>
 
 					<div class="form-group">
-						<label>Detail Description</label>
-						<textarea class="form-control" name="description">{{old('description', isset($data['description']) ? $data['description'] : null)}}</textarea>
+						<label>Description Details</label>
+						<textarea class="form-control" name="description" rows="3" id="description">{{old('description')}}</textarea>
 						<script type="text/javascript">ckeditor("description", "config", "basic")</script>
 					</div>
 

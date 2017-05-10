@@ -13,7 +13,7 @@
 				</div><hr>
 
 				<div class="panel-heading col-centered">
-					<img class="img-rounded center-block" alt="Cinque Terre" width="304" height="236" src="{{asset('storage/uploads/detail_images/'.$data["title"].'/'.$data["images"])}}">
+					<img class="img-rounded center-block" alt="Cinque Terre" width="304" height="236" src="{{asset('storage/uploads/detail_images/'.convert_vi_to_en(strip_tags($data["title"])).'/'.$data["images"])}}">
 					{!!htmlspecialchars_decode($data["introduce"])!!}
 				</div>
 

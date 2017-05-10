@@ -21,7 +21,7 @@
                     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables">
                         <thead>
 							<tr>
-								<th>No</th>
+								<th class="text-center">No</th>
 								<th class="text-center">Title</th>
 								<th class="text-center">Category</th>
 								<th class="text-center">Date</th>
@@ -37,9 +37,9 @@
 							@foreach($detail as $data)
 							<?php $no++;?>
 
-							<tr class="odd gradeX" align="center">
+							<tr class="odd gradeX">
 								<th class="text-center">{{$no}}</th>
-								<td>{!!convert_title($data->title)!!}</td>
+								<td>{{strip_tags($data->title)}}</td>
 
 								<!-- Show parent category -->
 								<td>
