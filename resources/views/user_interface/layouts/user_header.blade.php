@@ -7,6 +7,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Fantastic Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 		SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 	<!-- Add Css -->
@@ -19,6 +21,7 @@
 
 	<!-- Add Js -->
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/jquery-3.2.1.min.js')}}"></script>
+	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/user_script.js')}}"></script>
 
 
 </head>
@@ -47,24 +50,134 @@
 							<li><a href="#reading_cate" class="scroll">Reading</a></li>
 							<li><a href="#writing_cate" class="scroll">Writing</a></li>
 							<li><a href="#about" class="scroll">About</a></li>
-							<li><a href="#contact" class="scroll">Contact</a></li>
+							<li><a data-toggle="modal" data-target="#contact">Contact</a></li>
 						</ul>
 
 						<!-- Sign Up and Login -->
 						<ul class="nav navbar-nav navbar-right user">
 
-							<li class="{{isset(Auth::user()->name) || (url()->current()==route('account.getRegister')) ? 'hidden' : null}}">
+							<li class="{{isset(Auth::user()->name) || (url()->current()==route('user.register')) ? 'hidden' : null}}">
 					        	<a data-toggle="modal" data-target="#login">Login <span class="glyphicon glyphicon-log-in"></span></a>
 					        </li>
 
-					        <li class="{{isset(Auth::user()->name) || (url()->current()==route('account.getLogin')) ? 'hidden' : null}}">
+					        <li class="{{isset(Auth::user()->name) || (url()->current()==route('user.login')) ? 'hidden' : null}}">
 					        	<a data-toggle="modal" data-target="#register"><span class="glyphicon glyphicon-user"></span> Register</a>
 					        </li>
 					    </ul>
 
-						<!-- User -->
-						<ul class="nav navbar-nav navbar-right">
-							<li class="{{isset(Auth::user()->name) ? 'dropdown' : 'hidden'}}">
+						<!-- Show information of User -->
+  						<ul class=" {{isset(Auth::user()->name) ? 'nav navbar-nav navbar-right' : 'hidden'}}">
+			                <li class="{{isset(Auth::user()->name) && (Auth::user()->level < 2 )? 'dropdown' : 'hidden'}}">
+			                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			                        <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+			                    </a>
+			                    <!-- MESSAGES -->
+			                    <ul class="dropdown-menu dropdown-messages">
+			                        <li>
+			                            <a href="#">
+			                                <div>
+			                                    <strong>Daothan</strong>
+			                                    <span class="pull-right text-muted">
+			                                        <em>Today</em>
+			                                    </span>
+			                                </div>
+			                                <div>Than just comment </div>
+			                            </a>
+			                        </li>
+			                    </ul>
+			                    <!-- /.dropdown-messages -->
+			                </li>
+			                <!-- /.dropdown -->
+
+			                <!-- TASK COMPLETE -->
+			                <li class="{{isset(Auth::user()->name) && (Auth::user()->level < 2 )? 'dropdown' : 'hidden'}}">
+			                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			                        <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+			                    </a>
+			                    <ul class="dropdown-menu dropdown-tasks">
+			                        <li>
+			                            <a href="" onclick="Window.location.reload(true);">
+			                                <div>
+			                                    <p>
+			                                        <strong>Task 1</strong>
+			                                        <span class="pull-right text-muted">40% Complete</span>
+			                                    </p>
+			                                    <div class="progress progress-striped active">
+			                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+			                                            <span class="sr-only">40% Complete (success)</span>
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                            </a>
+			                        </li>
+			                        <li class="divider"></li>
+			                        <li>
+			                            <a class="text-center" href="" onclick="Window.location.reload(true);">
+			                                <strong>See All Tasks</strong>
+			                                <i class="fa fa-angle-right"></i>
+			                            </a>
+			                        </li>
+			                    </ul>
+			                    <!-- /.dropdown-tasks -->
+			                </li>
+			                <!-- END TASK COMPLETE -->
+
+			                <!-- ALERT -->
+			                <li class="{{isset(Auth::user()->name) && (Auth::user()->level < 2 )? 'dropdown' : 'hidden'}}">
+			                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+			                    </a>
+			                    <ul class="{{isset(Auth::user()->name) ? 'dropdown-menu dropdown-alerts' : 'hidden'}}">
+			                        <li>
+			                            <a href="">
+			                                <div>
+			                                    <i class="fa fa-comment fa-fw"></i> New Comment
+			                                    <span class="pull-right text-muted small">4 minutes ago</span>
+			                                </div>
+			                            </a>
+			                        </li>
+
+			                        <li class="divider"></li>
+			                        <li>
+			                            <a href="#">
+			                                <div>
+			                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+			                                    <span class="pull-right text-muted small">4 minutes ago</span>
+			                                </div>
+			                            </a>
+			                        </li>
+			                        <li class="divider"></li>
+			                        <li>
+			                            <a href="#">
+			                                <div>
+			                                    <i class="fa fa-tasks fa-fw"></i> New Task
+			                                    <span class="pull-right text-muted small">4 minutes ago</span>
+			                                </div>
+			                            </a>
+			                        </li>
+			                        <li class="divider"></li>
+			                        <li>
+			                            <a href="#">
+			                                <div>
+			                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+			                                    <span class="pull-right text-muted small">4 minutes ago</span>
+			                                </div>
+			                            </a>
+			                        </li>
+			                        <li class="divider"></li>
+			                        <li>
+			                            <a class="text-center" href="#">
+			                                <strong>See All Alerts</strong>
+			                                <i class="fa fa-angle-right"></i>
+			                            </a>
+			                        </li>
+			                    </ul>
+			                </li>
+			                <!-- END ALERT -->
+
+
+			                <!-- USER -->
+			                <li class="{{isset(Auth::user()->name) ? 'dropdown' : 'hidden'}}">
 								<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> {{isset(Auth::user()->name) ? Auth::user()->name : ''}} <span class="caret"></span></a>
 
 								<ul class="dropdown-menu">
@@ -89,45 +202,71 @@
 			                        <!-- Logout -->
 			                        <li role="separator" class="divider"></li>
 			                        <li>
-			                            <a href="{{route('account.logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+			                            <a href="{{route('user.logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 			                        </li>
 			                        <!-- End Logout -->
 								</ul>
 							</li>
-						</ul>
+			                <!-- END USER -->
+
+			            </ul>
 					</div>
 				</div>
+
+				<!-- Show Flash Message -->
+			    <div class="center-block">
+			    	@foreach (['danger', 'warning', 'success', 'info'] as $msg)
+				        @if(Session::has('alert-' . $msg))
+							<h2 class="flash text-center text-success"><strong><i>{{Session::get('alert-success')}}</i></strong></h2>
+				        @endif
+				    @endforeach
+			    </div>
+	           <script type="text/javascript">$('h2.flash').delay(5000).slideUp();</script>
+	           <!-- End Show Flash Message -->
+
 			</nav>
 		</div>
     </div>
-	<!-- //navbar -->
+
+
 
 	<!-- Modal Login-->
 	<div id="login" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
 
 	    <!-- Modal content-->
-		<div class="loginmodal-container">
+		<div class="login modal-container">
 			<div class="grid_3 grid_4">
-				<button type="reset" class="close" data-dismiss="modal" style="color:black;"><span class="glyphicon glyphicon-remove"></span></button>
+
+				<button id="reset" type="reset" class="close" data-dismiss="modal" style="color:black;"><span class="glyphicon glyphicon-remove"></span></button>
 
 				<div class="agileinfo-w3lsrow login-top">
 					<h3 class="w3ls-hdg">Login Form</h3>
-					<form action="#" method="post">
-						<input type="email" class="email" placeholder="Email" required="">
-						<input type="password" class="password" placeholder="Password" required="">
-						<input type="submit" value="SignIn">
-						<input type="reset" value="Reset">
-						<p>or Connect with.... </p>
-						<div class="social-icons">
-							<ul>
-								<li><a href="#">Facebook </a></li>
-								<li><a href="#">Google </a></li>
-							</ul>
-							<div class="clearfix"> </div>
-						</div>
-					</form>
+					<form role="form" method="POST" action="">
 
+		                <h3 class="col-md-6 col-md-offset-3 error errorLogin flash text-center text-danger"></h3>
+
+						<!-- Username -->
+						<input id="username" type="text" name="username" placeholder="Please enter username">
+							<div class="has-error"><i><span class="help-block error errorUserName"></span></i></div>
+						<!-- Password -->
+						<input id="user_password" type="password" name="user_password" placeholder="Please enter password">
+							<div class="has-error"><i><span class="help-block error errorUserPassword"></span></i></div>
+
+						<!-- Submit-->
+						<input id="login_modal" type="submit" value="Sign In">
+						<input type="reset" value="Reset">
+
+						<!-- Other connect -->
+						<p>or Connect with.... </p>
+							<div class="social-icons">
+								<ul>
+									<li><a href="#">Facebook </a></li>
+									<li><a href="#">Google </a></li>
+								</ul>
+								<div class="clearfix"> </div>
+							</div>
+					</form>
 					<div class="clearfix"> </div>
 				</div>
 			</div>
@@ -136,23 +275,31 @@
 	  </div>
 	</div>
 
+
 	<!-- Modal Register-->
 	<div id="register" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
 
 	    <!-- Modal content-->
-		<div class="loginmodal-container">
+		<div class="login modal-container">
 			<div class="grid_3 grid_4">
 				<button type="reset" class="close" data-dismiss="modal" style="color:black;"><span class="glyphicon glyphicon-remove"></span></button>
 
 				<div class="agileinfo-w3lsrow login-top">
 					<h3 class="w3ls-hdg">Register Form</h3>
-						<form action="#" method="post">
-							<input type="text" class="name active" placeholder="Your Name" required=""/>
-							<input type="email" class="email" placeholder="Email" required=""/>
-							<input type="password" class="password" placeholder="Password" required=""/>
-							<input type="password" class="password" placeholder="Confirm Password" required=""/>
-							<input type="submit" value="Sign Up"/>
+						<form action="" method="post">
+							<h3 class="col-md-6 col-md-offset-3 error successRegister flash text-center text-danger"></h3>
+
+							<input id="name" type="text" name="name" class="name active" placeholder="Your Name" autofocus />
+								<div class="has-error"><i><span class="help-block error errorName"></span></i></div>
+							<input id="email" type="text" name="email" class="email" placeholder="Email"/>
+								<div class="has-error"><i><span class="help-block error errorEmail"></span></i></div>
+							<input id="password" type="password" name="password" class="password" placeholder="Password"/>
+								<div class="has-error"><i><span class="help-block error errorPassword"></span></i></div>
+							<input id="password_confirmation" type="password" name="password_confirmation" class="password" placeholder="Confirm Password"/>
+								<div class="has-error"><i><span class="help-block error errorPassword_confirmation"></span></i></div>
+
+							<input id="register_modal" type="submit" value="Register"/>
 							<input type="reset" value="Reset">
 						</form>
 
@@ -163,10 +310,6 @@
 
 	  </div>
 	</div>
-
-
-
-
 
 
 	<!-- banner -->
@@ -185,7 +328,7 @@
 					<div class="carousel-caption">
 						<h2>English</h2>
 						<p>English is an important language nowadays. We have asked DPUIC students their opinions about English and why they are studying English</p>
-						<button class="btn btn-primary" href="#english" data-toggle="modal">English</button>
+						<button class="btn btn-default" href="#english" data-toggle="modal">English</button>
 					</div>
 				</div>
 			</div>
@@ -194,7 +337,7 @@
 					<div class="carousel-caption">
 						<h3>Studying English</h3>
 						<p>Here are some helpful guidelines as to how to study that should help you vary your approach and improve more quickly.</p>
-						<button class="btn btn-primary" href="#study_english" data-toggle="modal">Study English</button>
+						<button class="btn btn-success" href="#study_english" data-toggle="modal">Study English</button>
 					</div>
 				</div>
 			</div>
@@ -203,7 +346,7 @@
 					<div class="carousel-caption">
 						<h3>Listening</h3>
 						<p>Listening is key to all effective communication. Without the ability to listen effectively, messages are easily misunderstood. </p>
-						<button class="btn btn-primary" href="#listening" data-toggle="modal">Listening</button>
+						<button class="btn btn-info" href="#listening" data-toggle="modal">Listening</button>
 					</div>
 				</div>
 			</div>
@@ -212,7 +355,7 @@
 					<div class="carousel-caption">
 						<h3>Reading</h3>
 						<p>Students need good reading skills not just in English but in all classes. Here are some ways you can help them develop those skills..</p>
-						<button class="btn btn-primary" href="#reading" data-toggle="modal">Reading</button>
+						<button class="btn btn-warning" href="#reading" data-toggle="modal">Reading</button>
 					</div>
 				</div>
 			</div>
@@ -221,7 +364,7 @@
 					<div class="carousel-caption">
 						<h3>Writing</h3>
 						<p>How to improve your writing skills.</p>
-						<button class="btn btn-primary" href="#writing" data-toggle="modal">Writing</button>
+						<button class="btn btn-danger" href="#writing" data-toggle="modal">Writing</button>
 					</div>
 				</div>
 			</div> 
@@ -371,199 +514,23 @@
 	<!-- //banner -->
 
 
-	<!-- CONTENT -->
+@yield('content')
 
-	<!-- Newest Post -->
-	<div class="codes agileitsbg2">
-		<div class="container">
-			<div id="newest_post" class="grid_3 grid_5 w3-agileits">
-				<h3 class="w3ls-hdg">Newest Posts</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<b data-toggle="tooltip" data-placement="top" data-original-title="Bold Text"> Vivamus mattis </b> pharetra turpis, a <i data-toggle="tooltip" data-placement="top" data-original-title="italic Text"> scelerisque enim venenatis </i> luctus. <strong data-toggle="tooltip" data-placement="top" data-original-title="strong Text">Cras blandit</strong> dolor a <u data-toggle="tooltip" data-placement="top" data-original-title="Text underline">facilisis tincidunt</u>. Vivamus sed orci aliquam, aliquet tellus ut, ornare nunc. Praesent lacinia elit id libero pulvinar, sit amet faucibus felis ornare Pellentesque nulla lorem.</p>
-				<p class="agiletext-style">Vivamus mattis pharetra turpis, a scelerisque enim venenatis luctus Cras blandit dolor a facilisis tincidunt. Vivamus sed orci aliquam, aliquet tellus ut, ornare nunc. Praesent lacinia elit id libero pulvinar, sit amet faucibus felis ornare Pellentesque nulla lorem.</p>
-				<p class="agiletext-border agiletext-style">Lorem ipsum pharetra turpis, a scelerisque enim venenatis luctus Cras blandit dolor a facilisis tincidunt. Vivamus sed orci aliquam, aliquet tellus ut, ornare nunc. Praesent lacinia elit id libero pulvinar, sit amet faucibus felis ornare Pellentesque nulla lorem.</p>
-				<div class="col-sm-6 col-xs-6 w3ltext-grids">
-					<h4 class="w3t-text">Two equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra turpis, a scelerisque enim venenatis luctus.</p>
-				</div>
-				<div class="col-sm-6 col-xs-6 w3ltext-grids">
-					<h4 class="w3t-text">Two equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra turpis, a scelerisque enim venenatis luctus.</p>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
-					<h4 class="w3t-text">Three equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra.</p>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
-					<h4 class="w3t-text">Three equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra turpis</p>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
-					<h4 class="w3t-text">Three equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra.</p>
-				</div>
-				<div class="clearfix"> </div>
-				<script>$(function () {
-				  $('[data-toggle="tooltip"]').tooltip()
-				})</script>
-			</div>
-		</div>
-	</div>
-
-	<!-- Listening -->
-	<div class="codes agileitsbg2">
-		<div class="container">
-			<div id="listening_cate" class="grid_3 grid_5 w3-agileits">
-				<h3 class="w3ls-hdg">Listening</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<b data-toggle="tooltip" data-placement="top" data-original-title="Bold Text"> Vivamus mattis </b> pharetra turpis, a <i data-toggle="tooltip" data-placement="top" data-original-title="italic Text"> scelerisque enim venenatis </i> luctus. <strong data-toggle="tooltip" data-placement="top" data-original-title="strong Text">Cras blandit</strong> dolor a <u data-toggle="tooltip" data-placement="top" data-original-title="Text underline">facilisis tincidunt</u>. Vivamus sed orci aliquam, aliquet tellus ut, ornare nunc. Praesent lacinia elit id libero pulvinar, sit amet faucibus felis ornare Pellentesque nulla lorem.</p>
-				<p class="agiletext-style">Vivamus mattis pharetra turpis, a scelerisque enim venenatis luctus Cras blandit dolor a facilisis tincidunt. Vivamus sed orci aliquam, aliquet tellus ut, ornare nunc. Praesent lacinia elit id libero pulvinar, sit amet faucibus felis ornare Pellentesque nulla lorem.</p>
-				<p class="agiletext-border agiletext-style">Lorem ipsum pharetra turpis, a scelerisque enim venenatis luctus Cras blandit dolor a facilisis tincidunt. Vivamus sed orci aliquam, aliquet tellus ut, ornare nunc. Praesent lacinia elit id libero pulvinar, sit amet faucibus felis ornare Pellentesque nulla lorem.</p>
-				<div class="col-sm-6 col-xs-6 w3ltext-grids">
-					<h4 class="w3t-text">Two equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra turpis, a scelerisque enim venenatis luctus.</p>
-				</div>
-				<div class="col-sm-6 col-xs-6 w3ltext-grids">
-					<h4 class="w3t-text">Two equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra turpis, a scelerisque enim venenatis luctus.</p>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
-					<h4 class="w3t-text">Three equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra.</p>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
-					<h4 class="w3t-text">Three equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra turpis</p>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
-					<h4 class="w3t-text">Three equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra.</p>
-				</div>
-				<div class="clearfix"> </div>
-				<script>$(function () {
-				  $('[data-toggle="tooltip"]').tooltip()
-				})</script> 
-			</div>
-		</div>	
-	</div>
-
-	<!-- Reading -->
-	<div class="codes agileitsbg2">
-		<div class="container">
-			<div id="reading_cate" class="grid_3 grid_5 w3-agileits">
-				<h3 class="w3ls-hdg">Reading</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<b data-toggle="tooltip" data-placement="top" data-original-title="Bold Text"> Vivamus mattis </b> pharetra turpis, a <i data-toggle="tooltip" data-placement="top" data-original-title="italic Text"> scelerisque enim venenatis </i> luctus. <strong data-toggle="tooltip" data-placement="top" data-original-title="strong Text">Cras blandit</strong> dolor a <u data-toggle="tooltip" data-placement="top" data-original-title="Text underline">facilisis tincidunt</u>. Vivamus sed orci aliquam, aliquet tellus ut, ornare nunc. Praesent lacinia elit id libero pulvinar, sit amet faucibus felis ornare Pellentesque nulla lorem.</p>
-				<p class="agiletext-style">Vivamus mattis pharetra turpis, a scelerisque enim venenatis luctus Cras blandit dolor a facilisis tincidunt. Vivamus sed orci aliquam, aliquet tellus ut, ornare nunc. Praesent lacinia elit id libero pulvinar, sit amet faucibus felis ornare Pellentesque nulla lorem.</p>
-				<p class="agiletext-border agiletext-style">Lorem ipsum pharetra turpis, a scelerisque enim venenatis luctus Cras blandit dolor a facilisis tincidunt. Vivamus sed orci aliquam, aliquet tellus ut, ornare nunc. Praesent lacinia elit id libero pulvinar, sit amet faucibus felis ornare Pellentesque nulla lorem.</p>
-				<div class="col-sm-6 col-xs-6 w3ltext-grids">
-					<h4 class="w3t-text">Two equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra turpis, a scelerisque enim venenatis luctus.</p>
-				</div>
-				<div class="col-sm-6 col-xs-6 w3ltext-grids">
-					<h4 class="w3t-text">Two equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra turpis, a scelerisque enim venenatis luctus.</p>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
-					<h4 class="w3t-text">Three equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra.</p>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
-					<h4 class="w3t-text">Three equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra turpis</p>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
-					<h4 class="w3t-text">Three equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra.</p>
-				</div>
-				<div class="clearfix"> </div>
-				<script>$(function () {
-				  $('[data-toggle="tooltip"]').tooltip()
-				})</script> 
-			</div>
-		</div>	
-	</div>
-
-	<!-- writing -->
-	<div class="codes agileitsbg2">
-		<div class="container">
-			<div id="writing_cate" class="grid_3 grid_5 w3-agileits">
-				<h3 class="w3ls-hdg">Writing</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<b data-toggle="tooltip" data-placement="top" data-original-title="Bold Text"> Vivamus mattis </b> pharetra turpis, a <i data-toggle="tooltip" data-placement="top" data-original-title="italic Text"> scelerisque enim venenatis </i> luctus. <strong data-toggle="tooltip" data-placement="top" data-original-title="strong Text">Cras blandit</strong> dolor a <u data-toggle="tooltip" data-placement="top" data-original-title="Text underline">facilisis tincidunt</u>. Vivamus sed orci aliquam, aliquet tellus ut, ornare nunc. Praesent lacinia elit id libero pulvinar, sit amet faucibus felis ornare Pellentesque nulla lorem.</p>
-				<p class="agiletext-style">Vivamus mattis pharetra turpis, a scelerisque enim venenatis luctus Cras blandit dolor a facilisis tincidunt. Vivamus sed orci aliquam, aliquet tellus ut, ornare nunc. Praesent lacinia elit id libero pulvinar, sit amet faucibus felis ornare Pellentesque nulla lorem.</p>
-				<p class="agiletext-border agiletext-style">Lorem ipsum pharetra turpis, a scelerisque enim venenatis luctus Cras blandit dolor a facilisis tincidunt. Vivamus sed orci aliquam, aliquet tellus ut, ornare nunc. Praesent lacinia elit id libero pulvinar, sit amet faucibus felis ornare Pellentesque nulla lorem.</p>
-				<div class="col-sm-6 col-xs-6 w3ltext-grids">
-					<h4 class="w3t-text">Two equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra turpis, a scelerisque enim venenatis luctus.</p>
-				</div>
-				<div class="col-sm-6 col-xs-6 w3ltext-grids">
-					<h4 class="w3t-text">Two equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra turpis, a scelerisque enim venenatis luctus.</p>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
-					<h4 class="w3t-text">Three equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra.</p>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
-					<h4 class="w3t-text">Three equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra turpis</p>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
-					<h4 class="w3t-text">Three equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra.</p>
-				</div>
-				<div class="clearfix"> </div>
-				<script>$(function () {
-				  $('[data-toggle="tooltip"]').tooltip()
-				})</script> 
-			</div>
-		</div>	
-	</div>
-
-	<!-- About -->
-	<div class="codes agileitsbg2">
-		<div class="container">
-			<div id="about" class="grid_3 grid_5 w3-agileits">
-				<h3 class="w3ls-hdg">About Us</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<b data-toggle="tooltip" data-placement="top" data-original-title="Bold Text"> Vivamus mattis </b> pharetra turpis, a <i data-toggle="tooltip" data-placement="top" data-original-title="italic Text"> scelerisque enim venenatis </i> luctus. <strong data-toggle="tooltip" data-placement="top" data-original-title="strong Text">Cras blandit</strong> dolor a <u data-toggle="tooltip" data-placement="top" data-original-title="Text underline">facilisis tincidunt</u>. Vivamus sed orci aliquam, aliquet tellus ut, ornare nunc. Praesent lacinia elit id libero pulvinar, sit amet faucibus felis ornare Pellentesque nulla lorem.</p>
-				<p class="agiletext-style">Vivamus mattis pharetra turpis, a scelerisque enim venenatis luctus Cras blandit dolor a facilisis tincidunt. Vivamus sed orci aliquam, aliquet tellus ut, ornare nunc. Praesent lacinia elit id libero pulvinar, sit amet faucibus felis ornare Pellentesque nulla lorem.</p>
-				<p class="agiletext-border agiletext-style">Lorem ipsum pharetra turpis, a scelerisque enim venenatis luctus Cras blandit dolor a facilisis tincidunt. Vivamus sed orci aliquam, aliquet tellus ut, ornare nunc. Praesent lacinia elit id libero pulvinar, sit amet faucibus felis ornare Pellentesque nulla lorem.</p>
-				<div class="col-sm-6 col-xs-6 w3ltext-grids">
-					<h4 class="w3t-text">Two equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra turpis, a scelerisque enim venenatis luctus.</p>
-				</div>
-				<div class="col-sm-6 col-xs-6 w3ltext-grids">
-					<h4 class="w3t-text">Two equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra turpis, a scelerisque enim venenatis luctus.</p>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
-					<h4 class="w3t-text">Three equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra.</p>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
-					<h4 class="w3t-text">Three equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra turpis</p>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
-					<h4 class="w3t-text">Three equal columns </h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis pharetra.</p>
-				</div>
-				<div class="clearfix"> </div>
-				<script>$(function () {
-				  $('[data-toggle="tooltip"]').tooltip()
-				})</script> 
-			</div>
-		</div>	
-	</div>
 
 
 <!-- contact -->
-	<div id="contact" class="contact codes">
+	<div id="contact"  class="modal fade contact" role="dialog">
+		<div class="modal-dialog"></div>
+
 		<div class="container">
 			<div class="contact-row agileits-w3layouts grid_3 grid_4">
+			<button id="reset" type="reset" class="close" data-dismiss="modal" style="color:black;"><span class="glyphicon glyphicon-remove"></span></button>
 				<div class="agileits-title">
 					<h3 class="w3ls-hdg">Contact Us</h3>
 				</div>
 				<div class="col-md-5 contact-w3lsleft">
 					<div class="contact-grid agileits">
-						<h4>DROP US A LINE </h4>
+						<h4>Send us your messages </h4>
 						<form action="#" method="post">
 							<div class="styled-input agile-styled-input-top">
 								<input type="text" name="Name" required="">
@@ -590,14 +557,14 @@
 					</div>
 				</div>
 				<div class="col-md-7 contact-w3lsright w3llist-grids-btm2">
-					<h6><span>Sed interdum </span>interdum accumsan nec purus ac orci finibus facilisis sapien Sed interdum . </h6>
+					<h6><span>Free English </span>where you can improve your English skills . </h6>
 					<div class="col-xs-6 address-row">
 						<div class="col-xs-3 address-left">
 							<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 						</div>
 						<div class="col-xs-9 address-right">
 							<h5>Visit Us</h5>
-							<p>Broome St, Canada, <br>NY 10002, New York </p>
+							<p>Cau Giay district <br>Ha Noi capital</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -607,8 +574,7 @@
 						</div>
 						<div class="col-xs-9 address-right">
 							<h5>Mail Us</h5>
-							<p><a href="mailto:info@example.com"> mail@example1.com </a></p>
-							<p><a href="mailto:info@example.com"> mail@example2.com</a></p>
+							<p><a href="mailto:daothan1211@gmail.com"> daothan1211@gmail.com</a></p>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -618,8 +584,7 @@
 						</div>
 						<div class="col-xs-9 address-right">
 							<h5>Call Us</h5>
-							<p>+01 222 333 4444<br></p>
-							<p>+01 222 333 5555</p>
+							<p>+84 989 677 020<br></p>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -640,6 +605,8 @@
 			</div>
 		</div>
 	</div>
+	<!-- //contact -->
+
 
 	<!-- footer -->
 	<div class="footer">
@@ -669,6 +636,7 @@
 
 
 	<!-- Script -->
+
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/move-top.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/easing.js')}}"></script>
 

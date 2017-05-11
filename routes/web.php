@@ -13,28 +13,36 @@
 
 
 
-/*Account*/
-	/*Login*/
-	Route::get('login', ['as'=>'account.getLogin', 'uses'=>'LoginController@getLogin']);
-	Route::post('login',['as'=>'account.postLogin','uses'=>'LoginController@postLogin']);
-	/*Logout*/
-	Route::get('logout',['as'=>'account.logout', 'uses'=>'LoginController@logout']);
-
-	/*Register*/
-	Route::get('register',['as'=>'account.getRegister', 'uses'=>'RegisterController@getRegister']);
-	Route::post('register',['as'=>'account.postRegister', 'uses'=>'RegisterController@postRegister']);
-
 /*Home page*/
 	Route::get('home',['as'=>'home', 'uses'=>'HomeController@index']);
 
 /*User interface*/
 	Route::group(['prefix'=>'user'], function(){
 		Route::get('home',['as'=>'user.home', 'uses'=>'HomeController@user_interface']);
-		Route::post('home',['as'=>'user.posthome', 'uses'=>'HomeController@postLogin_modal']);
+
+		/*Login*/
+		Route::post('home/login',['as'=>'user.login', 'uses'=>'LoginController@postLogin_modal']);
+		/*Logout*/
+		Route::get('home/logout', ['as'=>'user.logout', 'uses'=>'LoginController@logout']);
+
+		/*Register*/
+		Route::post('home/register',['as'=>'user.register', 'uses'=>'RegisterController@postRegister_modal']);
 
 	});
 
+/*Member pages*/
+	Route::group(['prefix'=>'member', 'middleware'=>'checkmember'],function(){
+		/*Home page*/
+		Route::get('home', ['as'=>'member.home', 'uses'=>'HomeController@home_member']);
 
+		/*Show information User*/
+		Route::get('information/{id}', ['as'=>'account.information', 'uses'=>'UserController@information']);
+
+		/*Edit Users*/
+		Route::get('edit/{id}',['as'=>'account.getEdit', 'uses'=>'UserController@getEdit']);
+		Route::post('edit/{id}',['as'=>'account.postEdit', 'uses'=>'UserController@postEdit']);
+
+	});
 
 /*Admin Page*/
 
@@ -107,17 +115,5 @@ Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 });
 
 
-/*Member pages*/
-Route::group(['prefix'=>'member', 'middleware'=>'checkmember'],function(){
-	/*Home page*/
-	Route::get('home', ['as'=>'member.home', 'uses'=>'HomeController@home_member']);
 
-	/*Show information User*/
-	Route::get('information/{id}', ['as'=>'account.information', 'uses'=>'UserController@information']);
-
-	/*Edit Users*/
-	Route::get('edit/{id}',['as'=>'account.getEdit', 'uses'=>'UserController@getEdit']);
-	Route::post('edit/{id}',['as'=>'account.postEdit', 'uses'=>'UserController@postEdit']);
-
-});
 

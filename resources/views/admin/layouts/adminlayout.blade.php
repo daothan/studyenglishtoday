@@ -207,7 +207,7 @@
                         <!-- Logout -->
                         <li class="divider"></li>
                         <li>
-                            <a href="{{route('account.logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <a href="{{route('user.logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                         <!-- End Logout -->
                     </ul>
@@ -215,11 +215,11 @@
                 <!-- END USER -->
 
                 <!-- Login and Register -->
-                <li class="{{isset(Auth::user()->name) || (url()->current()==route('account.getLogin')) ? 'hidden' : null}}">
-                    <a href="{{route('account.getLogin')}}"><strong>Login</strong></a>
+                <li class="{{isset(Auth::user()->name) || (url()->current()==route('user.login')) ? 'hidden' : null}}">
+                    <a href="{{route('user.login')}}"><strong>Login</strong></a>
                 </li>
-                <li class="{{isset(Auth::user()->name) || (url()->current()==route('account.getRegister')) ? 'hidden' : null}}">
-                    <a href="{{route('account.getRegister')}}"><strong>Register</strong></a>
+                <li class="{{isset(Auth::user()->name) || (url()->current()==route('user.register')) ? 'hidden' : null}}">
+                    <a href="{{route('user.register')}}"><strong>Register</strong></a>
                 </li>
                 <!-- End Login and Register -->
             </ul>
@@ -245,6 +245,10 @@
                         <!-- END SEARCH -->
 
                         <!-- Dashboard -->
+                        <li>
+                            <a href="{{route('user.home')}}"><i class="fa fa-dashboard fa-fw"></i> Home</a>
+                        </li>
+
                         <li>
                             <a href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>

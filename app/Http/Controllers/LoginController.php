@@ -4,48 +4,64 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Http\Requests\LoginRequest;
 use Auth;
 use Validator;
 use Illuminate\Support\MessageBag;
+
 class LoginController extends Controller
 {
 	/*public function __construct(){
 		$this->middleware('auth',['except'=>'logout']);
 	}*/
-
-
     public function __construct()
     {
-    	$this->middleware('guest')->except('logout');
+        $this->middleware('guest', ['except' => ['logout', 'getLogout']]);
     }
 
-    public function getLogin(){
 
-        return view('account/login');
-    }
+    /*LOGIN FOR MODAL*/
+    public function postLogin_modal(Request $request){
 
-    public function postLogin(LoginRequest $request){
+        $rules = [
+            'username' => 'required',
+            'user_password' => 'required'
+        ];
+        $messages = [
+            'username.required'     => 'Please enter username.',
+            'user_password.required' => 'Please enter password.'
+        ];
 
-		$name     = $request->input('name');
-		$password = $request->input('password');
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if($validator->fails()){
+            return response()->json([
+                'error'   =>true,
+                'message' =>$validator->errors()
+                ],200);
+        }else{
+            $name     = $request -> input('username');
+            $password = $request -> input('user_password');
 
-    	if(Auth::attempt(['name'=>$name, 'password'=>$password],$request->has('remember'))){
-            if(Auth::user()->level>1){
-    		  return redirect()->route('member.home')->with(['flash_level'=>'info', 'flash_message'=>'Welcome '.$name]);
+            if(Auth::attempt(['name'=>$name, 'password'=>$password])){
+                $request->session()->flash('alert-success', 'Welcome '.': "'.Auth::user()->name.'"');
+                $level = Auth::user()->level;
+                return response()->json([
+                'level'   =>true,
+                'value' =>$level
+                ],200);
+
             }else{
-                return redirect()->route('admin.dashboard')->with(['flash_level'=>'info', 'flash_message'=>'Welcome '.$name]);
+                $errors = new MessageBag(['errorlogin'=>'Email or Password wrong.']);
+                return response()->json([
+                'error'   =>true,
+                'message' =>$errors
+                ],200);
             }
-
-    	}else{
-    		return redirect()->back()->with(['flash_level'=>'danger', 'flash_message'=>'Username or Password wrong .'])->withInput($request);
-    	}
-
+        }
     }
 
+    /*Logout*/
     public function logout(){
-    	Auth::logout();
-    	return redirect()->back();
+        Auth::logout();
+        return redirect()->route('user.home');
     }
-
 }
