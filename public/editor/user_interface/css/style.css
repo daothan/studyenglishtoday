@@ -268,7 +268,7 @@ h3.w3ls-hdg {
     position: relative;
 }
 .grid_3 p {
-    color: #999;
+    color: #383333;
     font-size: 1em;
     margin-bottom: 1em;
     font-weight: 300; 
@@ -1043,7 +1043,7 @@ img.img-responsive {
     margin-bottom: 2em;
 }
 .contact-grid {
-    background: linear-gradient(#2532bf, #ffffffe6); /* Standard syntax (must be last) */
+    background: linear-gradient(#65ade1, #ffffffe6); /* Standard syntax (must be last) */
     padding: 3em;
 }
 .contact-grid h4 {
@@ -1136,6 +1136,30 @@ img.img-responsive {
     padding: .6em 3.5em;
     font-size: 1em;
     -webkit-appearance: none;
+    background: #126fcbe6;
+    border: solid 1px #fff; 
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    font-family: 'Roboto', sans-serif;
+}
+.contact input[type="submit"]:hover {
+    color: #ff7629;
+    background: #fff;
+}
+
+/*-- //input-effect --*/
+.contact input[type="reset"] {
+    outline: none;
+    color: #fff;
+    padding: .6em 3.5em;
+    font-size: 1em;
+    -webkit-appearance: none;
     background: #ff7629;
     border: solid 1px #fff; 
     -webkit-border-radius: 3px;
@@ -1148,7 +1172,7 @@ img.img-responsive {
     -ms-transition: 0.5s all;
     font-family: 'Roboto', sans-serif;
 }
-.contact input[type="submit"]:hover {
+.contact input[type="reset"]:hover {
     color: #ff7629;
     background: #fff;
 }

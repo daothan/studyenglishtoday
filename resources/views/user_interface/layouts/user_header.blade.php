@@ -553,6 +553,7 @@
 								<span></span>
 							</div>
 							<input type="submit" value="SEND">
+							<input type="reset" value="RESET">
 						</form>
 					</div>
 				</div>
@@ -574,7 +575,8 @@
 						</div>
 						<div class="col-xs-9 address-right">
 							<h5>Mail Us</h5>
-							<p><a href="mailto:daothan1211@gmail.com"> daothan1211@gmail.com</a></p>
+							<p><a href="mailto:info@example.com"> daothan1211@gmail.com</a></p>
+							<p><a href="mailto:info@example.com"> thankthn@gmail.com</a></p>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -585,6 +587,7 @@
 						<div class="col-xs-9 address-right">
 							<h5>Call Us</h5>
 							<p>+84 989 677 020<br></p>
+							<p>+84 943 725 418</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
