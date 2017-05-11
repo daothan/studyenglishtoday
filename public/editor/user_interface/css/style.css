@@ -31,12 +31,12 @@ body a:hover{
 body a:focus {
     outline: none;
 }
-.w3ls-logo .navbar-brand {
+.w3ls-logo .logo {
     float: left;
     height: inherit;
-    padding:0.6em 3em 0em 3em;
+    padding: 0.3em 3em 0em 3em;
     font-size: 0.6em;
-    color: #4c53a4cc !important;
+    color: #374a8ce6 !important;
     font-weight: 900;
     letter-spacing: 2px;
     line-height: inherit;

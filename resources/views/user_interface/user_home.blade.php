@@ -36,7 +36,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<h1 class="w3ls-logo"><a class="navbar-brand"><strong>Free English</strong></a></h1>
+						<h1 class="w3ls-logo"><a class="logo"><p>Free English</p></a></h1>
 					</div>
 
 					<div id="navbar" class="navbar-collapse collapse ">
