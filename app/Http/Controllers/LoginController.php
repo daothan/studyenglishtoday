@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests\LoginRequest;
 use Auth;
-
+use Validator;
+use Illuminate\Support\MessageBag;
 class LoginController extends Controller
 {
 	/*public function __construct(){
@@ -37,7 +38,7 @@ class LoginController extends Controller
             }
 
     	}else{
-    		return redirect()->back()->with(['flash_level'=>'danger', 'flash_message'=>'Username or Password wrong .'])->withInput();
+    		return redirect()->back()->with(['flash_level'=>'danger', 'flash_message'=>'Username or Password wrong .'])->withInput($request);
     	}
 
     }
@@ -46,4 +47,5 @@ class LoginController extends Controller
     	Auth::logout();
     	return redirect()->back();
     }
+
 }

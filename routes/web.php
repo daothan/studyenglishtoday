@@ -30,6 +30,8 @@
 /*User interface*/
 	Route::group(['prefix'=>'user'], function(){
 		Route::get('home',['as'=>'user.home', 'uses'=>'HomeController@user_interface']);
+		Route::post('home',['as'=>'user.posthome', 'uses'=>'HomeController@postLogin_modal']);
+
 	});
 
 

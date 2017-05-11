@@ -7,8 +7,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Fantastic Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 		SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
-	<meta name="csrf-token" content="{{ csrf_token() }}">
-
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 	<!-- Add Css -->
@@ -21,7 +19,6 @@
 
 	<!-- Add Js -->
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/jquery-3.2.1.min.js')}}"></script>
-	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/user_script.js')}}"></script>
 
 
 </head>
@@ -106,42 +103,31 @@
 	<!-- //navbar -->
 
 	<!-- Modal Login-->
-	<div id="login" id="remoteModal" class="modal fade" role="dialog">
+	<div id="login" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
 
 	    <!-- Modal content-->
-		<div class="login modal-container">
+		<div class="loginmodal-container">
 			<div class="grid_3 grid_4">
-
-				<button id="reset" type="reset" class="close" data-dismiss="modal" style="color:black;"><span class="glyphicon glyphicon-remove"></span></button>
+				<button type="reset" class="close" data-dismiss="modal" style="color:black;"><span class="glyphicon glyphicon-remove"></span></button>
 
 				<div class="agileinfo-w3lsrow login-top">
 					<h3 class="w3ls-hdg">Login Form</h3>
-					<form id="login1" role="form" method="POST" action="">
-
-		                <h3 class="col-md-6 col-md-offset-3 error errorLogin flash text-center text-danger"></h3>
-
-						<!-- Username -->
-						<input id="name" type="text" name="name" placeholder="Please enter username">
-							<div class="has-error"><i><span class="help-block error errorName"></span></i></div>
-						<!-- Password -->
-						<input id="password" type="password" name="password" placeholder="Please enter password">
-							<div class="has-error"><i><span class="help-block error errorPassword"></span></i></div>
-
-						<!-- Submit-->
-						<input id="login_modal" type="submit" value="Sign In">
+					<form action="#" method="post">
+						<input type="email" class="email" placeholder="Email" required="">
+						<input type="password" class="password" placeholder="Password" required="">
+						<input type="submit" value="SignIn">
 						<input type="reset" value="Reset">
-
-						<!-- Other connect -->
 						<p>or Connect with.... </p>
-							<div class="social-icons">
-								<ul>
-									<li><a href="#">Facebook </a></li>
-									<li><a href="#">Google </a></li>
-								</ul>
-								<div class="clearfix"> </div>
-							</div>
+						<div class="social-icons">
+							<ul>
+								<li><a href="#">Facebook </a></li>
+								<li><a href="#">Google </a></li>
+							</ul>
+							<div class="clearfix"> </div>
+						</div>
 					</form>
+
 					<div class="clearfix"> </div>
 				</div>
 			</div>
@@ -150,24 +136,23 @@
 	  </div>
 	</div>
 
-
 	<!-- Modal Register-->
 	<div id="register" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
 
 	    <!-- Modal content-->
-		<div class="login modal-container">
+		<div class="loginmodal-container">
 			<div class="grid_3 grid_4">
 				<button type="reset" class="close" data-dismiss="modal" style="color:black;"><span class="glyphicon glyphicon-remove"></span></button>
 
 				<div class="agileinfo-w3lsrow login-top">
 					<h3 class="w3ls-hdg">Register Form</h3>
-						<form action="" method="post">
-							<input type="text" name="name" class="name active" placeholder="Your Name" autofocus />
-							<input type="text" name="email" class="email" placeholder="Email"/>
-							<input type="password" name="password" class="password" placeholder="Password"/>
-							<input type="password" name="password_confirmation" class="password" placeholder="Confirm Password"/>
-							<input id="register_modal" type="submit" value="Register"/>
+						<form action="#" method="post">
+							<input type="text" class="name active" placeholder="Your Name" required=""/>
+							<input type="email" class="email" placeholder="Email" required=""/>
+							<input type="password" class="password" placeholder="Password" required=""/>
+							<input type="password" class="password" placeholder="Confirm Password" required=""/>
+							<input type="submit" value="Sign Up"/>
 							<input type="reset" value="Reset">
 						</form>
 
@@ -178,6 +163,10 @@
 
 	  </div>
 	</div>
+
+
+
+
 
 
 	<!-- banner -->
@@ -680,7 +669,6 @@
 
 
 	<!-- Script -->
-
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/move-top.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/easing.js')}}"></script>
 
