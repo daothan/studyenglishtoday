@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>HOME</title>
 
@@ -246,7 +247,7 @@
 
                         <!-- Dashboard -->
                         <li>
-                            <a href="{{route('user.home')}}"><i class="fa fa-dashboard fa-fw"></i> Home User</a>
+                            <a href="{{route('user.home')}}"><i class="glyphicon glyphicon-home"></i> Home User</a>
                         </li>
 
                         <li>
@@ -301,6 +302,18 @@
                 <script type="text/javascript">$('h3.flash').delay(3000).slideUp();</script>
 
             <!-- End Show Flash Message -->
+
+            <!-- Show Flash Message Modal Ajax form -->
+                <div class="col-md-6 col-md-offset-3">
+                    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                        @if(Session::has('alert-' . $msg))
+                            <h2 class="flash text-center text-success"><i>{{Session::get('alert-success')}}</i></h2>
+                        @endif
+                    @endforeach
+                </div>
+               <script type="text/javascript">$('h2.flash').delay(5000).slideUp();</script>
+               <!-- End Show Flash Message -->
+
 
             @yield('content')
         </div>

@@ -175,7 +175,7 @@ class UserController extends Controller
                 return redirect()->route('admin.user.show')->with(['flash_level'=>'danger', 'flash_message'=>'Delete successfully.']);
             }else{
                 echo "<script type='text/javascript'>
-                    alert('Sorry ! You just have permision to delete admin and super admin !');
+                    alert('Sorry ! You just have permision to delete member !');
                     window.location='";echo route('admin.user.show'); echo "'
                 </script>";
             }

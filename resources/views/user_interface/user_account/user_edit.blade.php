@@ -113,7 +113,7 @@
 					$('.errorPassword_confirmation').show().text(data.messages.password_confirmation[0]);
 				}
 			}else{
-				window.location.reload(true);
+				window.location.href='/laravel1/user/information/'+$('#user_id').val();
 			}
 			}
 		});
