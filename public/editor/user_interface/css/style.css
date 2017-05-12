@@ -132,32 +132,52 @@ body a:focus {
     font-size: 3em;
     font-weight: 200;
 }
+/* Content */
 .codes{
 	padding:5em 0;
 	background:#fff;
 }
-.codes.agileitsbg2 {
-    background: #4c70c5; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left top, #4c70c5, #fff); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, #4c70c5, #fff); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, #4c70c5, #fff); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right, #4c70c5, #fff); /* Standard syntax */
+.codes.agileitsbg1{
+    background: #4a4545; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left,#4a4545, #e4e4ca); /*Safari 5.1-6*/
+    background: -o-linear-gradient(right,#4a4545, #e4e4ca); /*Opera 11.1-12*/
+    background: -moz-linear-gradient(right,#4a4545, #e4e4ca); /*Fx 3.6-15*/
+    background: linear-gradient(to right, #4a4545, #e4e4ca); /*Standard*/
     padding-bottom: 10em;
 }
+.codes.agileitsbg2{
+    background: #e4e4ca; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left,#e4e4ca, #4a4545); /*Safari 5.1-6*/
+    background: -o-linear-gradient(right,#e4e4ca, #4a4545); /*Opera 11.1-12*/
+    background: -moz-linear-gradient(right,#e4e4ca, #4a4545); /*Fx 3.6-15*/
+    background: linear-gradient(to right, #e4e4ca, #4a4545); /*Standard*/
     padding-bottom: 10em;
 }
-.codes.agileitsbg3 {
-    background: #3498DB;
+.codes.agileitsbg3{
+    background: #4a4545; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(+90deg, #4a4545, #e4e4ca); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(+90deg, #4a4545, #e4e4ca); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(+90deg, #4a4545, #e4e4ca); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(+90deg, #4a4545, #e4e4ca); /* Standard syntax */
     padding-bottom: 10em;
 }
-.codes.agileitsbg4 {
-    background: #1ad4c6; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left top, #1ad4c6, #fff); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, #1ad4c6, #fff); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, #1ad4c6, #fff); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right, #1ad4c6, #fff); /* Standard syntax */
+.codes.agileitsbg4{
+    background: #e4e4ca; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left top, #e4e4ca, #4a4545); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #e4e4ca, #4a4545); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #e4e4ca, #4a4545); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #e4e4ca, #4a4545); /* Standard syntax */
     padding-bottom: 10em;
 }
+.codes.agileitsbg5{
+    background: #e4e4ca; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#4a4545, #fff); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#4a4545, #fff); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#4a4545, #fff); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#4a4545, #fff); /* Standard syntax */
+    padding-bottom: 10em;
+}
+/* End content */
 .grid_3.grid_4 {
     border-top: 10px solid rgba(192, 204, 206, 0.69);
     border-bottom: 10px solid #212435;
@@ -1439,14 +1459,6 @@ p.footer-class a{
 }
 .codes {
     padding: 4em 0; 
-}
-.codes.agileitsbg3 ,.codes.agileitsbg2,.codes.agileitsbg4{ 
-    background: #404245; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left top, #404245, #f2f1f0); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, #404245, #f2f1f0); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, #404245, #f2f1f0); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right, #404245, #f2f1f0); /* Standard syntax */
-    padding-bottom: 8em;
 }
 h3.w3ls-hdg {
     font-size: 1.6em; 

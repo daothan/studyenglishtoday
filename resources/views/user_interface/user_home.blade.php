@@ -5,7 +5,7 @@
 
 	<!-- CONTENT -->
 	<!-- Newest Post -->
-	<div class="codes agileitsbg2">
+	<div class="codes agileitsbg1">
 		<div class="container">
 			<div id="newest_post" class="grid_3 grid_5 w3-agileits">
 				<h3 class="w3ls-hdg">Newest Posts</h3>
@@ -41,7 +41,7 @@
 	</div>
 
 	<!-- Listening -->
-	<div class="codes agileitsbg3">
+	<div class="codes agileitsbg2">
 		<div class="container">
 			<div id="listening_cate" class="grid_3 grid_5 w3-agileits">
 				<h3 class="w3ls-hdg">Listening</h3>
@@ -77,7 +77,7 @@
 	</div>
 
 	<!-- Reading -->
-	<div class="codes agileitsbg4">
+	<div class="codes agileitsbg3">
 		<div class="container">
 			<div id="reading_cate" class="grid_3 grid_5 w3-agileits">
 				<h3 class="w3ls-hdg">Reading</h3>
@@ -113,7 +113,7 @@
 	</div>
 
 	<!-- writing -->
-	<div class="codes agileitsbg3">
+	<div class="codes agileitsbg4">
 		<div class="container">
 			<div id="writing_cate" class="grid_3 grid_5 w3-agileits">
 				<h3 class="w3ls-hdg">Writing</h3>
@@ -143,13 +143,13 @@
 				<div class="clearfix"> </div>
 				<script>$(function () {
 				  $('[data-toggle="tooltip"]').tooltip()
-				})</script> 
+				})</script>
 			</div>
-		</div>	
+		</div>
 	</div>
 
 	<!-- About -->
-	<div class="codes agileitsbg2">
+	<div class="codes agileitsbg5">
 		<div class="container">
 			<div id="about" class="grid_3 grid_5 w3-agileits">
 				<h3 class="w3ls-hdg">About Us</h3>
