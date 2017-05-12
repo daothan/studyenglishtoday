@@ -19,7 +19,7 @@
                 <!-- /.panel-heading -->
 				<div class="panel-body">
 					@foreach($user as $data)
-					<form action="" method="POST" class="form-horizontal">
+					<form id="validate_edit" action="" method="POST" class="form-horizontal">
 
 						<!-- Token -->
 						{{csrf_field()}}
@@ -83,41 +83,57 @@
 	</div>
 
 	<script type="text/javascript">
-	$(function(){
-	$('#edit_user').click(function(e){
-		e.preventDefault();
-		$.ajaxSetup({
+
+
+	$("#validate_edit").validate({
+		rules:{
+			email:{
+				required:true,
+				email:true
+			},
+			password:{
+				required:true,
+				minlength:6
+			},
+			password_confirmation:{
+				required:true,
+				minlength:6
+			}
+		},
+		submitHandler:function(){
+			$.ajaxSetup({
 		    headers: {
 		        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		    }
-		});
-		$.ajax({
-			'url' : '/laravel1/user/edit/'+$('#user_id').val(),
-			'data': {
-				'email' : $('#email_edit').val(),
-				'password':$('#password_edit').val(),
-				'password_confirmation':$('#password_confirmation_edit').val()
-			},
-			'type' :'POST',
-			success: function(data){
-			console.log(data);
-			if(data.edit_user == true){
-				$('.error').hide();
-				if(data.messages.email != undefined){
-					$('.errorEmail').show().text(data.messages.email[0]);
+			});
+			$.ajax({
+				'url' : '/laravel1/user/edit/'+$('#user_id').val(),
+				'data': {
+					'email' : $('#email_edit').val(),
+					'password':$('#password_edit').val(),
+					'password_confirmation':$('#password_confirmation_edit').val()
+				},
+				'type' :'POST',
+				success: function(data){
+				console.log(data);
+				if(data.edit_user == true){
+					$('.error').hide();
+					if(data.messages.email != undefined){
+						$('.errorEmail').show().text(data.messages.email[0]);
+					}
+					if(data.messages.password != undefined){
+						$('.errorPassword').show().text(data.messages.password[0]);
+					}
+					if(data.messages.password_confirmation != undefined){
+						$('.errorPassword_confirmation').show().text(data.messages.password_confirmation[0]);
+					}
+				}else{
+					window.location.href='/laravel1/user/information/'+$('#user_id').val();
 				}
-				if(data.messages.password != undefined){
-					$('.errorPassword').show().text(data.messages.password[0]);
 				}
-				if(data.messages.password_confirmation != undefined){
-					$('.errorPassword_confirmation').show().text(data.messages.password_confirmation[0]);
-				}
-			}else{
-				window.location.href='/laravel1/user/information/'+$('#user_id').val();
-			}
-			}
-		});
-	})
-});
+			});
+		},
+	});
+
 </script>
 @stop
