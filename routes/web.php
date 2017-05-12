@@ -28,17 +28,24 @@
 		/*Register*/
 		Route::post('home/register',['as'=>'user.register', 'uses'=>'RegisterController@postRegister_modal']);
 
+		/*Show information user*/
+		Route::get('information/{id}', ['as'=>'user.information', 'uses'=>'UserController@information']);
+
+		/*Edit information user*/
+		Route::get('edit/{id}', ['as'=>'user.edit', 'uses'=>'UserController@getEdit']);
+		Route::post('edit/{id}', ['as'=>'user.edit', 'uses'=>'UserController@postEdit']);
+
 	});
 
-/*Member pages*/
+/*Member pages
 	Route::group(['prefix'=>'member', 'middleware'=>'checkmember'],function(){
-		/*Home page*/
+		/*Home page
 		Route::get('home', ['as'=>'member.home', 'uses'=>'HomeController@home_member']);
 
-		/*Show information User*/
+		Show information User
 		Route::get('information/{id}', ['as'=>'account.information', 'uses'=>'UserController@information']);
 
-		/*Edit Users*/
+		Edit Users
 		Route::get('edit/{id}',['as'=>'account.getEdit', 'uses'=>'UserController@getEdit']);
 		Route::post('edit/{id}',['as'=>'account.postEdit', 'uses'=>'UserController@postEdit']);
 

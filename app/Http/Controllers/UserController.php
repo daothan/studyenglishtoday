@@ -30,7 +30,7 @@ class UserController extends Controller
 
         if($user_current_level == 2){
             if($user_current_id == $user_id || $user_level >1){
-                return view('admin.user.information', compact('user'));
+                return view('user_interface.user_information', compact('user'));
             }else{
                 echo "<script type='text/javascript'>
                 alert('Sorry ! You can not see this account information !');
@@ -87,7 +87,7 @@ class UserController extends Controller
         /*Member can not edit other member or admin, super admin*/
         if($user_current_login == 2){
             if($user_current_id == $user_id){ /*Member just have permission editing themself*/
-                return view('admin.user.edit', compact('user'));
+                return view('user_interface.user_edit', compact('user'));
 
             }else{
                 echo "<script type='text/javascript'>
@@ -139,10 +139,17 @@ class UserController extends Controller
         $user->level    = $user->level;
 
         if($validator->fails()){
-            return redirect()->back()->withErrors($validator)->withInput();
+            return response()->json([
+                'error'   =>true,
+                'message' =>$validator->errors()
+                ],200);
         }else{
             if($user->save()){
-                return redirect()->route('admin.user.show')->with(['flash_level'=>'success', 'flash_message'=>'Update user successfully.']);
+                if(Auth::user()->level >1){
+                    $request->session()->flash('alert-success','Update account informations successfully.');
+                }
+            }else{
+                print_r("Has an error when edit account !");die;
             }
         }
     }

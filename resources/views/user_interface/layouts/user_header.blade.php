@@ -44,7 +44,8 @@
 
 					<div id="navbar" class="navbar-collapse collapse ">
 						<ul class="nav navbar-nav">
-							<li><a href="#top">Home</a></li>
+							<li class="{{((url()->current())!=route('user.home')) ? 'hidden' : ''}}"><a href="#top">Home</a></li>
+							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}">Home</a></li>
 							<li><a href="#newest_post" class="scroll">Newest Posts</a></li>
 							<li><a href="#listening_cate" class="scroll">Listening</a></li>
 							<li><a href="#reading_cate" class="scroll">Reading</a></li>
@@ -183,7 +184,7 @@
 								<ul class="dropdown-menu">
 												<!-- Show level user -->
 			                        <li>
-			                            <a href="{{isset(Auth::user()->name) ? route('account.information', Auth::user()->id) : route('home')}}"><i class="fa fa-user fa-fw"></i>
+			                            <a href="{{isset(Auth::user()->name) ? route('user.information', Auth::user()->id) : route('home')}}"><i class="fa fa-user fa-fw"></i>
 			                                <i>
 			                                    {{(isset(Auth::user()->level) && (Auth::user()->level=='0')) ? 'Super Admin' :''}}
 			                                    {{(isset(Auth::user()->level) && (Auth::user()->level=='1')) ? 'Admin':''}}
@@ -195,7 +196,7 @@
 
 			                        <!-- Edit User logging -->
 			                        <li>
-			                            <a href="{{(isset(Auth::user()->name)) ? route('account.getEdit',Auth::user()->id) : null}}"><i class="fa fa-gear fa-fw"></i> Settings</a>
+			                            <a href="{{(isset(Auth::user()->name)) ? route('user.edit',Auth::user()->id) : null}}"><i class="fa fa-gear fa-fw"></i> Settings</a>
 			                        </li>
 			                        <!-- End edit User logging -->
 
@@ -214,10 +215,10 @@
 				</div>
 
 				<!-- Show Flash Message -->
-			    <div class="center-block">
+			    <div>
 			    	@foreach (['danger', 'warning', 'success', 'info'] as $msg)
 				        @if(Session::has('alert-' . $msg))
-							<h2 class="flash text-center text-success"><strong><i>{{Session::get('alert-success')}}</i></strong></h2>
+							<h2 class="flash text-center text-success"><i>{{Session::get('alert-success')}}</i></h2>
 				        @endif
 				    @endforeach
 			    </div>
@@ -328,7 +329,7 @@
 					<div class="carousel-caption">
 						<h2>English</h2>
 						<p>English is an important language nowadays. We have asked DPUIC students their opinions about English and why they are studying English</p>
-						<button class="btn btn-default" href="#english" data-toggle="modal">English</button>
+						<button class="btn btn-primary" href="#english" data-toggle="modal">English</button>
 					</div>
 				</div>
 			</div>

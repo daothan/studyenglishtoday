@@ -41,9 +41,12 @@ body a:focus {
     letter-spacing: 2px;
     line-height: inherit;
 }
+.carousel-inner{
+    height: 400px;
+}
 .carousel-caption {
 	position: inherit;
-    padding: 25em 0 19em !important; 
+    padding: 10em 0 15em !important;
 }
 /*-- nav-social-icons --*/
 .w3social-icons.w3lsnav-right {
@@ -55,7 +58,7 @@ body a:focus {
     border: 1px solid;
 }
 .w3social-icons.w3lsnav-right ul li a:hover{
-    color: #00BCD4; 
+    color: #00BCD4;
 }
 /*-- //nav-social-icons --*/
 /*-- banner --*/
@@ -79,17 +82,17 @@ body a:focus {
 	background:-moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/laravel1/storage/uploads/interface_images/panel/reading.jpg) no-repeat top center fixed;
 	background:-ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/laravel1/storage/uploads/interface_images/panel/reading.jpg) no-repeat top center fixed;
 	background:linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/laravel1/storage/uploads/interface_images/panel/reading.jpg) no-repeat top center fixed;
-	background-size:cover; 
-}  
-.carousel .item.item5{    
+	background-size:cover;
+}
+.carousel .item.item5{
 	background:-webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/laravel1/storage/uploads/interface_images/panel/writing.jpg) no-repeat top center fixed;
 	background:-moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/laravel1/storage/uploads/interface_images/panel/writing.jpg) no-repeat top center fixed;
 	background:-ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/laravel1/storage/uploads/interface_images/panel/writing.jpg) no-repeat top center fixed;
 	background:linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/laravel1/storage/uploads/interface_images/panel/writing.jpg) no-repeat top center fixed;
-	background-size:cover; 
-}  
-.navbar { 
-    min-height:inherit; 
+	background-size:cover;
+}
+.navbar {
+    min-height:inherit;
 }
 .navbar-inverse {
     background-color: #fff;
@@ -107,29 +110,39 @@ body a:focus {
     color: #fff;
     background-color: #f44336;
 }
-.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+.navbar-inverse .navbar-nav > li > a{
+    font-weight: bold;
+    color: #8196cf;
+}
+.navbar-inverse .navbar-nav > li > a:focus {
+    font-weight: bold;
+    font-style: italic;
+    color: #fff;
+    background-color: #8196cf;
+}
+.navbar-inverse .navbar-nav > li > a:hover{
     color: #fff;
     background-color: #2f212080;
 }
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
     color: #fff;
-    background-color: #f44336;
+    background-color: #353686cc;
 }
 .carousel-caption h2,.carousel-caption h3{
     font-size: 3em;
     font-weight: 200;
-}  
+}
 .codes{
-	padding:5em 0; 
-	background:#fff; 
+	padding:5em 0;
+	background:#fff;
 }
 .codes.agileitsbg2 {
     background: #E74C3C;
 	background-image:-webkit-linear-gradient(#ff9d2f, #ff6126);
 	background-image:-moz-linear-gradient(#ff9d2f, #ff6126);
 	background-image:-ms-linear-gradient(#ff9d2f, #ff6126);
-	background-image: linear-gradient(#ff9d2f, #ff6126); 
-    clip-path: polygon( 0 0, 100% 0, 100% 100%, 0 calc(100% - 5vw) ); 
+	background-image: linear-gradient(#ff9d2f, #ff6126);
+    clip-path: polygon( 0 0, 100% 0, 100% 100%, 0 calc(100% - 5vw) );
     padding-bottom: 10em;
 }
 .codes.agileitsbg3 {
@@ -197,7 +210,7 @@ body a:focus {
 	-o-transition:.5s all;
 	-ms-transition:.5s all;
 	transition:.5s all;
-} 
+}
 .modal-header .close {
     margin-top: 11px;
     opacity: 1;
@@ -213,7 +226,8 @@ body a:focus {
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
-} 
+    background: linear-gradient(#207abc, #f2f8f1);
+}
 /* Modal Body */
 .modal-body.grid_3 {
     padding: 3em 6em;
@@ -223,7 +237,7 @@ body a:focus {
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
-} 
+}
 .wthree-modal h3 {
     font-size: 2em;
     font-weight: 300;
@@ -1388,8 +1402,8 @@ p.footer-class a{
 }
 }
 @media(max-width:1080px){
-.carousel-caption { 
-    padding: 20em 0 15em !important;
+.carousel-caption {
+    padding: 10em 0 15em !important;
 }
 .agileits-buttons .w3llist-grids {
     padding: 0;
@@ -1612,7 +1626,7 @@ ul.w3list-style {
 }
 @media(max-width:480px){
 .carousel-caption {
-    padding: 12em 0 7em !important;
+    padding: 9em 0 7em !important;
 }
 .navbar-inverse { 
     margin: 1.5em 2em 0;
@@ -1845,18 +1859,17 @@ h3.w3ls-hdg {
 }
 .codes {
     padding: 2em 0;
-}  
-.w3ltext-grids {    
+}
+.w3ltext-grids {
     width: 100%;
 	padding: 0;
 }
 ul.w3list-style {
     width: 100%;
 }
-}
-
 .user{
     margin-right: 30px;
     padding: 0px 10px 0px 10px;
 }
+
 /*-- //responsive-design --*/

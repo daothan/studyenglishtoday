@@ -22,8 +22,8 @@ class CheckAdmin
 
             if($user_level < 2){/*Member*/
                 return $next($request);
-            }return redirect()->route('member.home');
+            }return redirect()->route('user.home');
         }
-        return redirect()->route('account.getLogin');
+        return redirect()->route('user.home');
     }
 }
