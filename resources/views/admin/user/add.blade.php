@@ -87,7 +87,7 @@
 
 							@if($errors->has('level'))
 								<span class="help-block">
-									<i>{{$errors->first('level')}}</i>
+									<h5 align="center"><i>{{$errors->first('level')}}</i></h5>
 								</span>
 							@endif
 						</div>

@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 	<!-- CONTENT -->
 	<!-- Newest Post -->
 	<div class="codes agileitsbg1">

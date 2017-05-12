@@ -1,7 +1,29 @@
-/*Modal Login*/
-$(function(){
-	$('#login_modal').click(function(e){
-		e.preventDefault();
+
+/*Validate Form Login Jquery*/
+
+$("#validate_login").validate({
+	rules:{
+		username:{
+			required:true,
+		},
+
+		user_password:{
+			required:true,
+			minlength:6
+		}
+	},
+
+	messages:{
+		username:{
+			required: "Please enter username.",
+		},
+		user_password:{
+			required: "Please enter password.",
+			minlength: "Password must be more than 6 characters."
+		}
+	},
+	submitHandler:function(){
+
 		$.ajaxSetup({
 		    headers: {
 		        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -37,14 +59,30 @@ $(function(){
 			}
 			}
 		});
-	})
+	}
 });
 
-
-/*Modal Register*/
-$(function(){
-	$('#register_modal').click(function(e){
-		e.preventDefault();
+/*Validate Form Register*/
+$("#validate_register").validate({
+	rules:{
+		name:{
+			required:true,
+			maxlength:50
+		},
+		email:{
+			required:true,
+			email:true
+		},
+		password:{
+			required:true,
+			minlength:6
+		},
+		password_confirmation:{
+			required:true,
+			minlength:6
+		}
+	},
+	submitHandler:function(){
 		$.ajaxSetup({
 		    headers: {
 		        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -80,5 +118,6 @@ $(function(){
 			}
 			}
 		});
-	})
+	}
+
 });

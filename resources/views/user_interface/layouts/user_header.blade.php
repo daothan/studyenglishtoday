@@ -21,8 +21,7 @@
 
 	<!-- Add Js -->
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/jquery-3.2.1.min.js')}}"></script>
-	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/user_script.js')}}"></script>
-
+	<script type="text/javascript" src="{{URL::asset('public/editor/jquery/jquery.validate.min.js')}}"></script>
 
 </head>
 <body>
@@ -251,7 +250,7 @@
 
 				<div class="agileinfo-w3lsrow login-top">
 					<h3 class="w3ls-hdg">Login Form</h3>
-					<form role="form" method="POST" action="">
+					<form role="form" method="POST" action="" id="validate_login">
 
 		                <h3 class="col-md-6 col-md-offset-3 error errorLogin flash text-center text-danger"></h3>
 
@@ -284,7 +283,6 @@
 	  </div>
 	</div>
 
-
 	<!-- Modal Register-->
 	<div id="register" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
@@ -296,7 +294,7 @@
 
 				<div class="agileinfo-w3lsrow login-top">
 					<h3 class="w3ls-hdg">Register Form</h3>
-						<form action="" method="post">
+						<form id="validate_register" action="" method="POST">
 							<h3 class="col-md-6 col-md-offset-3 error successRegister flash text-center text-danger"></h3>
 
 							<input id="name" type="text" name="name" class="name active" placeholder="Your Name" autofocus />
@@ -649,7 +647,7 @@
 
 
 	<!-- Script -->
-
+	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/user_script.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/move-top.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/easing.js')}}"></script>
 

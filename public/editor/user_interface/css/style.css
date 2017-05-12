@@ -24,12 +24,17 @@ h1,h2,h3,h4,h5,h6{
 }
 p{
 	margin:0;
-} 
+}
 body a:hover{
 	text-decoration:none;
 }
 body a:focus {
     outline: none;
+}
+label.error{
+    font-style: italic;
+    font-weight: inherit;
+    color: red;
 }
 .w3ls-logo .logo {
     float: left;
@@ -112,17 +117,17 @@ body a:focus {
 }
 .navbar-inverse .navbar-nav > li > a{
     font-weight: bold;
-    color: #8196cf;
+    color: rgb(61, 142, 175);
 }
 .navbar-inverse .navbar-nav > li > a:focus {
     font-weight: bold;
     font-style: italic;
     color: #fff;
-    background-color: #8196cf;
+    background-color: rgba(0, 188, 212, 0.92);
 }
 .navbar-inverse .navbar-nav > li > a:hover{
     color: #fff;
-    background-color: #2f212080;
+    background-color: rgb(161, 194, 208);
 }
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
     color: #fff;
@@ -138,43 +143,43 @@ body a:focus {
 	background:#fff;
 }
 .codes.agileitsbg1{
-    background: #4a4545; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left,#4a4545, #e4e4ca); /*Safari 5.1-6*/
-    background: -o-linear-gradient(right,#4a4545, #e4e4ca); /*Opera 11.1-12*/
-    background: -moz-linear-gradient(right,#4a4545, #e4e4ca); /*Fx 3.6-15*/
-    background: linear-gradient(to right, #4a4545, #e4e4ca); /*Standard*/
+    background: rgb(39, 174, 191); /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left,rgb(39, 174, 191), #e4e4ca); /*Safari 5.1-6*/
+    background: -o-linear-gradient(right,rgb(39, 174, 191), #e4e4ca); /*Opera 11.1-12*/
+    background: -moz-linear-gradient(right,rgb(39, 174, 191), #e4e4ca); /*Fx 3.6-15*/
+    background: linear-gradient(to right, rgb(39, 174, 191), #e4e4ca); /*Standard*/
     padding-bottom: 10em;
 }
 .codes.agileitsbg2{
     background: #e4e4ca; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left,#e4e4ca, #4a4545); /*Safari 5.1-6*/
-    background: -o-linear-gradient(right,#e4e4ca, #4a4545); /*Opera 11.1-12*/
-    background: -moz-linear-gradient(right,#e4e4ca, #4a4545); /*Fx 3.6-15*/
-    background: linear-gradient(to right, #e4e4ca, #4a4545); /*Standard*/
+    background: -webkit-linear-gradient(left,#e4e4ca, rgb(39, 174, 191)); /*Safari 5.1-6*/
+    background: -o-linear-gradient(right,#e4e4ca, rgb(39, 174, 191)); /*Opera 11.1-12*/
+    background: -moz-linear-gradient(right,#e4e4ca, rgb(39, 174, 191)); /*Fx 3.6-15*/
+    background: linear-gradient(to right, #e4e4ca, rgb(39, 174, 191)); /*Standard*/
     padding-bottom: 10em;
 }
 .codes.agileitsbg3{
     background: #4a4545; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(+90deg, #4a4545, #e4e4ca); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(+90deg, #4a4545, #e4e4ca); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(+90deg, #4a4545, #e4e4ca); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(+90deg, #4a4545, #e4e4ca); /* Standard syntax */
+    background: -webkit-linear-gradient(+90deg, rgb(39, 174, 191), #e4e4ca); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(+90deg, rgb(39, 174, 191), #e4e4ca); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(+90deg, rgb(39, 174, 191), #e4e4ca); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(+90deg, rgb(39, 174, 191), #e4e4ca); /* Standard syntax */
     padding-bottom: 10em;
 }
 .codes.agileitsbg4{
     background: #e4e4ca; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left top, #e4e4ca, #4a4545); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, #e4e4ca, #4a4545); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, #e4e4ca, #4a4545); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right, #e4e4ca, #4a4545); /* Standard syntax */
+    background: -webkit-linear-gradient(left top, #e4e4ca, rgb(39, 174, 191)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #e4e4ca, rgb(39, 174, 191)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #e4e4ca, rgb(39, 174, 191)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #e4e4ca, rgb(39, 174, 191)); /* Standard syntax */
     padding-bottom: 10em;
 }
 .codes.agileitsbg5{
     background: #e4e4ca; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(#4a4545, #fff); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#4a4545, #fff); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#4a4545, #fff); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#4a4545, #fff); /* Standard syntax */
+    background: -webkit-linear-gradient(rgb(39, 174, 191), #fff); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgb(39, 174, 191), #fff); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgb(39, 174, 191), #fff); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgb(39, 174, 191), #fff); /* Standard syntax */
     padding-bottom: 10em;
 }
 /* End content */
@@ -300,7 +305,7 @@ h3.w3ls-hdg {
     color: #391313cc;
     display: inline-block;
     padding: 0.5em 1em .4em;
-    background: #ADB7C2CC;
+    background: rgba(179, 210, 239, 0.87);
     margin-bottom: 1.2em;
     position: relative;
 }
@@ -877,7 +882,7 @@ input[type="checkbox"],input[type="radio"]{
 }
 .login-top input[type="text"]:focus, .login-top input[type="password"]:focus, .login-top input[type="email"]:focus{
 	border-bottom-style: solid;
-} 
+}
 .login-top input[type="text"]:hover, .login-top input[type="password"]:hover, .login-top input[type="email"]:hover{
     border-bottom-color:rgba(132, 141, 215, 0.52);
 }
@@ -1080,11 +1085,11 @@ img.img-responsive {
     margin-bottom: 2em;
 }
 .contact-grid {
-    background: #65ade1; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left top, #65ade1, #ffffffe6); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, #65ade1, #ffffffe6); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, #65ade1, #ffffffe6); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#65ade1, #ffffffe6); /* Standard syntax (must be last) */
+    background: #e4e4ca; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(rgb(39, 174, 191), #fff); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgb(39, 174, 191), #fff); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgb(39, 174, 191), #fff); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgb(39, 174, 191), #fff); /* Standard syntax */
     padding: 3em;
 }
 .contact-grid h4 {
@@ -1177,7 +1182,7 @@ img.img-responsive {
     padding: .6em 3.5em;
     font-size: 1em;
     -webkit-appearance: none;
-    background: #126fcbe6;
+    background: #2998ff;
     border: solid 1px #fff; 
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -1190,8 +1195,8 @@ img.img-responsive {
     font-family: 'Roboto', sans-serif;
 }
 .contact input[type="submit"]:hover {
-    color: #ff7629;
-    background: #fff;
+    color: #555;
+    background: rgb(234, 144, 144);
 }
 
 /*-- //input-effect --*/
@@ -1214,18 +1219,18 @@ img.img-responsive {
     font-family: 'Roboto', sans-serif;
 }
 .contact input[type="reset"]:hover {
-    color: #ff7629;
-    background: #fff;
+    color: #555;
+    background: rgba(79, 224, 133, 0.83);
 }
 .contact ::-webkit-input-placeholder{
 	color:#999 !important;
-}  
+}
 /*-- //contact --*/
-/*-- address --*/   
+/*-- address --*/
 .address-row {
     margin-top: 3em;
     padding: 0;
-} 
+}
 .contact-w3lsright h6 span {
     color: #00bcd4;
 }

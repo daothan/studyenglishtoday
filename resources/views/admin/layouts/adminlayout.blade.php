@@ -34,6 +34,7 @@
     <!-- SCRIPT -->
     <!-- jQuery -->
     <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/vendor/jquery/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('public/editor/jquery/jquery.validate.min.js')}}"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{URL::asset('public/editor/admin_interface/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
