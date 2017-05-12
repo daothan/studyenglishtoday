@@ -38,7 +38,7 @@
             		</div><hr>
             	</div>
             </div>
-            <a href="{{URL::previous()}}"><button class="btn btn-basis">Back</button></a>
+            <a href="{{route('user.home')}}"><button class="btn btn-basis">Back Home</button></a>
         </div>
     </div>
     @endforeach

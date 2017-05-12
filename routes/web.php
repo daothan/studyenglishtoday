@@ -35,6 +35,9 @@
 		Route::get('edit/{id}', ['as'=>'user.edit', 'uses'=>'UserController@getEdit']);
 		Route::post('edit/{id}', ['as'=>'user.edit', 'uses'=>'UserController@postEdit']);
 
+		Route::get('animate',['as'=>'user.animate', 'uses'=>'HomeController@animate']);
+		Route::get('about',['as'=>'user.about', 'uses'=>'HomeController@about']);
+
 	});
 
 /*Member pages

@@ -1040,7 +1040,7 @@ a.pa_italic:focus {
 }
 .html {width: 90%; background-color: #4CAF50;}
 .css {width: 80%; background-color: #2196F3;}
-.js {width: 65%; background-color: #f44336;}
+/* .js {width: 65%; background-color: #f44336;} */
 .php {width: 60%; background-color: #808080;}
 
 /*-- //skill-bars --*/ 
@@ -1243,21 +1243,22 @@ img.img-responsive {
 }
 .address-row p a:hover{
     color: #999;
-} 
+}
 .address-right {
     padding-right: 0;
-}  
+}
 .grid_3 .address-right p {
     margin-bottom: 0;
 }
 /*-- //address --*/
-/*-- footer --*/ 
+/*-- footer --*/
 .footer{
 	background: #333;
 	padding:4em 0;
 	text-align: center;
-}    
-/*-- social-icons --*/  
+    margin-top: 45px;
+}
+/*-- social-icons --*/
 .w3social-icons ul {
     margin: 0;
     padding: 0;
@@ -1274,7 +1275,7 @@ img.img-responsive {
 	-moz-border-radius: 50%; 
     border-radius: 50%;
 	-webkit-box-shadow: 0px 0px 1px 1px #fff;
-	-moz-box-shadow: 0px 0px 1px 1px #fff; 
+	-moz-box-shadow: 0px 0px 1px 1px #fff;
     box-shadow: 0px 0px 1px 1px #fff;
     width: 35px;
     height: 35px;
@@ -1452,41 +1453,41 @@ h3.w3ls-hdg {
 .w3-agileits.gallery-w3 .agileinfo-w3lsrow2 {
     margin-top: 1em;
 }
-.contact-w3lsright h6 { 
+.contact-w3lsright h6 {
 	font-size: 1.6em;
-    margin-top: 2em; 
+    margin-top: 2em;
 }
 .address-row {
-    margin-top: 2em; 
+    margin-top: 2em;
 }
-.footer { 
-    padding: 3em 0; 
+.footer {
+    padding: 3em 0;
 }
-.support { 
-    width: 75%; 
-} 
+.support {
+    width: 75%;
+}
 .column-w3img2 img {
     height: inherit;
-} 
+}
 }
 @media(max-width:800px){
 .carousel-caption {
     padding: 17em 0 12em !important;
-} 
+}
 h4.w3t-text {
     font-size: 1.6em;
-    margin-bottom: .3em; 
+    margin-bottom: .3em;
 }
 .w3llist-grids.w3llist-grids-btm2 {
     margin-top: 2em;
 }
-.modal-content { 
-    width: 75%; 
+.modal-content {
+    width: 75%;
 }
 }
 @media(max-width:767px){
 .navbar-inverse {
-    background-color: rgb(255, 255, 255); 
+    background-color: rgb(255, 255, 255);
     margin: 1.5em 4em 0;
 }
 button.navbar-toggle {
@@ -1873,3 +1874,5 @@ ul.w3list-style {
 }
 
 /*-- //responsive-design --*/
+
+

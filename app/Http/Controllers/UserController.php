@@ -132,22 +132,19 @@ class UserController extends Controller
             'password_confirmation.required' => 'Please enter password.'
         ];
         $validator          = Validator::make($request->all(), $rules, $messages);
-
-        $user               = User::find($id);
-        $user->email    = $request->input('email');
-        $user->password = bcrypt($request->input('password'));
-        $user->level    = $user->level;
-
         if($validator->fails()){
             return response()->json([
-                'error'   =>true,
-                'message' =>$validator->errors()
+                'edit_user'   =>true,
+                'messages'    =>$validator->errors()
                 ],200);
         }else{
+            $user               = User::find($id);
+            $user->email    = $request->input('email');
+            $user->password = bcrypt($request->input('password'));
+            $user->level    = $user->level;
+
             if($user->save()){
-                if(Auth::user()->level >1){
-                    $request->session()->flash('alert-success','Update account informations successfully.');
-                }
+                $request->session()->flash('alert-success', 'Update account successfully.');
             }else{
                 print_r("Has an error when edit account !");die;
             }

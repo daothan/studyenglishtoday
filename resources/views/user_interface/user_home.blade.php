@@ -1,8 +1,9 @@
 @extends('user_interface.layouts.user_header')
 
 @section('content')
-	<!-- CONTENT -->
 
+
+	<!-- CONTENT -->
 	<!-- Newest Post -->
 	<div class="codes agileitsbg2">
 		<div class="container">
