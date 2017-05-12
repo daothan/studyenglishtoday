@@ -13,9 +13,6 @@
 
 
 
-/*Home page*/
-	Route::get('home',['as'=>'home', 'uses'=>'HomeController@index']);
-
 /*User interface*/
 	Route::group(['prefix'=>'user'], function(){
 		Route::get('home',['as'=>'user.home', 'uses'=>'HomeController@user_interface']);
@@ -36,19 +33,7 @@
 		Route::post('edit/{id}', ['as'=>'user.edit', 'uses'=>'UserController@postEdit']);
 	});
 
-/*Member pages
-	Route::group(['prefix'=>'member', 'middleware'=>'checkmember'],function(){
-		/*Home page
-		Route::get('home', ['as'=>'member.home', 'uses'=>'HomeController@home_member']);
 
-		Show information User
-		Route::get('information/{id}', ['as'=>'account.information', 'uses'=>'UserController@information']);
-
-		Edit Users
-		Route::get('edit/{id}',['as'=>'account.getEdit', 'uses'=>'UserController@getEdit']);
-		Route::post('edit/{id}',['as'=>'account.postEdit', 'uses'=>'UserController@postEdit']);
-
-	});
 
 /*Admin Page*/
 

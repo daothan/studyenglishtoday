@@ -246,7 +246,7 @@
 
                         <!-- Dashboard -->
                         <li>
-                            <a href="{{route('user.home')}}"><i class="fa fa-dashboard fa-fw"></i> Home</a>
+                            <a href="{{route('user.home')}}"><i class="fa fa-dashboard fa-fw"></i> Home User</a>
                         </li>
 
                         <li>

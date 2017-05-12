@@ -30,7 +30,7 @@ class UserController extends Controller
 
         if($user_current_level == 2){
             if($user_current_id == $user_id || $user_level >1){
-                return view('user_interface.user_information', compact('user'));
+                return view('user_interface.user_account.user_information', compact('user'));
             }else{
                 echo "<script type='text/javascript'>
                 alert('Sorry ! You can not see this account information !');
@@ -87,7 +87,7 @@ class UserController extends Controller
         /*Member can not edit other member or admin, super admin*/
         if($user_current_login == 2){
             if($user_current_id == $user_id){ /*Member just have permission editing themself*/
-                return view('user_interface.user_edit', compact('user'));
+                return view('user_interface.user_account.user_edit', compact('user'));
 
             }else{
                 echo "<script type='text/javascript'>

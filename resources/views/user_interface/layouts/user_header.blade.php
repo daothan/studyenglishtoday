@@ -78,11 +78,15 @@
 			                            <a href="#">
 			                                <div>
 			                                    <strong>Daothan</strong>
-			                                    <span class="pull-right text-muted">
-			                                        <em>Today</em>
-			                                    </span>
 			                                </div>
 			                                <div>Than just comment </div>
+			                            </a>
+			                        </li>
+			                        <li class="divider"></li>
+			                        <li>
+			                            <a class="text-center" href="" onclick="Window.location.reload(true);">
+			                                <strong>See All Comments</strong>
+			                                <i class="fa fa-angle-right"></i>
 			                            </a>
 			                        </li>
 			                    </ul>
@@ -182,9 +186,13 @@
 								<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> {{isset(Auth::user()->name) ? Auth::user()->name : ''}} <span class="caret"></span></a>
 
 								<ul class="dropdown-menu">
-												<!-- Show level user -->
+									<!-- Show admin page if admin -->
+									<li class="{{(isset(Auth::user()->level) && (Auth::user()->level < 2)) ? '' : 'hidden'}}">
+										<a href="{{route('admin.dashboard')}}"><i class="glyphicon glyphicon-th-list"> AdminPage</i></a>
+									</li>
+									<!-- Show level user -->
 			                        <li>
-			                            <a href="{{isset(Auth::user()->name) ? route('user.information', Auth::user()->id) : route('home')}}"><i class="fa fa-user fa-fw"></i>
+			                            <a href="{{isset(Auth::user()->name) ? route('user.information', Auth::user()->id) : route('user.home')}}"><i class="fa fa-user fa-fw"></i>
 			                                <i>
 			                                    {{(isset(Auth::user()->level) && (Auth::user()->level=='0')) ? 'Super Admin' :''}}
 			                                    {{(isset(Auth::user()->level) && (Auth::user()->level=='1')) ? 'Admin':''}}
