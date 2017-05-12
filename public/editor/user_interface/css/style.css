@@ -137,22 +137,25 @@ body a:focus {
 	background:#fff;
 }
 .codes.agileitsbg2 {
-    background: #E74C3C;
-	background-image:-webkit-linear-gradient(#ff9d2f, #ff6126);
-	background-image:-moz-linear-gradient(#ff9d2f, #ff6126);
-	background-image:-ms-linear-gradient(#ff9d2f, #ff6126);
-	background-image: linear-gradient(#ff9d2f, #ff6126);
-    clip-path: polygon( 0 0, 100% 0, 100% 100%, 0 calc(100% - 5vw) );
+    background: #4c70c5; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left top, #4c70c5, #fff); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #4c70c5, #fff); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #4c70c5, #fff); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #4c70c5, #fff); /* Standard syntax */
+    padding-bottom: 10em;
+}
     padding-bottom: 10em;
 }
 .codes.agileitsbg3 {
     background: #3498DB;
-	clip-path: polygon( 0 0, 100% 0, 100% 100%, 0 calc(100% - 5vw) );
     padding-bottom: 10em;
 }
 .codes.agileitsbg4 {
-    background: #2ECC71 ;
-	clip-path: polygon( 0 0, 100% 0, 100% 100%, 0 calc(100% - 5vw) );
+    background: #1ad4c6; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left top, #1ad4c6, #fff); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #1ad4c6, #fff); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #1ad4c6, #fff); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #1ad4c6, #fff); /* Standard syntax */
     padding-bottom: 10em;
 }
 .grid_3.grid_4 {
@@ -1434,6 +1437,11 @@ p.footer-class a{
     padding: 4em 0; 
 }
 .codes.agileitsbg3 ,.codes.agileitsbg2,.codes.agileitsbg4{ 
+    background: #404245; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left top, #404245, #f2f1f0); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #404245, #f2f1f0); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #404245, #f2f1f0); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #404245, #f2f1f0); /* Standard syntax */
     padding-bottom: 8em;
 }
 h3.w3ls-hdg {

@@ -30,11 +30,4 @@ class HomeController extends Controller
         return view('user_interface.user_home');
     }
 
-    public function animate(){
-        return view('animate_page.animate');
-    }
-    public function about(){
-        return view('animate_page.about');
-    }
-
 }
