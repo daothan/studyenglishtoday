@@ -11,7 +11,7 @@
 |
 */
 
-
+Route::get('/', 'HomeController@index');
 
 /*User interface*/
 	Route::group(['prefix'=>'user'], function(){
@@ -31,6 +31,10 @@
 		/*Edit information user*/
 		Route::get('edit/{id}', ['as'=>'user.edit', 'uses'=>'UserController@getEdit']);
 		Route::post('edit/{id}', ['as'=>'user.edit', 'uses'=>'UserController@postEdit']);
+
+		/*Login by Social*/
+		Route::get('facebook/redirect',['as'=>'user.facebook','uses'=>'SocialController@facebookredirect']);
+		Route::get('facebook/callback', ['as'=>'user.facebook.callback', 'uses'=>'SocialController@facebookcallback']);
 	});
 
 

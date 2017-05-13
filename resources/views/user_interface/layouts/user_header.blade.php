@@ -269,7 +269,7 @@
 						<p>or Connect with.... </p>
 							<div class="social-icons">
 								<ul>
-									<li><a href="#">Facebook </a></li>
+									<li><a href="{{route('user.facebook')}}">Facebook </a></li>
 									<li><a href="#">Google </a></li>
 								</ul>
 								<div class="clearfix"> </div>
