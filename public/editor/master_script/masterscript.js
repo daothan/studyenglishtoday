@@ -122,3 +122,12 @@ $(document).ready( function() {
 		    readURL(this);
 		});
 	});
+
+/*Scroll X demenstion table*/
+$(document).ready(function(){
+	$('#usertable').DataTable({
+		"scrollX": true,
+		"scrollY": true
+
+	})
+});

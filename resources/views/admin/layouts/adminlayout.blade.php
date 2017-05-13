@@ -319,15 +319,6 @@
             @yield('content')
         </div>
 
-        <!-- Show Order Tables -->
-        <script>
-            $(document).ready(function() {
-                $('#dataTables').DataTable({
-                    responsive: true
-                });
-            });
-        </script>
-
     </div>
 </body>
 </html>

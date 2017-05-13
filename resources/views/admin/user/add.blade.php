@@ -98,13 +98,13 @@
 						<!-- Submit -->
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-basis">Register</button>
+                                <button type="submit" class="btn btn-primary">Register</button>
 								<button type="reset" class="btn btn-warning">Reset</button>
                             </div>
                         </div>
 					</form><hr>
-					<a href="{{route('admin.user.show')}}"><button class="btn btn-basis pull-right">Show Users</button></a>
-                    <a href="{{URL::previous()}}"><button class="btn btn-basis">Back</button></a>
+					<a href="{{route('admin.user.show')}}"><button class="btn btn-info pull-right">Show Users</button></a>
+                    <a href="{{URL::previous()}}"><button class="btn btn-info">Back</button></a>
                 </div>
             </div>
 		</div>

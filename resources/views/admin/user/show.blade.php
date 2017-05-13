@@ -17,12 +17,14 @@
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
-                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables">
+                    <table width="100%" class="table table-striped table-bordered table-hover" id="usertable">
                         <thead>
                             <tr>
 								<th class="text-center">No</th>
 								<th class="text-center">Username</th>
+								<th class="text-center">Social_Name</th>
 								<th class="text-center">Email</th>
+								<th class="text-center">Social_Email</th>
 								<th class="text-center">Level</th>
 								<th class="text-center">Date</th>
 								<th class="text-center">Detail</th>
@@ -37,7 +39,9 @@
 							<tr>
 								<th class="text-center">{{$no}}</th>
 								<td class="text-center">{{$data->name}}</td>
+								<td class="text-center">{{$data->name_social}}</td>
 								<td class="text-center">{{$data->email}}</td>
+								<td class="text-center">{{$data->email_social}}</td>
 
 								<!-- Show level -->
 								<td class="text-center" value= "{{$data["level"]}}">
@@ -80,7 +84,7 @@
 							@endforeach
                         </tbody>
                     </table>
-        			<a href="{{route('admin.user.getAdd')}}"><button class="btn btn-basis pull-left">Add User</button></a>
+        			<a href="{{route('admin.user.getAdd')}}"><button class="btn btn-success pull-left">Add User</button></a>
                 <!-- /.panel-body -->
             </div>
             <!-- /.panel -->

@@ -19,88 +19,89 @@ class SocialController extends Controller
 	/*Login by Facebook*/
     public function facebookredirect()
     {
-        return Socialite::driver('facebook')->setScopes(['email'])->redirect();
+        return Socialite::driver('facebook')->redirect();
     }
 
     public function facebookcallback(Request $request)
     {
 
         $user_social = Socialite::driver('facebook')->stateless()->user();
+        $email_social = $user_social->email.'.'.$user_social->id;
 
-        if($user_social->email){
-        	$facebook = Social::where('provider_user_id', $user_social->id)->where('provider','facebook')->first();
-	        if($facebook){ /*If has user the login*/
-	        	$user_facebook = User::where('email', $user_social->email)->first();
-	        	Auth::login($user_facebook);
-	        	return redirect()->route('user.home');
-	        }else{/*If user is not exists in table socials, then create*/
+    	$facebook = Social::where('provider_user_id', $user_social->id)->where('provider','facebook')->first();
 
-	        	$new_user_facebook = new Social;
-				$new_user_facebook->provider_user_id = $user_social->id;
-				$new_user_facebook->provider         ='facebook';
-				$new_user_facebook->user_id=$user_social->id;
-				$new_user_facebook->save();
-
-				$user = User::where('email', $user_social->email)->first();
-				if(!$user){/*If user is not exists in table users, then create*/
-					$user = User::create([
-						'name'  => $user_social->name,
-						'email' => $user_social->email,
-						'level' => 2
-						]);
-				}
-
-				Auth::login($user);
-
-				return redirect()->route('user.home');
-       		}
-        }else{
-        	$request->session()->flash('alert-danger', 'You cannot login by this Facebook account !');
+        if($facebook){ /*If has user the login*/
+        	$user_facebook = User::where('email_social', $email_social)->first();
+        	Auth::login($user_facebook);
         	return redirect()->route('user.home');
-        }
+        }else{/*If user is not exists in table socials, then create*/
+
+        	$new_user_facebook = new Social;
+			$new_user_facebook->provider_user_id = $user_social->id;
+			$new_user_facebook->provider         = 'facebook';
+
+			$user = User::where('email_social', $email_social)->first();
+			if(!$user){/*If user is not exists in table users, then create*/
+				$user = User::create([
+					'name'  => $user_social->id,
+					'name_social'  => $user_social->name,
+					'email' => $user_social->id,
+					'email_social' => $email_social,
+					'level' => 2
+					]);
+			}
+			/*create socials*/
+			$new_user_facebook->user_id = $user->id;
+			$new_user_facebook->save();
+
+
+			Auth::login($user);
+
+			return redirect()->route('user.home');
+   		}
     }
 
     /*Login by Google*/
     public function googleredirect()
     {
-        return Socialite::driver('google')->setScopes(['email'])->redirect();
+        return Socialite::driver('google')->redirect();
     }
 
     public function googlecallback(Request $request)
     {
 
         $user_social = Socialite::driver('google')->stateless()->user();
-dd($user_social);die;
-        if($user_social->email){
-        	$google = Social::where('provider_user_id', $user_social->id)->where('provider','google')->first();
-	        if($google){ /*If has user the login*/
-	        	$user_google = User::where('email', $user_social->email)->first();
-	        	Auth::login($user_google);
-	        	return redirect()->route('user.home');
-	        }else{/*If user is not exists in table socials, then create*/
+        $email_social = $user_social->email.'.'.$user_social->id;
 
-	        	$new_user_google = new Social;
-				$new_user_google->provider_user_id = $user_social->id;
-				$new_user_google->provider         ='google';
-				$new_user_google->user_id=$user_social->id;
-				$new_user_google->save();
+    	$google = Social::where('provider_user_id', $user_social->id)->where('provider','google')->first();
 
-				$user = User::where('email', $user_social->email)->first();
-				if(!$user){/*If user is not exists in table users, then create*/
-					$user = User::create([
-						'name'  => $user_social->name,
-						'email' => $user_social->email,
-						'level' => 2
-						]);
-				}
-
-				Auth::login($user);
-
-				return redirect()->route('user.home');
-       		}
-        }else{
-        	$request->session()->flash('alert-danger', 'You cannot login by this Google account !');
+        if($google){ /*If has user the login*/
+        	$user_google = User::where('email_social', $email_social)->first();
+        	Auth::login($user_google);
         	return redirect()->route('user.home');
-        }
-    }
+
+        }else{/*If user is not exists in table socials, then create*/
+
+			$new_user_google = new Social;
+			$new_user_google->provider_user_id = $user_social->id;
+			$new_user_google->provider         = 'google';
+
+			$user = User::where('email_social', $email_social)->first();
+			if(!$user){/*If user is not exists in table users, then create*/
+				$user = User::create([
+					'name'  => $user_social->id,
+					'name_social'  => $user_social->name,
+					'email' => $user_social->id,
+					'email_social' => $email_social,
+					'level' => 2
+					]);
+			}
+			/*create socials*/
+			$new_user_google->user_id          = $user->id;
+			$new_user_google->save();
+
+			Auth::login($user);
+			return redirect()->route('user.home');
+   		}
+ 	}
 }

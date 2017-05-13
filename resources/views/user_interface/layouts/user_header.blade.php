@@ -182,7 +182,7 @@
 
 			                <!-- USER -->
 			                <li class="{{isset(Auth::user()->name) ? 'dropdown' : 'hidden'}}">
-								<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> {{isset(Auth::user()->name) ? Auth::user()->name : ''}} <span class="caret"></span></a>
+								<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> {{(isset(Auth::user()->name) && !is_numeric(Auth::user()->name)) ? Auth::user()->name : ''}} {{ isset(Auth::user()->name_social) ? Auth::user()->name_social : ''}} <span class="caret"></span></a>
 
 								<ul class="dropdown-menu">
 									<!-- Show admin page if admin -->
@@ -201,8 +201,8 @@
 			                        </li>
 			                        <!-- End show level user -->
 
-			                        <!-- Edit User logging -->
-			                        <li>
+			                        <!-- Edit User logging (except user logging through social)-->
+			                        <li class="{{isset(Auth::user()->name_social) ? 'hidden' : ''}}">
 			                            <a href="{{(isset(Auth::user()->name)) ? route('user.edit',Auth::user()->id) : null}}"><i class="fa fa-gear fa-fw"></i> Settings</a>
 			                        </li>
 			                        <!-- End edit User logging -->

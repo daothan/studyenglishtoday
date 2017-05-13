@@ -36,13 +36,13 @@ return [
     ],
 
     'facebook' => [
-        'client_id'     => env('FACEBOOK_CLIENT_ID'),
-        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
-        'redirect'      => env('CALLBACK_URL')
+        'client_id'     => '121376408433469',
+        'client_secret' => 'd10028024fc5ce0c16ad27038582af32',
+        'redirect'      => 'http://localhost/laravel1/user/facebook/callback',
     ],
     'google' => [
-        'client_id'     => env('GOOGLE_CLIENT_ID'),
-        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect'      => env('CALLBACK_URL')
+        'client_id'     => '761218673365-e45nusp7mk3jo9ujvdcu4opj6b21aopt.apps.googleusercontent.com',
+        'client_secret' => '91fR57ImkHanNtrqG7kDzpfi',
+        'redirect'      => 'http://localhost/laravel1/user/google/callback',
     ],
 ];
