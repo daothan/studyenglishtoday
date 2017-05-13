@@ -17,24 +17,28 @@ Route::get('/', 'HomeController@index');
 	Route::group(['prefix'=>'user'], function(){
 		Route::get('home',['as'=>'user.home', 'uses'=>'HomeController@user_interface']);
 
-		/*Login*/
-		Route::post('home/login',['as'=>'user.login', 'uses'=>'LoginController@postLogin_modal']);
-		/*Logout*/
-		Route::get('home/logout', ['as'=>'user.logout', 'uses'=>'LoginController@logout']);
 
-		/*Register*/
+	/*Register*/
 		Route::post('home/register',['as'=>'user.register', 'uses'=>'RegisterController@postRegister_modal']);
 
-		/*Show information user*/
+	/*Login*/
+		Route::post('home/login',['as'=>'user.login', 'uses'=>'LoginController@postLogin_modal']);
+
+	/*Login by FaceBook*/
+		Route::get('facebook/redirect',['as'=>'user.facebook','uses'=>'SocialController@facebookredirect']);
+		Route::get('facebook/callback', ['as'=>'user.facebook.callback', 'uses'=>'SocialController@facebookcallback']);
+	/*Login by Google*/
+		Route::get('google/redirect',['as'=>'user.google','uses'=>'SocialController@googleredirect']);
+		Route::get('google/callback', ['as'=>'user.google.callback', 'uses'=>'SocialController@googlecallback']);
+	/*Show information user*/
 		Route::get('information/{id}', ['as'=>'user.information', 'uses'=>'UserController@information']);
 
-		/*Edit information user*/
+	/*Edit information user*/
 		Route::get('edit/{id}', ['as'=>'user.edit', 'uses'=>'UserController@getEdit']);
 		Route::post('edit/{id}', ['as'=>'user.edit', 'uses'=>'UserController@postEdit']);
 
-		/*Login by Social*/
-		Route::get('facebook/redirect',['as'=>'user.facebook','uses'=>'SocialController@facebookredirect']);
-		Route::get('facebook/callback', ['as'=>'user.facebook.callback', 'uses'=>'SocialController@facebookcallback']);
+	/*Logout*/
+		Route::get('home/logout', ['as'=>'user.logout', 'uses'=>'LoginController@logout']);
 	});
 
 

@@ -225,7 +225,7 @@
 			    <div>
 			    	@foreach (['danger', 'warning', 'success', 'info'] as $msg)
 				        @if(Session::has('alert-' . $msg))
-							<h2 class="flash text-center text-success"><i>{{Session::get('alert-success')}}</i></h2>
+							<h2 class="flash text-center text-{{ $msg }}"><i>{{Session::get('alert-'. $msg)}}</i></h2>
 				        @endif
 				    @endforeach
 			    </div>
@@ -266,11 +266,11 @@
 						<input type="reset" value="Reset">
 
 						<!-- Other connect -->
-						<p>or Connect with.... </p>
+						<p><i><strong>or Connect with.... </strong></i></p>
 							<div class="social-icons">
 								<ul>
 									<li><a href="{{route('user.facebook')}}">Facebook </a></li>
-									<li><a href="#">Google </a></li>
+									<li><a href="{{route('user.google')}}">Google </a></li>
 								</ul>
 								<div class="clearfix"> </div>
 							</div>

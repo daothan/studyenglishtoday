@@ -36,9 +36,13 @@ return [
     ],
 
     'facebook' => [
-        'client_id'     => '1313336225442611',
-        'client_secret' => '3d0d8c5f21046aeb44238af93a9cbae6',
-        'redirect'      => 'http://localhost/laravel1/user/facebook/callback'
+        'client_id'     => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+        'redirect'      => env('CALLBACK_URL')
     ],
-
+    'google' => [
+        'client_id'     => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect'      => env('CALLBACK_URL')
+    ],
 ];
