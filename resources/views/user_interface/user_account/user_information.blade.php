@@ -25,7 +25,7 @@
 
             		<div class="{{(is_numeric($data->name)) ? 'form-group col-centered' : 'hidden'}}">
             			<label>Account Type: </label>
-						<strong class="text-info"><i>{{convert_vi_to_en($provider->provider)}} account</i></strong><hr>
+						<strong class="text-info"><i>{{isset($provider->provider) ? convert_vi_to_en($provider->provider) : ''}} account</i></strong><hr>
             		</div>
 
                 	<div class="form-group col-centered">
@@ -41,7 +41,7 @@
 
                     <div class="form-group col-centered">
             			<label>Email: </label>
-						<strong class="text-info"><i>{{trim($data->email_social,'.'.$data->email)}}</i></strong><hr>
+						<strong class="text-info"><i>{{isset($provider->provider) ? trim($data->email_social,'.'.$data->email) : $data->email}}</i></strong><hr>
             		</div>
 
                     <div class="{{(!is_numeric($data->name)) ? 'form-group col-centered' : 'hidden'}}">
