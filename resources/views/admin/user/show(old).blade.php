@@ -1,5 +1,4 @@
 @extends('admin.layouts.admin_header')
-    <link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/admin_interface/css/admin_style.css')}}">
 
 @section('content')
 
@@ -16,22 +15,9 @@
                 <div class="panel-heading">
                     <h4 align="center">DataTables show users</h4>
                 </div>
-
-            <!-- Show button Show, Add, Edit, Delete -->
-                <div class="panel-heading">
-
-                    <a class="modal_link" data-toggle="modal" data-target="#view"><button class="btn btn-basis">VIEW <span class="glyphicon glyphicon-list-alt"></span></button></a>
-
-                    <a class="modal_link" data-toggle="modal" data-target="#add"><button class="btn btn-basis">ADD <span class="glyphicon glyphicon-plus"></span></button></a>
-
-                    <a class="modal_link" data-toggle="modal" data-target="#edit"><button class="btn btn-basis">EDIT <span class="glyphicon glyphicon-edit"></span></button></a>
-
-                    <a class="modal_link" data-toggle="modal" data-target="#delete"><button class="btn btn-basis">DELETE <span class="glyphicon glyphicon-trash"></span></button></a>
-                </div>
-
                 <!-- /.panel-heading -->
                 <div class="panel-body table-responsive">
-                    <table width="100%" cellspacing="0" class="table table-bordered table-striped table-hover usertable" id="usertable">
+                    <table width="100%" class="table table-bordered table-striped table-hover" id="usertable">
                         <thead>
                             <tr>
 								<th class="text-center">No</th>
@@ -65,7 +51,7 @@
 								</td>
 
 								<!-- Show date -->
-								<td class="text-center inside">
+								<td class="text-center" style="height: 25px;">
 									<?php
 										echo Carbon\Carbon::createFromTimestamp(strtotime($data["created_at"]))->diffForHumans();
 									?>
@@ -100,13 +86,10 @@
                     </table>
         			<a href="{{route('admin.user.getAdd')}}"><button class="btn btn-success pull-left">Add User</button></a>
                 <!-- /.panel-body -->
-                </div>
-            <!-- /.panel -->
             </div>
-        <!-- /.col-lg-12 -->
+            <!-- /.panel -->
         </div>
+        <!-- /.col-lg-12 -->
+    </div>
 
-        @extends('admin.user.information')
-        @extends('admin.user.edit')
-        @extends('admin.user.add')
 @stop

@@ -1,15 +1,25 @@
-<!-- Modal Edit -->
+@extends('admin.layouts.admin_header')
 
-<div class="modal fade" id="edit" role="dialog">
-        <div class="modal-dialog modal-lg">
-            @foreach($user as $data)
-            <div class="content modal_background">
-                <div class="modal-title">
-                    <h3 class="modal_header" align="center">{{$data->name}}</h3>
-                	<button id="reset" type="reset" class="close" data-dismiss="modal" style="color:black;"><span class="glyphicon glyphicon-remove"></span></button>
+@section('content')
+
+	<div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header" align="center">{{Auth::user()->name}}</h1>
+        </div>
+        <p class="edit_success"></p>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 align="center">Edit User</h4>
                 </div>
-                <div class="modal-body">
-                    <form action="" method="POST" class="form-horizontal">
+                <!-- /.panel-heading -->
+				<div class="panel-body">
+					@foreach($user as $data)
+					<form action="" method="POST" class="form-horizontal">
 
 						<!-- Token -->
 						{{csrf_field()}}
@@ -65,8 +75,49 @@
                             </div>
                         </div>
 					</form>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
+					@endforeach
+				</div>
+			</div>
+			<a href="{{route('admin.dashboard')}}"><button class="btn btn-basis">Back Home</button></a>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+	$(function(){
+	$('#edit_user').click(function(e){
+		e.preventDefault();
+		$.ajaxSetup({
+		    headers: {
+		        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    }
+		});
+		$.ajax({
+			'url' : '/laravel1/admin/user/edit/'+$('#user_id').val(),
+			'data': {
+				'email' : $('#email_edit').val(),
+				'password':$('#password_edit').val(),
+				'password_confirmation':$('#password_confirmation_edit').val()
+			},
+			'type' :'POST',
+			success: function(data){
+			console.log(data);
+			if(data.edit_user == true){
+				$('.error').hide();
+				if(data.messages.email != undefined){
+					$('.errorEmail').show().text(data.messages.email[0]);
+				}
+				if(data.messages.password != undefined){
+					$('.errorPassword').show().text(data.messages.password[0]);
+				}
+				if(data.messages.password_confirmation != undefined){
+					$('.errorPassword_confirmation').show().text(data.messages.password_confirmation[0]);
+				}
+			}else{
+				window.location.href='/laravel1/admin/user/information/'+$('#user_id').val();
+			}
+			}
+		});
+	})
+});
+</script>
+@stop

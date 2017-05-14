@@ -55,7 +55,7 @@
     <script type="text/javascript" src="{{URL::asset('public/editor/ckfinder/ckfinder.js')}}" ></script>
 
     <!-- Admin Layouts JavaScript -->
-    <script type="text/javascript" src="{{URL::asset('public/editor/master_script/masterscript.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_script.js')}}"></script>
 
 </head>
 <body>

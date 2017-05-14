@@ -1,5 +1,4 @@
 
-
 /*Alert action delete*/
 function confirmdelete(msg){
 	if (window.confirm(msg)){
@@ -124,10 +123,9 @@ $(document).ready( function() {
 	});
 
 /*Scroll X demenstion table*/
-$(document).ready(function(){
-	$('#usertable').DataTable({
-		"scrollX": true,
-		"scrollY": true
-
-	})
-});
+	$(document).ready(function(){
+        $('#usertable').DataTable({
+        "scrollX": true,
+        "scrollY": true
+        });
+    })

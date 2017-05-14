@@ -1,0 +1,49 @@
+
+
+/* CSS ADMIN PAGES */
+
+.modal_background {
+    background: #fff;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 10px
+}
+.usertable{
+    font-size: small;
+}
+.modal_link{
+    margin: 0 10px 0 10px;
+}
+.modal_header {
+    border-radius: 10px 10px 0 0;
+    font-size: 1.8em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #f8f0f0;
+    padding: 0.5em 1em 0.4em;
+    background: rgba(85, 87, 98, 0.9);
+    margin: 0em;
+    position: relative;
+}
+.close {
+    padding: 15px !important;
+    color: #fff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: none;
+    -webkit-transition:.5s all;
+    -moz-transition:.5s all;
+    -o-transition:.5s all;
+    -ms-transition:.5s all;
+    transition:.5s all;
+}
+.modal-header .close {
+    margin-top: 11px;
+    opacity: 1;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
