@@ -533,10 +533,10 @@ ul.w3list-style li {
 }
 
 .success {background-color: #4CAF50E6;} /* Green */
-.success:hover {background-color: #46a049e6;}
+.success:hover {background-color: #18B01E80;}
 
-.info {background-color: #369AEACC;} /* Blue */
-.info:hover {background: #0b6fc0cc;}
+.info {background-color: #62298ACC;} /* Purple */
+.info:hover {background: #530689CC;}
 
 .primary {background-color: #5057efcc;} /* Blue */
 .primary:hover {background: #1931eae6;}
@@ -550,71 +550,51 @@ ul.w3list-style li {
 .default {background-color: #e7e7e7; color: black;} /* Gray */
 .default:hover {background: #ddd;}
 
-/* End Button */
-/*-- animated buttons --*/
-button.button.btn.btn-primary.w3effct1,.button.btn.btn-primary.w3effct1:hover {
-    width: 120px;
-    padding: 1em 1em;
-	opacity:1;
-}
-.button span {
-	display: inline-block;
-	position: relative;
-	-webkit-transition: 0.5s;
-	-moz-transition: 0.5s;
-	transition: 0.5s;
-}
-.button span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: -6px;
-    right: -20px;
-    transition: 0.5s;
-    font-size: 1.5em;
-}
-.button:hover span {
-	padding-right: 25px;
-} 
-.button:hover span:after {
-	opacity: 1;
-	right: 0;
-}
-/*-- animated buttons effect2 --*/
-.button.w3effct2 {
-    position: relative;
-    background-color: #9C27B0;
+/* Button Hover Animate */
+.button {
     border: none;
-    -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
-    text-decoration: none;
-    overflow: hidden;
-    font-size: 1em;
+    text-align: center;
+    font-size: 1.8em;
+    width: 180px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #391313cc;
+    display: inline-block;
+    padding: 9px 5px 5px 5px;
+    background: rgba(179, 210, 239, 0.87);
+    font-family: 'Yanone Kaffeesatz', sans-serif;
 }
-.button.w3effct2:after {
-    content: "";
-    background: rgba(255, 255, 255, 0.78);
-    display: block;
-    position: absolute;
-    padding-top: 300%;
-    padding-left: 350%;
-    margin-left: -20px!important;
-    margin-top: -120%;
-    opacity: 0;
-    transition: all 0.8s
-} 
-.button.w3effct2:active:after {
-    padding: 0;
-    margin: 0;
-    opacity: 1;
-    transition: 0s;
-} 
-button.button.btn.btn-primary.w3effct1.w3effct1b {
-    background: white;
-    border: 1px solid #2196f3;
-    color: #2196F3;
-} 
-/*-- //animated buttons --*/
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+/* End Button */
+
+
 /*-- checkbox and radio buttons --*/
 .radio label, .checkbox label { 
     color: #999;

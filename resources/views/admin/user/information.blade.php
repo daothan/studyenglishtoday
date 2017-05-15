@@ -32,7 +32,7 @@
                         <label>Created: </label>
                         <strong class="text-info"><i>{{Carbon\Carbon::createFromTimestamp(strtotime($data->created_at))->diffForHumans() }} ({{ $data->created_at}})</i></strong>
                     @endforeach
-                    </div><hr>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn_admin danger" data-dismiss="modal">Close</button>

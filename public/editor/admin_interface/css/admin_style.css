@@ -8,7 +8,7 @@
 }
 .usertable{
     white-space: nowrap !important;
-    font-size: 14px;
+    font-size: 15px;
     display:table-cell !important;
     overflow: hidden !important;
 }
@@ -23,7 +23,7 @@ td, th {
     margin-bottom: 50px;
 }
 .detail_user{
-    margin: 100px;
+    margin: 10px 100px 0px 100px;
 }
 .modal_header {
     font-size: 1.8em;
@@ -98,3 +98,31 @@ td, th {
 .default:hover {background: #ddd;}
 
 /* End Button */
+
+.filter{
+    margin-top: 7px !important;
+}
+.filterable {
+    margin-top: 15px;
+}
+.filterable .panel-heading .pull-right {
+    margin-top: -20px;
+}
+.filterable .filters input[disabled] {
+    background-color: transparent;
+    border: none;
+    cursor: auto;
+    box-shadow: none;
+    height: auto;
+    width: auto;
+    display: none;
+}
+.filterable .filters input[disabled]::-webkit-input-placeholder {
+    color: #333;
+}
+.filterable .filters input[disabled]::-moz-placeholder {
+    color: #333;
+}
+.filterable .filters input[disabled]:-ms-input-placeholder {
+    color: #333;
+}

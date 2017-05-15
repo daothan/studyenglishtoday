@@ -12,44 +12,30 @@
     <title>HOME</title>
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/admin_interface/vendor/bootstrap/css/bootstrap.min.css')}}">
-    <!-- MetisMenu CSS -->
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/admin_interface/vendor/metisMenu/metisMenu.min.css')}}">
-    <!-- Morris Charts CSS -->
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/admin_interface/vendor/morrisjs/morris.css')}}">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/admin_interface/dist/css/sb-admin-2.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/bootstrap/css/bootstrap.min.css')}}">
     <!-- Custom Fonts -->
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/admin_interface/vendor/font-awesome/css/font-awesome.min.css')}}">
-    <!-- DataTables CSS-->
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/admin_interface/vendor/datatables/css/jquery.dataTables.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/admin_interface/vendor/datatables/css/select.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/admin_interface/css/font-awesome/font-awesome.min.css')}}">
+    <!-- MetisMenu CSS -->
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/admin_interface/css/metisMenu/metisMenu.min.css')}}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/admin_interface/css/sb-admin/sb-admin-2.css')}}">
     <!-- Upload Css -->
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/css/uploads.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/admin_interface/css/uploads.css')}}">
     <!-- Style -->
     <link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/admin_interface/css/admin_style.css')}}">
 
 
-
-    <!-- SCRIPT -->
+<!-- SCRIPT -->
     <!-- jQuery -->
     <script type="text/javascript" src="{{URL::asset('public/editor/jquery/jquery-3.2.1.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('public/editor/jquery/jquery.validate.min.js')}}"></script>
-
     <!-- Bootstrap Core JavaScript -->
-    <script src="{{URL::asset('public/editor/admin_interface/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-
+    <script src="{{URL::asset('public/editor/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!-- Validate -->
+    <script type="text/javascript" src="{{URL::asset('public/editor/jquery/jquery.validate.min.js')}}"></script>
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="{{URL::asset('public/editor/admin_interface/vendor/metisMenu/metisMenu.min.js')}}"></script>
-
-    <!-- DataTables JavaScript -->
-    <script src="{{URL::asset('public/editor/admin_interface/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{URL::asset('public/editor/admin_interface/vendor/datatables/js/dataTables.select.min.js')}}"></script>
-    <script src="{{URL::asset('public/editor/admin_interface/vendor/datatables-plugins/dataTables.bootstrap.min.js')}}"></script>
-    <script src="{{URL::asset('public/editor/admin_interface/vendor/datatables-responsive/dataTables.responsive.js')}}"></script>
-
+    <script src="{{URL::asset('public/editor/admin_interface/js/metisMenu/metisMenu.min.js')}}"></script>
     <!-- Custom Theme JavaScript -->
-    <script src="{{URL::asset('public/editor/admin_interface/dist/js/sb-admin-2.js')}}"></script>
+    <script src="{{URL::asset('public/editor/admin_interface/js/sb-admin-2.js')}}"></script>
 
     <!-- Ckeditor and Ckfinder -->
     <script type="text/javascript" src="{{URL::asset('public/editor/ckeditor/ckeditor.js')}}" ></script>
@@ -57,6 +43,7 @@
 
     <!-- Admin Layouts JavaScript -->
     <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_script.js')}}"></script>
+    <!-- /jQuery -->
 
 </head>
 <body>
@@ -319,5 +306,8 @@
         </div>
 
     </div>
+
+
+
 </body>
 </html>

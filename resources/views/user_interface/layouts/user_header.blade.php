@@ -633,7 +633,7 @@
 			<div class="support">
 				<form action="#" method="post">
 					<input type="email" placeholder="Enter email...." required="">
-					<input type="submit" value="SUBMIT" class="botton">
+					<button type="submit" class="btn_user success">SUBMIT</button>
 				</form>
 			</div>
 		</div>
