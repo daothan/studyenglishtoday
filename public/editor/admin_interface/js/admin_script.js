@@ -121,11 +121,16 @@ $(document).ready( function() {
 		    readURL(this);
 		});
 	});
+$(document).ready(function()){
+	$("#user_table_id").DataTable({
+		"scrollX":true
+	});
+});
 
-/*Scroll X demenstion table*/
-	$(document).ready(function(){
-        $('#usertable').DataTable({
-        "scrollX": true,
-        "scrollY": true
-        });
-    })
+$(document).ready(function(){
+	$('#usertable').DataTable({
+		"scrollX": true,
+		"scrollY": true
+
+	})
+});

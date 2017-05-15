@@ -5,8 +5,7 @@
     <div class="modal-dialog modal-lg">
         <div class="content modal_background">
             <div class="panel-title">
-                <h3 class="modal_header" align="center">Login Form</h3>
-                <button id="reset" type="reset" class="close" data-dismiss="modal" style="color:black;"><span class="glyphicon glyphicon-remove"></span></button>
+                <h3 class="modal_title" align="center">Login Form</h3>
             </div>
             <div class="modal-body">
                <form action="{{route('admin.user.postAdd')}}" method="POST" class="form-horizontal" role="form">
@@ -88,11 +87,14 @@
                     <!-- Submit -->
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
-                            <button type="submit" class="btn btn-primary">Register</button>
-                            <button type="reset" class="btn btn-warning">Reset</button>
+                            <button type="submit" class="btn_admin primary">Register</button>
+                            <button type="reset" class="btn_admin warning">Reset</button>
                         </div>
                     </div>
                 </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn_admin danger" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

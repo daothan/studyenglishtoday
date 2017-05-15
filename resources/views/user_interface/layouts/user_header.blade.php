@@ -29,7 +29,7 @@
 	<!-- navbar -->
 	<div  class="navbar-wrapper">
 		<div class="container">
-			<nav class="navbar navbar-inverse navbar-static-top navbar-fixed-top">
+			<nav class="navbar-inverse navbar-static-top navbar-fixed-top">
 				<div class="container">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -45,11 +45,11 @@
 						<ul class="nav navbar-nav">
 							<li class="{{((url()->current())!=route('user.home')) ? 'hidden' : ''}}"><a href="#top">Home</a></li>
 							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}">Home</a></li>
+							<li><a href="#about" class="scroll">About</a></li>
 							<li><a href="#newest_post" class="scroll">Newest Posts</a></li>
 							<li><a href="#listening_cate" class="scroll">Listening</a></li>
 							<li><a href="#reading_cate" class="scroll">Reading</a></li>
 							<li><a href="#writing_cate" class="scroll">Writing</a></li>
-							<li><a href="#about" class="scroll">About</a></li>
 							<li><a data-toggle="modal" data-target="#contact">Contact</a></li>
 						</ul>
 
@@ -335,7 +335,7 @@
 					<div class="carousel-caption">
 						<h2>English</h2>
 						<p>English is an important language nowadays. We have asked DPUIC students their opinions about English and why they are studying English</p>
-						<button class="btn btn-primary" href="#english" data-toggle="modal">English</button>
+						<button class="btn_user success" href="#english" data-toggle="modal">English</button>
 					</div>
 				</div>
 			</div>
@@ -344,7 +344,7 @@
 					<div class="carousel-caption">
 						<h3>Studying English</h3>
 						<p>Here are some helpful guidelines as to how to study that should help you vary your approach and improve more quickly.</p>
-						<button class="btn btn-success" href="#study_english" data-toggle="modal">Study English</button>
+						<button class="btn_user info" href="#study_english" data-toggle="modal">Study English</button>
 					</div>
 				</div>
 			</div>
@@ -353,7 +353,7 @@
 					<div class="carousel-caption">
 						<h3>Listening</h3>
 						<p>Listening is key to all effective communication. Without the ability to listen effectively, messages are easily misunderstood. </p>
-						<button class="btn btn-info" href="#listening" data-toggle="modal">Listening</button>
+						<button class="btn_user primary" href="#listening" data-toggle="modal">Listening</button>
 					</div>
 				</div>
 			</div>
@@ -362,7 +362,7 @@
 					<div class="carousel-caption">
 						<h3>Reading</h3>
 						<p>Students need good reading skills not just in English but in all classes. Here are some ways you can help them develop those skills..</p>
-						<button class="btn btn-warning" href="#reading" data-toggle="modal">Reading</button>
+						<button class="btn_user warning" href="#reading" data-toggle="modal">Reading</button>
 					</div>
 				</div>
 			</div>
@@ -371,7 +371,7 @@
 					<div class="carousel-caption">
 						<h3>Writing</h3>
 						<p>How to improve your writing skills.</p>
-						<button class="btn btn-danger" href="#writing" data-toggle="modal">Writing</button>
+						<button class="btn_user danger" href="#writing" data-toggle="modal">Writing</button>
 					</div>
 				</div>
 			</div> 

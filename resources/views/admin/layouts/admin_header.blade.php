@@ -17,23 +17,23 @@
     <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/admin_interface/vendor/metisMenu/metisMenu.min.css')}}">
     <!-- Morris Charts CSS -->
     <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/admin_interface/vendor/morrisjs/morris.css')}}">
-    <!-- DataTables CSS -->
-    <link href="{{URL::asset('public/editor/admin_interface/vendor/datatables-plugins/dataTables.bootstrap.css')}}" rel="stylesheet">
-    <!-- DataTables Responsive CSS -->
-    <link href="{{URL::asset('public/editor/admin_interface/vendor/datatables-responsive/dataTables.responsive.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/admin_interface/dist/css/sb-admin-2.css')}}">
     <!-- Custom Fonts -->
     <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/admin_interface/vendor/font-awesome/css/font-awesome.min.css')}}">
-
+    <!-- DataTables CSS-->
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/admin_interface/vendor/datatables/css/jquery.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/admin_interface/vendor/datatables/css/select.dataTables.min.css')}}">
     <!-- Upload Css -->
     <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/css/uploads.css')}}">
+    <!-- Style -->
+    <link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/admin_interface/css/admin_style.css')}}">
 
 
 
     <!-- SCRIPT -->
     <!-- jQuery -->
-    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/vendor/jquery/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('public/editor/jquery/jquery-3.2.1.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('public/editor/jquery/jquery.validate.min.js')}}"></script>
 
     <!-- Bootstrap Core JavaScript -->
@@ -44,6 +44,7 @@
 
     <!-- DataTables JavaScript -->
     <script src="{{URL::asset('public/editor/admin_interface/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{URL::asset('public/editor/admin_interface/vendor/datatables/js/dataTables.select.min.js')}}"></script>
     <script src="{{URL::asset('public/editor/admin_interface/vendor/datatables-plugins/dataTables.bootstrap.min.js')}}"></script>
     <script src="{{URL::asset('public/editor/admin_interface/vendor/datatables-responsive/dataTables.responsive.js')}}"></script>
 
@@ -237,11 +238,9 @@
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
+                                    <i class="glyphicon glyphicon-search"></i>
                                 </button>
-                            </span>
                             </div>
                         </li>
                         <!-- END SEARCH -->

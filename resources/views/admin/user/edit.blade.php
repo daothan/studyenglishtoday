@@ -1,12 +1,11 @@
 <!-- Modal Edit -->
 
-<div class="modal fade" id="edit" role="dialog">
+<div id="edit" class="modal fade"  role="dialog">
         <div class="modal-dialog modal-lg">
-            @foreach($user as $data)
+
             <div class="content modal_background">
                 <div class="modal-title">
                     <h3 class="modal_header" align="center">{{$data->name}}</h3>
-                	<button id="reset" type="reset" class="close" data-dismiss="modal" style="color:black;"><span class="glyphicon glyphicon-remove"></span></button>
                 </div>
                 <div class="modal-body">
                     <form action="" method="POST" class="form-horizontal">
@@ -60,13 +59,15 @@
 						<!-- Submit -->
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button id="edit_user" type="submit" class="btn btn-info">Update</button>
-								<button type="reset" class="btn btn-warning">Reset</button>
+                                <button id="edit_user" type="submit" class="btn_admin success">Update</button>
+								<button type="reset" class="btn_admin warning">Reset</button>
                             </div>
                         </div>
 					</form>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn_admin danger" data-dismiss="modal">Close</button>
+                </div>
             </div>
-            @endforeach
         </div>
     </div>

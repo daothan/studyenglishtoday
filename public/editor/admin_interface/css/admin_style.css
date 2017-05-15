@@ -4,28 +4,41 @@
 
 .modal_background {
     background: #fff;
-    border-radius: 10px 10px 0 0;
     margin-bottom: 10px
 }
 .usertable{
-    font-size: small;
+    white-space: nowrap !important;
+    font-size: 14px;
+    display:table-cell !important;
+    overflow: hidden !important;
+}
+td, th {
+    white-space: nowrap !important;
+    overflow: hidden !important;
 }
 .modal_link{
-    margin: 0 10px 0 10px;
+    margin: 0 5px 0 5px;
+}
+.modal-title{
+    margin-bottom: 50px;
+}
+.detail_user{
+    margin: 100px;
 }
 .modal_header {
-    border-radius: 10px 10px 0 0;
     font-size: 1.8em;
     font-weight: 700;
     letter-spacing: 1px;
     color: #f8f0f0;
     padding: 0.5em 1em 0.4em;
-    background: rgba(85, 87, 98, 0.9);
+    background: rgba(27, 120, 224, 0.77);
     margin: 0em;
     position: relative;
 }
+
+
+/* The Close Button */
 .close {
-    padding: 15px !important;
     color: #fff;
     float: right;
     font-size: 28px;
@@ -47,3 +60,41 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+/* Button */
+.btn_admin {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 10px 0 10px 0;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    margin: 5px 5px 5px 5px;
+}
+.btn_admin:hover{
+    box-shadow: 7px 4px 8px 0px rgba(0,0,0,0.24), 2px 17px 56px 0px rgba(0,0,0,0.19);
+}
+
+.success {background-color: #4CAF50;} /* Green */
+.success:hover {background-color: #46a049;}
+
+.info {background-color: #2196F3;} /* Blue */
+.info:hover {background: #0b7dda;}
+
+.warning {background-color: #ff9800;} /* Orange */
+.warning:hover {background: #e68a00;}
+
+.danger {background-color: #f44336;} /* Red */
+.danger:hover {background: #da190b;}
+
+.default {background-color: #e7e7e7; color: black;} /* Gray */
+.default:hover {background: #ddd;}
+
+/* End Button */
