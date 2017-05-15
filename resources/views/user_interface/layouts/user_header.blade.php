@@ -3,7 +3,7 @@
 <head>
 	<title>Studying English</title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Fantastic Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 		SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
@@ -12,7 +12,7 @@
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 	<!-- Add Css -->
-	<link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/user_interface/css/bootstrap.css')}}">
+	<link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/bootstrap/css/bootstrap.css')}}">
 	<link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/user_interface/css/style.css')}}">
 	<link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/user_interface/css/carousel.css')}}">
 	<link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/user_interface/css/font-awesome.css')}}">
@@ -29,7 +29,7 @@
 	<!-- navbar -->
 	<div  class="navbar-wrapper">
 		<div class="container">
-			<nav class="navbar-inverse navbar-static-top navbar-fixed-top">
+			<nav class="navbar-static-top navbar-fixed-top navbar-inverse menu">
 				<div class="container">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">

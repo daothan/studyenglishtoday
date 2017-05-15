@@ -4,6 +4,14 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
+
+
+/* For mobile phones: */
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+
 body{
 	margin:0;
 	font-family: 'Roboto', sans-serif;
@@ -100,16 +108,8 @@ label.error{
     min-height:inherit;
 }
 .navbar-inverse {
-    background-color: rgba(70, 67, 67, 0.81);
+    background-color: rgba(70, 67, 67, 0.81) !important;
     border: none;
-}
-.top-w3lnav .navbar-nav > li > a {
-    padding: 1.7em 1.2em;
-	-webkit-transition:.5s all;
-	-moz-transition:.5s all;
-	-o-transition:.5s all;
-	-ms-transition:.5s all;
-	transition:.5s all;
 }
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
     color: #fff;
@@ -132,6 +132,14 @@ label.error{
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
     color: #fff;
     background-color: #353686cc;
+}
+.top-w3lnav .navbar-nav > li > a {
+    padding: 1.7em 1.2em;
+    -webkit-transition:.5s all;
+    -moz-transition:.5s all;
+    -o-transition:.5s all;
+    -ms-transition:.5s all;
+    transition:.5s all;
 }
 .carousel-caption h2,.carousel-caption h3{
     font-size: 3em;
@@ -1326,18 +1334,18 @@ h4.w3t-text {
 }
 @media(max-width:767px){
 .navbar-inverse {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255); 
     margin: 1.5em 4em 0;
 }
 button.navbar-toggle {
-    margin: 1.2em 0;
+    margin: 5px;
 }
 .navbar-inverse .navbar-toggle {
-    border-color: #f44336;
-	background-color: #f44336;
+    border-color: rgba(74, 191, 35, 0.52);
+    background-color: rgba(74, 191, 35, 0.52);
 }
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
-    background-color: #f44336;
+    background-color: rgba(45, 69, 195, 0.71);
 }
 .top-w3lnav .navbar-nav > li > a {
     padding: 1em;
@@ -1484,7 +1492,7 @@ div#myModal {
     font-size: 1.5em; 
 }
 button.navbar-toggle {
-    margin: 0.8em 0;
+    margin: 0.2em 0.2em;
 }
 .w3ls-logo .navbar-brand {
     padding: 0.4em 0 .25em;

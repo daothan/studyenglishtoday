@@ -39,8 +39,8 @@
                     <table width="100%" cellspacing="5" class="table table-striped table-bordered table-hover usertable" id="usertable">
 						<thead>
                             <tr class="filters">
-                                <th>Choose</th>
-                                <th>No</th>
+                                <th class="center"><input type="checkbox" name="check_all" id="check_all"></th>
+                                <th class="text-center">No</th>
                                 <th class="text-center"><input type="text" class="form-control" placeholder="Username" disabled>Username</th>
                                 <th class="text-center"><input type="text" class="form-control" placeholder="Social_Name" disabled>Social_Name</th>
                                 <th class="text-center"><input type="text" class="form-control" placeholder="Email" disabled>Email</th>

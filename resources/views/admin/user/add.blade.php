@@ -5,7 +5,7 @@
     <div class="modal-dialog modal-lg">
         <div class="content modal_background">
             <div class="panel-title">
-                <h3 class="modal_title" align="center">Login Form</h3>
+                <h3 class="modal_header" align="center">Add User</h3>
             </div>
             <div class="modal-body">
                <form action="{{route('admin.user.postAdd')}}" method="POST" class="form-horizontal" role="form">
