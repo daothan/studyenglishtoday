@@ -128,6 +128,7 @@ $(document).ready( function() {
 	/*If one of checkboxes will be checked then show them*/
     $('.delete_user').change(function () {
         if (this.checked){
+        	$('#notice_user').fadeOut('normal');
         	$('#view_button').fadeIn(1000);
         	$('#edit_button').fadeIn(1000);
         	$('#delete_button').fadeIn(1000);
@@ -136,6 +137,7 @@ $(document).ready( function() {
         	$('#view_button').fadeOut(1000);
         	$('#edit_button').fadeOut(1000);
         	$('#delete_button').fadeOut(1000);
+        	$('#notice_user').fadeIn(1000);
         }
     });
 

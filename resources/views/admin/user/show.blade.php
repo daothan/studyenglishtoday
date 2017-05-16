@@ -13,6 +13,7 @@
 		                    <a class="modal_link" data-toggle="modal" data-target="#add">
 		                    	<button class="btn_admin success"><span class="glyphicon glyphicon-plus"></span> ADD</button>
 		                    </a>
+
 		                    <a class="modal_link" data-toggle="modal" data-target="#view">
 		                    	<button class="btn_admin info" style="display: none;" id="view_button"><span class="glyphicon glyphicon-list-alt"></span> VIEW</button>
 		                    </a>
@@ -23,6 +24,7 @@
 		                    	<button class="btn_admin danger" style="display: none;" id="delete_button"><span class="glyphicon glyphicon-trash"></span> DELETE</button>
 		                    </a>
 		                </div>
+		                <i id="notice_user" style="display:inline;color:red;"><b><h4>Please choose user before action</h4></b></i>
 
                         <!-- /.panel-heading -->
                         <div class="panel-body table-responsive">
