@@ -19,8 +19,10 @@ class UserController extends Controller
     }
 
     /*Show information User*/
-    public function information($id){
-        $user = User::where('id',$id) -> get();
+    public function information(Request $request,$id){
+        $id_user=$request->input('user_id');
+        $user = User::where('id',$id_user) -> first();
+        print_r($id_user);print_r($user);die;
         foreach($user as $user_login){
             $user_id = $user_login["id"];
             $user_level = $user_login["level"];

@@ -24,14 +24,14 @@
 		                    	<button class="btn_admin danger" style="display: none;" id="delete_button"><span class="glyphicon glyphicon-trash"></span> DELETE</button>
 		                    </a>
 		                </div>
-		                <i id="notice_user" style="display:inline;color:red;"><b><h4>Please choose user before action</h4></b></i>
+		                <i id="notice_user" style="display:inline;color:red;"><b><h4 align="center">Please choose user before action</h4></b></i>
 
                         <!-- /.panel-heading -->
                         <div class="panel-body table-responsive">
-                            <table width="100%" class="table table-striped table-bordered table-hover usertable" id="dataTables-example">
+                            <table width="100%" class="table table-striped table-bordered table-hover usertable" id="dataTables">
                                 <thead>
                                     <tr>
-                                        <th class="text-center">Choose</th>
+                                        <th class="text-center"><input type="checkbox" id="check_all" class="check_all hidden"></th>
                                         <th class="text-center">No</th>
 										<th class="text-center">Username</th>
 										<th class="text-center">Social_Name</th>
@@ -46,7 +46,7 @@
 									@foreach($user as $data)
 									<?php $no++; ?>
 									<tr id="{{$data->id}}">
-										<td><input type="checkbox" id="checkbox" class="delete_user" value="{{$data->id}}" /></td>
+										<td class="text-center"><input type="checkbox" id="checkbox" class="delete_user" value="{{$data->id}}"></td>
 										<th class="text-center">{{$no}}</th>
 										<td class="text-center">{{is_numeric($data->name) ? '---' : $data->name}}</td>
 										<td class="text-center">{{is_numeric($data->name) ? $data->name_social : '---'}}</td>

@@ -142,13 +142,14 @@ $(document).ready( function() {
     });
 
     var id=[];
+    /*Delete*/
 	$('#delete_button').click(function(){
 		$(':checkbox:checked').each(function(i){
 			id[i] = $(this).val();
 		});
 		if(id.length === 0) //If you have not checked yet
 		{
-			$('#errorcheck').modal('show');
+			alert("You didnt choose any category");
 		}
 		else{
 			$('#delete_user').modal('show');
@@ -176,3 +177,20 @@ $(document).ready( function() {
 			})
 		}
 	})
+	/*Show User informations*/
+	$('#view_button').click(function(){
+		$(':checkbox:checked').each(function(i){
+			id[i] = $(this).val();
+		});
+		if(id.length ===0){
+			alert("You didnt choose any category");
+		}else{
+			$.ajax({
+					url: '/laravel1/admin/user/information/'+id
+			});
+			$('#view_user').modal('show');
+			$('.user_id').val(id);
+			console.log(id);
+		}
+	})
+

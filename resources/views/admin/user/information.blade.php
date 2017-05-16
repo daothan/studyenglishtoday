@@ -1,8 +1,11 @@
 
 <!-- Show information User -->
 
-<div id="view" class="modal fade" role="dialog">
+    <div id="view_user" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
+        <form action="" method="POST">
+            <input type="text" class="user_id" name="user_id" value="">
+        </form>
             @foreach($user as $data)
             <div class="content modal_background">
                 <div class="modal-title">
