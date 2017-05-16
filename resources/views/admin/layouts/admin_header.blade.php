@@ -23,6 +23,8 @@
     <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/admin_interface/css/uploads.css')}}">
     <!-- Style -->
     <link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/admin_interface/css/admin_style.css')}}">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/editor/admin_interface/css/datatables/dataTables.bootstrap.css')}}">
 
 
 <!-- SCRIPT -->
@@ -307,7 +309,18 @@
 
     </div>
 
-
+   <!-- DataTables JavaScript -->
+    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/datatables/jquery.dataTables.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/datatables/dataTables.bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/datatables/dataTables.responsive.js')}}"></script>
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: false
+        });
+    });
+    </script>
 
 </body>
 </html>

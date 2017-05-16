@@ -519,44 +519,6 @@ ul.w3list-style li {
 /*-- //list --*/ 
 
 /*-- //pages --*/
-/* Button */
-.btn_user {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    width: 100px;
-    height: 40px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 13px;
-    margin: 10px 0 10px 0;
-    cursor: pointer;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    margin: 5px 5px 5px 5px;
-}
-.btn_user:hover{
-    box-shadow: 7px 4px 8px 0px rgba(0,0,0,0.24), 2px 17px 56px 0px rgba(0,0,0,0.19);
-}
-
-.success {background-color: #4CAF50E6;} /* Green */
-.success:hover {background-color: #18B01E80;}
-
-.info {background-color: #62298ACC;} /* Purple */
-.info:hover {background: #530689CC;}
-
-.primary {background-color: #5057efcc;} /* Blue */
-.primary:hover {background: #1931eae6;}
-
-.warning {background-color: #ff9800cc;} /* Orange */
-.warning:hover {background: #de8603b3;}
-
-.danger {background-color: #f44336b3;} /* Red */
-.danger:hover {background: #da190bcc;}
-
-.default {background-color: #e7e7e7; color: black;} /* Gray */
-.default:hover {background: #ddd;}
 
 /* Button Hover Animate */
 .button {
@@ -600,6 +562,45 @@ ul.w3list-style li {
   opacity: 1;
   right: 0;
 }
+
+/* Button */
+.btn_user {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 10px 0 10px 0;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    margin: 5px 5px 5px 5px;
+}
+.btn_user:hover{
+    box-shadow: 7px 4px 8px 0px rgba(0,0,0,0.24), 2px 17px 56px 0px rgba(0,0,0,0.19);
+}
+
+.success {background-color: #4CAF50E6;} /* Green */
+.success:hover {background-color: #18B01E80;}
+
+.info {background-color: #62298ACC;} /* Purple */
+.info:hover {background: #530689CC;}
+
+.primary {background-color: #5057efcc;} /* Blue */
+.primary:hover {background: #1931eae6;}
+
+.warning {background-color: #ff9800cc;} /* Orange */
+.warning:hover {background: #de8603b3;}
+
+.danger {background-color: #f44336b3;} /* Red */
+.danger:hover {background: #da190bcc;}
+
+.default {background-color: #e7e7e7; color: black;} /* Gray */
+.default:hover {background: #ddd;}
 /* End Button */
 
 
