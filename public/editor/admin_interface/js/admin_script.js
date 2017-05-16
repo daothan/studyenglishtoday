@@ -122,63 +122,55 @@ $(document).ready( function() {
 		});
 	});
 
-/*Table */
-    $(document).ready(function(){
-   		$("#usertable #check_all").click(function () {
-            if ($("#usertable #check_all").is(':checked')) {
-                $("#usertable input[type=checkbox]").each(function () {
-                    $(this).prop("checked", true);
-                });
+/*Delete User Tables*/
+	/*Firsty, all of button view, edit, delete are hidden*/
 
-            } else {
-                $("#usertable input[type=checkbox]").each(function () {
-                    $(this).prop("checked", false);
-                });
-            }
-        });
-        $("[data-toggle=tooltip]").tooltip();
+	/*If one of checkboxes will be checked then show them*/
+    $('.delete_user').change(function () {
+        if (this.checked){
+        	$('#view_button').fadeIn(1000);
+        	$('#edit_button').fadeIn(1000);
+        	$('#delete_button').fadeIn(1000);
+        }
+        else {
+        	$('#view_button').fadeOut(1000);
+        	$('#edit_button').fadeOut(1000);
+        	$('#delete_button').fadeOut(1000);
+        }
     });
 
-    /*Filter Tables*/
-	$(document).ready(function(){
-	    $('.filterable .btn-filter').click(function(){
-	        var $panel = $(this).parents('.filterable'),
-	        $filters = $panel.find('.filters input'),
-	        $tbody = $panel.find('.table tbody');
-	        if ($filters.prop('disabled') === true) {
-	            $filters.prop('disabled', false);
-	            $filters.first().focus();
-	        } else {
-	            $filters.val('').prop('disabled', true);
-	            $tbody.find('.no-result').remove();
-	            $tbody.find('tr').show();
-	        }
-	    });
+    var id=[];
+	$('#delete_button').click(function(){
+		$(':checkbox:checked').each(function(i){
+			id[i] = $(this).val();
+		});
+		if(id.length === 0) //If you have not checked yet
+		{
+			$('#errorcheck').modal('show');
+		}
+		else{
+			$('#delete_user').modal('show');
+			console.log(id);
+			$('#delete_user').find('#confirmdelete').on('click',function(){
+				$.ajaxSetup({
+				    headers: {
+				        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				    }
+				});
+				$.ajax({
+					url: '/laravel1/admin/user/delete/'+id,
+					method: "POST",
+					data:{id:id},
 
-	    $('.filterable .filters input').keyup(function(e){
-	        /* Ignore tab key */
-	        var code = e.keyCode || e.which;
-	        if (code == '9') return;
-	        /* Useful DOM data and selectors */
-	        var $input = $(this),
-	        inputContent = $input.val().toLowerCase(),
-	        $panel = $input.parents('.filterable'),
-	        column = $panel.find('.filters th').index($input.parents('th')),
-	        $table = $panel.find('.table'),
-	        $rows = $table.find('tbody tr');
-	        /* Dirtiest filter function ever ;) */
-	        var $filteredRows = $rows.filter(function(){
-	            var value = $(this).find('td').eq(column).text().toLowerCase();
-	            return value.indexOf(inputContent) === -1;
-	        });
-	        /* Clean previous no-result if exist */
-	        $table.find('tbody .no-result').remove();
-	        /* Show all rows, hide filtered ones (never do that outside of a demo ! xD) */
-	        $rows.show();
-	        $filteredRows.hide();
-	        /* Prepend no-result row if all rows are filtered */
-	        if ($filteredRows.length === $rows.length) {
-	            $table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="'+ $table.find('.filters th').length +'">No result found</td></tr>'));
-	        }
-	    });
-	});
+					success:function(){
+						$('#delete_user').modal('hide');
+						for(var i=0; i<id.length; i++)
+				    	{
+				    		$('tr#'+id[i]+'').css('background-color', '#ccc');
+				        	$('tr#'+id[i]+'').fadeOut(1000);
+				        }
+					}
+				})
+			})
+		}
+	})

@@ -43,8 +43,7 @@
     <script type="text/javascript" src="{{URL::asset('public/editor/ckeditor/ckeditor.js')}}" ></script>
     <script type="text/javascript" src="{{URL::asset('public/editor/ckfinder/ckfinder.js')}}" ></script>
 
-    <!-- Admin Layouts JavaScript -->
-    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_script.js')}}"></script>
+
     <!-- /jQuery -->
 
 </head>
@@ -309,7 +308,9 @@
 
     </div>
 
-   <!-- DataTables JavaScript -->
+    <!-- Admin Layouts JavaScript -->
+    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_script.js')}}"></script>
+    <!-- DataTables JavaScript -->
     <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/datatables/jquery.dataTables.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/datatables/dataTables.bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/datatables/dataTables.responsive.js')}}"></script>
