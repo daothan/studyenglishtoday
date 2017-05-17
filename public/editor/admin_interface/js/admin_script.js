@@ -149,47 +149,54 @@ $(document).ready( function() {
 	function view_user(id){
 	    $('#view_user').each(function(i){
 			id[i] = $(this).val();
-		});
-		$.ajax({
-		    url: '/laravel1/admin/user/information',
-		    type:"GET",
-		    data: {"id":id},
-		    success: function(result){
-		    	if(result.errorview ==true){ /*If has error view*/
-		    		$('#view_error').modal('show');
-		    	}else{
-		    		$('#viewModal').modal('show');
-			        console.log(result.user_social.provider);
-			        console.log(result.info);
-			      	/*Check Name*/
-			      	if(!isNaN(result.info.name)){
-			      		var name=result.info.name_social;
-			      	}else{
-			      		var name=result.info.name;
-			      	}
-			      	/*Check Level*/
-	                if(result.info.level == '0'){
-	                	var level = "Super Admin";
-	                }else if(result.info.level == '1'){
-	                	var level = "Admin";
-	                }else{
-	                	var level = "Member";
-	                }
-	                /*Check Email*/
-	                if((result.info.email)!=null && isNaN(result.info.email)){
-	                	var email = result.info.email;
-	                }else{
-	                	var email=result.info.email_social;
-	                	email = email.substring(0, email.indexOf('.') + '.'.length);
-	                }
-	                /*End check*/
-			        $("#view_titlename").text(name);
-			        $("#view_username").text(name);
-			        $("#view_userlevel").text(level);
-			        $("#view_useremail").text(email);
-			        $("#view_userprovider").text(result.user_social.provider);
-		    	}
-		    }
+
+			$.ajax({
+			    url: '/laravel1/admin/user/information',
+			    type:"GET",
+			    data: {"id":id},
+			    success: function(result){
+			    	if(result.errorview ==true){ /*If has error view*/
+			    		$('#view_error').modal('show');
+			    	}else{
+			    		$('#viewModal').modal('show');
+				        console.log(result.user_social.provider);
+				        console.log(result.info);
+				      	/*Check Name*/
+				      	if(!isNaN(result.info.name)){
+				      		var name=result.info.name_social;
+				      	}else{
+				      		var name=result.info.name;
+				      	}
+				      	/*Check Level*/
+		                if(result.info.level == '0'){
+		                	var level = "Super Admin";
+		                }else if(result.info.level == '1'){
+		                	var level = "Admin";
+		                }else{
+		                	var level = "Member";
+		                }
+		                /*Check Email*/
+		                if((result.info.email)!=null && isNaN(result.info.email)){
+		                	var email = result.info.email;
+		                }else{
+		                	var email=result.info.email_social;
+		                	email = email.substring(0, email.indexOf('.') + '.'.length);
+		                }
+		                /*Provider*/
+		                if(result.user_social.provider!=null){
+		                	provider=result.user_social.provider;
+		                }else{
+		                	provider="None";
+		                }
+		                /*End check*/
+				        $("#view_titlename").text(name);
+				        $("#view_username").text(name);
+				        $("#view_userlevel").text(level);
+				        $("#view_useremail").text(email);
+				        $("#view_userprovider").text(provider);
+			    	}
+			    }
+			})
 		})
 	}
 

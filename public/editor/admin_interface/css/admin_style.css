@@ -17,7 +17,7 @@ div.dataTables_paginate ul.pagination {
 }
 .table>tbody>tr>td,
 .table>tbody>tr>th{
-    padding: 0px 5px 0px 5px !important;
+    padding: 3px 10px 3px 10px  !important;
     line-height: 2 !important;
     vertical-align: inherit !important;
     white-space: nowrap !important;

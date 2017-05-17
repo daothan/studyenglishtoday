@@ -56,7 +56,7 @@
                     <strong class="text-danger"><h3 align="center"><i>You can not see details of this account !</i></h3></strong>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn_admin info" data-dismiss="modal" aria-hidden="true">Close</button>
+                    <button class="btn_admin warning" data-dismiss="modal" aria-hidden="true">Close</button>
                 </div>
             </div>
         </div>
