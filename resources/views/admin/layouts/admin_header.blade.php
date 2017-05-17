@@ -191,7 +191,7 @@
 
                         <!-- Edit User logging -->
                         <li>
-                            <a href="{{route('admin.user.getEdit',Auth::user()->id)}}"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                            <a href="{{route('admin.user.edit',Auth::user()->id)}}"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <!-- End edit User logging -->
 

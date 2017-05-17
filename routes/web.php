@@ -105,8 +105,8 @@ Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 		Route::post('add',['as'=>'admin.user.postAdd', 'uses'=>'UserController@postAdd']);
 
 		/*Edit Users*/
-		Route::get('edit/{id}',['as'=>'admin.user.getEdit', 'uses'=>'UserController@getEdit']);
-		Route::post('edit/{id}',['as'=>'admin.user.postEdit', 'uses'=>'UserController@postEdit']);
+		Route::get('edit',['as'=>'admin.user.edit', 'uses'=>'UserController@view_edit']);
+		Route::post('edit',['as'=>'admin.user.edit', 'uses'=>'UserController@edit']);
 
 		/*Delete User*/
 		Route::post('delete/{id}', ['as'=>'admin.user.delete','uses'=>'UserController@delete']);

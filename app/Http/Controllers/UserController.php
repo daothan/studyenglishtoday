@@ -26,6 +26,20 @@ class UserController extends Controller
     	return view('admin.user.add');
     }
 
+    public function postAdd(UserRequest $request){
+        $data = new User;
+        $user = User::find($id);
+        $data->name     = $request->input('name');
+        $data->email    = $request->input('email');
+        $data->password = bcrypt($request->input('password'));
+        $data->level    = $request->input('level');
+
+        if($data->save()){
+    	   return redirect()->route('admin.user.show')->with(['flash_level'=>'success', 'flash_message'=>'Add user successfully.']);
+        }
+    }
+
+
     /*Show information User*/
 
     public function information(Request $request)
@@ -64,5 +78,76 @@ class UserController extends Controller
 		    }
 	    }
     }
+
+    /*Update user*/
+    public function view_edit(Request $request)
+    {
+        if($request->ajax()){
+            $id = $request->id;
+            $info = User::find($id);
+            $user_id_info=$info->id;
+            $user_social=Social::where('user_id', $user_id_info)->get();
+            $social="";
+            foreach ($user_social as $user_social){
+	            $social = [
+	            	'provider'=>$user_social->provider,
+	            ];
+            }
+            /*Check level user having view other details*/
+            $view_id = $info->id;
+	        $view__level = $info->level;
+	        $user_current_id = Auth::user()->id;
+	        $user_current_level = Auth::user()->level;
+
+            if($user_current_level == 1){/*If admin, can see member*/
+	            if($user_current_id == $view_id || $view__level >1){
+	            	if($social == ""){
+	                	return response()->json(array('info'=>$info,'user_social'=>$social));
+	            	}else{
+		                $errors = new MessageBag(['errorView'=>'You can not see this account details.']);
+		                return response()->json([
+		                'errorview' =>true,
+		                'message' =>$errors
+		                ],200);
+		            }
+		        }
+	        }
+
+	        if($user_current_level == 0){ /*Super Admin can see all member and admin*/
+		        return response()->json(array('info'=>$info,'user_social'=>$social));
+		    }
+	    }
+    }
+     public function edit(Request $request)
+        {
+			$rules = [
+	            'password'              => 'required|confirmed|min:6',
+	            'password_confirmation' => 'required'
+	        ];
+	        $messages = [
+	            'password.required'               => 'Please enter password.',
+	            'password.confirmed'              => 'Password is not match.',
+	            'password.min'                    => 'Password must more than 6 characters.',
+
+	            'password_confirmation.required'  => 'Please enter confirm password.'
+	        ];
+	        $id=$request->old_id;
+
+	        $validator = Validator::make($request->all(), $rules, $messages);
+	        if($validator->fails()){
+	            return response()->json([
+	                'error_register'=>true,
+	                'messages'=>$validator->errors()
+	                ],200);
+	        }else{
+	            $user = User::find($id);
+	            $user->password = bcrypt($request->old_password);
+	            $user->level    = 2; /*Register just become a member*/
+
+	            if($user->save()){
+	                $request->session()->flash('alert-success', 'Update user successful.');
+	            }
+	        }
+        }
 
 }

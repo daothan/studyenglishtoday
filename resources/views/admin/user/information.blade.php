@@ -46,14 +46,14 @@
     <!-- view modal ends -->
 
     <!-- View error information -->
-    <div id="view_error" class="modal fade" role="dialog">
+    <div id="view_error_view" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="content modal_background">
                 <div class="modal-title">
-                    <h3 class="modal_header" style="background-color : rgba(228, 25, 25, 0.81)" align="center">Error View</h3>
+                    <h3 class="modal_header" style="background-color : rgba(228, 25, 25, 0.81)" align="center">Opps....</h3>
                 </div>
                 <div class="modal-body">
-                    <strong class="text-danger"><h3 align="center"><i>You can not see details of this account !</i></h3></strong>
+                    <strong class="text-danger"><h3 align="center"><i>You can not see this account !</i></h3></strong>
                 </div>
                 <div class="modal-footer">
                     <button class="btn_admin warning" data-dismiss="modal" aria-hidden="true">Close</button>

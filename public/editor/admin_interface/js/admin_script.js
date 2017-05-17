@@ -122,25 +122,6 @@ $(document).ready( function() {
 		});
 	});
 
-/*Delete User Tables*/
-	/*Firsty, all of button view, edit, delete are hidden*/
-
-	/*If one of checkboxes will be checked then show them*/
-    $('.delete_user').change(function () {
-        if (this.checked){
-        	$('#notice_user').fadeOut('normal');
-        	$('#view_button').fadeIn(1000);
-        	$('#edit_button').fadeIn(1000);
-        	$('#delete_button').fadeIn(1000);
-        }
-        else {
-        	$('#view_button').fadeOut(1000);
-        	$('#edit_button').fadeOut(1000);
-        	$('#delete_button').fadeOut(1000);
-        	$('#notice_user').fadeIn(1000);
-        }
-    });
-
 
 /*Jquery action tables User*/
     var id=[];
@@ -156,7 +137,7 @@ $(document).ready( function() {
 			    data: {"id":id},
 			    success: function(result){
 			    	if(result.errorview ==true){ /*If has error view*/
-			    		$('#view_error').modal('show');
+			    		$('#view_error_view').modal('show');
 			    	}else{
 			    		$('#viewModal').modal('show');
 				        console.log(result.user_social.provider);
@@ -201,11 +182,77 @@ $(document).ready( function() {
 	}
 
 	/*Edit*/
+
 	function edit_user(id){
 	    $('#edit_user').each(function(i){
-	    	$('#editModal').modal('show');
-	    })
+	    	$.ajax({
+	        url: '/laravel1/admin/user/edit',
+	        type:"GET",
+	        data: {"id":id},
+		        success: function(result){
+		        	if(result.errorview ==true){ /*If has error view*/
+			    		$('#view_error_edit').modal('show');
+			    	}else{
+	    			$('#editModal').modal('show');
+		        	console.log(result);
+		          //console.log(result);/**/
+		            $("#old_id").val(result.info.id);
+		            $("#old_name").val(result.info.name);
+		            $("#old_email").val(result.info.email);
+			        }
+		   		}
+		   	})
+	    	$("#validate_edit_user").validate({
+				rules:{
+					password:{
+						required:true,
+						minlength:6
+					},
+					password_confirmation:{
+						required:true,
+						minlength:6
+					}
+				},
+				submitHandler:function(){
+					$.ajaxSetup({
+			   		headers: {
+			        	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					    }
+					});
+					$.ajax({
+						'url' : '/laravel1/admin/user/edit',
+						'data': {
+							'old_id' : $('#old_id').val(),
+							'name' : $('#old_name').val(),
+							'email' : $('#old_email').val(),
+							'password':$('#old_password').val(),
+							'password_confirmation':$('#old_password_confirmation').val()
+						},
+						'type' :'POST',
+						success: function(data){
+						console.log(data);
+						if(data.error_register ==true){
+							$('.error').hide();
+							if(data.messages.email != undefined){
+								$('.errorEmail').show().text(data.messages.email[0]);
+							}
+							if(data.messages.password != undefined){
+								$('.errorPassword').show().text(data.messages.password[0]);
+							}
+							if(data.messages.password_confirmation != undefined){
+								$('.errorPassword_confirmation').show().text(data.messages.password_confirmation[0]);
+							}
+						}else{
+							window.location.href ="/laravel1/admin/user/show"
+						}
+						}
+					});
+				}
+		    })
+	   	})
+
 	}
+
 
 	/*Edit*/
 	function delete_user(id){
