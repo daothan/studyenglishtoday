@@ -98,7 +98,7 @@ Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 		Route::get('show',['as'=>'admin.user.show', 'uses'=>'UserController@show']);
 
 		/*Show information User*/
-		Route::get('information/{id}', ['as'=>'admin.user.information', 'uses'=>'UserController@information']);
+		Route::get('information', ['as'=>'admin.user.information', 'uses'=>'UserController@information']);
 
 		/*Add Users*/
 		Route::get('add',['as'=>'admin.user.getAdd', 'uses'=>'UserController@getAdd']);

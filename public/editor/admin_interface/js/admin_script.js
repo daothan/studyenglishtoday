@@ -141,8 +141,51 @@ $(document).ready( function() {
         }
     });
 
+
+/*Jquery action tables User*/
     var id=[];
-    /*Delete*/
+
+	/*Show User informations*/
+	function view_user(id){
+	    $('#view_user').each(function(i){
+			id[i] = $(this).val();
+	    	$('#viewModal').modal('show');
+		});
+		$.ajax({
+		    url: '/laravel1/admin/user/information',
+		    type:"GET",
+		    data: {"id":id},
+		    success: function(result){
+		      console.log(result);
+
+                if(result.level == '0'){
+                	var level = "Super Admin";
+                }else if(result.level == '1'){
+                	var level = "Admin";
+                }else{
+                	var level = "Member";
+                }
+		        $("#view_fname").text(result.name);
+		        $("#view_lname").text(level);
+		        $("#view_email").text(result.email);
+		    }
+		})
+	}
+
+	/*Edit*/
+	function edit_user(id){
+	    $('#edit_user').each(function(i){
+	    	$('#editModal').modal('show');
+	    })
+	}
+
+	/*Edit*/
+	function delete_user(id){
+	    $('#delete_user').each(function(i){
+	    	$('#deleteModal').modal('show');
+	    })
+	}
+	/*Delete*/
 	$('#delete_button').click(function(){
 		$(':checkbox:checked').each(function(i){
 			id[i] = $(this).val();
@@ -177,20 +220,3 @@ $(document).ready( function() {
 			})
 		}
 	})
-	/*Show User informations*/
-	$('#view_button').click(function(){
-		$(':checkbox:checked').each(function(i){
-			id[i] = $(this).val();
-		});
-		if(id.length ===0){
-			alert("You didnt choose any category");
-		}else{
-			$.ajax({
-					url: '/laravel1/admin/user/information/'+id
-			});
-			$('#view_user').modal('show');
-			$('.user_id').val(id);
-			console.log(id);
-		}
-	})
-

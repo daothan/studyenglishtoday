@@ -13,25 +13,14 @@
 		                    <a class="modal_link" data-toggle="modal" data-target="#add">
 		                    	<button class="btn_admin success"><span class="glyphicon glyphicon-plus"></span> ADD</button>
 		                    </a>
-
-		                    <a class="modal_link" data-toggle="modal" data-target="#view">
-		                    	<button class="btn_admin info" style="display: none;" id="view_button"><span class="glyphicon glyphicon-list-alt"></span> VIEW</button>
-		                    </a>
-		                    <a class="modal_link" data-toggle="modal" data-target="#edit">
-		                    	<button class="btn_admin success" style="display: none;" id="edit_button"><span class="glyphicon glyphicon-edit"></span> EDIT</button>
-		                    </a>
-		                    <a class="modal_link" data-toggle="modal" >
-		                    	<button class="btn_admin danger" style="display: none;" id="delete_button"><span class="glyphicon glyphicon-trash"></span> DELETE</button>
-		                    </a>
 		                </div>
-		                <i id="notice_user" style="display:inline;color:red;"><b><h4 align="center">Please choose user before action</h4></b></i>
+           <!--     <script type="text/javascript">$('h2.flash').delay(5000).slideUp();</script> -->
 
                         <!-- /.panel-heading -->
                         <div class="panel-body table-responsive">
                             <table width="100%" class="table table-striped table-bordered table-hover usertable" id="dataTables">
                                 <thead>
                                     <tr>
-                                        <th class="text-center"><input type="checkbox" id="check_all" class="check_all hidden"></th>
                                         <th class="text-center">No</th>
 										<th class="text-center">Username</th>
 										<th class="text-center">Social_Name</th>
@@ -39,14 +28,14 @@
 										<th class="text-center">Social_Email</th>
 										<th class="text-center">Level</th>
 										<th class="text-center">Date</th>
+										<th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $no=0;?>
 									@foreach($user as $data)
 									<?php $no++; ?>
-									<tr id="{{$data->id}}">
-										<td class="text-center"><input type="checkbox" id="checkbox" class="delete_user" value="{{$data->id}}"></td>
+									<tr id="{{$data["id"]}}">
 										<th class="text-center">{{$no}}</th>
 										<td class="text-center">{{is_numeric($data->name) ? '---' : $data->name}}</td>
 										<td class="text-center">{{is_numeric($data->name) ? $data->name_social : '---'}}</td>
@@ -61,16 +50,25 @@
 										</td>
 
 										<!-- Show date -->
-										<td class="text-center" style="height: 25px;">
+										<td class="text-center"">
 											<?php
-												echo Carbon\Carbon::createFromTimestamp(strtotime($data["created_at"]))->diffForHumans();
+												echo  Carbon\Carbon::createFromTimestamp(strtotime($data["created_at"]))->diffForHumans();
 											?>
+										</td>
+
+										<!-- Action -->
+										<td class="text-center">
+											<!-- Show Detail -->
+											<button class="btn_admin_action info" data-toggle="modal" data-target="" onclick="view_user('{{$data["id"]}}')" id="view_user"><span class="glyphicon glyphicon-list"></span></button>
+											<!-- Show Edit Form -->
+											<button class="btn_admin_action warning" data-toggle="modal" data-target="" onclick="edit_user('{{$data["id"]}}')" id="edit_user"><span class="glyphicon glyphicon-pencil"></span></button>
+											<!-- Show Delete Form -->
+											<button class="btn_admin_action danger" data-toggle="modal" data-target="" onclick="delete_user('{{$data["id"]}}')" id="delete_user"><span class="glyphicon glyphicon-trash"></button>
 										</td>
 									</tr>
 									@endforeach
                                 </tbody>
                             </table>
-                            <!-- /.table-responsive -->
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -80,9 +78,9 @@
             </div>
             <!-- /.row -->
 
+        @extends('admin.user.add')
         @extends('admin.user.information')
         @extends('admin.user.edit')
-        @extends('admin.user.add')
         @extends('admin.user.delete')
 
 

@@ -684,7 +684,7 @@ input[type="checkbox"],input[type="radio"]{
     padding: 0 3em;
 } 
 .login-top {
-    padding: 1em 0;
+    padding: .1em 2.5em;
     background-color: #fff;
 }
 .login-top input[type="text"], .login-top input[type="password"], .login-top input[type="email"] {

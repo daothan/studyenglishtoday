@@ -300,7 +300,7 @@
                     @endforeach
                 </div>
                <script type="text/javascript">$('h2.flash').delay(5000).slideUp();</script>
-               <!-- End Show Flash Message -->
+           <!-- End Show Flash Message -->
 
 
             @yield('content')

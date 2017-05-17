@@ -10,7 +10,7 @@ div.dataTables_paginate ul.pagination {
 }
 .table>tbody>tr>td,
 .table>tbody>tr>th{
-    padding: 8px 15px 8px 15px !important;
+    padding: 0px 5px 0px 5px !important;
     line-height: 2 !important;
     vertical-align: inherit !important;
     white-space: nowrap !important;
@@ -92,18 +92,32 @@ div.dataTables_paginate ul.pagination {
 .btn_admin:hover{
     box-shadow: 7px 4px 8px 0px rgba(0,0,0,0.24), 2px 17px 56px 0px rgba(0,0,0,0.19);
 }
+.btn_admin_action {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    width: 36px;
+    height: 32px;
+    font-size: 20px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    margin: 3px 6px 2px 6px;
+}
+.btn_admin_action:hover{
+    box-shadow: 7px 4px 8px 0px rgba(0,0,0,0.24), 2px 17px 56px 0px rgba(0,0,0,0.19);
+}
 
 .success {background-color: #4CAF50;} /* Green */
 .success:hover {background-color: #46a049;}
 
-.info {background-color: #2196F3;} /* Blue */
-.info:hover {background: #0b7dda;}
+.info {background-color: #2d7ab7;} /* Blue */
+.info:hover {background: #125082;}
 
-.warning {background-color: #ff9800;} /* Orange */
-.warning:hover {background: #e68a00;}
+.warning {background-color: rgba(218, 171, 30, 0.93);} /* Orange */
+.warning:hover {background: rgba(183, 146, 4, 0.93);}
 
-.danger {background-color: #f44336;} /* Red */
-.danger:hover {background: #da190b;}
+.danger {background-color: #d04d43;} /* Red */
+.danger:hover {background: #b91508;}
 
 .default {background-color: #e7e7e7; color: black;} /* Gray */
 .default:hover {background: #ddd;}
