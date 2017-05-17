@@ -8,6 +8,7 @@ use Validator;
 use Auth;
 use Illuminate\Support\MessageBag;
 use App\User;
+use App\Social;
 use Carbon\Carbon;
 
 class UserController extends Controller
@@ -32,41 +33,36 @@ class UserController extends Controller
         if($request->ajax()){
             $id = $request->id;
             $info = User::find($id);
-            return response()->json($info);
-        }
-        /*$user_id = $user_detail->id;
-        $user_level = $user_detail->level;
-        $user_current_id = Auth::user()->id;
-        $user_current_level = Auth::user()->level;
-
-        if($user_current_level == 2){
-            if($user_current_id == $user_id || $user_level >1){
-                return view('user_interface.user_account.user_information', compact('user'));
-            }else{
-                echo "<script type='text/javascript'>
-                alert('Sorry ! You can not see this account information !');
-                window.location ='";echo route('admin.user.show');
-                echo "'
-                </script>";
+            $user_id_info=$info->id;
+            $user_social=Social::where('user_id', $user_id_info)->get();
+            $social="";
+            foreach ($user_social as $user_social){
+	            $social = [
+	            	'provider'=>$user_social->provider,
+	            ];
             }
-        }
+            /*Check level user having view other details*/
+            $view_id = $info->id;
+	        $view__level = $info->level;
+	        $user_current_id = Auth::user()->id;
+	        $user_current_level = Auth::user()->level;
 
-        if($user_current_level == 1){
-            if($user_current_id == $user_id || $user_level >1){
-                return view('admin.user.information', compact('user'));
-            }else{
-                echo "<script type='text/javascript'>
-                alert('Sorry ! You can not see this account information !');
-                window.location ='";echo route('admin.user.show');
-                echo "'
-                </script>";
-            }
-        }
+            if($user_current_level == 1){/*If admin, can see member*/
+	            if($user_current_id == $view_id || $view__level >1){
+	                return response()->json(array('info'=>$info,'user_social'=>$social));
+	            }else{
+	                $errors = new MessageBag(['errorView'=>'You can not see this account details.']);
+	                return response()->json([
+	                'errorview' =>true,
+	                'message' =>$errors
+	                ],200);
+	            }
+	        }
 
-        if($user_current_level == 0){
-        }
-           return view('admin.user.information', compact('user_detail'));
-    }*/
+	        if($user_current_level == 0){ /*Super Admin can see all member and admin*/
+		        return response()->json(array('info'=>$info,'user_social'=>$social));
+		    }
+	    }
     }
 
 }

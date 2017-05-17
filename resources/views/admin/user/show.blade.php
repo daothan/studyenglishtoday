@@ -23,9 +23,8 @@
                                     <tr>
                                         <th class="text-center">No</th>
 										<th class="text-center">Username</th>
-										<th class="text-center">Social_Name</th>
 										<th class="text-center">Email</th>
-										<th class="text-center">Social_Email</th>
+										<th class="text-center">provider</th>
 										<th class="text-center">Level</th>
 										<th class="text-center">Date</th>
 										<th class="text-center">Action</th>
@@ -37,10 +36,11 @@
 									<?php $no++; ?>
 									<tr id="{{$data["id"]}}">
 										<th class="text-center">{{$no}}</th>
-										<td class="text-center">{{is_numeric($data->name) ? '---' : $data->name}}</td>
-										<td class="text-center">{{is_numeric($data->name) ? $data->name_social : '---'}}</td>
-										<td class="text-center">{{is_numeric($data->name) ? '---' : $data->email}}</td>
-										<td class="text-center">{{is_numeric($data->name) ? $data->email_social : '---'}}</td>
+										<td class="text-center">{{is_numeric($data->name) ? $data->name_social : $data->name}}</td>
+										<td class="text-center">{{is_numeric($data->name) ? trim($data->email_social,'.'.$data->email) : $data->email}}</td>
+										<td class="text-center">
+											<?php echo $provider = DB::table('socials')->where('user_id', $data->id)->value('provider');?>
+										</td>
 
 										<!-- Show level -->
 										<td class="text-center" value= "{{$data["level"]}}">

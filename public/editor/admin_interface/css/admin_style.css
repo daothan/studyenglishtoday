@@ -5,6 +5,13 @@
 .panel{
     margin: 50px 10px 100px 10px !important;
 }
+.panel-body{
+    margin: inherit !important;
+    padding: 20px 3px 0px 60px !important;
+}
+.information{
+    padding:10px 100px 10px 150px !important;
+}
 div.dataTables_paginate ul.pagination {
     margin: 15px 0px !important;
 }
