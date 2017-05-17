@@ -28,7 +28,6 @@ class UserController extends Controller
 
     public function postAdd(UserRequest $request){
         $data = new User;
-        $user = User::find($id);
         $data->name     = $request->input('name');
         $data->email    = $request->input('email');
         $data->password = bcrypt($request->input('password'));
@@ -149,5 +148,18 @@ class UserController extends Controller
 	            }
 	        }
         }
+
+        /*
+        *   Delete record
+        */
+        public function delete(Request $request)
+        {
+        	if($request->ajax()){
+            $id = $request->id;
+
+            $user = User::find($id);
+            $user -> delete($id);
+        }
+    }
 
 }

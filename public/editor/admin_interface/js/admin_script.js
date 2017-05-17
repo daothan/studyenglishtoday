@@ -253,15 +253,49 @@ $(document).ready( function() {
 
 	}
 
-
 	/*Edit*/
 	function delete_user(id){
-	    $('#delete_user').each(function(i){
-	    	$('#deleteModal').modal('show');
+		$('#delete_user').each(function(i){
+			id[i] = $(this).val();
+
+			$.ajax({
+			    url: '/laravel1/admin/user/information',
+			    type:"GET",
+			    data: {"id":id},
+			    success: function(result){
+			    	if(result.errorview ==true){ /*If has error view*/
+			    		$('#view_error_view').modal('show');
+			    	}else{
+			    		$('#deleteModal').modal('show');
+
+    			    	$('#deleteModal').find('#confirmdelete').on('click',function(){
+							$.ajaxSetup({
+							    headers: {
+							        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+							    }
+							});
+							$.ajax({
+								url: '/laravel1/admin/user/delete',
+								method: "POST",
+								data:{id:id},
+
+								success:function(){
+									$('#deleteModal').modal('hide');
+									for(var i=0; i<id.length; i++)
+							    	{
+							    		$('tr#'+id+'').css('background-color', '#ccc');
+							        	$('tr#'+id+'').fadeOut(1000);
+							        }
+								}
+							})
+						})
+			    	}
+			    }
+			});
 	    })
 	}
-	/*Delete*/
-	$('#delete_button').click(function(){
+/*	/*Delete*/
+/*	$('#delete_button').click(function(){
 		$(':checkbox:checked').each(function(i){
 			id[i] = $(this).val();
 		});
@@ -295,3 +329,4 @@ $(document).ready( function() {
 			})
 		}
 	})
+*/

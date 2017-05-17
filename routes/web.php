@@ -109,7 +109,7 @@ Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 		Route::post('edit',['as'=>'admin.user.edit', 'uses'=>'UserController@edit']);
 
 		/*Delete User*/
-		Route::post('delete/{id}', ['as'=>'admin.user.delete','uses'=>'UserController@delete']);
+		Route::post('delete', ['as'=>'admin.user.delete','uses'=>'UserController@delete']);
 	});
 });
 
