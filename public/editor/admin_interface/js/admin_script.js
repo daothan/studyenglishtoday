@@ -374,6 +374,111 @@ $(document).ready( function() {
 	    })
 	}
 
+/*Cate script*/
 
+	var id=[];
 
+	/*Show User informations*/
+	function view_cate(id){
+	    $('#view_cate').each(function(i){
+			id[i] = $(this).val();
+			var parent = $('#parent_category').val();
+			if(parent==""){
+				var parent_cate = "None";
+			}else{
+				var parent_cate=parent;
+			}
+			console.log(parent_cate);
+			$.ajax({
+			    url: '/laravel1/admin/cate/catedetail',
+			    type:"GET",
+			    data: {"id":id},
+			    success: function(result){
+
+		    		$('#viewcateModal').modal('show');
+			        console.log(result);
+
+			        $("#view_titlename").text(result.name);
+			        $("#view_catename").text(result.name);
+			        $("#view_cateorder").text(result.order);
+			        $("#view_cateparent").text(parent_cate);
+			        $("#view_catekeyword").text(result.keywords);
+			        $("#view_catedescription").text(result.description);
+			    }
+			})
+		})
+	}
+
+	/*Add User*/
+	$('#add_cate').click(function(){
+		$('#addcateModal').modal('show');
+
+		$("#validate_add_cate").validate({
+			rules:{
+				add_name:{
+					required:true,
+					maxlength:50
+				},
+				add_email:{
+					required:true,
+					email:true
+				},
+				add_password:{
+					required:true,
+					minlength:6
+				},
+				add_password_confirmation:{
+					required:true,
+					minlength:6
+				}
+			},
+			messages:{
+				add_name:{
+					required: "Please enter username.",
+				},
+				add_password:{
+					required: "Please enter password.",
+					minlength: "Password must be more than 6 characters."
+				}
+			},
+			submitHandler:function(){
+				$.ajaxSetup({
+				    headers: {
+				        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				    }
+				});
+				$.ajax({
+					'url' : '/laravel1/admin/cate/add',
+					'data': {
+						'add_name' : $('#add_name').val(),
+						'add_email' : $('#add_email').val(),
+						'add_password':$('#add_password').val(),
+						'add_password_confirmation':$('#add_password_confirmation').val()
+					},
+					'type' :'POST',
+					success: function(data){
+						if(data.error_add_user ==true){
+						console.log(data);
+							$('.error').hide();
+							if(data.messages.add_name != undefined){
+								$('.errorName_add').show().text(data.messages.add_name[0]);
+							}
+							if(data.messages.add_email != undefined){
+								$('.errorEmail_add').show().text(data.messages.add_email[0]);
+							}
+							if(data.messages.add_password != undefined){
+								$('.errorPassword').show().text(data.messages.add_password[0]);
+							}
+							if(data.messages.add_password_confirmation != undefined){
+								$('.errorPassword_confirmation_add').show().text(data.messages.add_password_confirmation[0]);
+							}
+						}else{
+							setTimeout(function() { $('#addModal').modal('hide');}, 200);
+							setTimeout(function() { window.location.href = "/laravel1/admin/user/show";}, 500);
+						}
+					}
+				})
+			}
+		})
+	})
 

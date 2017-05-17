@@ -2,101 +2,68 @@
 
 namespace App\Http\Controllers;
 
+namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use App\Category;
 use Illuminate\Support\MessageBag;
 use Validator;
 
-
 class CategoryController extends Controller
 {
+
 	/*Show categories*/
 	public function show(){
 		$data = Category::orderBy('id', 'DESC')->get();
 
-		return view ('admin.cate.show', compact('data'));
+		return view ('admin.cate.show1', compact('data'));
 	}
 
-	/*Add category*/
-    public function getAdd(){
-        $parent = Category::select('id', 'name', 'parent_id') -> get() -> toArray();
-    	return view('admin/cate/add', compact('parent'));
+
+    /*Show information category*/
+    public function view_cate_detail(Request $request)
+    {
+        if($request->ajax()){
+            $id = $request->id;
+            $info = Category::find($id);
+            return response()->json($info);
+        }
     }
 
-    public function postAdd(CategoryRequest $request){
-    	$data = new Category;
-
-        $data->name        = $request -> input('name');
-        $data->alias       = convert_vi_to_en($request -> input('name'));
-        $data->order       = $request -> input('order');
-        $data->parent_id   = $request -> input('parent_id');
-        $data->keywords    = $request -> input('keywords');
-        $data->description = $request -> input('description');
-
-    	if($data->save()){
-    		return redirect() -> route('admin.cate.show') -> with(['flash_level' =>'success', 'flash_message' => 'Add category successfully']);
-    	}
-    }
-
-
-    /*Edit category*/
-    public function getEdit($id){
-
-        $category = Category::where('id',$id)->get();
-        $parent = Category::select('id', 'name', 'parent_id') -> get() -> toArray();
-
-    	return view('admin.cate.edit', compact('category','parent'));
-    }
-
-    public function postEdit(Request $request, $id){
-
-        $rules=[
-            'name'=>'required'
+    /*Add category*/
+    public function addcate(Request $request){
+    	 $rules = [
+            'add_name'                  => 'unique:users,name',
+            'add_email'                 => 'unique:users,email',
+            'add_password'              => 'confirmed',
+            'add_password_confirmation' => 'required'
         ];
-        $message=[
-            'name.required' => 'Name can not be empty.'
+        $messages = [
+            'add_name.unique'                     => 'Username is exists.',
+            'add_email.unique'                    => 'Email is exists.',
+            'add_password.confirmed'              => 'Password is not match.',
+            'password_confirmation.required'  => 'Please enter confirm password.'
         ];
 
-        $validator=Validator::make($request->all(), $rules, $message);
-
-        $data = Category::find($id);
-
-        $data->name        = $request -> input('name');
-        $data->alias       = convert_vi_to_en($request -> input('name'));
-        $data->order       = $request -> input('order');
-        $data->parent_id   = $request -> input('parent_id');
-        $data->keywords    = $request -> input('keywords');
-        $data->description = $request -> input('description');
-
+        $validator = Validator::make($request->all(), $rules, $messages);
         if($validator->fails()){
-            return redirect()->back()->withErrors($validator)->withInput();
+            return response()->json([
+                'error_add_user'=>true,
+                'messages'=>$validator->errors()
+                ],200);
         }else{
+            $data = new User;
+            $data->name     = $request->input('add_name');
+            $data->email    = $request->input('add_email');
+            $data->password = bcrypt($request->input('add_password'));
+            $data->level    = 2; /*Register just become a member*/
+
             if($data->save()){
-                return redirect() -> route('admin.cate.show') -> withErrors($validator)->with(['flash_level' =>'success', 'flash_message' => 'Edit category successfully']);
+                $request->session()->flash('alert-success', 'Registration successful with account '.': '.$request->input('name'));
             }
         }
     }
 
-    /*Delete Category*/
-    public function delete($id){
-
-        $parent = Category::where('parent_id',$id)->count();
-
-        if($parent == 0){
-            $category = Category::find($id);
-            $category->delete($id);
-
-            return redirect() -> route('admin.cate.show') -> with(['flash_level'=>'danger', 'flash_message'=> 'Delete successfully']);
-        }else{ /*If having parent category, can not deleting*/
-            echo "<script type='text/javascript'>
-                alert('Sorry ! You can not delete this category ');
-                window.location ='";
-                    echo route('admin.cate.show');
-                echo "'
-                </script>";
-        }
-
-    }
 
 }

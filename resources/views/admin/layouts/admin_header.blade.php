@@ -266,7 +266,7 @@
                                     <a href="{{route('admin.user.show')}}">Users</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('admin.cate.getAdd')}}">Categories</a>
+                                    <a href="{{route('admin.cate.addcate')}}">Categories</a>
                                 </li>
                                 <li>
                                     <a href="{{route('admin.detail.getAdd')}}">Details</a>

@@ -55,10 +55,11 @@ Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 		/*Show categories*/
 		Route::get('show', ['as' => 'admin.cate.show', 'uses' => 'CategoryController@show']);
 
-		/*Add categories*/
-		Route::get('add', ['as' => 'admin.cate.getAdd', 'uses' => 'CategoryController@getAdd']);
+		/*Show detail categories*/
+		Route::get('catedetail', ['as' => 'admin.cate.catedetail', 'uses' => 'CategoryController@view_cate_detail']);
 
-		Route::post('add', ['as' => 'admin.cate.postAdd', 'uses' => 'CategoryController@postAdd']);
+		/*Add categories*/
+		Route::post('add', ['as' => 'admin.cate.addcate', 'uses' => 'CategoryController@addcate']);
 
 		/*Delete category*/
 		Route::post('delete/{id}',['as' => 'admin.cate.delete', 'uses' => 'CategoryController@delete']);

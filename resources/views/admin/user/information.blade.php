@@ -37,7 +37,6 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button class="btn_admin danger" id="confirmdelete">Confirm</button>
                     <button class="btn_admin info" data-dismiss="modal" aria-hidden="true">Cancel</button>
                 </div>
             </div>
