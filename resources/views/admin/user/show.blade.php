@@ -10,11 +10,8 @@
                             <h2 align="center">DataTables show users</h2>
                         </div>
                         <div class="panel-heading">
-		                    <a class="modal_link" data-toggle="modal" data-target="#add">
-		                    	<button class="btn_admin success"><span class="glyphicon glyphicon-plus"></span> ADD</button>
-		                    </a>
+                       		 <button class="btn_admin  success" data-toggle="modal"  id="add_user"><span class="glyphicon glyphicon-plus"></span> ADD</button>
 		                </div>
-           <!--     <script type="text/javascript">$('h2.flash').delay(5000).slideUp();</script> -->
 
                         <!-- /.panel-heading -->
                         <div class="panel-body table-responsive">

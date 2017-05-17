@@ -101,14 +101,14 @@ Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 		Route::get('information', ['as'=>'admin.user.information', 'uses'=>'UserController@information']);
 
 		/*Add Users*/
-		Route::get('add',['as'=>'admin.user.getAdd', 'uses'=>'UserController@getAdd']);
-		Route::post('add',['as'=>'admin.user.postAdd', 'uses'=>'UserController@postAdd']);
+		Route::post('add',['as'=>'admin.user.add', 'uses'=>'UserController@add']);
 
 		/*Edit Users*/
 		Route::get('edit',['as'=>'admin.user.edit', 'uses'=>'UserController@view_edit']);
 		Route::post('edit',['as'=>'admin.user.edit', 'uses'=>'UserController@edit']);
 
 		/*Delete User*/
+		Route::get('delete_view', ['as'=>'admin.user.delete','uses'=>'UserController@delete_view']);
 		Route::post('delete', ['as'=>'admin.user.delete','uses'=>'UserController@delete']);
 	});
 });

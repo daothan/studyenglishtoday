@@ -263,7 +263,7 @@
                             <a href=""><i class="fa fa-edit fa-fw"></i> Add <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="{{route('admin.user.getAdd')}}">Users</a>
+                                    <a href="{{route('admin.user.show')}}">Users</a>
                                 </li>
                                 <li>
                                     <a href="{{route('admin.cate.getAdd')}}">Categories</a>

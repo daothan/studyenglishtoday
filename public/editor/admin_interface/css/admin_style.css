@@ -130,3 +130,10 @@ div.dataTables_paginate ul.pagination {
 .default:hover {background: #ddd;}
 
 /* End Button */
+
+/* Error label Ajax */
+label.error {
+    font-style: italic;
+    font-weight: inherit;
+    color: red;
+}

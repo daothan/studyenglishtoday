@@ -181,6 +181,78 @@ $(document).ready( function() {
 		})
 	}
 
+	/*Add User*/
+	$('#add_user').click(function(){
+		$('#addModal').modal('show');
+
+		$("#validate_add_user").validate({
+			rules:{
+				add_name:{
+					required:true,
+					maxlength:50
+				},
+				add_email:{
+					required:true,
+					email:true
+				},
+				add_password:{
+					required:true,
+					minlength:6
+				},
+				add_password_confirmation:{
+					required:true,
+					minlength:6
+				}
+			},
+			messages:{
+				add_name:{
+					required: "Please enter username.",
+				},
+				add_password:{
+					required: "Please enter password.",
+					minlength: "Password must be more than 6 characters."
+				}
+			},
+			submitHandler:function(){
+				$.ajaxSetup({
+				    headers: {
+				        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				    }
+				});
+				$.ajax({
+					'url' : '/laravel1/admin/user/add',
+					'data': {
+						'add_name' : $('#add_name').val(),
+						'add_email' : $('#add_email').val(),
+						'add_password':$('#add_password').val(),
+						'add_password_confirmation':$('#add_password_confirmation').val()
+					},
+					'type' :'POST',
+					success: function(data){
+						if(data.error_add_user ==true){
+						console.log(data);
+							$('.error').hide();
+							if(data.messages.add_name != undefined){
+								$('.errorName_add').show().text(data.messages.add_name[0]);
+							}
+							if(data.messages.add_email != undefined){
+								$('.errorEmail_add').show().text(data.messages.add_email[0]);
+							}
+							if(data.messages.add_password != undefined){
+								$('.errorPassword').show().text(data.messages.add_password[0]);
+							}
+							if(data.messages.add_password_confirmation != undefined){
+								$('.errorPassword_confirmation_add').show().text(data.messages.add_password_confirmation[0]);
+							}
+						}else{
+							setTimeout(function() { $('#addModal').modal('hide');}, 200);
+							setTimeout(function() { window.location.href = "/laravel1/admin/user/show";}, 500);
+						}
+					}
+				})
+			}
+		})
+	})
 	/*Edit*/
 
 	function edit_user(id){
@@ -231,7 +303,7 @@ $(document).ready( function() {
 						'type' :'POST',
 						success: function(data){
 						console.log(data);
-						if(data.error_register ==true){
+						if(data.error_edit ==true){
 							$('.error').hide();
 							if(data.messages.email != undefined){
 								$('.errorEmail').show().text(data.messages.email[0]);
@@ -253,13 +325,13 @@ $(document).ready( function() {
 
 	}
 
-	/*Edit*/
+	/*Delete*/
 	function delete_user(id){
 		$('#delete_user').each(function(i){
 			id[i] = $(this).val();
 
 			$.ajax({
-			    url: '/laravel1/admin/user/information',
+			    url: '/laravel1/admin/user/delete_view',
 			    type:"GET",
 			    data: {"id":id},
 			    success: function(result){
@@ -267,7 +339,14 @@ $(document).ready( function() {
 			    		$('#view_error_view').modal('show');
 			    	}else{
 			    		$('#deleteModal').modal('show');
-
+			    		/*Check Name*/
+			    		if(!isNaN(result.info.name)){
+				      		var name=result.info.name_social;
+				      	}else{
+				      		var name=result.info.name;
+				      	}
+			    		$('.name_delete').show().text(name);
+			    		/*End check name*/
     			    	$('#deleteModal').find('#confirmdelete').on('click',function(){
 							$.ajaxSetup({
 							    headers: {
@@ -294,39 +373,7 @@ $(document).ready( function() {
 			});
 	    })
 	}
-/*	/*Delete*/
-/*	$('#delete_button').click(function(){
-		$(':checkbox:checked').each(function(i){
-			id[i] = $(this).val();
-		});
-		if(id.length === 0) //If you have not checked yet
-		{
-			alert("You didnt choose any category");
-		}
-		else{
-			$('#delete_user').modal('show');
-			console.log(id);
-			$('#delete_user').find('#confirmdelete').on('click',function(){
-				$.ajaxSetup({
-				    headers: {
-				        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-				    }
-				});
-				$.ajax({
-					url: '/laravel1/admin/user/delete/'+id,
-					method: "POST",
-					data:{id:id},
 
-					success:function(){
-						$('#delete_user').modal('hide');
-						for(var i=0; i<id.length; i++)
-				    	{
-				    		$('tr#'+id[i]+'').css('background-color', '#ccc');
-				        	$('tr#'+id[i]+'').fadeOut(1000);
-				        }
-					}
-				})
-			})
-		}
-	})
-*/
+
+
+
