@@ -62,7 +62,7 @@
     <!-- view modal ends -->
 
 
-     <!-- View error edit -->
+    <!-- View error edit -->
     <div id="view_error_edit" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="content modal_background">

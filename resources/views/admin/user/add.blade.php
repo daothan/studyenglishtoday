@@ -14,7 +14,7 @@
                     <div class="form-group">
                         <label for="name" class="col-md-4 control-label">Username</label>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" id="add_name" name="add_name" autofocus>
+                            <input type="text" class="form-control" id="add_name" name="add_name" placeholder="Name" autofocus>
                             <div class="has-error"><i><span class="help-block error errorName_add"></span></i></div>
                         </div>
                     </div>
@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label for="email" class="col-md-4 control-label">E-Mail Address</label>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" id="add_email" name="add_email">
+                            <input type="text" class="form-control" id="add_email" name="add_email" placeholder="Email">
                             <div class="has-error"><i><span class="help-block errorEmail_add"></span></i></div>
                         </div>
                     </div>
@@ -32,7 +32,8 @@
                     <div class="form-group">
                         <label for="password" class="col-md-4 control-label">Password</label>
                         <div class="col-md-6">
-                            <input type="password" class="form-control" id="add_password" name="add_password"><div class="has-error"><i><span class="help-block error errorPassword"></span></i></div>
+                            <input type="password" class="form-control" id="add_password" name="add_password" placeholder="Password">
+                            <div class="has-error"><i><span class="help-block error errorPassword"></span></i></div>
                         </div>
                     </div>
 
@@ -40,7 +41,7 @@
                     <div class="form-group">
                         <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
                         <div class="col-md-6">
-                            <input type="password" class="form-control" id="add_password_confirmation" name="add_password_confirmation">
+                            <input type="password" class="form-control" id="add_password_confirmation" name="add_password_confirmation" placeholder="Confirm password-confirm">
                             <div class="has-error"><i><span class="help-block errorPassword_confirmation_add"></span></i></div>
                         </div>
                     </div>

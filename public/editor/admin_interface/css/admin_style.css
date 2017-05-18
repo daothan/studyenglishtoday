@@ -5,10 +5,6 @@
 .panel{
     margin: 50px 10px 100px 10px !important;
 }
-.panel-body{
-    margin: inherit !important;
-    padding: 20px 3px 0px 60px !important;
-}
 .information{
     padding:10px 100px 10px 150px !important;
 }
@@ -24,10 +20,18 @@ div.dataTables_paginate ul.pagination {
     overflow: hidden !important;
 }
 .usertable{
+    margin: auto !important;
     white-space: nowrap !important;
     font-size: 15px;
-    display:table-cell !important;
     overflow: hidden !important;
+}
+.table-striped>tbody>tr:nth-of-type(odd){
+    background-color: rgba(220, 222, 239, 0.73) !important;
+
+}
+.table-striped>tbody>tr:hover{
+    background-color: rgba(124, 137, 243, 0.73) !important;
+
 }
 
 .modal_background {

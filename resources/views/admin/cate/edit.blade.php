@@ -1,94 +1,88 @@
-@extends('admin.layouts.admin_header')
 
-@section('content')
+<!-- Modal Add User-->
 
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header" align="center">Categories</h1>
+<div id="editcateModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="content modal_background">
+            <div class="panel-title">
+                <h3 class="modal_header" align="center">Edit Category</h3>
+            </div>
+            <div class="modal-body">
+                <form action="" method="POST" class="form-horizontal" role="form" id="validate_edit_cate">
+
+					<div class="form-group">
+						<label class="col-md-4 control-label">Category Parent</label>
+						<div class="col-md-6">
+							<select name="old_parent" id="old_parent" class="form-control" autofocus >
+								<option disabled selected hidden>Please Choose Catgeory...</option>
+								<option value="0">Parent Category</option>
+								<?php cate_parent($parent,0,"-",old('old_parent')); ?>
+
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label">Category Name</label>
+						<div class="col-md-6">
+							<input type="text" class="form-control" id="old_name_cate" name="old_name_cate" placeholder="Please Enter Category Name">
+							<div class="has-error"><i><span class="help-block errorName_add"></span></i></div>
+						</div>
+
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label">Category Order</label>
+						<div class="col-md-6">
+							<input type="text" class="form-control" id="old_order" name="old_order" placeholder="Please Enter Category Order">
+							<div class="has-error"><i><span class="help-block errorOrder_add"></span></i></div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label">Category keywords</label>
+						<div class="col-md-6">
+							<input type="text" class="form-control" id="old_keyword" name="old_keyword" placeholder="Please Enter Category Keywords">
+							<div class="has-error"><i><span class="help-block errorKeyword_add"></span></i></div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label">Category Description</label>
+						<div class="col-md-6">
+							<textarea class="form-control" name="old_description" id="old_description" rows="3" placeholder="Please enter description"></textarea>
+							<div class="has-error"><i><span class="help-block errorDescription_add"></span></i></div>
+						</div>
+					</div>
+                    <!-- Submit -->
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                            <button type="submit" class="btn_admin primary">Submit</button>
+                            <button class="btn_admin warning" type="reset" >Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn_admin danger" data-dismiss="modal">Close</button>
+            </div>
         </div>
-        <!-- /.col-lg-12 -->
     </div>
-    <!-- /.row -->
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 align="center">Edit Category</h4>
+</div>
+
+<!-- View error edit -->
+    <div id="view_error_edit" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="content modal_background">
+                <div class="modal-title">
+                    <h3 class="modal_header" style="background-color : rgba(228, 25, 25, 0.81)" align="center">Opps....</h3>
                 </div>
-                <!-- /.panel-heading -->
-			<div class="panel-body">
-
-				@foreach($category as $data)
-				<form action="{{route('admin.cate.getEdit',$data->id)}}" method="POST" role="form">
-
-					{{csrf_field()}}
-
-					<div class="form-group">
-						<label for="">Category Parent</label>
-						<select name="parent_id" class="form-control" autofocus>
-							<option value="0">Parent Category</option>
-							<?php cate_parent($parent,0,"-",$data["parent_id"]); ?>
-						</select>
-					</div>
-
-					<div class="form-group {{$errors->has('name') ? 'has-error' : null}}">
-						<label>Category Name</label>
-						<input class="form-control" name="name" value="{{old('name',isset($data["name"]) ? $data['name'] : null)}}"></input>
-
-						@if($errors->has('name'))
-							<span class="help-block">
-								<i>{{$errors->first('name')}}</i>
-							</span>
-						@endif
-					</div>
-
-					<div class="form-group {{$errors->has('order') ? 'has-error' : null}}">
-						<label>Category Order</label>
-						<input class="form-control" name="order" value="{{old('order', isset($data) ? $data['order'] : null)}}"></input>
-
-						@if($errors->has('order'))
-							<span class="help-block">
-								<i>{{$errors->first('order')}}</i>
-							</span>
-						@endif
-					</div>
-
-					<div class="form-group {{$errors->has('keywords') ? 'has-error' : null}}">
-						<label>Category Keywords</label>
-						<input class="form-control" name="keywords" value="{{old('keywords', isset($data) ? $data['keywords'] : null)}}"></input>
-
-						@if($errors->has('keywords'))
-							<span class="form-control">
-								<i>{{$errors->first('keywords')}}</i>
-							</span>
-						@endif
-					</div>
-
-					<div class="form-group {{$errors->has('description') ? 'has-error' : null}}">
-						<label>Category Description</label>
-						<textarea class="form-control" name="description" row="3" placeholder="Please enter description">{{old('description', isset($data) ? $data["description"] : null)}}</textarea>
-
-						@if($errors->has('description'))
-							<span class="help-block">
-								<i>{{$errors->first('description')}}</i>
-							</span>
-						@endif
-					</div>
-
-					<div class="form-group">
-						<button class="btn btn-basis" type="submit">Update</button>
-
-						<button class="btn btn-warning" type="reset">Reset</button>
-					</div>
-
-
-				</form>
-				@endforeach
-				<a href="{{route('admin.cate.show')}}"><button class="btn btn-basis pull-right">Show Categories</button></a>
-				<a href="{{URL::previous()}}"><button class="btn btn-basis">Back</button></a>
-			</div>
-		</div>
-	</div>
-
-
-@stop
+                <div class="modal-body">
+                    <strong class="text-danger"><h3 align="center"><i><b>You can not edit this category !</b></i></h3></strong>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn_admin warning" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>

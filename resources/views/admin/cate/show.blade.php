@@ -2,98 +2,80 @@
 
 
 @section('content')
-
-
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header" align="center">Categories</h1>
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
-    <!-- /.row -->
+	<!-- /.row -->
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 align="center">DataTables show categories</h4>
+                    <h2 align="center">DataTables show users</h2>
                 </div>
+                <div class="panel-heading">
+               		 <button class="btn_admin  success" data-toggle="modal"  id="add_cate"><span class="glyphicon glyphicon-plus"></span> ADD</button>
+                </div>
+
                 <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables">
+                <div class="panel-body table-responsive">
+                    <table width="100%" class="table table-striped table-bordered table-hover usertable" id="dataTables">
                         <thead>
-							<tr align="center">
-								<th class="text-center">No</th>
+                            <tr>
+                                <th class="text-center">No</th>
 								<th class="text-center">Name</th>
-								<th class="text-center">Date</th>
-								<th class="text-center">Order</th>
 								<th class="text-center">Parent_name</th>
-								<th class="text-center">Keywords</th>
-								<th class="text-center">Description</th>
-								<th class="text-center">Edit</th>
-								<th class="text-center">Delete</th>
-							</tr>
-						</thead>
-
-						<tbody>
-							<?php $no =0; ?>
-							@foreach($data as $category)
+								<th class="text-center">Date</th>
+								<th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $no=0; $parent_cate = "";?>
+							@foreach($data as $data)
 							<?php $no++; ?>
-
-							<tr class="odd gradeX" align="center">
+							<tr id="{{$data["id"]}}">
 								<th class="text-center">{{$no}}</th>
-
-								<td>{{$category->name}}</td>
-
-									<!-- Show Date -->
-								<td>
-								<?php
-									echo \Carbon\Carbon::createFromTimestamp(strtotime($category["created_at"]))->diffForHumans();
-								?>
-								</td>
-
-								</td>
-
-								<td>{{$category->order}}</td>
+								<td class="text-center">{{$data->name}}</td>
 								<!-- Show parent category -->
-								<td>
-									@if($category["parent_id"] == 0)
+								<td class="text-center">
+									@if($data["parent_id"] == 0)
 										{{"None"}}
 									@else
 										<?php
-											$parent = DB::table('categories')->where('id', $category["parent_id"])->first();
+											$parent = DB::table('categories')->where('id', $data["parent_id"])->first();
 											echo $parent->name;
+											$parent_cate = $parent->name;
 										?>
 									@endif
 								</td>
-								<td>{{$category->keywords}}</td>
-								<td>{{$category->description}}</td>
-								<!-- Edit -->
-								<th class="text-center">
-									<a href="{{route('admin.cate.getEdit',$category->id)}}"><button class="btn btn-link"><span class="glyphicon glyphicon-pencil">&nbsp</span>Edit</button></a>
-								</th>
-								<!-- Delete -->
-								<th class="text-center">
-									<form action="{{route('admin.cate.delete',$category->id)}}" method="POST" role="form">
-										{{csrf_field()}}
-										<input type="hidden" name="method" value="DELETE">
-										<input type="hidden" name="id" value="{{$category->id}}">
-										<button onclick="return confirmdelete('Are you sure you want to delete - {{$category->name}} - ?')" type="submit" id="delete" class="btn btn-link"><span class="glyphicon glyphicon-trash">&nbsp</span>Delete</button>
-									</form>
-
-								</th>
+								<!-- Show Date -->
+								<td class="text-center">
+								<?php
+									echo \Carbon\Carbon::createFromTimestamp(strtotime($data["created_at"]))->diffForHumans();
+								?>
+								</td>
+								<!-- Action -->
+								<td class="text-center">
+									<!-- Show Detail -->
+									<button class="btn_admin_action info" data-toggle="modal" data-target="" onclick="view_cate('{{$data["id"]}}')" id="view_cate"><span class="glyphicon glyphicon-list"></span></button>
+									<!-- Show Edit Form -->
+									<button class="btn_admin_action warning" data-toggle="modal" data-target="" onclick="edit_cate('{{$data["id"]}}')" id="edit_cate"><span class="glyphicon glyphicon-pencil"></span></button>
+									<!-- Show Delete Form -->
+									<button class="btn_admin_action danger" data-toggle="modal" data-target="" onclick="delete_cate('{{$data["id"]}}')" id="delete_user"><span class="glyphicon glyphicon-trash"></button>
+								</td>
+								<input type="text" id="parent_category" value="{{$parent_cate}}">
 							</tr>
 							@endforeach
-						</tbody>
-					</table>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
 
-					<a href="{{route('admin.cate.getAdd')}}">
-						<button type="button" class="btn btn-basis pull-left">Add Category</button>
-					</a>
-
-				</div>
-			</div>
-		</div>
-	</div>
+    @extends('admin.cate.cate_detail')
+    @extends('admin.cate.add')
+    @extends('admin.cate.edit')
 
 
 @stop

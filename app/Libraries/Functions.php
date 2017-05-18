@@ -47,7 +47,7 @@
 				if($select != 0 && $id == $select){
 					echo "<option value='$id' selected > $str $name </option>";
 				}else{
-					echo "<option value='$id'>$str $name </option>";
+					echo "<option value='$id' >$str $name </option>";
 				}
 				cate_parent($data,$id,$str." -", $select);
 			}

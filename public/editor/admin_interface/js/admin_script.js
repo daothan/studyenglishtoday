@@ -376,9 +376,7 @@ $(document).ready( function() {
 
 /*Cate script*/
 
-	var id=[];
-
-	/*Show User informations*/
+	/*Show Cate informations*/
 	function view_cate(id){
 	    $('#view_cate').each(function(i){
 			id[i] = $(this).val();
@@ -409,36 +407,31 @@ $(document).ready( function() {
 		})
 	}
 
-	/*Add User*/
+	/*Add Cate*/
 	$('#add_cate').click(function(){
 		$('#addcateModal').modal('show');
 
 		$("#validate_add_cate").validate({
 			rules:{
+				add_parent:{
+					required:true
+				},
 				add_name:{
 					required:true,
 					maxlength:50
 				},
-				add_email:{
+				add_order:{
 					required:true,
-					email:true
+					number: true
 				},
-				add_password:{
+				add_keywords:{
+					required:true,
+					minlength:6,
+					maxlength:60
+				},
+				add_description:{
 					required:true,
 					minlength:6
-				},
-				add_password_confirmation:{
-					required:true,
-					minlength:6
-				}
-			},
-			messages:{
-				add_name:{
-					required: "Please enter username.",
-				},
-				add_password:{
-					required: "Please enter password.",
-					minlength: "Password must be more than 6 characters."
 				}
 			},
 			submitHandler:function(){
@@ -450,35 +443,64 @@ $(document).ready( function() {
 				$.ajax({
 					'url' : '/laravel1/admin/cate/add',
 					'data': {
+						'add_parent':$('#add_parent').val(),
 						'add_name' : $('#add_name').val(),
-						'add_email' : $('#add_email').val(),
-						'add_password':$('#add_password').val(),
-						'add_password_confirmation':$('#add_password_confirmation').val()
+						'add_order' : $('#add_order').val(),
+						'add_keywords':$('#add_keywords').val(),
+						'add_description':$('#add_description').val()
 					},
 					'type' :'POST',
 					success: function(data){
-						if(data.error_add_user ==true){
-						console.log(data);
+						if(data.error_add_cate ==true){
+						console.log(data.error_add_cate);
 							$('.error').hide();
 							if(data.messages.add_name != undefined){
 								$('.errorName_add').show().text(data.messages.add_name[0]);
 							}
-							if(data.messages.add_email != undefined){
-								$('.errorEmail_add').show().text(data.messages.add_email[0]);
+							if(data.messages.add_order != undefined){
+								$('.errorOrder_add').show().text(data.messages.add_order[0]);
 							}
-							if(data.messages.add_password != undefined){
-								$('.errorPassword').show().text(data.messages.add_password[0]);
+							if(data.messages.add_keywords != undefined){
+								$('.errorKeyword_add').show().text(data.messages.add_keywords[0]);
 							}
-							if(data.messages.add_password_confirmation != undefined){
-								$('.errorPassword_confirmation_add').show().text(data.messages.add_password_confirmation[0]);
+							if(data.messages.add_description != undefined){
+								$('.errorDescription_add').show().text(data.messages.add_description[0]);
 							}
 						}else{
-							setTimeout(function() { $('#addModal').modal('hide');}, 200);
-							setTimeout(function() { window.location.href = "/laravel1/admin/user/show";}, 500);
+							setTimeout(function() { $('#addcateModal').modal('hide');}, 200);
+							setTimeout(function() { window.location.href = "/laravel1/admin/cate/show";}, 500);
 						}
 					}
 				})
 			}
 		})
-	})
+	});
+
+	/*Edit Cate*/
+	function edit_cate(id){
+		$('#edit_cate').each(function(i){
+			$.ajax({
+				url:'/laravel1/admin/cate/edit',
+				type: "GET",
+				data:{"id":id},
+					success: function(result){
+						if(result.erroredit ==true){
+							$('#view_error_edit').modal('show');
+						}else{
+							$('#editcateModal').modal('show');
+							console.log(result);
+
+							/*Send values to edit cate form*/
+							$('#old_parent').val(result.parent_id);
+							$('#old_order').val(result.order);
+							$('#old_name_cate').val(result.name);
+							$('#old_keyword').val(result.keywords);
+							$('#old_description').val(result.description);
+						}
+					}
+			});
+
+		})
+	}
+
 
