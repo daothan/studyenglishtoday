@@ -408,26 +408,43 @@ $(document).ready( function() {
 	}
 
 	/*Add Cate*/
-	/*Show cate*/
+	/*Show cate parent and cate*/
     $.ajax({
     	url: '/laravel1/admin/cate/add',
     	type: "GET",
     	success: function(result){
-		    console.log(result[0]);
+		    //console.log(result[0]);
+		    /*Level 0*/
 	    	$.each(result[0].parent, function (index, value1) {
 		   		$('#add_parent').append(
 		       		$("<option></option>").val(value1.id).text(value1.name));
-				    console.log(value1);console.log(value1.name);
-
-				    $.each(result[0].cate, function(index,value2){
+		   			/*Level 1*/
+				    $.each(result[0].category, function(index,value2){
 				    	if(value2.parent_id==value1.id){
 				    		$('#add_parent').append(
 				    			$("<option></option>").val(value2.id).text("--"+value2.name));
+				    			/*Level 2*/
+				    			$.each(result[0].category, function(index,value3){
+				    				//console.log(value3);
+							    	if(value3.parent_id==value2.id){
+							    		$('#add_parent').append(
+							    			$("<option ></option>").val(value3.id).text("----"+value3.name));
+							    			/*Level 3*/
+							    			$.each(result[0].category, function(index,value4){
+							    				//console.log(value4);
+										    	if(value4.parent_id==value3.id){
+										    		$('#add_parent').append(
+										    			$("<option ></option>").val(value4.id).text("------"+value4.name));
+										    	}
+										    });
+							    	}
+							    });
 				    	}
 				    });
 			});
     	}
     });
+
 
 	$('#add_cate').click(function(){
 		$('#addcateModal').modal('show');
@@ -499,26 +516,66 @@ $(document).ready( function() {
 
 	/*Edit Cate*/
 	function edit_cate(id){
-		$('#edit_cate').each(function(i){
-			$.ajax({
-				url:'/laravel1/admin/cate/edit',
-				type: "GET",
-				data:{"id":id},
-					success: function(result){
-						if(result.erroredit ==true){
-							$('#view_error_edit').modal('show');
-						}else{
-							$('#editcateModal').modal('show');
-							console.log(result);
 
-							/*Send values to edit cate form*/
-							$('#old_parent').val(result.parent_id);
-							$('#old_order').val(result.order);
-							$('#old_name_cate').val(result.name);
-							$('#old_keyword').val(result.keywords);
-							$('#old_description').val(result.description);
-						}
+	$('#edit_cate').each(function(i){
+
+	    /*Post edit*/
+		$.ajax({
+			url:'/laravel1/admin/cate/edit',
+			type: "GET",
+			data:{"id":id},
+				success: function(result){
+					var id_edit = result[0].id_edit.id;
+						//console.log(temp1);
+						//console.log(result[0].id_edit.id);
+					if(result.erroredit ==true){
+						$('#view_error_edit').modal('show');
+					}else{
+						$('#editcateModal').modal('show');
+
+						/*Show category choosing*/
+						$('#editcateModal').on('shown.bs.modal', function () {
+						 	$('#old_parent').val(id_edit);
+						})
+
+						/*Show categories edit form*/
+					    /*Level 0*/
+				    	$.each(result[0].parent, function (index, value1) {
+					   		$('#old_parent').append(
+					       		$("<option></option>").val(value1.id).text(value1.name));
+					   			/*Level 1*/
+							    $.each(result[0].category, function(index,value2){
+							    	if(value2.parent_id==value1.id){
+							    		$('#old_parent').append(
+							    			$("<option></option>").val(value2.id).text("--"+value2.name));
+							    			/*Level 2*/
+							    			$.each(result[0].category, function(index,value3){
+							    				//console.log(value3);
+										    	if(value3.parent_id==value2.id){
+										    		$('#old_parent').append(
+										    			$("<option></option>").val(value3.id).text("----"+value3.name));
+										    			/*Level 3*/
+										    			$.each(result[0].category, function(index,value4){
+										    				//console.log(value4);
+													    	if(value4.parent_id==value3.id){
+													    		$('#old_parent').append(
+													    			$("<option ></option>").val(value4.id).text("------"+value4.name));
+													    	}
+													    });
+										    	}
+										    });
+							    	}
+							    });
+						});
+
+						/*Send values to edit cate form*/
+						$('#old_parent').val(result.parent_id);
+						$('#old_order').val(result.order);
+						$('#old_name_cate').val(result.name);
+						$('#old_keyword').val(result.keywords);
+						$('#old_description').val(result.description);
 					}
+				}
 			});
 
 		})

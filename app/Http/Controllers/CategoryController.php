@@ -39,7 +39,7 @@ class CategoryController extends Controller
             $id=$parent->id;
             $cate = Category::where('parent_id',$id)->get();
             $cate_parent = Category::where('parent_id',!$id)->get();
-            return response()->json(array(['parent'=>$cate_parent, 'cate'=>$cate]));
+            return response()->json(array(['parent'=>$cate_parent, 'cate'=>$cate, 'category'=>$category]));
         }
 
     }
@@ -67,16 +67,28 @@ class CategoryController extends Controller
             $data->description = $request -> input('add_description');
 
             if($data->save()){
-                $request->session()->flash('alert-success', 'Registration successful with account '.': '.$request->input('name'));
+                $request->session()->flash('alert-success', 'Add '.$request->input('add_name').' successful');
             }
         }
     }
 
     /*Edit Category*/
     public function view_edit(Request $request){
+
         if($request->ajax()){
             $id=$request->id;
             $info_cate=Category::find($id);
+
+            /*Show category*/
+            $category = Category::select('id', 'name', 'parent_id')->get();
+            $id_edit = ['id'=>$info_cate->id];
+            foreach ($category as $parent) {
+                $id=$parent->id;
+                $cate = Category::where('parent_id',$id)->get();
+                $cate_parent = Category::where('parent_id',!$id)->get();
+                return response()->json(array(['parent'=>$cate_parent, 'cate'=>$cate, 'category'=>$category, 'id_edit'=>$id_edit]));
+            }
+            /*Edn show category*/
 
             $user_current_level=Auth::user()->level;
 

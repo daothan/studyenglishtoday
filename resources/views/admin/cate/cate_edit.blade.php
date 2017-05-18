@@ -13,10 +13,8 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label">Category Parent</label>
 						<div class="col-md-6">
-							<select name="old_parent" id="old_parent" class="form-control" autofocus >
-								<option disabled selected hidden>Please Choose Catgeory...</option>
-								<option value="0">Parent Category</option>
-
+							<select name="old_parent" id="old_parent" class="form-control"  >
+								<option value="0" class="{{Auth::user()->level==1 ? 'hidden':''}}">Parent Category</option>
 							</select>
 						</div>
 					</div>
