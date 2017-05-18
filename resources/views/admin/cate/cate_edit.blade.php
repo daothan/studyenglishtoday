@@ -1,22 +1,21 @@
 
 <!-- Modal Add User-->
 
-<div id="addcateModal" class="modal fade" role="dialog">
+<div id="editcateModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="content modal_background">
             <div class="panel-title">
-                <h3 class="modal_header" align="center">Add Category</h3>
+                <h3 class="modal_header" align="center">Edit Category</h3>
             </div>
             <div class="modal-body">
-                <form action="" method="POST" class="form-horizontal" role="form"  id="validate_add_cate">
+                <form action="" method="POST" class="form-horizontal" role="form" id="validate_edit_cate">
 
 					<div class="form-group">
 						<label class="col-md-4 control-label">Category Parent</label>
 						<div class="col-md-6">
-							<select name="add_parent" id="add_parent" class="form-control" autofocus >
+							<select name="old_parent" id="old_parent" class="form-control" autofocus >
 								<option disabled selected hidden>Please Choose Catgeory...</option>
 								<option value="0">Parent Category</option>
-								<?php cate_parent($parent,0,"-",old('add_parent')); ?>
 
 							</select>
 						</div>
@@ -25,7 +24,7 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label">Category Name</label>
 						<div class="col-md-6">
-							<input type="text" class="form-control" id="add_name" name="add_name" placeholder="Please Enter Category Name">
+							<input type="text" class="form-control" id="old_name_cate" name="old_name_cate" placeholder="Please Enter Category Name">
 							<div class="has-error"><i><span class="help-block errorName_add"></span></i></div>
 						</div>
 
@@ -34,7 +33,7 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label">Category Order</label>
 						<div class="col-md-6">
-							<input type="text" class="form-control" id="add_order" name="add_order" placeholder="Please Enter Category Order">
+							<input type="text" class="form-control" id="old_order" name="old_order" placeholder="Please Enter Category Order">
 							<div class="has-error"><i><span class="help-block errorOrder_add"></span></i></div>
 						</div>
 					</div>
@@ -42,7 +41,7 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label">Category keywords</label>
 						<div class="col-md-6">
-							<input type="text" class="form-control" id="add_keywords" name="add_keywords" placeholder="Please Enter Category Keywords" value="{{old('keywords')}}">
+							<input type="text" class="form-control" id="old_keyword" name="old_keyword" placeholder="Please Enter Category Keywords">
 							<div class="has-error"><i><span class="help-block errorKeyword_add"></span></i></div>
 						</div>
 					</div>
@@ -50,7 +49,7 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label">Category Description</label>
 						<div class="col-md-6">
-							<textarea class="form-control" name="add_description" id="add_description" rows="3" placeholder="Please enter description">{{old('description')}}</textarea>
+							<textarea class="form-control" name="old_description" id="old_description" rows="3" placeholder="Please enter description"></textarea>
 							<div class="has-error"><i><span class="help-block errorDescription_add"></span></i></div>
 						</div>
 					</div>
@@ -69,3 +68,20 @@
         </div>
     </div>
 </div>
+
+<!-- View error edit -->
+    <div id="view_error_edit" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="content modal_background">
+                <div class="modal-title">
+                    <h3 class="modal_header" style="background-color : rgba(228, 25, 25, 0.81)" align="center">Opps....</h3>
+                </div>
+                <div class="modal-body">
+                    <strong class="text-danger"><h3 align="center"><i><b>You can not edit this category !</b></i></h3></strong>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn_admin warning" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>

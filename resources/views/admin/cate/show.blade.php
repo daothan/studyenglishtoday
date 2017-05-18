@@ -74,8 +74,8 @@
     <!-- /.row -->
 
     @extends('admin.cate.cate_detail')
-    @extends('admin.cate.add')
-    @extends('admin.cate.edit')
+    @extends('admin.cate.cate_add')
+    @extends('admin.cate.cate_edit')
 
 
 @stop

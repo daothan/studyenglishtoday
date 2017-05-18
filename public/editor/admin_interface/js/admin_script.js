@@ -408,6 +408,27 @@ $(document).ready( function() {
 	}
 
 	/*Add Cate*/
+	/*Show cate*/
+    $.ajax({
+    	url: '/laravel1/admin/cate/add',
+    	type: "GET",
+    	success: function(result){
+		    console.log(result[0]);
+	    	$.each(result[0].parent, function (index, value1) {
+		   		$('#add_parent').append(
+		       		$("<option></option>").val(value1.id).text(value1.name));
+				    console.log(value1);console.log(value1.name);
+
+				    $.each(result[0].cate, function(index,value2){
+				    	if(value2.parent_id==value1.id){
+				    		$('#add_parent').append(
+				    			$("<option></option>").val(value2.id).text("--"+value2.name));
+				    	}
+				    });
+			});
+    	}
+    });
+
 	$('#add_cate').click(function(){
 		$('#addcateModal').modal('show');
 
@@ -441,15 +462,15 @@ $(document).ready( function() {
 				    }
 				});
 				$.ajax({
-					'url' : '/laravel1/admin/cate/add',
-					'data': {
+					url : '/laravel1/admin/cate/add',
+					type :'POST',
+					data: {
 						'add_parent':$('#add_parent').val(),
 						'add_name' : $('#add_name').val(),
 						'add_order' : $('#add_order').val(),
 						'add_keywords':$('#add_keywords').val(),
 						'add_description':$('#add_description').val()
 					},
-					'type' :'POST',
 					success: function(data){
 						if(data.error_add_cate ==true){
 						console.log(data.error_add_cate);

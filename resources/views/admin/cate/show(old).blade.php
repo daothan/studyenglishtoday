@@ -67,7 +67,7 @@
 								<td>{{$category->description}}</td>
 								<!-- Edit -->
 								<th class="text-center">
-									<a href="{{route('admin.cate.getEdit',$category->id)}}"><button class="btn btn-link"><span class="glyphicon glyphicon-pencil">&nbsp</span>Edit</button></a>
+									<a href="{{route('admin.cate.editcate',$category->id)}}"><button class="btn btn-link"><span class="glyphicon glyphicon-pencil">&nbsp</span>Edit</button></a>
 								</th>
 								<!-- Delete -->
 								<th class="text-center">
@@ -84,7 +84,7 @@
 						</tbody>
 					</table>
 
-					<a href="{{route('admin.cate.getAdd')}}">
+					<a href="{{route('admin.cate.addcate')}}">
 						<button type="button" class="btn btn-basis pull-left">Add Category</button>
 					</a>
 
@@ -93,5 +93,7 @@
 		</div>
 	</div>
 
-
+    @extends('admin.cate.cate_detail')
+    @extends('admin.cate.add')
+    @extends('admin.cate.edit')
 @stop

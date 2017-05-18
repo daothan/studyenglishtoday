@@ -17,9 +17,8 @@ class CategoryController extends Controller
 	/*Show categories*/
 	public function show(){
 		$data = Category::orderBy('id', 'DESC')->get();
-        $parent = Category::select('id', 'name', 'parent_id')->get();
 
-		return view ('admin.cate.show', compact('data','parent'));
+        return view ('admin.cate.show', compact('data'));
 	}
 
 
@@ -34,6 +33,16 @@ class CategoryController extends Controller
     }
 
     /*Add category*/
+    public function getaddcate(){
+        $category = Category::select('id', 'name', 'parent_id')->get();
+        foreach ($category as $parent) {
+            $id=$parent->id;
+            $cate = Category::where('parent_id',$id)->get();
+            $cate_parent = Category::where('parent_id',!$id)->get();
+            return response()->json(array(['parent'=>$cate_parent, 'cate'=>$cate]));
+        }
+
+    }
     public function addcate(Request $request){
     	$rules = [
             'add_name'        => 'unique:users,name'

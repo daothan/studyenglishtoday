@@ -59,11 +59,13 @@ Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 		Route::get('catedetail', ['as' => 'admin.cate.catedetail', 'uses' => 'CategoryController@view_cate_detail']);
 
 		/*Add categories*/
+		Route::get('add', ['as' => 'admin.cate.addcate', 'uses' => 'CategoryController@getaddcate']);
 		Route::post('add', ['as' => 'admin.cate.addcate', 'uses' => 'CategoryController@addcate']);
 
 		/*Edit Category*/
 		Route::get('edit', ['as' => 'admin.cate.editcate', 'uses' => 'CategoryController@view_edit']);
 		Route::post('edit', ['as' => 'admin.cate.editcate', 'uses' => 'CategoryController@edit']);
+
 		/*Delete category*/
 		Route::post('delete/{id}',['as' => 'admin.cate.delete', 'uses' => 'CategoryController@delete']);
 
