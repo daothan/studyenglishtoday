@@ -16,6 +16,7 @@ class SocialController extends Controller
 	        $this->middleware('guest', ['except' => ['logout', 'getLogout']]);
 	    }
 
+
 	/*Login by Facebook*/
     public function facebookredirect()
     {
@@ -29,7 +30,6 @@ class SocialController extends Controller
         $email_social = $user_social->email.'.'.$user_social->id;
 
     	$facebook = Social::where('provider_user_id', $user_social->id)->where('provider','facebook')->first();
-
         if($facebook){ /*If has user the login*/
         	$user_facebook = User::where('email_social', $email_social)->first();
         	Auth::login($user_facebook);

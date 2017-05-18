@@ -175,9 +175,13 @@ class UserController extends Controller
             $user_id_info=$info->id;
             $user_social=Social::where('user_id', $user_id_info)->get();
             $social="";
+            $social_id="";
             foreach ($user_social as $user_social){
 	            $social = [
-	            	'provider'=>$user_social->provider,
+                    'provider'=>$user_social->provider,
+                ];
+                $social_id = [
+	            	'provider'=>$user_social->id,
 	            ];
             }
             /*Check level user having view other details*/
@@ -186,8 +190,8 @@ class UserController extends Controller
 	        $user_current_id = Auth::user()->id;
 	        $user_current_level = Auth::user()->level;
 
-            if($user_current_level == 1){/*If admin, can see member*/
-	            if($view__level >1){
+            if($user_current_level == 1){/*If admin, can delete member (not social account)*/
+	            if($view__level >1 ){
 	                return response()->json(array('info'=>$info,'user_social'=>$social));
 	            }else{
 	                $errors = new MessageBag(['errorView'=>'You can not see this account details.']);
@@ -198,7 +202,7 @@ class UserController extends Controller
 	            }
 	        }
 
-	        if($user_current_level == 0){ /*Super Admin can see all member and admin*/
+	        if($user_current_level == 0){ /*Super Admin can delete all member and admin (not social account)*/
 		        return response()->json(array('info'=>$info,'user_social'=>$social));
 		    }
 	    }
@@ -207,9 +211,21 @@ class UserController extends Controller
     {
     	if($request->ajax()){
 	        $id = $request->id;
-
 	        $user = User::find($id);
-	        $user -> delete($id);
+
+            /*query socials tables*/
+            $user_id_info=$user->id;
+            $user_social=Social::where('user_id', $user_id_info)->get();
+            $social_id="";
+            foreach ($user_social as $user_social){
+                $social_id = $user_social->id;
+            }
+            if($social_id){
+                $user_social = Social::find($social_id);
+	            $user_social -> delete($social_id);
+            }
+
+            $user -> delete($id);
         }
     }
 

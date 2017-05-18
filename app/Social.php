@@ -2,12 +2,19 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Social extends Model
+class Social extends Authenticatable
 {
+    use Notifiable;
 
-	protected $table = 'socials';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $table = 'socials';
     protected $fillable = [
     	'id', 'user_id', 'provider_user_id', 'provider'
     ];
@@ -18,3 +25,5 @@ class Social extends Model
     	return $this->belongsTo('App\User');
     }
 }
+
+

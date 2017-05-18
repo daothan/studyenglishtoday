@@ -336,7 +336,7 @@ $(document).ready( function() {
 			    data: {"id":id},
 			    success: function(result){
 			    	if(result.errorview ==true){ /*If has error view*/
-			    		$('#view_error_view').modal('show');
+			    		$('#view_error_delete').modal('show');
 			    	}else{
 			    		$('#deleteModal').modal('show');
 			    		/*Check Name*/
