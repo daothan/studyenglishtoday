@@ -525,40 +525,39 @@ $(document).ready( function() {
 			type: "GET",
 			data:{"id":id},
 				success: function(result){
-					var id_edit = result[0].id_edit.id;
-						//console.log(temp1);
-						//console.log(result[0].id_edit.id);
+					//console.log(temp1);
 					if(result.erroredit ==true){
 						$('#view_error_edit').modal('show');
 					}else{
+						var id_edit = result[0].id_edit.id;
 						$('#editcateModal').modal('show');
 
 						/*Show category choosing*/
 						$('#editcateModal').on('shown.bs.modal', function () {
-						 	$('#old_parent').val(id_edit);
+						 	$('#edit_parent').val(id_edit);
 						})
 
 						/*Show categories edit form*/
 					    /*Level 0*/
 				    	$.each(result[0].parent, function (index, value1) {
-					   		$('#old_parent').append(
+					   		$('#edit_parent').append(
 					       		$("<option></option>").val(value1.id).text(value1.name));
 					   			/*Level 1*/
 							    $.each(result[0].category, function(index,value2){
 							    	if(value2.parent_id==value1.id){
-							    		$('#old_parent').append(
+							    		$('#edit_parent').append(
 							    			$("<option></option>").val(value2.id).text("--"+value2.name));
 							    			/*Level 2*/
 							    			$.each(result[0].category, function(index,value3){
 							    				//console.log(value3);
 										    	if(value3.parent_id==value2.id){
-										    		$('#old_parent').append(
+										    		$('#edit_parent').append(
 										    			$("<option></option>").val(value3.id).text("----"+value3.name));
 										    			/*Level 3*/
 										    			$.each(result[0].category, function(index,value4){
 										    				//console.log(value4);
 													    	if(value4.parent_id==value3.id){
-													    		$('#old_parent').append(
+													    		$('#edit_parent').append(
 													    			$("<option ></option>").val(value4.id).text("------"+value4.name));
 													    	}
 													    });
@@ -569,11 +568,61 @@ $(document).ready( function() {
 						});
 
 						/*Send values to edit cate form*/
-						$('#old_parent').val(result.parent_id);
-						$('#old_order').val(result.order);
-						$('#old_name_cate').val(result.name);
-						$('#old_keyword').val(result.keywords);
-						$('#old_description').val(result.description);
+						//console.log(result[0].info.id);
+						$("#old_id_edit").val(result[0].info.id);
+						$('#edit_parent').val(result[0].info.parent_id);
+						$('#edit_name').val(result[0].info.name);
+						$('#edit_order').val(result[0].info.order);
+						$('#edit_keyword').val(result[0].info.keywords);
+						$('#edit_description').val(result[0].info.description);
+
+						$("#validate_edit_cate").validate({
+							rules:{
+								edit_order:{
+									required:true,
+									number: true
+								},
+								edit_keyword:{
+									required:true,
+									minlength:6,
+									maxlength:60
+								},
+								edit_description:{
+									required:true,
+									minlength:6
+								}
+							},
+							submitHandler:function(){
+								$.ajaxSetup({
+								  headers: {
+								    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+								  }
+								});
+								$.ajax({
+									'url' : '/laravel1/admin/cate/edit',
+									'type' :'POST',
+									'data': {
+										'old_id_edit':$("#old_id_edit").val(),
+										'edit_parent' : $('#edit_parent').val(),
+										'edit_name' : $('#edit_name').val(),
+										'edit_order' : $('#edit_order').val(),
+										'edit_keyword':$('#edit_keyword').val(),
+										'edit_description':$('#edit_description').val()
+									},
+									success: function(data){
+										if(data.error_edit_cate ==true){
+											$('.error').hide();
+											if(data.messages.edit_name != undefined){
+												$('.errorName_edit').show().text(data.messages.edit_name[0]);
+											}
+										}else{
+											setTimeout(function() { $('#editcateModal').modal('hide');}, 200);
+											setTimeout(function() { window.location.href = "/laravel1/admin/cate/show";}, 500);
+										}
+									}
+								})
+							}
+						})
 					}
 				}
 			});

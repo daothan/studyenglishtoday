@@ -59,7 +59,6 @@
 									<!-- Show Delete Form -->
 									<button class="btn_admin_action danger" data-toggle="modal" data-target="" onclick="delete_cate('{{$data["id"]}}')" id="delete_user"><span class="glyphicon glyphicon-trash"></button>
 								</td>
-								<input type="text" id="parent_category" value="{{$parent_cate}}">
 							</tr>
 							@endforeach
                         </tbody>

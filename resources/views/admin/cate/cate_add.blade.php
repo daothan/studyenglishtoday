@@ -57,12 +57,10 @@
                         <div class="col-md-6 col-md-offset-4">
                             <button type="submit" class="btn_admin primary">Submit</button>
                             <button class="btn_admin warning" type="reset" >Reset</button>
+                			<button type="button" class="btn_admin danger pull-right" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn_admin danger" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

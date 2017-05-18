@@ -47,7 +47,7 @@
 
                     <!-- Submit -->
                     <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
+                        <div class="col-md-6 col-md-offset-4 pull-right">
                             <button type="submit" class="btn_admin primary">Update</button>
                             <button class="btn_admin danger" data-dismiss="modal" aria-hidden="true">Cancel</button>
                         </div>

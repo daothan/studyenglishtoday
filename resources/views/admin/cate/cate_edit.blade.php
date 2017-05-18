@@ -9,11 +9,11 @@
             </div>
             <div class="modal-body">
                 <form action="" method="POST" class="form-horizontal" role="form" id="validate_edit_cate">
-
+					<input type="text" name="old_id_edit" id="old_id_edit" class="hidden">
 					<div class="form-group">
 						<label class="col-md-4 control-label">Category Parent</label>
 						<div class="col-md-6">
-							<select name="old_parent" id="old_parent" class="form-control"  >
+							<select name="edit_parent" id="edit_parent" class="form-control"  >
 								<option value="0" class="{{Auth::user()->level==1 ? 'hidden':''}}">Parent Category</option>
 							</select>
 						</div>
@@ -22,8 +22,8 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label">Category Name</label>
 						<div class="col-md-6">
-							<input type="text" class="form-control" id="old_name_cate" name="old_name_cate" placeholder="Please Enter Category Name">
-							<div class="has-error"><i><span class="help-block errorName_add"></span></i></div>
+							<input type="text" class="form-control" id="edit_name" name="edit_name" disabled>
+							<div class="has-error"><i><span class="help-block errorName_edit"></span></i></div>
 						</div>
 
 					</div>
@@ -31,37 +31,33 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label">Category Order</label>
 						<div class="col-md-6">
-							<input type="text" class="form-control" id="old_order" name="old_order" placeholder="Please Enter Category Order">
-							<div class="has-error"><i><span class="help-block errorOrder_add"></span></i></div>
+							<input type="text" class="form-control" id="edit_order" name="edit_order" placeholder="Please Enter Category Order">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-md-4 control-label">Category keywords</label>
 						<div class="col-md-6">
-							<input type="text" class="form-control" id="old_keyword" name="old_keyword" placeholder="Please Enter Category Keywords">
-							<div class="has-error"><i><span class="help-block errorKeyword_add"></span></i></div>
+							<input type="text" class="form-control" id="edit_keyword" name="edit_keyword" placeholder="Please Enter Category Keywords">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-md-4 control-label">Category Description</label>
 						<div class="col-md-6">
-							<textarea class="form-control" name="old_description" id="old_description" rows="3" placeholder="Please enter description"></textarea>
-							<div class="has-error"><i><span class="help-block errorDescription_add"></span></i></div>
+							<textarea class="form-control" name="edit_description" id="edit_description" rows="3" placeholder="Please enter description"></textarea>
 						</div>
 					</div>
                     <!-- Submit -->
                     <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
+                        <div class="col-md-6 col-md-offset-4 pull-right">
                             <button type="submit" class="btn_admin primary">Submit</button>
-                            <button class="btn_admin warning" type="reset" >Reset</button>
+                			<button type="button" class="btn_admin danger" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn_admin danger" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
