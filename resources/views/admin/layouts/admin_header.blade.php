@@ -44,7 +44,6 @@
     <script type="text/javascript" src="{{URL::asset('public/editor/ckfinder/ckfinder.js')}}" ></script>
     <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/ckeditor_script.js')}}"></script>
 
-
     <!-- /jQuery -->
 
 </head>
@@ -180,7 +179,7 @@
                     <ul class="dropdown-menu dropdown-user">
                          <!-- Show level user -->
                         <li>
-                            <a onclick="view_user({{Auth::user()->id}})"><i class="fa fa-user fa-fw"></i>
+                            <a onclick="view_user_login({{Auth::user()->id}})"><i class="fa fa-user fa-fw"></i>
                                 <i>
                                     {{((Auth::user()->level=='0')) ? 'Super Admin' :''}}
                                     {{(isset(Auth::user()->level) && (Auth::user()->level=='1')) ? 'Admin':''}}
@@ -192,7 +191,7 @@
 
                         <!-- Edit User logging -->
                         <li>
-                            <a onclick="edit_user({{Auth::user()->id}})"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                            <a onclick="edit_user_login({{Auth::user()->id}})"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <!-- End edit User logging -->
 
@@ -297,6 +296,9 @@
         </div>
 
     </div>
+    @extends('admin/layouts/user_login_detail')
+    @extends('admin/layouts/user_login_edit')
+
 
     <!-- Admin Layouts JavaScript -->
     <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_script.js')}}"></script>

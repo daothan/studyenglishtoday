@@ -78,7 +78,7 @@ class UserController extends Controller
 	        $user_current_level = Auth::user()->level;
 
             if($user_current_level == 1){/*If admin, can see member*/
-	            if($user_current_id == $view_id || $view_level >1){
+	            if($user_current_id == $view_id || $view_level >=1){
 	                return response()->json(array('info'=>$info,'user_social'=>$social));
 	            }else{
 	                $errors = new MessageBag(['errorView'=>'You can not see this account details.']);
@@ -115,20 +115,24 @@ class UserController extends Controller
 	        $user_current_id = Auth::user()->id;
 	        $user_current_level = Auth::user()->level;
 
-            if($user_current_level == 1){/*If admin, can see member*/
+            if($user_current_level == 1){/*If admin, can edit member*/
 	            if($user_current_id == $view_id || $view_level >1 && $social == ""){
 	                return response()->json(array('info'=>$info,'user_social'=>$social));
             	}else{
-	                $errors = new MessageBag(['errorView'=>'You can not see this account details.']);
 	                return response()->json([
-	                'errorview' =>true,
-	                'message' =>$errors
+	                'errorview' =>true
 	                ],200);
 	            }
 	        }
 
-	        if($user_current_level == 0){ /*Super Admin can see all member and admin*/
-		        return response()->json(array('info'=>$info,'user_social'=>$social));
+	        if($user_current_level == 0){ /*Super Admin can edit all member and admin*/
+                if($social == ""){
+		          return response()->json(array('info'=>$info,'user_social'=>$social));
+                }else{
+                    return response()->json([
+                    'errorview' =>true
+                    ],200);
+                }
 		    }
 	    }
     }
@@ -155,8 +159,8 @@ class UserController extends Controller
 	                ],200);
 	        }else{
 	            $user = User::find($id);
-	            $user->password = bcrypt($request->old_password);
-	            $user->level    = 2; /*Register just become a member*/
+	            $user->password = bcrypt($request->password);
+	            $user->level    = $request->level;
 
 	            if($user->save()){
 	                $request->session()->flash('alert-success', 'Update user successful.');

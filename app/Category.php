@@ -9,7 +9,7 @@ class Category extends Model
     protected $table = 'categories';
     protected $fillable = ['id', 'name', 'alias', 'order', 'parent_id', 'keywords', 'description'];
 
-    //public $timestamps = false;
+    public $timestamps = true;
 
     public function detail(){
     	return $this -> hasMany('App\Detail');

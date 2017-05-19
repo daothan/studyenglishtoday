@@ -138,7 +138,7 @@ div.dataTables_paginate ul.pagination {
 /* Error label Ajax */
 label.error {
     font-style: italic;
-    font-weight: inherit;
+    font-weight: 100;
     color: red;
 }
 a{

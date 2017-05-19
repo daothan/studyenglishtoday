@@ -34,6 +34,11 @@
                         <label>Provider: </label>
                         <strong class="text-info"><i><span id="view_userprovider" class="text-success"></span></i></strong>
                     </div><hr>
+
+                    <div class="form-group col-centered">
+                        <label>Created: </label>
+                        <strong class="text-info"><i><span id="view_usercreated" class="text-success"></span></i></strong>
+                    </div>
                 </div>
 
                 <div class="modal-footer">

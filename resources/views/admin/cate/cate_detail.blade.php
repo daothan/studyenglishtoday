@@ -38,6 +38,11 @@
                     <div class="form-group col-centered">
                         <label>Cate Description: </label>
                         <strong class="text-info"><i><span id="view_catedescription" class="text-success"></span></i></strong>
+                    </div><hr>
+
+                    <div class="form-group col-centered">
+                        <label>Created: </label>
+                        <strong class="text-info"><i><span id="view_catecreated" class="text-success"></span></i></strong>
                     </div>
                 </div>
 
