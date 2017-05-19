@@ -67,7 +67,7 @@ class CategoryController extends Controller
             $data->description = $request -> input('add_description');
 
             if($data->save()){
-                $request->session()->flash('alert-success', 'Add '.$request->input('add_name').' successful');
+                $request->session()->flash('alert-success', 'Add '.$request->input('add_name').' successfully');
             }
         }
     }

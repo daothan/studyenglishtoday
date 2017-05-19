@@ -15,7 +15,7 @@ class CreateDetailsTable extends Migration
     {
         Schema::create('details', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
+            $table->string('tittle')->unique();
             $table->string('alias');
             $table->string('content');
             $table->string('images');

@@ -34,6 +34,19 @@ div.dataTables_paginate ul.pagination {
 
 }
 
+/* Modal */
+/* Set modal detail form scrollY */
+.modal-dialog-detail{
+    overflow-y: initial !important
+}
+.modal-body-detail{
+    height: 480px;
+    overflow-y: auto;
+}
+.modal-body-footer{
+    padding: 10px 20px 0px 20px !important;
+    background-color: #d8dde4;
+}
 .modal_background {
     background: #fff;
     margin-bottom: 10px
@@ -53,7 +66,7 @@ div.dataTables_paginate ul.pagination {
     letter-spacing: 1px;
     color: #f8f0f0;
     padding: 0.5em 1em 0.4em;
-    background: rgba(27, 120, 224, 0.77);
+    background: rgba(68, 134, 208, 0.77);;
     margin: 0em;
     position: relative;
 }

@@ -32,12 +32,13 @@
 			<nav class="navbar-static-top navbar-fixed-top navbar-inverse menu">
 				<div class="container">
 					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
+						<div class="navbar-toggle collapsed icon_bar_toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" >
+							<div class="container" onclick="myFunction(this)">
+							    <div class="bar1"></div>
+							    <div class="bar2"></div>
+							    <div class="bar3"></div>
+							</div>
+						</div>
 						<h1 class="w3ls-logo"><a class="logo"><p>Free English</p></a></h1>
 					</div>
 
@@ -223,7 +224,7 @@
 
 				<!-- Show Flash Message -->
 			    <div>
-			    	@foreach (['danger', 'warning', 'success', 'info'] as $msg)
+			    	@foreach (['danger', 'warning', 'success', 'info', 'flash_welcome'] as $msg)
 				        @if(Session::has('alert-' . $msg))
 							<h2 class="flash text-center text-{{ $msg }}"><i>{{Session::get('alert-'. $msg)}}</i></h2>
 				        @endif
@@ -647,35 +648,11 @@
 
 
 	<!-- Script -->
-	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/user_script.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/move-top.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/easing.js')}}"></script>
-
-	<script type="text/javascript">
-		jQuery(document).ready(function($) {
-			$(".scroll").click(function(event){
-					event.preventDefault();
-
-			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-				});
-			});
-
-		$(document).ready(function() {
-			$().UItoTop({ easingType: 'easeOutQuart' });
-		});
-
-		/*Home top*/
-		 $("a[href='#top']").click(function() {
-		     $("html, body").animate({ scrollTop: 0 }, "slow");
-		     return false;
-		  });
-
-	</script>
-
-
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/jquery.nicescroll.js')}}"></script>
-	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/scripts.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/bootstrap.js')}}"></script>
+	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/user_script.js')}}"></script>
 
 </body>
 </html>

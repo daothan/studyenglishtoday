@@ -5,7 +5,7 @@
 
 	<div class="row">
 	    <div class="col-lg-12">
-			<div class="panel-title">
+			<div class="panel-tittle">
 				<div class="col-centered">
 					<h2 align="center">Add Details</h2><hr>
 				</div>
@@ -27,14 +27,14 @@
 						@endif
 					</div>
 
-					<div class="form-group {{$errors->has('title') ? 'has-error' : null}}">
-						<label>Title</label>
-						<textarea type="text" name="title" class="form-control" id="title" rows="3">{{old('title')}}</textarea>
-						<script type="text/javascript">ckeditor("title", "config", "basic")</script>
+					<div class="form-group {{$errors->has('tittle') ? 'has-error' : null}}">
+						<label>Tittle</label>
+						<textarea type="text" name="tittle" class="form-control" id="tittle" rows="3">{{old('tittle')}}</textarea>
+						<script type="text/javascript">ckeditor("tittle", "config", "basic")</script>
 
-						@if($errors->has('title'))
+						@if($errors->has('tittle'))
 							<span class="help-block">
-								<i>{{$errors->first('title')}}</i>
+								<i>{{$errors->first('tittle')}}</i>
 							</span>
 						@endif
 					</div>

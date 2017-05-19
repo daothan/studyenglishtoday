@@ -1,4 +1,43 @@
 
+
+jQuery(document).ready(function($) {
+	$(".scroll").click(function(event){
+			event.preventDefault();
+
+	$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+});
+
+$(document).ready(function() {
+	$().UItoTop({ easingType: 'easeOutQuart' });
+});
+
+/*Home top*/
+ $("a[href='#top']").click(function() {
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+    return false;
+});
+/*Animation menu icon mobile*/
+function myFunction(x) {
+    x.classList.toggle("change");
+}
+
+(function() {
+    "use strict";
+
+    // custom scrollbar
+
+    $("html").niceScroll({styler:"fb",cursorcolor:"#ff9800", cursorwidth: '8', cursorborderradius: '10px', background: 'rgba(66, 79, 99, 0.6)', spacebarenabled:false, cursorborder: '0',  zindex: '1000'});
+
+    $(".scrollbar1").niceScroll({styler:"fb",cursorcolor:"rgba(97, 100, 193, 0.78)", cursorwidth: '6', cursorborderradius: '0',autohidemode: 'false', background: '#F1F1F1', spacebarenabled:false, cursorborder: '0'});
+
+
+    $(".scrollbar1").getNiceScroll();
+    if ($('body').hasClass('scrollbar1-collapsed')) {
+        $(".scrollbar1").getNiceScroll().hide();
+    }
+
+})(jQuery);
 /*Validate Form Login Jquery*/
 
 $("#validate_login").validate({

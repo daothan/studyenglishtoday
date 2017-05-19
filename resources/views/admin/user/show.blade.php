@@ -10,7 +10,7 @@
                     <h2 align="center">DataTables show users</h2>
                 </div>
                 <div class="panel-heading">
-               		 <button class="btn_admin  success" data-toggle="modal"  id="add_user"><span class="glyphicon glyphicon-plus"></span> ADD</button>
+               		 <button class="btn_admin  success" data-toggle="modal" id="add_user"><span class="glyphicon glyphicon-plus"></span> ADD</button>
                 </div>
 
                 <!-- /.panel-heading -->

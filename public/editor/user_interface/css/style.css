@@ -331,13 +331,13 @@ h3.w3ls-hdg {
 }
 .progress.w3-agileits {
     height: 10px;
-} 
+}
 .grid_3 {
-    padding: 5em 2em;
+    padding: 3.5em 3em;
     background: #fff;
 }
 .grid_3.grid_4.grid-w3hdngs p {
-    color: #c1c1c1;   
+    color: #c1c1c1;
     letter-spacing: 1px;
 }
 h4.w3t-text {
@@ -346,7 +346,9 @@ h4.w3t-text {
     font-weight: 300;
     color: #00BCD4;
 }
-
+h2.text-flash_welcome{
+    color: #ffffff !important;
+}
 /*-- text styles --*/
 .w3ltext-grids {
     margin-top: 1.5em;
@@ -1341,13 +1343,44 @@ h4.w3t-text {
 button.navbar-toggle {
     margin: 5px;
 }
+/*bar1, bar2, bar3 */
 .navbar-inverse .navbar-toggle {
-    border-color: rgba(74, 191, 35, 0.52);
-    background-color: rgba(74, 191, 35, 0.52);
+    border: none;
+}
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-8px, -8px) ;
+}
+.icon_bar{
+    padding-right: 6px;
+    padding-left: 6px;
+}
+.icon_bar_toggle{
+    padding: 3px 3px 3px 3px;
+    display: inline-block;
+    cursor: pointer;
 }
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
-    background-color: rgba(45, 69, 195, 0.71);
+    background-color: #ddd;
 }
+/* End bar1, bar2, bar3 */
+
+
 .top-w3lnav .navbar-nav > li > a {
     padding: 1em;
     text-align: center;

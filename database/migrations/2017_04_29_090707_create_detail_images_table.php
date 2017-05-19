@@ -15,6 +15,7 @@ class CreateDetailImagesTable extends Migration
     {
         Schema::create('detail_images', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('tittle');
             $table->string('images');
             $table->integer('detail_id')->unsigned();
             $table->foreign('detail_id')->references('id')->on('details')->onDelete('cascade');

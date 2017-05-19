@@ -42,7 +42,6 @@
     <!-- Ckeditor and Ckfinder -->
     <script type="text/javascript" src="{{URL::asset('public/editor/ckeditor/ckeditor.js')}}" ></script>
     <script type="text/javascript" src="{{URL::asset('public/editor/ckfinder/ckfinder.js')}}" ></script>
-    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/ckeditor_script.js')}}"></script>
 
     <!-- /jQuery -->
 
@@ -252,13 +251,13 @@
                             <a href=""><i class="fa fa-edit fa-fw"></i> Add <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="{{route('admin.user.show')}}">Users</a>
+                                    <a data-toggle="modal" id="add_user_header">Users</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('admin.cate.show')}}">Categories</a>
+                                    <a data-toggle="modal" id="add_cate_header">Categories</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('admin.detail.getAdd')}}">Details</a>
+                                    <a data-toggle="modal" id="add_detail_header">Details</a>
                                 </li>
                             </ul>
                         </li>
@@ -300,20 +299,16 @@
     @extends('admin/layouts/user_login_edit')
 
 
-    <!-- Admin Layouts JavaScript -->
-    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_script.js')}}"></script>
     <!-- DataTables JavaScript -->
     <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/datatables/jquery.dataTables.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/datatables/dataTables.bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/datatables/dataTables.responsive.js')}}"></script>
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
-    $(document).ready(function() {
-        $('#dataTables').DataTable({
-            responsive: false
-        });
-    });
-    </script>
+    <!-- Admin JavaScript -->
+    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_master_script.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_user_script.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_cate_script.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_detail_script.js')}}"></script>
+
 
 </body>
 </html>
