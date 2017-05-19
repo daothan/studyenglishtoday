@@ -67,7 +67,8 @@ Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 		Route::post('edit', ['as' => 'admin.cate.editcate', 'uses' => 'CategoryController@edit']);
 
 		/*Delete category*/
-		Route::post('delete/{id}',['as' => 'admin.cate.delete', 'uses' => 'CategoryController@delete']);
+		Route::get('delete_view',['as' => 'admin.cate.delete', 'uses' => 'CategoryController@delete_view']);
+		Route::post('delete',['as' => 'admin.cate.delete', 'uses' => 'CategoryController@delete']);
 
 	});
 

@@ -71,7 +71,7 @@
                     <h3 class="modal_header" style="background-color : rgba(228, 25, 25, 0.81)" align="center">Opps....</h3>
                 </div>
                 <div class="modal-body">
-                    <strong class="text-danger"><h3 align="center"><i><b>You can not edit this category !</b></i></h3></strong>
+                    <strong class="text-danger"><h3 align="center"><i><b>This category could be edit by Super_admin !</b></i></h3></strong>
                 </div>
                 <div class="modal-footer">
                     <button class="btn_admin warning" data-dismiss="modal" aria-hidden="true">Close</button>

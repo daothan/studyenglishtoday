@@ -73,12 +73,12 @@ class UserController extends Controller
             }
             /*Check level user having view other details*/
             $view_id = $info->id;
-	        $view__level = $info->level;
+	        $view_level = $info->level;
 	        $user_current_id = Auth::user()->id;
 	        $user_current_level = Auth::user()->level;
 
             if($user_current_level == 1){/*If admin, can see member*/
-	            if($user_current_id == $view_id || $view__level >1){
+	            if($user_current_id == $view_id || $view_level >1){
 	                return response()->json(array('info'=>$info,'user_social'=>$social));
 	            }else{
 	                $errors = new MessageBag(['errorView'=>'You can not see this account details.']);
@@ -111,12 +111,12 @@ class UserController extends Controller
             }
             /*Check level user having view other details*/
             $view_id = $info->id;
-	        $view__level = $info->level;
+	        $view_level = $info->level;
 	        $user_current_id = Auth::user()->id;
 	        $user_current_level = Auth::user()->level;
 
             if($user_current_level == 1){/*If admin, can see member*/
-	            if($user_current_id == $view_id || $view__level >1 && $social == ""){
+	            if($user_current_id == $view_id || $view_level >1 && $social == ""){
 	                return response()->json(array('info'=>$info,'user_social'=>$social));
             	}else{
 	                $errors = new MessageBag(['errorView'=>'You can not see this account details.']);
@@ -184,17 +184,17 @@ class UserController extends Controller
 	            	'provider'=>$user_social->id,
 	            ];
             }
-            /*Check level user having view other details*/
+            /*Check level user can delete other details*/
             $view_id = $info->id;
-	        $view__level = $info->level;
+	        $view_level = $info->level;
 	        $user_current_id = Auth::user()->id;
 	        $user_current_level = Auth::user()->level;
 
-            if($user_current_level == 1){/*If admin, can delete member (not social account)*/
-	            if($view__level >1 ){
+            if($user_current_level == 1){/*If admin, can delete member*/
+	            if($view_level >1 ){
 	                return response()->json(array('info'=>$info,'user_social'=>$social));
 	            }else{
-	                $errors = new MessageBag(['errorView'=>'You can not see this account details.']);
+	                $errors = new MessageBag(['errorView'=>'You can not delete this account.']);
 	                return response()->json([
 	                'errorview' =>true,
 	                'message' =>$errors
@@ -202,8 +202,16 @@ class UserController extends Controller
 	            }
 	        }
 
-	        if($user_current_level == 0){ /*Super Admin can delete all member and admin (not social account)*/
-		        return response()->json(array('info'=>$info,'user_social'=>$social));
+	        if($user_current_level == 0){ /*Super Admin can delete all member and admin*/
+                if($view_level>0){
+		          return response()->json(array('info'=>$info,'user_social'=>$social));
+                }else{
+                    $errors = new MessageBag(['errorView'=>'You can not delete this account.']);
+                    return response()->json([
+                    'errorview' =>true,
+                    'message' =>$errors
+                    ],200);
+                }
 		    }
 	    }
     }

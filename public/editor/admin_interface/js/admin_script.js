@@ -1,90 +1,4 @@
 
-/*Alert action delete*/
-function confirmdelete(msg){
-	if (window.confirm(msg)){
-		return true;
-	}
-	return false;
-}
-
-/*Function use ckeditor and ckfinder*/
-function ckeditor(name, config, toolbar){
-
-	config = {};
-	config.entities_latin = false;
-	config.filebrowserBrowseUrl ='/laravel1/public/editor/ckfinder/ckfinder.html';
-	config.filebrowserImageBrowseUrl = '/laravel1/public/editor/ckfinder/ckfinder.html';
-
-
-	if(toolbar == 'standard'){
-		config.toolbarGroups = [
-		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-		{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
-		{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
-		{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
-		{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
-		{ name: 'links', groups: [ 'links' ] },
-		{ name: 'forms', groups: [ 'forms' ] },
-		{ name: 'insert', groups: [ 'insert' ] },
-		{ name: 'styles', groups: [ 'styles' ] },
-		'/',
-		'/',
-		{ name: 'colors', groups: [ 'colors' ] },
-		{ name: 'tools', groups: [ 'tools' ] },
-		{ name: 'others', groups: [ 'others' ] },
-		{ name: 'about', groups: [ 'about' ] }
-	];
-
-	config.removeButtons = 'Source,Save,NewPage,Print,Templates,Copy,Paste,PasteText,PasteFromWord,Replace,SelectAll,Scayt,Form,Radio,TextField,Textarea,Button,Subscript,Superscript,CopyFormatting,RemoveFormat,NumberedList,BulletedList,Outdent,Indent,CreateDiv,Blockquote,JustifyRight,BidiLtr,BidiRtl,Language,Unlink,Anchor,TextColor,BGColor,Maximize,ShowBlocks,About,Cut,Checkbox,HiddenField,ImageButton,Select';
-
-	}if(toolbar =='basic'){
-		config.toolbarGroups = [
-			{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-			{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
-			{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
-			{ name: 'links', groups: [ 'links' ] },
-			{ name: 'styles', groups: [ 'styles' ] },
-			{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
-			{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
-			{ name: 'forms', groups: [ 'forms' ] },
-			'/',
-			{ name: 'insert', groups: [ 'insert' ] },
-			'/',
-			{ name: 'colors', groups: [ 'colors' ] },
-			{ name: 'tools', groups: [ 'tools' ] },
-			{ name: 'others', groups: [ 'others' ] },
-			{ name: 'about', groups: [ 'about' ] }
-		];
-
-		config.removeButtons = 'Source,Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,Find,Replace,SelectAll,Scayt,Form,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Strike,Subscript,Superscript,CopyFormatting,RemoveFormat,BulletedList,NumberedList,Outdent,Blockquote,Indent,CreateDiv,JustifyRight,BidiLtr,BidiRtl,Language,Unlink,Anchor,Flash,Image,Table,Smiley,SpecialChar,PageBreak,Iframe,TextColor,BGColor,ShowBlocks,About,Maximize,PasteFromWord,Checkbox,HorizontalRule';
-
-
-	}if(toolbar == 'full'){
-		config.toolbarGroups = [
-			{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
-			{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
-			{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
-			{ name: 'forms', groups: [ 'forms' ] },
-			'/',
-			{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-			{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
-			{ name: 'links', groups: [ 'links' ] },
-			{ name: 'insert', groups: [ 'insert' ] },
-			'/',
-			{ name: 'styles', groups: [ 'styles' ] },
-			{ name: 'colors', groups: [ 'colors' ] },
-			{ name: 'tools', groups: [ 'tools' ] },
-			{ name: 'others', groups: [ 'others' ] },
-			{ name: 'about', groups: [ 'about' ] }
-		];
-	}
-
-	return  CKEDITOR.replace(name, config, toolbar);
-}
-
-
-
-
 /*Show images before uploads*/
 $(document).ready( function() {
     	$(document).on('change', '.btn-file :file', function() {
@@ -140,8 +54,8 @@ $(document).ready( function() {
 			    		$('#view_error_view').modal('show');
 			    	}else{
 			    		$('#viewModal').modal('show');
-				        console.log(result.user_social.provider);
-				        console.log(result.info);
+				        //console.log(result.user_social.provider);
+				        //console.log(result.info);
 				      	/*Check Name*/
 				      	if(!isNaN(result.info.name)){
 				      		var name=result.info.name_social;
@@ -230,7 +144,7 @@ $(document).ready( function() {
 					'type' :'POST',
 					success: function(data){
 						if(data.error_add_user ==true){
-						console.log(data);
+						//console.log(data);
 							$('.error').hide();
 							if(data.messages.add_name != undefined){
 								$('.errorName_add').show().text(data.messages.add_name[0]);
@@ -266,8 +180,8 @@ $(document).ready( function() {
 			    		$('#view_error_edit').modal('show');
 			    	}else{
 	    			$('#editModal').modal('show');
-		        	console.log(result);
-		          //console.log(result);/**/
+		        	//console.log(result);
+		            //console.log(result);/**/
 		            $("#old_id").val(result.info.id);
 		            $("#old_name").val(result.info.name);
 		            $("#old_email").val(result.info.email);
@@ -302,7 +216,7 @@ $(document).ready( function() {
 						},
 						'type' :'POST',
 						success: function(data){
-						console.log(data);
+						//console.log(data);
 						if(data.error_edit ==true){
 							$('.error').hide();
 							if(data.messages.email != undefined){
@@ -373,6 +287,49 @@ $(document).ready( function() {
 			});
 	    })
 	}
+/*Delete Catetegory*/
+	function delete_cate(id){
+		$('#delete_cate').each(function(i){
+			id[i]=$(this).val();
+
+			$.ajax({
+				url: '/laravel1/admin/cate/delete_view',
+				type:"GET",
+				data: {"id":id},
+				success:function(result){
+					//console.log(result);
+					if(result.error_delete_cate==true){
+						$('#view_error_delete').modal('show');
+					}else{
+						$('#deletecateModal').modal('show');
+						$('.name_delete_cate').show().text(result.name);
+
+						$('#deletecateModal').find('#confirmdelete').on('click',function(){
+							$.ajaxSetup({
+							    headers: {
+							        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+							    }
+							});
+							$.ajax({
+								url: '/laravel1/admin/cate/delete',
+								method:"POST",
+								data: {id:id},
+								success:function(){
+									$('#deletecateModal').modal('hide');
+									for(var i=0; i<id.length; i++){
+										$('tr#'+id+'').css('background-color','#ccc');
+										$('tr#'+id+'').fadeOut(1000);
+
+									}
+								}
+							});
+						});
+
+					}
+				}
+			});
+		})
+	}
 
 /*Cate script*/
 
@@ -386,7 +343,7 @@ $(document).ready( function() {
 			}else{
 				var parent_cate=parent;
 			}
-			console.log(parent_cate);
+			//console.log(parent_cate);
 			$.ajax({
 			    url: '/laravel1/admin/cate/catedetail',
 			    type:"GET",
@@ -394,7 +351,7 @@ $(document).ready( function() {
 			    success: function(result){
 
 		    		$('#viewcateModal').modal('show');
-			        console.log(result);
+			        //console.log(result);
 
 			        $("#view_titlename").text(result.name);
 			        $("#view_catename").text(result.name);
@@ -413,35 +370,37 @@ $(document).ready( function() {
     	url: '/laravel1/admin/cate/add',
     	type: "GET",
     	success: function(result){
-		    //console.log(result[0]);
+		    //console.log(result.length);
 		    /*Level 0*/
-	    	$.each(result[0].parent, function (index, value1) {
-		   		$('#add_parent').append(
-		       		$("<option></option>").val(value1.id).text(value1.name));
-		   			/*Level 1*/
-				    $.each(result[0].category, function(index,value2){
-				    	if(value2.parent_id==value1.id){
-				    		$('#add_parent').append(
-				    			$("<option></option>").val(value2.id).text("--"+value2.name));
-				    			/*Level 2*/
-				    			$.each(result[0].category, function(index,value3){
-				    				//console.log(value3);
-							    	if(value3.parent_id==value2.id){
-							    		$('#add_parent').append(
-							    			$("<option ></option>").val(value3.id).text("----"+value3.name));
-							    			/*Level 3*/
-							    			$.each(result[0].category, function(index,value4){
-							    				//console.log(value4);
-										    	if(value4.parent_id==value3.id){
-										    		$('#add_parent').append(
-										    			$("<option ></option>").val(value4.id).text("------"+value4.name));
-										    	}
-										    });
-							    	}
-							    });
-				    	}
-				    });
-			});
+		   	if(result.length != 0) {
+		    	$.each(result[0].parent, function (index, value1) {
+			   		$('#add_parent').append(
+			       		$("<option></option>").val(value1.id).text(value1.name));
+			   			/*Level 1*/
+					    $.each(result[0].category, function(index,value2){
+					    	if(value2.parent_id==value1.id){
+					    		$('#add_parent').append(
+					    			$("<option></option>").val(value2.id).text("--"+value2.name));
+					    			/*Level 2*/
+					    			$.each(result[0].category, function(index,value3){
+					    				//console.log(value3);
+								    	if(value3.parent_id==value2.id){
+								    		$('#add_parent').append(
+								    			$("<option ></option>").val(value3.id).text("----"+value3.name));
+								    			/*Level 3*/
+								    			$.each(result[0].category, function(index,value4){
+								    				//console.log(value4);
+											    	if(value4.parent_id==value3.id){
+											    		$('#add_parent').append(
+											    			$("<option ></option>").val(value4.id).text("------"+value4.name));
+											    	}
+											    });
+								    	}
+								    });
+					    	}
+					    });
+				});
+		   	}
     	}
     });
 
@@ -490,7 +449,7 @@ $(document).ready( function() {
 					},
 					success: function(data){
 						if(data.error_add_cate ==true){
-						console.log(data.error_add_cate);
+						//console.log(data.error_add_cate);
 							$('.error').hide();
 							if(data.messages.add_name != undefined){
 								$('.errorName_add').show().text(data.messages.add_name[0]);
@@ -525,10 +484,10 @@ $(document).ready( function() {
 			type: "GET",
 			data:{"id":id},
 				success: function(result){
-					//console.log(temp1);
 					if(result.erroredit ==true){
 						$('#view_error_edit').modal('show');
 					}else{
+						//console.log(result[0].id_edit.id);
 						var id_edit = result[0].id_edit.id;
 						$('#editcateModal').modal('show');
 
@@ -568,7 +527,7 @@ $(document).ready( function() {
 						});
 
 						/*Send values to edit cate form*/
-						//console.log(result[0].info.id);
+						//console.log(result[0].info.parent_id);
 						$("#old_id_edit").val(result[0].info.id);
 						$('#edit_parent').val(result[0].info.parent_id);
 						$('#edit_name').val(result[0].info.name);
@@ -630,4 +589,5 @@ $(document).ready( function() {
 		})
 	}
 
+	
 

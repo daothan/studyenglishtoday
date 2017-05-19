@@ -141,3 +141,21 @@ label.error {
     font-weight: inherit;
     color: red;
 }
+a{
+    color: rgb(29, 53, 74) ;
+    font-weight: 700 ;
+}
+.sidebar .nav-second-level li a{
+    color: #566267 ;
+    font-style: italic ;
+    padding-left: 42px ;
+    font-family: sans-serif ;
+}
+/* Admin Navbar */
+.admin_navbar {
+    background: #716666 ;
+    background: -webkit-linear-gradient(left, rgba(232, 232, 223, 0.9), #8e8e8e) ;
+    background: -o-linear-gradient(right, rgba(232, 232, 223, 0.9), #8e8e8e) ;
+    background: -moz-linear-gradient(right, rgba(232, 232, 223, 0.9), #8e8e8e) ;
+    background: linear-gradient(to right, rgba(232, 232, 223, 0.9), #8e8e8e) ;
+}

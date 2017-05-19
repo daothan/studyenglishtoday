@@ -57,7 +57,7 @@
 									<!-- Show Edit Form -->
 									<button class="btn_admin_action warning" data-toggle="modal" data-target="" onclick="edit_cate('{{$data["id"]}}')" id="edit_cate"><span class="glyphicon glyphicon-pencil"></span></button>
 									<!-- Show Delete Form -->
-									<button class="btn_admin_action danger" data-toggle="modal" data-target="" onclick="delete_cate('{{$data["id"]}}')" id="delete_user"><span class="glyphicon glyphicon-trash"></button>
+									<button class="btn_admin_action danger" data-toggle="modal" data-target="" onclick="delete_cate('{{$data["id"]}}')" id="delete_cate"><span class="glyphicon glyphicon-trash"></button>
 								</td>
 							</tr>
 							@endforeach
@@ -75,6 +75,7 @@
     @extends('admin.cate.cate_detail')
     @extends('admin.cate.cate_add')
     @extends('admin.cate.cate_edit')
+    @extends('admin.cate.cate_delete')
 
 
 @stop

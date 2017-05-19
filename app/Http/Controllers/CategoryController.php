@@ -18,7 +18,7 @@ class CategoryController extends Controller
 	public function show(){
 		$data = Category::orderBy('id', 'DESC')->get();
 
-        return view ('admin.cate.show', compact('data'));
+        return view ('admin.cate.cate_show', compact('data'));
 	}
 
 
@@ -83,7 +83,7 @@ class CategoryController extends Controller
 
             /*Admin cannot edit parent category*/
             if($user_current_level==1 && $info_cate->parent_id==0){
-                $error=new MessageBag(['errorEdit'=>"You can not edit this category"]);
+                $error=new MessageBag(['errorEdit'=>"This category could be edit by Super_admin"]);
                 return response()->json([
                         'erroredit'=>true,
                         'messages'=>$error
@@ -91,7 +91,7 @@ class CategoryController extends Controller
             }else{/*Super admin can edit all category*/
                 /*Show category*/
                 $category = Category::select('id', 'name', 'parent_id')->get();
-                $id_edit = ['id'=>$info_cate->id];
+                $id_edit = ['id'=>$info_cate->parent_id];
                 foreach ($category as $parent) {
                     $id=$parent->id;
                     $cate = Category::where('parent_id',$id)->get();
@@ -137,6 +137,39 @@ class CategoryController extends Controller
             if($cate_edit->save()){
                 $request->session()->flash('alert-success', 'Update user successful.');
             }
+        }
+    }
+
+    public function delete_view(Request $request){
+        if($request->ajax()){
+            $id=$request->id;
+            $info=Category::find($id);
+            $cate_info_id=$info->id;
+            $cate_info_parent=$info->parent_id;
+
+            $user_current_id=Auth::user()->id;
+            $user_current_level=Auth::user()->level;
+
+            if($user_current_level==1){ /*Admin can not delete parent category*/
+                if($cate_info_parent==0){
+                    return response()->json([
+                        'error_delete_cate'=>true,
+                        ]);
+                }else{
+                    return response()->json($info);
+                }
+            }
+            if($user_current_level==0){/*Super admin can delete all category*/
+                return response()->json($info);
+            }
+        }
+    }
+    public function delete(Request $request){
+        if($request->ajax()){
+            $id=$request->id;
+            $cate_delete=Category::find($id);
+
+            $cate_delete->delete($id);
         }
     }
 

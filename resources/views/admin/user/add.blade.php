@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
                         <div class="col-md-6">
-                            <input type="password" class="form-control" id="add_password_confirmation" name="add_password_confirmation" placeholder="Confirm password-confirm">
+                            <input type="password" class="form-control" id="add_password_confirmation" name="add_password_confirmation" placeholder="Confirm password">
                             <div class="has-error"><i><span class="help-block errorPassword_confirmation_add"></span></i></div>
                         </div>
                     </div>

@@ -42,6 +42,7 @@
     <!-- Ckeditor and Ckfinder -->
     <script type="text/javascript" src="{{URL::asset('public/editor/ckeditor/ckeditor.js')}}" ></script>
     <script type="text/javascript" src="{{URL::asset('public/editor/ckfinder/ckfinder.js')}}" ></script>
+    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/ckeditor_script.js')}}"></script>
 
 
     <!-- /jQuery -->
@@ -49,7 +50,7 @@
 </head>
 <body>
     <div id="wrapper">
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <nav class="navbar navbar-default navbar-static-top admin_navbar" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -179,7 +180,7 @@
                     <ul class="dropdown-menu dropdown-user">
                          <!-- Show level user -->
                         <li>
-                            <a href="{{route('admin.user.information', Auth::user()->id)}}"><i class="fa fa-user fa-fw"></i>
+                            <a onclick="view_user({{Auth::user()->id}})"><i class="fa fa-user fa-fw"></i>
                                 <i>
                                     {{((Auth::user()->level=='0')) ? 'Super Admin' :''}}
                                     {{(isset(Auth::user()->level) && (Auth::user()->level=='1')) ? 'Admin':''}}
@@ -191,7 +192,7 @@
 
                         <!-- Edit User logging -->
                         <li>
-                            <a href="{{route('admin.user.edit',Auth::user()->id)}}"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                            <a onclick="edit_user({{Auth::user()->id}})"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <!-- End edit User logging -->
 
@@ -221,17 +222,6 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-
-                        <!-- SEARCH -->
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <button class="btn btn-default" type="button">
-                                    <i class="glyphicon glyphicon-search"></i>
-                                </button>
-                            </div>
-                        </li>
-                        <!-- END SEARCH -->
 
                         <!-- Dashboard -->
                         <li>
