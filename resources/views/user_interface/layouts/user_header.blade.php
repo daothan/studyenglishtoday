@@ -392,9 +392,9 @@
 		<div id="english" class="modal wthree-modal" tabindex="-1"> 
 			<!-- Modal content -->
 			<div class="modal-content">
-				<div class="modal-header">
+				<div class="modal-tittle">
 					<span class="close" data-dismiss="modal" >&times;</span>
-					<h3>English</h3>
+					<h3 class="modal_header">English</h3>
 				</div>
 				<div class="modal-body grid_3">
 					<p>
@@ -404,13 +404,6 @@
 					4. English is spoken as a first language by around 400 million people around the world.
 					5. English is the language of the media industry. If you speak English, you won’t need to rely on translations and subtitles anymore to enjoy your favourite books, songs, films and TV shows.
 					</p>
-					<p>
-					6. English is also the language of the Internet. Many websites are written in English – you will be able to understand them and to take part in forums and discussions.
-					7. English is based on a simple alphabet and it is fairly quick and easy to learn compared to other languages.
-					8. English is not only useful — it gives you a lot of satisfaction. Making progress feels great. You will enjoy learning English, if you remember that every hour you spend gets you closer to perfection.
-					9. Since English is spoken in so many different countries there are thousands of schools around the world that offer programmes in English. If you speak English, there’re lots of opportunities for you to find an appropriate school and course to suit your academic needs.
-					10. Because it’s fun! By learning English, you will also learn about other cultures. Few experiences will make you grow as a person more than learning the values, habits and way of life in a culture that is different from yours.
-					</p>
 				</div>
 			</div>
 		</div>
@@ -419,9 +412,9 @@
 		<div id="study_english" class="modal wthree-modal" tabindex="-1">
 			<!-- Modal content -->
 			<div class="modal-content">
-				<div class="modal-header">
+				<div class="modal-tittle">
 					<span class="close" data-dismiss="modal" >&times;</span>
-					<h3>Study English</h3>
+					<h3 class="modal_header">Study English</h3>
 				</div>
 				<div class="modal-body grid_3">
 					<p>Study Every Day
@@ -440,9 +433,9 @@
 		<div id="listening" class="modal wthree-modal" tabindex="-1">
 			<!-- Modal content -->
 			<div class="modal-content">
-				<div class="modal-header">
+				<div class="modal-tittle">
 					<span class="close" data-dismiss="modal" >&times;</span>
-					<h3>Listening</h3>
+					<h3 class="modal_header">Listening</h3>
 				</div>
 				<div class="modal-body grid_3">
 					<p>Good listening skills also have benefits in our personal lives, including:
@@ -467,9 +460,9 @@
 		<div id="reading" class="modal wthree-modal" tabindex="-1">
 			<!-- Modal content -->
 			<div class="modal-content">
-				<div class="modal-header">
+				<div class="modal-tittle">
 					<span class="close" data-dismiss="modal" >&times;</span>
-					<h3>Reading</h3>
+					<h3 class="modal_header">Reading</h3>
 				</div>
 				<div class="modal-body grid_3">
 					<p>
@@ -498,9 +491,9 @@
 		<div id="writing" class="modal wthree-modal" tabindex="-1">
 			<!-- Modal content -->
 			<div class="modal-content">
-				<div class="modal-header">
+				<div class="modal-tittle">
 					<span class="close" data-dismiss="modal" >&times;</span>
-					<h3>Writing</h3>
+					<h3 class="modal_header">Writing</h3>
 				</div>
 				<div class="modal-body grid_3">
 					<p>
@@ -532,10 +525,10 @@
 		<div class="modal-dialog"></div>
 
 		<div class="container">
-			<div class="contact-row agileits-w3layouts grid_3 grid_4">
+			<div class="contact-row agileits-w3layouts  grid_3 grid_4 contact_grid3">
 			<button id="reset" type="reset" class="close" data-dismiss="modal" style="color:black;"><span class="glyphicon glyphicon-remove"></span></button>
 				<div class="agileits-title">
-					<h3 class="w3ls-hdg">Contact Us</h3>
+					<h3 class="w3ls-hdg contact_tittle">Contact Us</h3>
 				</div>
 				<div class="col-md-5 contact-w3lsleft">
 					<div class="contact-grid agileits">

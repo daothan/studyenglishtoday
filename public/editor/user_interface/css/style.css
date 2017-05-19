@@ -220,13 +220,25 @@ label.error{
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-} 
+}
+/* Modal tittle */
+.modal_header{
+    font-size: 1.8em !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px;
+    color: #f8f0f0;
+    padding: 0.5em 1em 0.4em;
+    background: rgba(68, 134, 208, 0.67);
+    margin: 0em;
+    position: relative;
+}
 /* Modal Content */
 .modal-content {
     position: relative;
     background-color: #fefefe;
 	margin: 6% auto; /* 15% from the top and centered */
     padding: 0;
+    border-radius: 0px !important;
     border: none;
     width: 60%;
     -webkit-animation-name: animatetop;
@@ -335,6 +347,13 @@ h3.w3ls-hdg {
 .grid_3 {
     padding: 3.5em 3em;
     background: #fff;
+}
+.contact_grid3 {
+    padding: 0.8em 2em !important;
+    background: #fff;
+}
+.contact_tittle{
+    margin: 0.5em 0em 0em 0em !important;
 }
 .grid_3.grid_4.grid-w3hdngs p {
     color: #c1c1c1;
