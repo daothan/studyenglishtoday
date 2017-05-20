@@ -14,7 +14,7 @@
 						</div>
 						<div class="form-group col-centered">
 							<label class="control-label"></label>
-							<div id="detail-introduce"></div>
+							<div id="detail_introduce"></div>
 						</div>
 						<div class="form-group col-centered">
 							<label class="control-label"></label>

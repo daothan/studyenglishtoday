@@ -42,6 +42,7 @@ div.dataTables_paginate ul.pagination {
 .modal-body-detail{
     height: 480px;
     overflow-y: auto;
+    font-weight: 100;
 }
 .modal-body-footer{
     padding: 10px 20px 0px 20px !important;

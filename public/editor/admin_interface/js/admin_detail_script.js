@@ -80,12 +80,12 @@ function ckeditor(name, config, toolbar){
 //console.log('#tittle'.length);
 if($('#tittle').length){
 	ckeditor("tittle", "config", "basic")
-	ckeditor("introduce", "config", "basic")
+	ckeditor("introduce", "config", "standard")
 	ckeditor("content", "config", "standard")
 }
 if($('#edit_tittle').length){
 	ckeditor("edit_tittle", "config", "basic")
-	ckeditor("edit_introduce", "config", "basic")
+	ckeditor("edit_introduce", "config", "standard")
 	ckeditor("edit_content", "config", "standard")
 }
 
@@ -184,7 +184,7 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 					},
 					success:function(data){
 						if(data.error_add_detail ==true){
-						console.log(data.messages.tittle[0]);
+						//console.log(data.messages.tittle[0]);
 							$('.error').hide();
 							if(data.messages.tittle != undefined){
 								$('.errorTittle_add').show().text(data.messages.tittle[0]);
@@ -271,7 +271,7 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 					});
 
 					/*Send values to edit cate form*/
-					console.log(result[0].info_detail);
+					//console.log(result[0].info_detail);
 					$('#old_id_edit_detail').val(result[0].info_detail.id);
 					CKEDITOR.instances['edit_tittle'].setData(result[0].info_detail.tittle);
 					CKEDITOR.instances['edit_introduce'].setData(result[0].info_detail.introduce);
@@ -343,8 +343,8 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 				data: {"id":id},
 				success:function(result){
 					$('#deletecateModal').modal('show');
-					$('.name_delete_detail').show().text(result.tittle);
-					console.log(result);
+					$('.name_delete_detail').show().html(result.tittle);
+					//console.log(result);
 					$('#deletedetailModal').find('#confirmdelete').on('click',function(){
 						$.ajaxSetup({
 						    headers: {

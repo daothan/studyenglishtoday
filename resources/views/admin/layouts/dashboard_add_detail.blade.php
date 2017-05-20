@@ -1,20 +1,20 @@
 
-<!-- Modal Add Detail-->
+<!-- Modal Add Cate-->
 
-<div id="adddetailModal" class="modal fade" role="dialog">
+<div id="adddetaildashModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg modal-dialog-detail">
         <div class="content modal_background">
             <div class="panel-title">
                 <h3 class="modal_header" align="center">Add Detail</h3>
             </div>
 
-            <form method="POST" class="form-horizontal" role="form"  name="validate_add_detail" id="validate_add_detail" enctype="multipart/form-data">
+            <form method="POST" class="form-horizontal" role="form"  name="validate_add_detail_dash" id="validate_add_detail_dash" enctype="multipart/form-data">
                 <div class="modal-body modal-body-detail">
 
 					<div class="form-group">
 						<label class="col-md-1 control-label">Category</label>
 						<div class="col-md-10">
-							<select name="category" id="category" class="form-control" autofocus >
+							<select name="category_dash" id="category_dash" class="form-control" autofocus >
 								<option disabled selected hidden>Please Choose Catgeory...</option>
 								<option value="0" class="{{Auth::user()->level==1 ? 'hidden':''}}">Parent Category</option>
 							</select>
@@ -24,22 +24,22 @@
                     <div class="form-group">
                         <label class="col-md-1 control-label">Tittle</label>
                         <div class="col-md-10">
-                            <textarea type="text" class="form-control" name="tittle"  id="tittle" rows="3"></textarea>
+                            <textarea type="text" class="form-control" name="dash_tittle"  id="dash_tittle" rows="3"></textarea><script type="text/javascript">ckeditor("dash_tittle", "config", "basic")</script>
                         </div>
-                        <div class="has-error"><i><span class="help-block errorTittle_add"></span></i></div>
+                        <div class="has-error"><i><span class="help-block errorTittle_add_dash"></span></i></div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-1 control-label">Introduce</label>
                         <div class="col-md-10">
-                            <textarea class="form-control" name="introduce" id="introduce" rows="3"></textarea>
+                            <textarea class="form-control" name="dash_introduce" id="dash_introduce" rows="3"></textarea><script type="text/javascript">ckeditor("dash_introduce", "config", "standard")</script>
                         </div>
                     </div>
 
 					<div class="form-group">
 						<label class="col-md-1 control-label">Content</label>
 						<div class="col-md-10">
-							<textarea class="form-control" name="content" id="content" rows="3"></textarea>
+							<textarea class="form-control" name="dash_content" id="dash_content" rows="3"></textarea><script type="text/javascript">ckeditor("dash_content", "config", "standard")</script>
 						</div>
 					</div>
                 </div>

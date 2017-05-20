@@ -1,7 +1,7 @@
 
 <!-- Modal Add User-->
 
-<div id="adddashModal" class="modal fade" role="dialog">
+<div id="adduserdashModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="content modal_background">
             <div class="panel-title">

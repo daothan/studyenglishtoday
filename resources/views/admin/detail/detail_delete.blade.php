@@ -7,7 +7,7 @@
                     <h3 class="modal_header" style="background-color : rgba(228, 25, 25, 0.81)" align="center">Delete</h3>
                 </div>
                 <div class="modal-body">
-                    <strong class="text-info"><h3 align="center"><b><i>Are you sure you want to delete <br>"<span class="name_delete_detail"></span> " ?</i><b></h3></strong>
+                    <strong class="text-info"><h3 align="center"><b><i>Are you sure you want to delete <br><span class="name_delete_detail text-info"></span></i><b></h3></strong>
                 </div>
                 <div class="modal-footer">
 		            <button class="btn_admin danger" id="confirmdelete">Confirm</button>

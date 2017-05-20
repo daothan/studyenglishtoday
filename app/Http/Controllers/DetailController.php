@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\DetailRequest;
-
 use App\Detail;
 use App\Category;
-use App\DetailImage;
 use Validator;
 use Auth;
 
@@ -136,6 +134,7 @@ class DetailController extends Controller
 
         }
     }
+    /*Delete Detail*/
     public function delete_view(Request $request){
         if($request->ajax()){
             $id=$request->id;
@@ -148,7 +147,7 @@ class DetailController extends Controller
             $id=$request->id;
             $detail_delete=Detail::find($id);
 
+            $detail_delete->delete($id);
         }
-            $detail_delete=delete($id);
     }
 }

@@ -1,5 +1,6 @@
 
-	/*Responsive tables*/
+
+/*Responsive tables*/
 	$(document).ready(function() {
         $('#dataTables').DataTable({
             responsive: false
@@ -123,7 +124,7 @@
 
 	/*Add User*/
 	$('#add_user_header').click(function(){
-		$('#adddashModal').modal('show');
+		$('#adduserdashModal').modal('show');
 
 		$("#validate_dash_add_user").validate({
 			rules:{
@@ -301,4 +302,103 @@
 				})
 			}
 		})
+	});
+
+
+/*Add detail header*/
+
+/*Show cate parent and cate*/
+    $.ajax({
+    	url: '/laravel1/admin/detail/add',
+    	type: "GET",
+    	success: function(result){
+		    //console.log(result.length);
+		    /*Level 0*/
+		   	if(result.length != 0) {
+		    	$.each(result[0].parent, function (index, value1) {
+			   		$('#category_dash').append(
+			       		$("<option></option>").val(value1.id).text(value1.name));
+			   			/*Level 1*/
+					    $.each(result[0].category, function(index,value2){
+					    	if(value2.parent_id==value1.id){
+					    		$('#category_dash').append(
+					    			$("<option></option>").val(value2.id).text("--"+value2.name));
+					    			/*Level 2*/
+					    			$.each(result[0].category, function(index,value3){
+					    				//console.log(value3);
+								    	if(value3.parent_id==value2.id){
+								    		$('#category_dash').append(
+								    			$("<option ></option>").val(value3.id).text("----"+value3.name));
+								    			/*Level 3*/
+								    			$.each(result[0].category, function(index,value4){
+								    				//console.log(value4);
+											    	if(value4.parent_id==value3.id){
+											    		$('#category_dash').append(
+											    			$("<option ></option>").val(value4.id).text("------"+value4.name));
+											    	}
+											    });
+								    	}
+								    });
+					    	}
+					    });
+				});
+		   	}
+    	}
+    });
+/*Validate form and add*/
+
+	$('#add_detail_header').click(function(){
+
+		$('#adddetaildashModal').modal('show');
+
+		$('#validate_add_detail_dash').validate({
+			ignore: [],/*ignore hidden field*/
+			rules:{
+				category_dash:{
+					required:true
+				},
+	            dash_tittle: {
+	            	required  :true,
+	            	minlength :20
+	            },
+				dash_introduce:{
+					required  :true,
+					minlength :30
+				},
+				dash_content:{
+					required  :true,
+					minlength :30
+				}
+			},
+			submitHandler: function () {
+	        	$.ajaxSetup({
+				    headers: {
+				        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				    }
+				});
+				$.ajax({
+					url: '/laravel1/admin/detail/add',
+					type: 'POST',
+					data:{
+						'category'  : $('#category_dash').val(),
+						'tittle'    : $('#dash_tittle').val(),
+						'introduce' : $('#dash_introduce').val(),
+						'content'   : $('#dash_content').val()
+					},
+					success:function(data){
+						if(data.error_add_detail ==true){
+						console.log(data.messages.tittle[0]);
+							$('.error').hide();
+							if(data.messages.tittle != undefined){
+								$('.errorTittle_add_dash').show().text(data.messages.tittle[0]);
+							}
+						}else{
+							setTimeout(function() { $('#adddetaildashModal').modal('hide');}, 200);
+							setTimeout(function() { window.location.href = "/laravel1/admin/detail/show";}, 500);
+						}
+					}
+				})
+	   		}
+		});
+
 	});
