@@ -83,6 +83,11 @@ if($('#tittle').length){
 	ckeditor("introduce", "config", "basic")
 	ckeditor("content", "config", "standard")
 }
+if($('#edit_tittle').length){
+	ckeditor("edit_tittle", "config", "basic")
+	ckeditor("edit_introduce", "config", "basic")
+	ckeditor("edit_content", "config", "standard")
+}
 
 $.fn.modal.Constructor.prototype.enforceFocus = function () {
     modal_this = this
@@ -144,7 +149,7 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 		$('#adddetailModal').modal('show');
 
 		$('#validate_add_detail').validate({
-			ignore: [],
+			ignore: [],/*ignore hidden field*/
 			rules:{
 				category:{
 					required:true
@@ -216,3 +221,152 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 	    	})
 	    })
 	}
+
+/*Edit detail*/
+	function edit_detail(id){
+		$('#edit_detail').each(function(i){
+			id[i]=$(this).val();
+
+			$('#editdetailModal').modal('show');
+			/*Show old data detail*/
+			$.ajax({
+			url:'/laravel1/admin/detail/edit',
+			type: "GET",
+			data:{"id":id},
+				success: function(result){
+					/*Show category choosing*/
+					var id_edit = result[0].id_edit.id;
+					$('#editdetailModal').on('shown.bs.modal', function(){
+					 	$('#edit_category').val(id_edit);
+					})
+
+					/*Show categories edit form*/
+				    /*Level 0*/
+			    	$.each(result[0].parent, function (index, value1) {
+				   		$('#edit_category').append(
+				       		$("<option></option>").val(value1.id).text(value1.name));
+				   			/*Level 1*/
+						    $.each(result[0].category, function(index,value2){
+						    	if(value2.parent_id==value1.id){
+						    		$('#edit_category').append(
+						    			$("<option></option>").val(value2.id).text("--"+value2.name));
+						    			/*Level 2*/
+						    			$.each(result[0].category, function(index,value3){
+						    				//console.log(value3);
+									    	if(value3.parent_id==value2.id){
+									    		$('#edit_category').append(
+									    			$("<option></option>").val(value3.id).text("----"+value3.name));
+									    			/*Level 3*/
+									    			$.each(result[0].category, function(index,value4){
+									    				//console.log(value4);
+												    	if(value4.parent_id==value3.id){
+												    		$('#edit_category').append(
+												    			$("<option ></option>").val(value4.id).text("------"+value4.name));
+												    	}
+												    });
+									    	}
+									    });
+						    	}
+						    });
+					});
+
+					/*Send values to edit cate form*/
+					console.log(result[0].info_detail);
+					$('#old_id_edit_detail').val(result[0].info_detail.id);
+					CKEDITOR.instances['edit_tittle'].setData(result[0].info_detail.tittle);
+					CKEDITOR.instances['edit_introduce'].setData(result[0].info_detail.introduce);
+					CKEDITOR.instances['edit_content'].setData(result[0].info_detail.content);
+
+					/*Validate and edit data*/
+					$('#validate_edit_detail').validate({
+						ignore:[], /*ignore hidden field*/
+						rules:{
+							edit_category:{
+								required:true
+							},
+							edit_tittle:{
+								required:true,
+								minlength:20
+							},
+							edit_introduce:{
+								required:true,
+								minlength:30
+							},
+							edit_content:{
+								required:true,
+								minlength:30
+							}
+						},
+						submitHandler: function(){
+							$.ajaxSetup({
+							    headers: {
+							        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+							    }
+							});
+							$.ajax({
+								'url' : '/laravel1/admin/detail/edit',
+								'type' :'POST',
+								'data': {
+									'old_id_edit_detail'    : $('#old_id_edit_detail').val(),
+									'edit_category'  		: $('#edit_category').val(),
+									'edit_tittle'    		: $('#edit_tittle').val(),
+									'edit_introduce' 		: $('#edit_introduce').val(),
+									'edit_content'   		: $('#edit_content').val()
+								},
+								success: function(data){
+									if(data.error_edit_detail ==true){
+										$('.error').hide();
+										if(data.messages.edit_tittle != undefined){
+											$('.errorTittle_edit').show().text(data.messages.edit_tittle[0]);
+										}
+									}else{
+										setTimeout(function() { $('#editcateModal').modal('hide');}, 200);
+										setTimeout(function() { window.location.href = "/laravel1/admin/detail/show";}, 500);
+									}
+								}
+							})
+						}
+					})
+				}
+			})
+		})
+	}
+
+	/*Delete*/
+	function delete_detail(id){
+		$('#delete_detail').each(function(i){
+			id[i]=$(this).val();
+			$('#deletedetailModal').modal('show');
+			$.ajax({
+				url: '/laravel1/admin/detail/delete_view',
+				type:"GET",
+				data: {"id":id},
+				success:function(result){
+					$('#deletecateModal').modal('show');
+					$('.name_delete_detail').show().text(result.tittle);
+					console.log(result);
+					$('#deletedetailModal').find('#confirmdelete').on('click',function(){
+						$.ajaxSetup({
+						    headers: {
+						        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+						    }
+						});
+						$.ajax({
+							url: '/laravel1/admin/detail/delete',
+							method:"POST",
+							data: {id:id},
+							success:function(){
+								$('#deletedetailModal').modal('hide');
+								for(var i=0; i<id.length; i++){
+									$('tr#'+id+'').css('background-color','#ccc');
+									$('tr#'+id+'').fadeOut(1000);
+
+								}
+							}
+						});
+					})
+				}
+			})
+		})
+	}
+

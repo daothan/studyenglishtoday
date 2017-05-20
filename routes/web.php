@@ -107,11 +107,12 @@ Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 		Route::get('content',['as'=>'admin.detail.content', 'uses'=>'DetailController@detail_content']);
 
 		/*Edit details*/
-		Route::get('edit/{id}', ['as'=>'admin.detail.getEdit', 'uses'=>'DetailController@getEdit']);
-		Route::post('edit/{id}', ['as'=>'admin.detail.postEdit', 'uses'=>'DetailController@postEdit']);
+		Route::get('edit', ['as'=>'admin.detail.editdetail', 'uses'=>'DetailController@geteditdetail']);
+		Route::post('edit', ['as'=>'admin.detail.editdetail', 'uses'=>'DetailController@edit']);
 
 		/*Delete details*/
-		Route::post('delete/{id}', ['as'=>'admin.detail.delete', 'uses'=>'DetailController@delete']);
+		Route::get('delete_view', ['as'=>'admin.detail.delete', 'uses'=>'DetailController@delete_view']);
+		Route::post('delete', ['as'=>'admin.detail.delete', 'uses'=>'DetailController@delete']);
 
 	});
 

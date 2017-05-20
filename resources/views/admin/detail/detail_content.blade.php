@@ -4,21 +4,22 @@
 		<div class="modal-dialog modal-lg modal-dialog-detail">
 			<div class="content modal_background">
 				<div class="modal-tittle">
-					<h3 class="modal_header" align="center">View Detail Content</h3>
+					<h3 class="modal_header col-centered" align="center">View Detail Content</h3>
 				</div>
 				<div class="modal-body modal-body-detail">
-
-					<div class="form-group col-centered">
-						<label class="control-label"></label>
-						<div id="detail_tittle"></div>
-					</div>
-					<div class="form-group col-centered">
-						<label class="control-label"></label>
-						<div id="detail-introduce"></div>
-					</div>
-					<div class="form-group col-centered">
-						<label class="control-label"></label>
-						<div id="detail_content"></div>
+					<div class="col-md-10 col-md-offset-1">
+						<div class="form-group col-centered">
+							<label class="control-label"></label>
+							<div id="detail_tittle"></div>
+						</div>
+						<div class="form-group col-centered">
+							<label class="control-label"></label>
+							<div id="detail-introduce"></div>
+						</div>
+						<div class="form-group col-centered">
+							<label class="control-label"></label>
+							<div id="detail_content"></div>
+						</div>
 					</div>
 				</div>
 				<div class="modal-footer modal-body-footer">

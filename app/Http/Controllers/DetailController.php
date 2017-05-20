@@ -11,7 +11,7 @@ use App\DetailImage;
 use Validator;
 use Auth;
 
-use File;
+use Illuminate\Validation\Rule;
 
 class DetailController extends Controller
 {
@@ -22,7 +22,7 @@ class DetailController extends Controller
 		return view('admin.detail.detail_show', compact('detail'));
 	}
 
-    /*Add category*/
+    /*Add Detail*/
     public function getadddetail(){
         $category = Category::select('id', 'name', 'parent_id')->get();
         foreach ($category as $parent) {
@@ -65,7 +65,7 @@ class DetailController extends Controller
 
         }
     }
-
+    /*Show detail content*/
     public function detail_content(Request $request){
         if($request->ajax()){
             $id=$request->id;
@@ -73,5 +73,82 @@ class DetailController extends Controller
 
             return response()->json($content);
         }
+    }
+
+    /*Edit detail*/
+    public function geteditdetail(Request $request){
+        if($request->ajax()){
+            $id=$request->id;
+            $info_detail=Detail::find($id);
+            $id_edit = ['id'=>$info_detail->cate_id];
+
+            /*get data category*/
+            $category = Category::select('id', 'name', 'parent_id')->get();
+            foreach ($category as $parent) {
+                $id=$parent->id;
+                $cate = Category::where('parent_id',$id)->get();
+                $cate_parent = Category::where('parent_id',!$id)->get();
+                return response()->json(array(
+                    [
+                        'info_detail' => $info_detail,
+                        'parent'=>$cate_parent,
+                        'cate'=>$cate,
+                        'category'=>$category,
+                        'id_edit'=>$id_edit
+                    ]
+                ));
+            }
+            /*End get data category*/
+        }
+    }
+
+    public function edit(Request $request){
+        $id=$request->old_id_edit_detail;
+            $rules =[
+                'edit_tittle' => Rule::unique('details','tittle')->ignore($id)
+            ];
+            $messages=[
+                'edit_tittle.unique' => "Tittle has adready exists."
+            ];
+
+            $validator = Validator::make($request->all(), $rules, $messages);
+            if($validator->fails()){
+                return response()->json([
+                    'error_edit_detail'=>true,
+                    'messages'=>$validator->errors()
+                    ],200);
+            }else{
+            $detail = Detail::find($id);
+
+            /*Request data*/
+            $detail->tittle    = $request->edit_tittle;
+            $detail->alias     = convert_vi_to_en(($request->edit_tittle));
+            $detail->introduce =$request->edit_introduce;
+            $detail->content   =$request->edit_content;
+            $detail->cate_id   = $request->edit_category;
+
+            if($detail->save()){
+                $request->session()->flash('alert-success','Edit new article successfully.');
+            }else{
+                $a=['errors'=>"error saving data"];
+                return response()->json($a);
+            }
+
+        }
+    }
+    public function delete_view(Request $request){
+        if($request->ajax()){
+            $id=$request->id;
+            $info_detail_delete=Detail::find($id);
+            return response()->json($info_detail_delete);
+        }
+    }
+    public function delete(Request $request){
+        if($request->ajax()){
+            $id=$request->id;
+            $detail_delete=Detail::find($id);
+
+        }
+            $detail_delete=delete($id);
     }
 }

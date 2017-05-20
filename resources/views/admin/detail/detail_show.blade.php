@@ -58,9 +58,9 @@
 									<!-- Show Detail -->
 									<button class="btn_admin_action info" data-toggle="modal" data-target="" onclick="view_detail('{{$data["id"]}}')" id="view_detail"><span class="glyphicon glyphicon-list"></span></button>
 									<!-- Show Edit Form -->
-									<button class="btn_admin_action warning" data-toggle="modal" data-target="" onclick="edit_detail('{{$data["id"]}}')" id="edit_cate"><span class="glyphicon glyphicon-pencil"></span></button>
+									<button class="btn_admin_action warning" data-toggle="modal" data-target="" onclick="edit_detail('{{$data["id"]}}')" id="edit_detail"><span class="glyphicon glyphicon-pencil"></span></button>
 									<!-- Show Delete Form -->
-									<button class="btn_admin_action danger" data-toggle="modal" data-target="" onclick="delete_detail('{{$data["id"]}}')" id="delete_cate"><span class="glyphicon glyphicon-trash"></button>
+									<button class="btn_admin_action danger" data-toggle="modal" data-target="" onclick="delete_detail('{{$data["id"]}}')" id="delete_detail"><span class="glyphicon glyphicon-trash"></button>
 								</td>
 							</tr>
 							@endforeach
@@ -77,5 +77,7 @@
 
 	@extends('admin.detail.detail_add')
 	@extends('admin.detail.detail_content')
+	@extends('admin.detail.detail_edit')
+	@extends('admin.detail.detail_delete')
 
 @stop
