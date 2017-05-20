@@ -60,9 +60,18 @@ class DetailController extends Controller
             $detail->cate_id = $request->category;
 
             if($detail->save()){
-                $request->session()->flash('alert-success','Add'.$request->tittle.' successfully.');
+                $request->session()->flash('alert-success','Add new article successfully.');
             }
 
+        }
+    }
+
+    public function detail_content(Request $request){
+        if($request->ajax()){
+            $id=$request->id;
+            $content = Detail::find($id);
+
+            return response()->json($content);
         }
     }
 }

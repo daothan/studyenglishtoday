@@ -32,8 +32,8 @@
 		$str = stripUnicode($str);
 		$str = mb_convert_case($str,MB_CASE_TITLE,'utf-8');
 		/*MB_CASE_UPPER, MB_CASE_TITLE, MB_CASE_LOWER*/
-		$str=str_replace(' ','-',$str);
-		return $str;
+		$string=str_replace(' ','-',$str);
+		return  $string; // Removes special chars.
 	}
 
 

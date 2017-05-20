@@ -280,7 +280,6 @@
 				</div>
 			</div>
 		</div>
-
 	  </div>
 	</div>
 
@@ -389,7 +388,7 @@
 		<!-- POP UP MESSAGE -->
 
 		<!-- English -->
-		<div id="english" class="modal wthree-modal" tabindex="-1"> 
+		<div id="english" class="modal wthree-modal" tabindex="-1">
 			<!-- Modal content -->
 			<div class="modal-content">
 				<div class="modal-tittle">
@@ -404,6 +403,9 @@
 					4. English is spoken as a first language by around 400 million people around the world.
 					5. English is the language of the media industry. If you speak English, you won’t need to rely on translations and subtitles anymore to enjoy your favourite books, songs, films and TV shows.
 					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn_user warning" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
@@ -425,6 +427,9 @@
 
 						Next, make sure to study a number of areas rather than focusing on just one topic. Study a little grammar, then do a short listening exercise, then perhaps read an article on the same topic. Don't do too much, twenty minutes on three different types of exercises is plenty!
 					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn_user warning" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
@@ -453,6 +458,9 @@
 
 						Listening is not a passive process. In fact, the listener can, and should, be at least as engaged in the process as the speaker. The phrase ‘active listening’ is used to describe this process of being fully involved.
 				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn_user warning" data-dismiss="modal">Close</button>
+				</div>
 			</div>
 		</div>
 
@@ -461,7 +469,6 @@
 			<!-- Modal content -->
 			<div class="modal-content">
 				<div class="modal-tittle">
-					<span class="close" data-dismiss="modal" >&times;</span>
 					<h3 class="modal_header">Reading</h3>
 				</div>
 				<div class="modal-body grid_3">
@@ -484,6 +491,9 @@
 
 						If you’re having trouble with your reading comprehension, take some time to improve it, and you’ll find that learning English becomes a little easier!
 				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn_user warning" data-dismiss="modal">Close</button>
+				</div>
 			</div>
 		</div>
 
@@ -505,6 +515,9 @@
 
 						3. READ MORE
 						To Improve your English writing skills you should read more. Start reading blogs and magazines about things that interest you. You will begin to recognise sentence structures, understand how they are formed and eventually use them in your own writing.
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn_user warning" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>

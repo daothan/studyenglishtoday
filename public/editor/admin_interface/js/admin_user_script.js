@@ -70,7 +70,7 @@
 	}
 
 	/*Add User*/
-	$('#add_user, #add_user_header').click(function(){
+	$('#add_user').click(function(){
 		$('#addModal').modal('show');
 
 		$("#validate_add_user").validate({

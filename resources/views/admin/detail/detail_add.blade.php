@@ -8,7 +8,7 @@
                 <h3 class="modal_header" align="center">Add Detail</h3>
             </div>
 
-            <form action="" method="POST" class="form-horizontal" role="form"  name="validate_add_detail" id="validate_add_detail" enctype="multipart/form-data">
+            <form method="POST" class="form-horizontal" role="form"  name="validate_add_detail" id="validate_add_detail" enctype="multipart/form-data">
                 <div class="modal-body modal-body-detail">
 
 					<div class="form-group">

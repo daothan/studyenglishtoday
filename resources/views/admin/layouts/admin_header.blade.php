@@ -297,6 +297,8 @@
     </div>
     @extends('admin/layouts/user_login_detail')
     @extends('admin/layouts/user_login_edit')
+    @extends('admin/layouts/dashboard_add_user')
+    @extends('admin/layouts/dashboard_add_cate')
 
 
     <!-- DataTables JavaScript -->

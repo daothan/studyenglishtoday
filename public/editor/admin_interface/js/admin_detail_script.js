@@ -193,4 +193,26 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 	    }
 		});
 
-	})
+	});
+
+
+/*View detail content*/
+	var id="";
+
+	function view_detail(id){
+	    $('#view_detail').each(function(i){
+	    	id[i]=$(this).val();
+	    	$.ajax({
+	    		url:'/laravel1/admin/detail/content',
+	    		type: "GET",
+	    		data: {"id":id,},
+	    		success:function(result){
+	    			$('#viewdetailModal').modal('show');
+
+	    			$('#detail_tittle').html(result.tittle);
+	    			$('#detail_introduce').html(result.introduce);
+	    			$('#detail_content').html(result.content);
+	    		}
+	    	})
+	    })
+	}
