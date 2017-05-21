@@ -1,6 +1,5 @@
 
 /*Cate script*/
-
 	/*Show Cate informations*/
 	function view_cate(id){
 	    $('#view_cate').each(function(i){
@@ -11,23 +10,28 @@
 			}else{
 				var parent_cate=parent;
 			}
-			//console.log(parent_cate);
+
 			$.ajax({
 			    url: '/laravel1/admin/cate/catedetail',
 			    type:"GET",
 			    data: {"id":id},
 			    success: function(result){
 
-		    		$('#viewcateModal').modal('show');
-			        //console.log(result);
+			    	if(result.cate_parent.length){
+			    		var cate_parent = result.cate_parent[0].name;
+			    	}else{
+			    		var cate_parent = "None";
+			    	}
 
-			        $("#view_titlename").text(result.name);
-			        $("#view_catename").text(result.name);
-			        $("#view_cateorder").text(result.order);
-			        $("#view_cateparent").text(parent_cate);
-			        $("#view_catekeyword").text(result.keywords);
-			        $("#view_catedescription").text(result.description);
-			        /*Show time created*/
+		    		$('#viewcateModal').modal('show');
+
+			        $("#view_titlename").text(result.info.name);
+			        $("#view_catename").text(result.info.name);
+			        $("#view_cateorder").text(result.info.order);
+			        $("#view_cateparent").text(cate_parent);
+			        $("#view_catekeyword").text(result.info.keywords);
+			        $("#view_catedescription").text(result.info.description);
+
 			        var d = new Date();
 						var my_date_format = function(input){
 						  var d = new Date(Date.parse(input.replace(/-/g, "/")));
@@ -39,7 +43,7 @@
 						  return (time + " " + date);
 
 						};
-					$("#view_catecreated").text(my_date_format(result.created_at));
+					$("#view_catecreated").text(my_date_format(result.info.created_at));
 			    }
 			})
 		})
@@ -171,6 +175,9 @@
 						//console.log(result[0].id_edit.id);
 						var id_edit = result[0].id_edit.id;
 						$('#editcateModal').modal('show');
+						$('#close').click(function(){/*Reload data select*/
+							$('#edit_parent').load('/laravel1/admin/cate/show #edit_parent');
+						})		
 
 						/*Show category choosing*/
 						$('#editcateModal').on('shown.bs.modal', function () {
@@ -313,3 +320,12 @@
 		})
 	}
 
+/*<!-- Action -->
+<td class="text-center">
+	<!-- Show Detail -->
+	<button class="btn_admin_action info" data-toggle="modal" data-target="" onclick="view_cate('{{$data["id"]}}')" id="view_cate"><span class="glyphicon glyphicon-list"></span></button>
+	<!-- Show Edit Form -->
+	<button class="btn_admin_action warning" data-toggle="modal" data-target="" onclick="edit_cate('{{$data["id"]}}')" id="edit_cate"><span class="glyphicon glyphicon-pencil"></span></button>
+	<!-- Show Delete Form -->
+	<button class="btn_admin_action danger" data-toggle="modal" data-target="" onclick="delete_cate('{{$data["id"]}}')" id="delete_cate"><span class="glyphicon glyphicon-trash"></button>
+</td>*/

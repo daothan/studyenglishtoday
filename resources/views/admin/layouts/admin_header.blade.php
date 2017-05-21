@@ -309,7 +309,7 @@
     <!-- Admin JavaScript -->
     <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_master_script.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_user_script.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_cate_script.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_cate_checkbox.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_detail_script.js')}}"></script>
 
 

@@ -50,9 +50,9 @@
 					</div>
                     <!-- Submit -->
                     <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4 pull-right">
+                        <div class="col-md-6 col-md-offset-4">
                             <button type="submit" class="btn_admin primary">Submit</button>
-                			<button type="button" class="btn_admin danger" data-dismiss="modal">Close</button>
+                			<button type="button" class="btn_admin danger" data-dismiss="modal" id="close">Close</button>
                         </div>
                     </div>
                 </form>

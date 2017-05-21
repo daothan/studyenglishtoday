@@ -26,7 +26,11 @@ class CategoryController extends Controller
         if($request->ajax()){
             $id = $request->id;
             $info = Category::find($id);
-            return response()->json($info);
+            $cate_parent = Category::where('id',$info->parent_id)->get();
+            return response()->json([
+                'info'=>$info,
+                'cate_parent'=>$cate_parent
+                ]);
         }
     }
 
