@@ -1,10 +1,18 @@
 
 
 	/*Test check*/
+	//$('#guideModal').modal('show');
+	setTimeout(function(){
+        $("#guideModal").modal('show');
+    },2000);
+	setTimeout(function(){
+        $("#guideModal").modal('hide');
+    },5000);
+
 	$('#view_cate').fadeOut(2000);
 	$('#edit_cate').fadeOut(2000);
 	$('#delete_cate').fadeOut(2000);
-	$('#guide').fadeOut(5000);
+
 	var checkBoxes = $('input[type=checkbox]');
 	var checked=0;
 
