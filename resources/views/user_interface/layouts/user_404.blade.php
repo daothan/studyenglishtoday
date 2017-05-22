@@ -33,7 +33,7 @@
 			<div class="registration error">
 				<h2>404</h2>
 				<h3>Oops! Page Not Found.</h3>
-				<h6><a href="http://localhost/laravel1/user/home">Back To Home</a></h6>
+				<h4 class="text-primary"><a href="http://localhost/laravel1/user/home">Back To Home</a></h4>
 			</div>
 		<!--copy rights start here-->
 			<div class="copyrights_agile error">
