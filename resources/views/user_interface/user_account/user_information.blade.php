@@ -1,60 +1,62 @@
-@extends('user_interface.layouts.user_header')
 
-@section('content')
-
-    @foreach($user as $data)
-    <?php $provider = DB::table('socials')->where('user_id',$data->id)->first();
-     ?>
-
-
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header" align="center">{{(!is_numeric($data->name)) ? $data->name : $data->name_social}}</h1>
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
-	<div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-default">
-            	<div class="panel-body">
-
+<!-- View Modal start -->
+    <div id="viewModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="content modal_background">
+                <div class="modal-title">
+                    <h3 class="modal_header" align="center" id="view_title_login"></h3>
+                </div>
+                <div class="modal-body information">
                     <div class="form-group col-centered">
                         <label>Username: </label>
-                        <strong class="text-info"><i>{{(!is_numeric($data->name)) ? $data->name : $data->name_social}}</i></strong><hr>
-                    </div>
-
-            		<div class="{{(is_numeric($data->name)) ? 'form-group col-centered' : 'hidden'}}">
-            			<label>Account Type: </label>
-						<strong class="text-info"><i>{{isset($provider->provider) ? convert_vi_to_en($provider->provider) : ''}} account</i></strong><hr>
-            		</div>
-
-                	<div class="form-group col-centered">
-            			<label>Level: </label>
-						<strong class="text-info">
-							<i>
-                                {{($data->level=='0') ? 'Super Admin' :''}}
-                                {{($data->level=='1') ? 'Admin':''}}
-                                {{($data->level=='2') ? 'Member':''}}
+                        <strong class="text-info">
+                            <i>
+                                <span class="view_username" class="text-success"></span>
                             </i>
-						</strong><hr>
-            		</div>
+                        </strong>
+                    </div><hr>
 
                     <div class="form-group col-centered">
-            			<label>Email: </label>
-						<strong class="text-info"><i>{{isset($provider->provider) ? trim($data->email_social,'.'.$data->email) : $data->email}}</i></strong><hr>
-            		</div>
+                        <label>Level: </label>
+                        <strong class="text-info">
+                            <i>
+                                <span class="view_userlevel" class="text-success"></span>
+                            </i>
+                        </strong>
+                    </div><hr>
 
-                    <div class="{{(!is_numeric($data->name)) ? 'form-group col-centered' : 'hidden'}}">
-					@foreach($user as $data)
-            			<label>Created: </label>
-						<strong class="text-info"><i>{{Carbon\Carbon::createFromTimestamp(strtotime($data->created_at))->diffForHumans() }} ({{ $data->created_at}})</i></strong>
-					@endforeach
+                    <div class="form-group col-centered">
+                        <label>Email: </label>
+                        <strong class="text-info">
+                            <i>
+                                <span class="view_useremail" class="text-success"></span>
+                            </i>
+                        </strong>
+                    </div><hr>
 
-                	</div>
-            	</div>
+                    <div class="form-group col-centered">
+                        <label>Provider: </label>
+                        <strong class="text-info">
+                            <i>
+                                <span class="view_userprovider" class="text-success"></span
+                            ></i>
+                        </strong>
+                    </div><hr>
+
+                    <div class="form-group col-centered">
+                        <label>Created: </label>
+                        <strong class="text-info">
+                            <i>
+                                <span class="view_usercreated" class="text-success"></span>
+                            </i>
+                        </strong>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn_user warning" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
             </div>
-            <a href="{{route('user.home')}}"><button class="btn btn-basis">Back Home</button></a>
         </div>
     </div>
-    @endforeach
-@stop
+    <!-- view modal ends -->

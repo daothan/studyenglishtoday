@@ -192,7 +192,7 @@
 									</li>
 									<!-- Show level user -->
 			                        <li>
-			                            <a href="{{isset(Auth::user()->name) ? route('user.information', Auth::user()->id) : route('user.home')}}"><i class="fa fa-user fa-fw"></i>
+			                            <a onclick="view_user('{{isset(Auth::user()->name) ? Auth::user()->id : ''}}')"><i class="fa fa-user fa-fw"></i>
 			                                <i>
 			                                    {{(isset(Auth::user()->level) && (Auth::user()->level=='0')) ? 'Super Admin' :''}}
 			                                    {{(isset(Auth::user()->level) && (Auth::user()->level=='1')) ? 'Admin':''}}
@@ -203,8 +203,8 @@
 			                        <!-- End show level user -->
 
 			                        <!-- Edit User logging (except user logging through social)-->
-			                        <li class="{{isset(Auth::user()->name_social) ? 'hidden' : ''}}">
-			                            <a href="{{(isset(Auth::user()->name)) ? route('user.edit',Auth::user()->id) : null}}"><i class="fa fa-gear fa-fw"></i> Settings</a>
+			                        <li class="{{(isset(Auth::user()->name) && is_numeric(Auth::user()->name)) ? 'hidden' : ''}}">
+			                            <a onclick="edit_user('{{isset(Auth::user()->name) ? Auth::user()->id : ''}}')"><i class="fa fa-gear fa-fw"></i> Settings</a>
 			                        </li>
 			                        <!-- End edit User logging -->
 
@@ -221,7 +221,8 @@
 			            </ul>
 					</div>
 				</div>
-
+				@extends('user_interface.user_account.user_edit')
+				@extends('user_interface.user_account.user_information')
 				<!-- Show Flash Message -->
 			    <div>
 			    	@foreach (['danger', 'warning', 'success', 'info', 'flash_welcome'] as $msg)
@@ -230,14 +231,12 @@
 				        @endif
 				    @endforeach
 			    </div>
-	           <script type="text/javascript">$('h2.flash').delay(5000).slideUp();</script>
+	           <script type="text/javascript">$('h2.flash').delay(3000).slideUp();</script>
 	           <!-- End Show Flash Message -->
 
 			</nav>
 		</div>
     </div>
-
-
 
 	<!-- Modal Login-->
 	<div id="login" class="modal fade" role="dialog">

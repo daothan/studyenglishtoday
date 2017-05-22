@@ -77,6 +77,10 @@ class UserController extends Controller
 	        $user_current_id = Auth::user()->id;
 	        $user_current_level = Auth::user()->level;
 
+            if($user_current_level == 2){
+                return response()->json(array('info'=>$info,'user_social'=>$social));
+            }
+
             if($user_current_level == 1){/*If admin, can see member*/
 	            if($user_current_id == $view_id || $view_level >=1){
 	                return response()->json(array('info'=>$info,'user_social'=>$social));
@@ -115,6 +119,9 @@ class UserController extends Controller
 	        $user_current_id = Auth::user()->id;
 	        $user_current_level = Auth::user()->level;
 
+            if($user_current_level == 2){
+                return response()->json(array('info'=>$info,'user_social'=>$social));
+            }
             if($user_current_level == 1){/*If admin, can edit member*/
 	            if($user_current_id == $view_id || $view_level >1 && $social == ""){
 	                return response()->json(array('info'=>$info,'user_social'=>$social));
@@ -163,7 +170,7 @@ class UserController extends Controller
 	            $user->level    = $request->level;
 
 	            if($user->save()){
-	                $request->session()->flash('alert-success', 'Update user successful.');
+	                $request->session()->flash('alert-flash_welcome', 'Update user successful.');
 	            }
 	        }
         }

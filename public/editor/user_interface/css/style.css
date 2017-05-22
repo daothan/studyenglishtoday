@@ -221,7 +221,9 @@ label.error{
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
-/* Modal tittle */
+.information{
+    padding:10px 100px 10px 150px !important;
+}
 .modal_header{
     font-size: 1.8em !important;
     font-weight: 700 !important;
@@ -246,18 +248,22 @@ label.error{
     animation-name: animatetop;
     animation-duration: 0.4s;
 }
+.modal_background {
+    background: #fff;
+    margin-bottom: 10px
+}
 /* The Close Button */
 .close {
     color: #fff;
     float: right;
     font-size: 28px;
     font-weight: bold;
-	text-shadow: none;
-	-webkit-transition:.5s all;
-	-moz-transition:.5s all;
-	-o-transition:.5s all;
-	-ms-transition:.5s all;
-	transition:.5s all;
+    text-shadow: none;
+    -webkit-transition:.5s all;
+    -moz-transition:.5s all;
+    -o-transition:.5s all;
+    -ms-transition:.5s all;
+    transition:.5s all;
 }
 .modal-header .close {
     margin-top: 11px;
@@ -604,24 +610,23 @@ ul.w3list-style li {
 .btn_user:hover{
     box-shadow: 7px 4px 8px 0px rgba(0,0,0,0.24), 2px 17px 56px 0px rgba(0,0,0,0.19);
 }
+.success {background-color: #4CAF50;} /* Green */
+.success:hover {background-color: #46a049;}
 
-.success {background-color: #4CAF50E6;} /* Green */
-.success:hover {background-color: #18B01E80;}
+.info {background-color: #2d7ab7;} /* Blue */
+.info:hover {background: #125082;}
 
-.info {background-color: #62298ACC;} /* Purple */
-.info:hover {background: #530689CC;}
+.warning {background-color: rgba(218, 171, 30, 0.93);} /* Orange */
+.warning:hover {background: rgba(183, 146, 4, 0.93);}
 
-.primary {background-color: #5057efcc;} /* Blue */
-.primary:hover {background: #1931eae6;}
-
-.warning {background-color: #ff9800cc;} /* Orange */
-.warning:hover {background: #de8603b3;}
-
-.danger {background-color: #f44336b3;} /* Red */
-.danger:hover {background: #da190bcc;}
+.danger {background-color: #d04d43;} /* Red */
+.danger:hover {background: #b91508;}
 
 .default {background-color: #e7e7e7; color: black;} /* Gray */
 .default:hover {background: #ddd;}
+
+
+
 /* End Button */
 
 

@@ -116,7 +116,7 @@
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4 class="timeline-title">Lorem ipsum dolor</h4>
+                                    <h4 class="timeline-title">Status</h4>
                                     <p><small class="text-muted"><i class="fa fa-clock-o"></i> 11 hours ago via Twitter</small>
                                     </p>
                                 </div>
@@ -130,7 +130,7 @@
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4 class="timeline-title">Lorem ipsum dolor</h4>
+                                    <h4 class="timeline-title">Status</h4>
                                 </div>
                                 <div class="timeline-body">
                                     <p>timeline-body.</p>
@@ -142,7 +142,7 @@
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4 class="timeline-title">Lorem ipsum dolor</h4>
+                                    <h4 class="timeline-title">Status</h4>
                                 </div>
                                 <div class="timeline-body">
                                     <p>timeline-body</p>
@@ -152,7 +152,7 @@
                         <li class="timeline-inverted">
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4 class="timeline-title">Lorem ipsum dolor</h4>
+                                    <h4 class="timeline-title">Status</h4>
                                 </div>
                                 <div class="timeline-body">
                                     <p>timeline-body!</p>
@@ -164,7 +164,7 @@
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4 class="timeline-title">Lorem ipsum dolor</h4>
+                                    <h4 class="timeline-title">Status</h4>
                                 </div>
                                 <div class="timeline-body">
                                     <p>timeline-body.</p>
@@ -191,7 +191,7 @@
                         <li>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4 class="timeline-title">Lorem ipsum dolor</h4>
+                                    <h4 class="timeline-title">Status</h4>
                                 </div>
                                 <div class="timeline-body">
                                     <p>timeline-body.</p>
