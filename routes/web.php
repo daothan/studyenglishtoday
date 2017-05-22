@@ -43,6 +43,7 @@ Route::get('/', 'HomeController@index');
 		Route::get('home/logout', ['as'=>'user.logout', 'uses'=>'LoginController@logout']);
 
 	/*Article detail*/
+		Route::get('new_post', ['as'=>'user.new_post', 'uses'=>'HomeController@new_post']);
 		Route::get('listening', ['as'=>'user.listening', 'uses'=>'HomeController@listening']);
 		Route::get('reading', ['as'=>'user.reading', 'uses'=>'HomeController@reading']);
 		Route::get('writing', ['as'=>'user.writing', 'uses'=>'HomeController@writing']);

@@ -71,7 +71,7 @@
 	<div class="codes agileitsbg2">
 		<div class="container">
 			<div id="newest_post" class="grid_3 grid_5 w3-agileits">
-				<a href="">
+				<a href="{{route('user.new_post')}}">
 					<button class="button"><span>Newest Posts</span></button>
 				</a>
 				<p id="test_content">

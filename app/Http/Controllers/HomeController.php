@@ -36,16 +36,20 @@ class HomeController extends Controller
 
         return view('user_interface.user_home', compact('detail','max_id','last_post','listening_article', 'reading_article', 'writing_article'));
     }
+    /*New post Page*/
+    public function new_post(){
+        return view('user_interface.article_detail.new_post');
+    }
 
     /*Listening Page*/
     public function listening(){
         return view('user_interface.article_detail.listening_page');
     }
-    /*Listening Page*/
+    /*Reading Page*/
     public function reading(){
         return view('user_interface.article_detail.reading_page');
     }
-    /*Listening Page*/
+    /*Writing Page*/
     public function writing(){
         return view('user_interface.article_detail.writing_page');
     }
