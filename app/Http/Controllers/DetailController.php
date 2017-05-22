@@ -52,6 +52,7 @@ class DetailController extends Controller
             /*Request data*/
             $detail->tittle = $request->tittle;
             $detail->alias = convert_vi_to_en(($request->tittle));
+            $detail->type = $request->type_article;
             $detail->introduce=$request->introduce;
             $detail->content=$request->content;
             $detail->user_id = Auth::user()->id;

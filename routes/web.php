@@ -18,7 +18,7 @@ Route::get('/', 'HomeController@index');
 /*User interface*/
 	Route::group(['prefix'=>'user'], function(){
 	/*Home*/
-		Route::get('home',['as'=>'user.home', 'uses'=>'HomeController@user_interface']);
+		Route::get('home',['as'=>'user.home', 'uses'=>'HomeController@user_home']);
 
 	/*Register*/
 		Route::post('home/register',['as'=>'user.register', 'uses'=>'RegisterController@postRegister_modal']);
@@ -41,6 +41,11 @@ Route::get('/', 'HomeController@index');
 
 	/*Logout*/
 		Route::get('home/logout', ['as'=>'user.logout', 'uses'=>'LoginController@logout']);
+
+	/*Article detail*/
+		Route::get('listening', ['as'=>'user.listening', 'uses'=>'HomeController@listening']);
+		Route::get('reading', ['as'=>'user.reading', 'uses'=>'HomeController@reading']);
+		Route::get('writing', ['as'=>'user.writing', 'uses'=>'HomeController@writing']);
 	});
 
 

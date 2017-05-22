@@ -22,6 +22,18 @@
 					</div>
 
                     <div class="form-group">
+                        <label class="col-md-1 control-label">Type</label>
+                        <div class="col-md-10">
+                           <select name="type_article" id="type_article" class="form-control" >
+                                <option disabled selected hidden>Please Choose Type Of Article...</option>
+                                <option value="listening">Listening</option>
+                                <option value="reading">Reading</option>
+                                <option value="writing">Writing</option>
+                           </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label class="col-md-1 control-label">Tittle</label>
                         <div class="col-md-10">
                             <textarea type="text" class="form-control" name="tittle"  id="tittle" rows="3"></textarea>

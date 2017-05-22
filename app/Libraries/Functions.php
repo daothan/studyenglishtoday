@@ -30,7 +30,21 @@
 		$str = str_replace('"','',$str);
 		$str = str_replace("'",'',$str);
 		$str = stripUnicode($str);
-		$str = mb_convert_case($str,MB_CASE_TITLE,'utf-8');
+		$string = mb_convert_case($str,MB_CASE_LOWER,'utf-8');
+		/*MB_CASE_UPPER, MB_CASE_TITLE, MB_CASE_LOWER*/
+		//$string=str_replace(' ','-',$str);
+		$string = str_replace(array('<b>','</b>','<strong>','</strong>'), '<i>', $string);
+		$string = str_replace(array('<h1 style="text-align:center">','<h2>'), '<h3>', $string);
+		$string = str_replace(array('font-family:arial,helvetica,sans-serif'), '', $string);
+		return  $string; // Removes special chars.
+	}
+	function tittle($str){
+		$str = trim($str);
+		if($str=="") return "";
+		$str = str_replace('"','',$str);
+		$str = str_replace("'",'',$str);
+		$str = stripUnicode($str);
+		$string = mb_convert_case($str,MB_CASE_LOWER,'utf-8');
 		/*MB_CASE_UPPER, MB_CASE_TITLE, MB_CASE_LOWER*/
 		$string=str_replace(' ','-',$str);
 		return  $string; // Removes special chars.

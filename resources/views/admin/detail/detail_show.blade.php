@@ -38,7 +38,7 @@
 							<tr id="{{$data["id"]}}">
 								<td class="hidden"><input type="checkbox" value="{{$data->id}}" name="checkbox" class="checkbox"></td>
 								<th class="text-center">{{$no}}</th>
-								<td class="text-center">{!!convert_vi_to_en(htmlspecialchars_decode($data->tittle))!!}</td>
+								<td class="text-center">{!!tittle(htmlspecialchars_decode($data->tittle))!!}</td>
 
 								<!-- Show parent category -->
 								<td>

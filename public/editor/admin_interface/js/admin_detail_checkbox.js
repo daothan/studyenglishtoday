@@ -219,6 +219,9 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 				category:{
 					required:true
 				},
+				type_article:{
+					required:true
+				},
 	            tittle: {
 	            	required  :true,
 	            	minlength :20
@@ -242,10 +245,11 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 					url: '/laravel1/admin/detail/add',
 					type: 'POST',
 					data:{
-						'category'  : $('#category').val(),
-						'tittle'    : $('#tittle').val(),
-						'introduce' : $('#introduce').val(),
-						'content'   : $('#content').val()
+						'category'  	: $('#category').val(),
+						'type_article'  : $('#type_article').val(),
+						'tittle'    	: $('#tittle').val(),
+						'introduce'	    : $('#introduce').val(),
+						'content'   	: $('#content').val()
 					},
 					success:function(data){
 						if(data.error_add_detail ==true){

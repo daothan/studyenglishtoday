@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Detail extends Model
 {
     protected $table = 'details';
-    protected $fillable = ['id','tittle', 'alias', 'introduce','content', 'images', 'keywords', 'description', 'user_id', 'cate_id'];
+    protected $fillable = ['id','tittle', 'alias', 'type', 'introduce','content', 'user_id', 'cate_id'];
 
     public $timestamps = true;
 

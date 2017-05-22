@@ -1808,3 +1808,8 @@ ul.w3list-style {
 
     margin-top: 2em;
 }
+
+/* Home CSS */
+a {
+    cursor: pointer;
+}

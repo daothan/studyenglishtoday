@@ -44,14 +44,34 @@
 
 					<div id="navbar" class="navbar-collapse collapse ">
 						<ul class="nav navbar-nav">
+						<!-- Home -->
 							<li class="{{((url()->current())!=route('user.home')) ? 'hidden' : ''}}"><a href="#top">Home</a></li>
 							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}">Home</a></li>
-							<li><a href="#about" class="scroll">About</a></li>
-							<li><a href="#newest_post" class="scroll">Newest Posts</a></li>
-							<li><a href="#listening_cate" class="scroll">Listening</a></li>
-							<li><a href="#reading_cate" class="scroll">Reading</a></li>
-							<li><a href="#writing_cate" class="scroll">Writing</a></li>
-							<li><a data-toggle="modal" data-target="#contact">Contact</a></li>
+						<!-- - -->
+						<!-- About -->
+							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a href="#about" class="scroll">About</a></li>
+							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#about">About</a></li>
+						<!-- - -->
+						<!-- Newest -->
+							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a href="#newest_post" class="scroll">Newest Posts</a></li>
+							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#newest_post">Newest Posts</a></li>
+						<!-- - -->
+						<!-- Listening -->
+							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a href="#listening_cate" class="scroll">Listening</a></li>
+							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#listening_cate">Listening</a></li>
+						<!-- - -->
+						<!-- Reading -->
+							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a href="#reading_cate" class="scroll">Reading</a></li>
+							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#reading_cate">Reading</a></li>
+						<!-- - -->
+						<!-- Writing -->
+							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a href="#writing_cate" class="scroll">Writing</a></li>
+							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#writing_cate">Writing</a></li>
+						<!-- - -->
+						<!-- Contact -->
+							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a data-toggle="modal" data-target="#contact" >Contact</a></li>
+							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a data-toggle="modal" data-target="#contact" >Contact</a></li>
+						<!-- - -->
 						</ul>
 
 						<!-- Sign Up and Login -->

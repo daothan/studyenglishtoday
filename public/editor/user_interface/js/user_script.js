@@ -91,9 +91,9 @@ $("#validate_login").validate({
 			}
 			if(data.level ==true){
 				if(data.value>1){
-					window.location.href ="/laravel1/user/home";
+					window.setTimeout('location.reload()', 500);
 				}else{
-					window.location.href ="/laravel1/admin/dashboard";
+					window.setTimeout('location.reload()', 500);
 				}
 			}
 			}
@@ -153,7 +153,7 @@ $("#validate_register").validate({
 					$('.errorPassword_confirmation').show().text(data.messages.password_confirmation[0]);
 				}
 			}else{
-				window.location.href ="/laravel1/user/home"
+				window.setTimeout('location.reload()', 300);
 			}
 			}
 		});
@@ -291,3 +291,17 @@ $("#validate_register").validate({
 				}
 		    })
 	}
+
+/*Home js*/
+	$('html, body').hide();
+    if (window.location.hash) {
+        setTimeout(function() {
+            $('html, body').scrollTop(0).show();
+            $('html, body').animate({
+                scrollTop: $(window.location.hash).offset().top
+                }, 1000)
+        }, 0);
+    }
+    else {
+        $('html, body').show();
+    }
