@@ -24,4 +24,8 @@ class HomeController extends Controller
         return view('user_interface.user_home');
     }
 
+    public function error_404(){
+        return view('user_interface.layouts.user_404');
+    }
+
 }

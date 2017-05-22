@@ -22,8 +22,8 @@ class CheckAdmin
 
             if($user_level < 2){/*Member*/
                 return $next($request);
-            }return redirect()->route('user.home');
+            }return redirect()->route('user.error_404');
         }
-        return redirect()->route('user.home');
+        return redirect()->route('user.error_404');
     }
 }
