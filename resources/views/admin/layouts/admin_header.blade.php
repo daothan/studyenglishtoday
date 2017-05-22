@@ -279,18 +279,6 @@
 
             <!-- End Show Flash Message -->
 
-            <!-- Show Flash Message Modal Ajax form -->
-                <div class="col-md-6 col-md-offset-3">
-                    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                        @if(Session::has('alert-' . $msg))
-                            <h2 class="flash text-center text-success"><i>{{Session::get('alert-success')}}</i></h2>
-                        @endif
-                    @endforeach
-                </div>
-               <script type="text/javascript">$('h2.flash').delay(5000).slideUp();</script>
-           <!-- End Show Flash Message -->
-
-
             @yield('content')
         </div>
 
@@ -308,9 +296,9 @@
     <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/datatables/dataTables.responsive.js')}}"></script>
     <!-- Admin JavaScript -->
     <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_master_script.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_user_script.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_user_checkbox.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_cate_checkbox.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_detail_script.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_detail_checkbox.js')}}"></script>
 
 
 </body>

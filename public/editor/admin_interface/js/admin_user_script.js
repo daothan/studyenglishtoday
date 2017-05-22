@@ -263,3 +263,13 @@
 			});
 	    })
 	}
+
+	/*<!-- Action -->
+		<td class="text-center">
+			<!-- Show Detail -->
+			<button class="btn_admin_action info" data-toggle="modal" data-target="" onclick="view_user('{{$data["id"]}}')" id="view_user"><span class="glyphicon glyphicon-list"></span></button>
+			<!-- Show Edit Form -->
+			<button class="btn_admin_action warning" data-toggle="modal" data-target="" onclick="edit_user('{{$data["id"]}}')" id="edit_user"><span class="glyphicon glyphicon-pencil"></span></button>
+			<!-- Show Delete Form -->
+			<button class="btn_admin_action danger" data-toggle="modal" data-target="" onclick="delete_user('{{$data["id"]}}')" id="delete_user"><span class="glyphicon glyphicon-trash"></button>
+		</td>*/

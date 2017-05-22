@@ -14,6 +14,8 @@
                		 <button class="btn_admin info" data-toggle="modal" id="view_cate"><span class="glyphicon glyphicon-list"></span> VIEW</button>
                		 <button class="btn_admin warning" data-toggle="modal" id="edit_cate"><span class="glyphicon glyphicon-pencil"></span> EDIT</button>
                		 <button class="btn_admin danger" data-toggle="modal" id="delete_cate"><span class="glyphicon glyphicon-trash"></span> DELETE</button>
+
+               		 <button class="btn btn-warning pull-right" data-toggle="modal" data-target="#guide">Guide</button>
                 </div>
 
                 <!-- /.panel-heading -->
@@ -67,11 +69,11 @@
     </div>
     <!-- /.row -->
     <!-- Show guide message -->
-   <div id="guideModal" class="modal fade" role="dialog">
+	<div id="guide" class="modal fade " role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="content modal_background">
                 <div class="modal-title">
-                    <h3 class="modal_header" align="center">Guide...</h3>
+                    <h3 class="modal_header" align="center">Guide</h3>
                 </div>
                 <div class="modal-body">
                     <strong class="text-info"><h3 align="center"><i><b>Please choose one category before acting !</b></i></h3></strong>
@@ -82,7 +84,22 @@
             </div>
         </div>
     </div>
-
+    <!-- View error show cate -->
+    <div id="viewcate_errorModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="content modal_background">
+                <div class="modal-title">
+                    <h3 class="modal_header" style="background-color : rgba(228, 25, 25, 0.81)" align="center">Opps....</h3>
+                </div>
+                <div class="modal-body">
+                    <strong class="text-danger"><h3 align="center"><i><b>Please choose one category !</b></i></h3></strong>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn_admin warning" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     @extends('admin.cate.cate_detail')
     @extends('admin.cate.cate_add')

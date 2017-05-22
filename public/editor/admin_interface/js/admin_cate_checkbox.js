@@ -1,13 +1,14 @@
 
 
-	/*Test check*/
-	//$('#guideModal').modal('show');
+/*Checkbox Modal Category*/
+	/*
+	$('#guideModal').modal('show');
 	setTimeout(function(){
-        $("#guideModal").modal('show');
-    },2000);
+        $("#openModal").modal('show');
+    },1500);
 	setTimeout(function(){
-        $("#guideModal").modal('hide');
-    },5000);
+        $("#openModal").modal('hide');
+    },5000);*/
 
 	$('#view_cate').fadeOut(2000);
 	$('#edit_cate').fadeOut(2000);
@@ -305,8 +306,15 @@
 														$('.errorName_edit').show().text(data.messages.edit_name[0]);
 													}
 												}else{
+													$('#dataTables').load('/laravel1/admin/cate/show #dataTables');
 													setTimeout(function() { $('#editcateModal').modal('hide');}, 200);
-													setTimeout(function() { window.location.href = "/laravel1/admin/cate/show";}, 500);
+													setTimeout(function(){
+												        $("#edit_cate_success").modal('show');
+												    },1000);
+													setTimeout(function(){
+												        $("#edit_cate_success").modal('hide');
+												    },3000);
+												    setTimeout(function() { window.location.href = "/laravel1/admin/cate/show";}, 4200);
 												}
 											}
 										})

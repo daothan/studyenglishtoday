@@ -58,3 +58,11 @@
     </div>
 </div>
 
+<!-- message edit success -->
+<div id="edit_detail_success" class="modalDialog fade">
+    <div>
+        <h2 align="center" class="text-info">Edit success</h2>
+        <h3 align="center" class="text-success"><i><hr>Detail has edited successfully !</i></h3>
+    </div>
+</div>
+
