@@ -283,22 +283,23 @@
         </div>
 
     </div>
-    @extends('admin/layouts/user_login_detail')
-    @extends('admin/layouts/user_login_edit')
-    @extends('admin/layouts/dashboard_add_user')
-    @extends('admin/layouts/dashboard_add_cate')
-    @extends('admin/layouts/dashboard_add_detail')
+        @extends('admin/layouts/user_login_detail')
+        @extends('admin/layouts/user_login_edit')
+        @extends('admin/layouts/dashboard_add_user')
+        @extends('admin/layouts/dashboard_add_cate')
+        @extends('admin/layouts/dashboard_add_detail')
 
 
-    <!-- DataTables JavaScript -->
-    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/datatables/jquery.dataTables.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/datatables/dataTables.bootstrap.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/datatables/dataTables.responsive.js')}}"></script>
-    <!-- Admin JavaScript -->
-    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_master_script.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_user_checkbox.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_cate_checkbox.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_detail_checkbox.js')}}"></script>
+        <!-- DataTables JavaScript -->
+        <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/datatables/jquery.dataTables.min.js')}}"></script>
+        <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/datatables/dataTables.bootstrap.min.js')}}"></script>
+        <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/datatables/dataTables.responsive.js')}}"></script>
+        <!-- Admin JavaScript -->
+        <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_master_script.js')}}"></script>
+        <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_user_checkbox.js')}}"></script>
+        <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_cate_checkbox.js')}}"></script>
+        <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_detail_checkbox.js')}}"></script>
+
 
 
 </body>

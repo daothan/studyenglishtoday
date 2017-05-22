@@ -66,3 +66,11 @@
     </div>
 </div>
 
+<!-- message add success -->
+<div id="add_cate_success" class="modalDialog fade">
+    <div>
+        <h2 align="center" class="text-info">Add success</h2>
+        <h3 align="center" class="text-success"><i><hr>Category has added successfully !</i></h3>
+    </div>
+</div>
+

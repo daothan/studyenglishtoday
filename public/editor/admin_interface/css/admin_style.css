@@ -171,6 +171,10 @@ a{
 .sidebar .nav-second-level li a:hover{
     color: #284ad2;
 }
+.sidebar .nav-second-level li a.active{
+    background-color: #747dca;
+    color: #fffcfe;
+}
 /* Admin Navbar */
 .admin_navbar {
     background: #716666 ;

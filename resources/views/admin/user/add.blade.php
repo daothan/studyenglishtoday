@@ -59,3 +59,11 @@
         </div>
     </div>
 </div>
+<!-- message add success -->
+<div id="add_user_success" class="modalDialog fade">
+    <div>
+        <h2 align="center" class="text-info">Add success</h2>
+        <h3 align="center" class="text-success"><i><hr>User has added successfully !</i></h3>
+    </div>
+</div>
+

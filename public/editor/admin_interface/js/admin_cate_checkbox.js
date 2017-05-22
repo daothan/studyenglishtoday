@@ -187,8 +187,15 @@
 								$('.errorDescription_add').show().text(data.messages.add_description[0]);
 							}
 						}else{
+							$('#cate_table').load('/laravel1/admin/cate/show #cate_table');
 							setTimeout(function() { $('#addcateModal').modal('hide');}, 200);
-							setTimeout(function() { window.location.href = "/laravel1/admin/cate/show";}, 500);
+							setTimeout(function(){
+						        $("#add_cate_success").modal('show');
+						    },1000);
+							setTimeout(function(){
+						        $("#add_cate_success").modal('hide');
+						    },3000);
+							setTimeout(function() { window.location.href = "/laravel1/admin/cate/show";}, 4500);
 						}
 					}
 				})
@@ -306,7 +313,7 @@
 														$('.errorName_edit').show().text(data.messages.edit_name[0]);
 													}
 												}else{
-													$('#dataTables').load('/laravel1/admin/cate/show #dataTables');
+													$('#cate_table').load('/laravel1/admin/cate/show #cate_table');
 													setTimeout(function() { $('#editcateModal').modal('hide');}, 200);
 													setTimeout(function(){
 												        $("#edit_cate_success").modal('show');
@@ -314,7 +321,7 @@
 													setTimeout(function(){
 												        $("#edit_cate_success").modal('hide');
 												    },3000);
-												    setTimeout(function() { window.location.href = "/laravel1/admin/cate/show";}, 4200);
+												   setTimeout(function() { window.location.href = "/laravel1/admin/cate/show";}, 4500);
 												}
 											}
 										})
@@ -368,6 +375,7 @@
 											$('tr#'+id+'').fadeOut(1000);
 
 										}
+										setTimeout(function() { window.location.href = "/laravel1/admin/cate/show";}, 1200);
 									}
 								});
 							});

@@ -172,9 +172,16 @@
 							if(data.messages.add_password_confirmation != undefined){
 								$('.errorPassword_confirmation_add').show().text(data.messages.add_password_confirmation[0]);
 							}
-						}else{
+						}else{user_table
+							$('#user_table').load('/laravel1/admin/user/show #user_table');
 							setTimeout(function() { $('#addModal').modal('hide');}, 200);
-							setTimeout(function() { window.location.href = "/laravel1/admin/user/show";}, 500);
+							setTimeout(function(){
+						        $("#add_user_success").modal('show');
+						    },1000);
+							setTimeout(function(){
+						        $("#add_user_success").modal('hide');
+						    },3000);
+							setTimeout(function() { window.location.href = "/laravel1/admin/user/show";}, 4500);
 						}
 					}
 				})
@@ -255,7 +262,7 @@
 									$('.errorPassword_confirmation').show().text(data.messages.password_confirmation[0]);
 								}
 							}else{
-								$('#dataTables').load('/laravel1/admin/user/show #dataTables');
+								$('#user_table').load('/laravel1/admin/user/show #user_table');
 								setTimeout(function() { $('#editModal').modal('hide');}, 200);
 								setTimeout(function(){
 							        $("#edit_user_success").modal('show');
@@ -263,7 +270,7 @@
 								setTimeout(function(){
 							        $("#edit_user_success").modal('hide');
 							    },3000);
-							    setTimeout(function() { window.location.href = "/laravel1/admin/user/show";}, 4200);
+								setTimeout(function() { window.location.href = "/laravel1/admin/user/show";}, 4500);
 							}
 						}
 					});
@@ -314,12 +321,12 @@
 									data:{id:id},
 
 									success:function(){
-										$('#deleteModal').modal('hide');
 										for(var i=0; i<id.length; i++)
 								    	{
 								    		$('tr#'+id+'').css('background-color', '#ccc');
 								        	$('tr#'+id+'').fadeOut(1000);
 								        }
+								        setTimeout(function(){ window.location.href = "/laravel1/admin/user/show";}, 1200);
 									}
 								})
 							})

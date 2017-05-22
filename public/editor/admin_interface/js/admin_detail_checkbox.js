@@ -255,8 +255,15 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 								$('.errorTittle_add').show().text(data.messages.tittle[0]);
 							}
 						}else{
+							$('#detail_table').load('/laravel1/admin/detail/show #detail_table');
 							setTimeout(function() { $('#adddetailModal').modal('hide');}, 200);
-							setTimeout(function() { window.location.href = "/laravel1/admin/detail/show";}, 500);
+							setTimeout(function(){
+						        $("#add_detail_success").modal('show');
+						    },1000);
+							setTimeout(function(){
+						        $("#add_detail_success").modal('hide');
+						    },3000);
+							setTimeout(function() { window.location.href = "/laravel1/admin/detail/show";}, 4500);
 						}
 					}
 				})
@@ -369,7 +376,7 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 												$('.errorTittle_edit').show().text(data.messages.edit_tittle[0]);
 											}
 										}else{
-										    $('#dataTables').load('/laravel1/admin/detail/show #dataTables');
+										    $('#detail_table').load('/laravel1/admin/detail/show #detail_table');
 											setTimeout(function() { $('#editdetailModal').modal('hide');}, 200);
 											setTimeout(function(){
 										        $("#edit_detail_success").modal('show');
@@ -377,7 +384,7 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 											setTimeout(function(){
 										        $("#edit_detail_success").modal('hide');
 										    },3000);
-										    setTimeout(function() { window.location.href = "/laravel1/admin/detail/show";}, 4200);
+											setTimeout(function() { window.location.href = "/laravel1/admin/detail/show";}, 4500);
 										}
 									}
 								})
@@ -421,13 +428,12 @@ $('#delete_detail').click(function(event){
 							method:"POST",
 							data: {id:id},
 							success:function(){
-								$('#deletedetailModal').modal('hide');
 								for(var i=0; i<id.length; i++){
 									$('tr#'+id+'').css('background-color','#ccc');
 									$('tr#'+id+'').fadeOut(1000);
 
 								}
-								$('#dataTables').load('/laravel1/admin/detail/show #dataTables');
+								setTimeout(function() { window.location.href = "/laravel1/admin/detail/show";}, 1200);
 							}
 						});
 					})
