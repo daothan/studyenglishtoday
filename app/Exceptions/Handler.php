@@ -44,6 +44,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+    	if ($exception instanceof \ReflectionException OR $exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException)
+    	{ //Si la ruta no existe, mostar view 404.
+        return response(view('user_interface.layouts.user_404'), 404);
+	    }
         return parent::render($request, $exception);
     }
 
@@ -59,6 +63,6 @@ class Handler extends ExceptionHandler
         if ($request->expectsJson()) {
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
-        return redirect()->guest(route('user.error_404'));
+        return redirect()->guest(route('error_404'));
     }
 }

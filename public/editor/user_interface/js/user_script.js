@@ -170,7 +170,7 @@ $("#validate_register").validate({
 			type:"GET",
 			data:{"id":id},
 			success:function(result){
-				console.log(result);
+				//console.log(result.info);
 				/*Check Level*/
 				if(result.info.level=='0'){
 					var level="Super Admin";
@@ -180,6 +180,20 @@ $("#validate_register").validate({
 					var level="Member";
 				}
 				/*End check level*/
+				/*Check name*/
+				if(!isNaN(result.info.name)){
+		      		var name=result.info.name_social;
+		      	}else{
+		      		var name=result.info.name;
+		      	}
+		      	/*End check name*/
+		      	/*Check Email*/
+                if((result.info.email)!=null && isNaN(result.info.email)){
+                	var email = result.info.email;
+                }else{
+                	var email=result.info.email_social;
+                	email = email.substring(0, email.indexOf('.') + '.'.length);
+                }
 				/*Provider*/
                 if(result.info.provider!=null){
                 	provider=result.info.provider;
@@ -188,10 +202,10 @@ $("#validate_register").validate({
                 }
                 /*End check*/
 
-				$("#view_title_login").text(result.info.name);
-				$(".view_username").text(result.info.name);
+				$("#view_title_login").text(name);
+				$(".view_username").text(name);
 				$(".view_userlevel").text(level);
-				$(".view_useremail").text(result.info.email);
+				$(".view_useremail").text(email);
 				$(".view_userprovider").text(provider);
 
 				/*Show date created*/

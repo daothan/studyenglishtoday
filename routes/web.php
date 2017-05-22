@@ -12,13 +12,13 @@
 */
 
 Route::get('/', 'HomeController@index');
+/*404*/
+	Route::get('error_404',['as'=>'error_404', 'uses'=>'HomeController@error_404']);
 
 /*User interface*/
 	Route::group(['prefix'=>'user'], function(){
 	/*Home*/
 		Route::get('home',['as'=>'user.home', 'uses'=>'HomeController@user_interface']);
-	/*404*/
-		Route::get('error_404',['as'=>'user.error_404', 'uses'=>'HomeController@error_404']);
 
 	/*Register*/
 		Route::post('home/register',['as'=>'user.register', 'uses'=>'RegisterController@postRegister_modal']);

@@ -545,7 +545,7 @@
 				<div class="col-md-5 contact-w3lsleft">
 					<div class="contact-grid agileits">
 						<h4>Send us your messages </h4>
-						<form action="#" method="post">
+						<form action="" method="post">
 							<div class="styled-input agile-styled-input-top">
 								<input type="text" name="Name" required="">
 								<label>Name</label>
@@ -566,7 +566,7 @@
 								<label>Message</label>
 								<span></span>
 							</div>
-							<input type="submit" value="SEND">
+							<a href="{{route('error_404')}}"><input type="" class="btn_user primary" value="SEND"></a>
 							<input type="reset" value="RESET">
 						</form>
 					</div>
@@ -628,12 +628,10 @@
 	<!-- footer -->
 	<div class="footer">
 		<div class="container">
-			<div class="w3social-icons">
+			<div class="w3social-icons">Login with<br><br>
 				<ul>
-					<li><a href="#" class="fb"><i class="fa fa-facebook"></i></a></li>
-					<li><a href="#" class="gp"><i class="fa fa-google-plus"></i></a></li>
-					<li><a href="#" class="twit"><i class="fa fa-twitter"></i></a></li>
-					<li><a href="#" class="drbl"><i class="fa fa-dribbble"></i></a></li>
+					<li><a href="{{route('user.facebook')}}" class="fb"><i class="fa fa-facebook"></i></a></li>
+					<li><a href="{{route('user.google')}}" class="gp"><i class="fa fa-google-plus"></i></a></li>
 				</ul>
 			</div>
 			<div class="support">
