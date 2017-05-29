@@ -359,11 +359,16 @@
 				},
 	            dash_tittle: {
 	            	required  :true,
-	            	minlength :20
+	            	minlength :20,
+	            	maxlength:120
 	            },
+				dash_type_article:{
+					required:true
+				},
 				dash_introduce:{
 					required  :true,
-					minlength :30
+					minlength :30,
+					maxlength :300
 				},
 				dash_content:{
 					required  :true,
@@ -380,10 +385,11 @@
 					url: '/laravel1/admin/detail/add',
 					type: 'POST',
 					data:{
-						'category'  : $('#category_dash').val(),
-						'tittle'    : $('#dash_tittle').val(),
-						'introduce' : $('#dash_introduce').val(),
-						'content'   : $('#dash_content').val()
+						'category'  	  : $('#category_dash').val(),
+						'tittle'   		  : $('#dash_tittle').val(),
+						'type_article'    : $('#dash_type_article').val(),
+						'introduce' 	  : $('#dash_introduce').val(),
+						'content'   	  : $('#dash_content').val()
 					},
 					success:function(data){
 						if(data.error_add_detail ==true){

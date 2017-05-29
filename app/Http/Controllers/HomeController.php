@@ -8,6 +8,8 @@ use App\Detail;
 use Auth;
 use Validator;
 use Illuminate\Support\MessageBag;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -38,20 +40,36 @@ class HomeController extends Controller
     }
     /*New post Page*/
     public function new_post(){
-        return view('user_interface.article_detail.new_post');
+        $new_post = Detail::orderBy('id','DESC')->paginate(6);
+        return view('user_interface.article_detail.new_post', compact('new_post'));
     }
 
     /*Listening Page*/
     public function listening(){
-        return view('user_interface.article_detail.listening_page');
+        $listening = Detail::where('type','listening')->orderBy('id','DESC')->paginate(6);
+        return view('user_interface.article_detail.listening_page',compact('listening'));
     }
     /*Reading Page*/
     public function reading(){
-        return view('user_interface.article_detail.reading_page');
+        $reading = Detail::where('type','reading')->orderBy('id','DESC')->paginate(6);
+        return view('user_interface.article_detail.reading_page', compact('reading'));
     }
     /*Writing Page*/
     public function writing(){
-        return view('user_interface.article_detail.writing_page');
+        $writing = Detail::where('type','writing')->orderBy('id','DESC')->paginate(6);
+        return view('user_interface.article_detail.writing_page',compact('writing'));
+    }
+
+    /*Contact*/
+    public function contact(Request $request){
+        $data = [
+            'name'=>$request->input('name_contact'),
+            'email'=>$request->input('email_contact'),
+            'messages'=>$request->input('message_contact')
+        ];
+        Mail::send('user_interface.layouts.content_contact', $data,function($msg){
+            $msg->to('daothan12111@gmail.com','Quoc Than')->subject('Here is first email');
+        });
     }
 
 }

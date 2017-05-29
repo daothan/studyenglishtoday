@@ -113,13 +113,9 @@ function ckeditor(name, config, toolbar){
 /*Show editor and ckfinder on Modal*/
 //console.log('#tittle'.length);
 if($('#tittle').length){
-	ckeditor("tittle", "config", "basic")
-	ckeditor("introduce", "config", "standard")
 	ckeditor("content", "config", "standard")
 }
 if($('#edit_tittle').length){
-	ckeditor("edit_tittle", "config", "basic")
-	ckeditor("edit_introduce", "config", "standard")
 	ckeditor("edit_content", "config", "standard")
 }
 
@@ -224,11 +220,13 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 				},
 	            tittle: {
 	            	required  :true,
-	            	minlength :20
+	            	minlength :20,
+	            	maxlength:120
 	            },
 				introduce:{
 					required  :true,
-					minlength :30
+					minlength :30,
+					maxlength :300
 				},
 				content:{
 					required  :true,
@@ -333,8 +331,8 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 						/*Send values to edit cate form*/
 						//console.log(result[0].info_detail);
 						$('#old_id_edit_detail').val(result[0].info_detail.id);
-						CKEDITOR.instances['edit_tittle'].setData(result[0].info_detail.tittle);
-						CKEDITOR.instances['edit_introduce'].setData(result[0].info_detail.introduce);
+						$('#edit_tittle').val(result[0].info_detail.tittle);
+						$('#edit_introduce').val(result[0].info_detail.introduce);
 						CKEDITOR.instances['edit_content'].setData(result[0].info_detail.content);
 
 						/*Validate and edit data*/
@@ -418,7 +416,6 @@ $('#delete_detail').click(function(event){
 				type:"GET",
 				data: {"id":id},
 				success:function(result){
-					$('#deletecateModal').modal('show');
 					$('.name_delete_detail').show().html(result.tittle);
 					//console.log(result);
 					$('#deletedetailModal').find('#confirmdelete').on('click',function(){
@@ -432,6 +429,7 @@ $('#delete_detail').click(function(event){
 							method:"POST",
 							data: {id:id},
 							success:function(){
+								$('#deletedetailModal').modal('hide');
 								for(var i=0; i<id.length; i++){
 									$('tr#'+id+'').css('background-color','#ccc');
 									$('tr#'+id+'').fadeOut(1000);

@@ -22,9 +22,21 @@
 					</div>
 
                     <div class="form-group">
+                        <label class="col-md-1 control-label">Type</label>
+                        <div class="col-md-10">
+                           <select name="dash_type_article" id="dash_type_article" class="form-control" >
+                                <option disabled selected hidden>Please Choose Type Of Article...</option>
+                                <option value="listening">Listening</option>
+                                <option value="reading">Reading</option>
+                                <option value="writing">Writing</option>
+                           </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label class="col-md-1 control-label">Tittle</label>
                         <div class="col-md-10">
-                            <textarea type="text" class="form-control" name="dash_tittle"  id="dash_tittle" rows="3"></textarea><script type="text/javascript">ckeditor("dash_tittle", "config", "basic")</script>
+                            <textarea type="text" class="form-control" name="dash_tittle"  id="dash_tittle" rows="3"></textarea>
                         </div>
                         <div class="has-error"><i><span class="help-block errorTittle_add_dash"></span></i></div>
                     </div>
@@ -32,7 +44,7 @@
                     <div class="form-group">
                         <label class="col-md-1 control-label">Introduce</label>
                         <div class="col-md-10">
-                            <textarea class="form-control" name="dash_introduce" id="dash_introduce" rows="3"></textarea><script type="text/javascript">ckeditor("dash_introduce", "config", "standard")</script>
+                            <textarea class="form-control" name="dash_introduce" id="dash_introduce" rows="3"></textarea>
                         </div>
                     </div>
 

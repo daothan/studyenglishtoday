@@ -47,8 +47,10 @@ Route::get('/', 'HomeController@index');
 		Route::get('listening', ['as'=>'user.listening', 'uses'=>'HomeController@listening']);
 		Route::get('reading', ['as'=>'user.reading', 'uses'=>'HomeController@reading']);
 		Route::get('writing', ['as'=>'user.writing', 'uses'=>'HomeController@writing']);
-	});
 
+	/*Contact us*/
+		Route::post('contact', ['as'=>'user.contact', 'uses'=>'HomeController@contact']);
+	});
 
 
 /*Admin Page*/

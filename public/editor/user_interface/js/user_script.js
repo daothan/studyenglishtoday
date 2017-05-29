@@ -305,3 +305,60 @@ $("#validate_register").validate({
     else {
         $('html, body').show();
     }
+/*Contact*/
+function contact(){
+	$('#contact').click(function(){
+		$('#contactModal').modal('show');
+		$('#contact_validate').validate({
+			rules:{
+				name_contact:{
+					required:true
+				},
+				email_contact:{
+					required :true,
+					email    :true
+				},
+				message_contact:{
+					required:true
+				}
+			},
+			messages:{
+				name_contact:{
+					required:"Please enter your name."
+				},
+				email_contact:{
+					required:"Please enter your email.",
+					email   :"Please enter valid email."
+				},
+				message_contact:{
+					required:"Please enter your idea."
+				}
+			},
+			submitHandler: function(){
+				$.ajaxSetup({
+				    headers: {
+				        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				    }
+				});
+				$.ajax({
+					'url':'/laravel1/user/contact',
+					'data':{
+						'name_contact'		:$('#name_contact').val(),
+						'email_contact'		:$('#email_contact').val(),
+						'message_contact'	:$('#message_contact').val()
+					},
+					'type':'POST',
+					beforeSend: function()
+				    {
+						setTimeout(function(){$('#contactModal').modal('hide');},500);
+						setTimeout(function(){$('#contact_success').modal('show');},500);
+						setTimeout(function(){$('#contact_success').modal('hide');},4000);
+				    },
+					success:function(data){
+						$('#contact_validate').load('/laravel1/user/home #contact_validate');
+					},
+				})
+			}
+		})
+	})
+}

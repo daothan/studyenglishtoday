@@ -1,6 +1,35 @@
 @extends('user_interface.layouts.user_header')
 @section('content')
 
-	Here is content listening
+	<div class="codes agileitsbg5">
+		<div class="container">
+			<div class="grid_3 grid_5 w3-agileits">
+				<h3 class="w3ls-hdg">Listening</h3><br>
+					@foreach($listening as $detail)
+						<div class="col-sm-6 col-xs-6 w3ltext-grids">
+							<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->alias))!!} </h4>
+							<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!} </p>
+							<h4 align="center"><a href="">Continue read..</a></h4>
+						</div>
+					@endforeach
+				<div class="clearfix">
+				</div>
+				<script>$(function () {
+				  $('[data-toggle="tooltip"]').tooltip()
+				})</script>
+					Total Pages: {!! $listening->lastPage() !!}
+
+					<div class="pagination pull-right">
+						<a href="{{$listening->url(1)}}" class="{{($listening->currentPage()==1) ? 'hidden':''}}">&laquo;</a>
+						<a href="{{$listening->url($listening->currentPage()-1)}}" class="{{($listening->currentPage()==1) ? 'hidden':''}}">Prev</a>
+						@for($i=1; $i<=$listening->lastPage(); $i++)
+							<a href="{{$listening->url($i)}}" class="{{($listening->currentPage()==$i)? 'active':''}}">{{$i}}</a>
+						@endfor
+						<a href="{{$listening->url($listening->currentPage()+1)}}" class="{{($listening->currentPage()==$listening->lastPage())?'hidden' : ''}}">Next</a>
+						<a href="{{$listening->url($listening->lastPage())}}" class="{{($listening->currentPage()==$listening->lastPage())?'hidden' : ''}}">&raquo;</a>
+					</div>
+			</div>
+		</div>
+	</div>
 
 @stop

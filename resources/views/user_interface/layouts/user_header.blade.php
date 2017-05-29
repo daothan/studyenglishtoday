@@ -47,12 +47,7 @@
 						<!-- Home -->
 							<li class="{{((url()->current())!=route('user.home')) ? 'hidden' : ''}}"><a href="#top">Home</a></li>
 							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}">Home</a></li>
-						<!-- - -->
-						<!-- About -->
-							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a href="#about" class="scroll">About</a></li>
-							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#about">About</a></li>
-						<!-- - -->
-						<!-- Newest -->
+						<!-- - -->						<!-- Newest -->
 							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a href="#newest_post" class="scroll">Newest Posts</a></li>
 							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#newest_post">Newest Posts</a></li>
 						<!-- - -->
@@ -69,8 +64,7 @@
 							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#writing_cate">Writing</a></li>
 						<!-- - -->
 						<!-- Contact -->
-							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a data-toggle="modal" data-target="#contact" >Contact</a></li>
-							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a data-toggle="modal" data-target="#contact" >Contact</a></li>
+							<li id="contact"><a data-toggle="modal" data-target="" onclick="contact()">Contact</a></li>
 						<!-- - -->
 						</ul>
 
@@ -308,7 +302,7 @@
 
 	    <!-- Modal content-->
 		<div class="login modal-container">
-			<div class="grid_3 grid_4">
+			<div class="register grid_4">
 				<button type="reset" class="close" data-dismiss="modal" style="color:black;"><span class="glyphicon glyphicon-remove"></span></button>
 
 				<div class="agileinfo-w3lsrow login-top">
@@ -548,101 +542,8 @@
 
 
 @yield('content')
-
-
-
-
-<!-- contact -->
-	<div id="contact"  class="modal fade contact" role="dialog">
-		<div class="modal-dialog"></div>
-
-		<div class="container">
-			<div class="contact-row agileits-w3layouts  grid_3 grid_4 contact_grid3">
-			<button id="reset" type="reset" class="close" data-dismiss="modal" style="color:black;"><span class="glyphicon glyphicon-remove"></span></button>
-				<div class="agileits-title">
-					<h3 class="w3ls-hdg contact_tittle">Contact Us</h3>
-				</div>
-				<div class="col-md-5 contact-w3lsleft">
-					<div class="contact-grid agileits">
-						<h4>Send us your messages </h4>
-						<form action="" method="post">
-							<div class="styled-input agile-styled-input-top">
-								<input type="text" name="Name" required="">
-								<label>Name</label>
-								<span></span>
-							</div>
-							<div class="styled-input">
-								<input type="text" name="Email" required="">
-								<label>Email</label>
-								<span></span>
-							</div>
-							<div class="styled-input">
-								<input type="text" name="Subject" required="">
-								<label>Subject</label>
-								<span></span>
-							</div>
-							<div class="styled-input">
-								<textarea name="Message" required=""></textarea>
-								<label>Message</label>
-								<span></span>
-							</div>
-							<a href="{{route('error_404')}}"><input type="" class="btn_user primary" value="SEND"></a>
-							<input type="reset" value="RESET">
-						</form>
-					</div>
-				</div>
-				<div class="col-md-7 contact-w3lsright w3llist-grids-btm2">
-					<h6><span>Free English </span>where you can improve your English skills . </h6>
-					<div class="col-xs-6 address-row">
-						<div class="col-xs-3 address-left">
-							<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-						</div>
-						<div class="col-xs-9 address-right">
-							<h5>Visit Us</h5>
-							<p>Cau Giay district <br>Ha Noi capital</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="col-xs-6 address-row w3-agileits">
-						<div class="col-xs-3 address-left">
-							<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-						</div>
-						<div class="col-xs-9 address-right">
-							<h5>Mail Us</h5>
-							<p><a href="mailto:info@example.com"> daothan1211@gmail.com</a></p>
-							<p><a href="mailto:info@example.com"> thankthn@gmail.com</a></p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="col-xs-6 address-row">
-						<div class="col-xs-3 address-left">
-							<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
-						</div>
-						<div class="col-xs-9 address-right">
-							<h5>Call Us</h5>
-							<p>+84 989 677 020<br></p>
-							<p>+84 943 725 418</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="col-xs-6 address-row">
-						<div class="col-xs-3 address-left">
-							<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-						</div>
-						<div class="col-xs-9 address-right">
-							<h5>Working Hours</h5>
-							<p>Mon - Fri : 8:00 am to 10:30 pm<br>
-							Sat - Sun : 9:00 am to 11:30 pm</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-	<!-- //contact -->
+<!-- Contact -->
+@extends('user_interface.layouts.contact')
 
 
 	<!-- footer -->
@@ -653,12 +554,6 @@
 					<li><a href="{{route('user.facebook')}}" class="fb"><i class="fa fa-facebook"></i></a></li>
 					<li><a href="{{route('user.google')}}" class="gp"><i class="fa fa-google-plus"></i></a></li>
 				</ul>
-			</div>
-			<div class="support">
-				<form action="#" method="post">
-					<input type="email" placeholder="Enter email...." required="">
-					<button type="submit" class="btn_user success">SUBMIT</button>
-				</form>
 			</div>
 		</div>
 	</div>

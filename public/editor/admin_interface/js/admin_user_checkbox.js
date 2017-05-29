@@ -43,7 +43,7 @@
 		    $(".table input:checkbox:checked").map(function(){
 		    	var searchIDs = [];
 		        searchIDs.push($(this).val());
-		    	console.log(searchIDs[0]);
+		    	//console.log(searchIDs[0]);
 		    	id = searchIDs[0];
 		    	$.ajax({
 				    url: '/laravel1/admin/user/information',
