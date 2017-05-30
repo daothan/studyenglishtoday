@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDetailImagesTable extends Migration
+class CreateBannersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateDetailImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('detail_images', function (Blueprint $table) {
+        Schema::create('banners', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tittle');
-            $table->string('images');
-            $table->integer('detail_id')->unsigned();
-            $table->foreign('detail_id')->references('id')->on('details')->onDelete('cascade');
+            $table->string('tittle')->unique();
+            $table->string('introduce');
+            $table->string('content');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateDetailImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detail_images');
+        Schema::dropIfExists('banners');
     }
 }

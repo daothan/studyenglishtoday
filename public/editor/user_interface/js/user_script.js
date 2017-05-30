@@ -89,11 +89,19 @@ $("#validate_login").validate({
 					$('.errorLogin').show().text(data.message.errorlogin[0]);
 				}
 			}
-			if(data.level ==true){
+			if(data.level == true){
+				console.log(data.username);
+				$('.username').text(data.username);
 				if(data.value>1){
-					window.setTimeout('location.reload()', 500);
+					$('#login').modal('hide');
+					setTimeout(function(){$('#login_success').modal('show');},200);
+					setTimeout(function(){$('#login_success').modal('hide');},2300);
+					window.setTimeout('location.reload()', 2200);
 				}else{
-					window.setTimeout('location.reload()', 500);
+					$('#login').modal('hide');
+					setTimeout(function(){$('#login_success').modal('show');},200);
+					setTimeout(function(){$('#login_success').modal('hide');},2300);
+					setTimeout(function(){window.location.href='/laravel1/admin/dashboard';},2200);
 				}
 			}
 			}
@@ -152,8 +160,13 @@ $("#validate_register").validate({
 				if(data.messages.password_confirmation != undefined){
 					$('.errorPassword_confirmation').show().text(data.messages.password_confirmation[0]);
 				}
-			}else{
-				window.setTimeout('location.reload()', 300);
+			}
+			if(data.register==true){
+				$('.username').text(data.username);
+				$('#register').modal('hide');
+				setTimeout(function(){$('#register_success').modal('show');},200);
+				setTimeout(function(){$('#register_success').modal('hide');},2500);
+				window.setTimeout('location.reload()', 2400);
 			}
 			}
 		});

@@ -1,7 +1,7 @@
 
 <!-- Modal Edit Cate-->
 
-<div id="editdetailModal" class="modal fade" role="dialog">
+<div id="editdetailModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg modal-dialog-detail">
         <div class="content modal_background">
             <div class="panel-title">
@@ -25,8 +25,8 @@
                         <label class="col-md-1 control-label">Tittle</label>
                         <div class="col-md-10">
                             <textarea type="text" class="form-control" class="edit_tittle" name="edit_tittle"  id="edit_tittle" rows="3"></textarea>
+                            <div class="has-error"><i><span class="help-block errorTittle_edit"></span></i></div>
                         </div>
-                        <div class="has-error"><i><span class="help-block errorTittle_edit"></span></i></div>
                     </div>
 
                     <div class="form-group">
@@ -49,7 +49,7 @@
                         <div class="col-md-10 col-md-offset-1">
                             <button type="submit" id="submit" class="btn_admin primary pull-left">Submit</button>
                             <button type="reset" class="btn_admin warning  pull-left">Reset</button>
-                			<button type="button" class="btn_admin danger pull-right" data-dismiss="modal">Close</button>
+                			<button type="button" class="btn_admin danger pull-right" data-dismiss="modal" id="close">Close</button>
                         </div>
                     </div>
                 </div>
@@ -59,10 +59,13 @@
 </div>
 
 <!-- message edit success -->
-<div id="edit_detail_success" class="modalDialog fade">
-    <div>
-        <h2 align="center" class="text-info">Edit success</h2>
-        <h3 align="center" class="text-success"><i><hr>Detail has edited successfully !</i></h3>
+<div id="edit_detail_success" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+    <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3 align="center" style="color:green;">Detail has edited successfully !</h3>
+            </div>
+        </div>
     </div>
 </div>
-

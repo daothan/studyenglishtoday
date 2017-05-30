@@ -50,7 +50,11 @@ class RegisterController extends Controller
             $data->level    = 2; /*Register just become a member*/
 
             if($data->save()){
-                $request->session()->flash('alert-flash_welcome', 'Registration successful with account '.': '.$request->input('name'));
+                $username = $request->input('name');;
+                return response()->json([
+                    'register'    =>true,
+                    'username' =>$username
+                ],200);
             }
         }
     }

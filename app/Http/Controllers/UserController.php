@@ -22,7 +22,7 @@ class UserController extends Controller
 
     /*Add users*/
 
-    public function add(Request $request){
+    public function add_user(Request $request){
          $rules = [
             'add_name'                  => 'unique:users,name',
             'add_email'                 => 'unique:users,email',
@@ -50,7 +50,9 @@ class UserController extends Controller
             $data->level    = 2; /*Register just become a member*/
 
             if($data->save()){
-                $request->session()->flash('alert-success', 'Registration successful with account '.': '.$request->input('name'));
+                return response()->json([
+                    'add_user'=>true
+                ],200);
             }
         }
     }
@@ -58,7 +60,7 @@ class UserController extends Controller
 
     /*Show information User*/
 
-    public function information(Request $request)
+    public function information_user(Request $request)
     {
         if($request->ajax()){
             $id = $request->id;
@@ -87,8 +89,8 @@ class UserController extends Controller
 	            }else{
 	                $errors = new MessageBag(['errorView'=>'You can not see this account details.']);
 	                return response()->json([
-	                'errorview' =>true,
-	                'message' =>$errors
+    	                'errorview' =>true,
+    	                'message' =>$errors
 	                ],200);
 	            }
 	        }
@@ -100,7 +102,7 @@ class UserController extends Controller
     }
 
     /*Update user*/
-    public function view_edit(Request $request)
+    public function get_edit_user(Request $request)
     {
         if($request->ajax()){
             $id = $request->id;
@@ -143,7 +145,7 @@ class UserController extends Controller
 		    }
 	    }
     }
-     public function edit(Request $request)
+     public function post_edit_user(Request $request)
         {
 			$rules = [
 	            'password'              => 'required|confirmed|min:6',
@@ -170,7 +172,9 @@ class UserController extends Controller
 	            $user->level    = $request->level;
 
 	            if($user->save()){
-	                $request->session()->flash('alert-flash_welcome', 'Update user successful.');
+	                return response()->json([
+                        'edit_user'=>true
+                    ],200);
 	            }
 	        }
         }
@@ -178,7 +182,7 @@ class UserController extends Controller
         /*
         *   Delete record
         */
-    public function delete_view(Request $request)
+    public function get_delete_user(Request $request)
     {
         if($request->ajax()){
             $id = $request->id;
@@ -226,7 +230,7 @@ class UserController extends Controller
 		    }
 	    }
     }
-    public function delete(Request $request)
+    public function post_delete_user(Request $request)
     {
     	if($request->ajax()){
 	        $id = $request->id;

@@ -23,6 +23,6 @@ class CheckMember
                 return $next($request);
             }return redirect()->route('admin.dashboard');
         }
-        return redirect()->route('error_404');
+        return redirect()->route('user.home');
     }
 }

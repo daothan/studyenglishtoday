@@ -21,7 +21,7 @@ class DetailController extends Controller
 	}
 
     /*Add Detail*/
-    public function getadddetail(){
+    public function get_add_detail(){
         $category = Category::select('id', 'name', 'parent_id')->get();
         foreach ($category as $parent) {
             $id=$parent->id;
@@ -32,7 +32,7 @@ class DetailController extends Controller
 
     }
 
-    public function add(Request $request){
+    public function post_add_detail(Request $request){
         $rules =[
             'tittle' => 'unique:details,tittle'
         ];
@@ -59,7 +59,9 @@ class DetailController extends Controller
             $detail->cate_id = $request->category;
 
             if($detail->save()){
-                $request->session()->flash('alert-success','Add new article successfully.');
+                return response()->json([
+                    'add_detail'=>true
+                ],200);
             }
 
         }
@@ -75,7 +77,7 @@ class DetailController extends Controller
     }
 
     /*Edit detail*/
-    public function geteditdetail(Request $request){
+    public function get_edit_detail(Request $request){
         if($request->ajax()){
             $id=$request->id;
             $info_detail=Detail::find($id);
@@ -101,7 +103,7 @@ class DetailController extends Controller
         }
     }
 
-    public function edit(Request $request){
+    public function post_edit_detail(Request $request){
         $id=$request->old_id_edit_detail;
             $rules =[
                 'edit_tittle' => Rule::unique('details','tittle')->ignore($id)
@@ -127,7 +129,9 @@ class DetailController extends Controller
             $detail->cate_id   = $request->edit_category;
 
             if($detail->save()){
-                $request->session()->flash('alert-success','Edit new article successfully.');
+                return response()->json([
+                    'edit_detail'=>true
+                ],200);
             }else{
                 $a=['errors'=>"error saving data"];
                 return response()->json($a);
@@ -136,14 +140,14 @@ class DetailController extends Controller
         }
     }
     /*Delete Detail*/
-    public function delete_view(Request $request){
+    public function get_delete_detail(Request $request){
         if($request->ajax()){
             $id=$request->id;
             $info_detail_delete=Detail::find($id);
             return response()->json($info_detail_delete);
         }
     }
-    public function delete(Request $request){
+    public function post_delete_detail(Request $request){
         if($request->ajax()){
             $id=$request->id;
             $detail_delete=Detail::find($id);

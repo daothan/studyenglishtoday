@@ -66,18 +66,18 @@ Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 		Route::get('show',['as'=>'admin.user.show', 'uses'=>'UserController@show']);
 
 		/*Show information User*/
-		Route::get('information', ['as'=>'admin.user.information', 'uses'=>'UserController@information']);
+		Route::get('information', ['as'=>'admin.user.information', 'uses'=>'UserController@information_user']);
 
 		/*Add Users*/
-		Route::post('add',['as'=>'admin.user.add', 'uses'=>'UserController@add']);
+		Route::post('add',['as'=>'admin.user.add', 'uses'=>'UserController@add_user']);
 
 		/*Edit Users*/
-		Route::get('edit',['as'=>'admin.user.edit', 'uses'=>'UserController@view_edit']);
-		Route::post('edit',['as'=>'admin.user.edit', 'uses'=>'UserController@edit']);
+		Route::get('edit',['as'=>'admin.user.edit', 'uses'=>'UserController@get_edit_user']);
+		Route::post('edit',['as'=>'admin.user.edit', 'uses'=>'UserController@post_edit_user']);
 
 		/*Delete User*/
-		Route::get('delete_view', ['as'=>'admin.user.delete','uses'=>'UserController@delete_view']);
-		Route::post('delete', ['as'=>'admin.user.delete','uses'=>'UserController@delete']);
+		Route::get('delete_view', ['as'=>'admin.user.delete','uses'=>'UserController@get_delete_user']);
+		Route::post('delete', ['as'=>'admin.user.delete','uses'=>'UserController@post_delete_user']);
 	});
 
 	/*Cate Pages*/
@@ -90,16 +90,16 @@ Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 		Route::get('catedetail', ['as' => 'admin.cate.catedetail', 'uses' => 'CategoryController@view_cate_detail']);
 
 		/*Add categories*/
-		Route::get('add', ['as' => 'admin.cate.addcate', 'uses' => 'CategoryController@getaddcate']);
-		Route::post('add', ['as' => 'admin.cate.addcate', 'uses' => 'CategoryController@addcate']);
+		Route::get('add', ['as' => 'admin.cate.addcate', 'uses' => 'CategoryController@get_add_cate']);
+		Route::post('add', ['as' => 'admin.cate.addcate', 'uses' => 'CategoryController@post_add_cate']);
 
 		/*Edit Category*/
-		Route::get('edit', ['as' => 'admin.cate.editcate', 'uses' => 'CategoryController@view_edit']);
-		Route::post('edit', ['as' => 'admin.cate.editcate', 'uses' => 'CategoryController@edit']);
+		Route::get('edit', ['as' => 'admin.cate.editcate', 'uses' => 'CategoryController@get_edit_cate']);
+		Route::post('edit', ['as' => 'admin.cate.editcate', 'uses' => 'CategoryController@post_edit_cate']);
 
 		/*Delete category*/
-		Route::get('delete_view',['as' => 'admin.cate.delete', 'uses' => 'CategoryController@delete_view']);
-		Route::post('delete',['as' => 'admin.cate.delete', 'uses' => 'CategoryController@delete']);
+		Route::get('delete_view',['as' => 'admin.cate.delete', 'uses' => 'CategoryController@get_delete_cate']);
+		Route::post('delete',['as' => 'admin.cate.delete', 'uses' => 'CategoryController@post_delete_cate']);
 
 	});
 
@@ -110,20 +110,60 @@ Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 		Route::get('show',['as'=>'admin.detail.show','uses'=>'DetailController@show']);
 
 		/*Add details*/
-		Route::get('add',['as'=>'admin.detail.adddetail', 'uses'=>'DetailController@getadddetail']);
-		Route::post('add',['as'=>'admin.detail.adddetail', 'uses'=>'DetailController@add']);
+		Route::get('add',['as'=>'admin.detail.adddetail', 'uses'=>'DetailController@get_add_detail']);
+		Route::post('add',['as'=>'admin.detail.adddetail', 'uses'=>'DetailController@post_add_detail']);
 
 		/*View Content*/
 		Route::get('content',['as'=>'admin.detail.content', 'uses'=>'DetailController@detail_content']);
 
 		/*Edit details*/
-		Route::get('edit', ['as'=>'admin.detail.editdetail', 'uses'=>'DetailController@geteditdetail']);
-		Route::post('edit', ['as'=>'admin.detail.editdetail', 'uses'=>'DetailController@edit']);
+		Route::get('edit', ['as'=>'admin.detail.editdetail', 'uses'=>'DetailController@get_edit_detail']);
+		Route::post('edit', ['as'=>'admin.detail.editdetail', 'uses'=>'DetailController@post_edit_detail']);
 
 		/*Delete details*/
-		Route::get('delete_view', ['as'=>'admin.detail.delete', 'uses'=>'DetailController@delete_view']);
-		Route::post('delete', ['as'=>'admin.detail.delete', 'uses'=>'DetailController@delete']);
+		Route::get('delete_view', ['as'=>'admin.detail.delete', 'uses'=>'DetailController@get_delete_detail']);
+		Route::post('delete', ['as'=>'admin.detail.delete', 'uses'=>'DetailController@post_delete_detail']);
 
+	});
+
+	/*Banners Pages*/
+	Route::group(['prefix' => 'banner'], function(){
+		/*Show Banners*/
+		Route::get('show', ['as'=>'admin.banner.show', 'uses'=>'BannerController@show']);
+
+		/*View Banner Details*/
+		Route::get('detail',['as'=>'admin.banner.detail','uses'=>'BannerController@view_banner_detail']);
+
+		/*Add Banner*/
+		Route::post('add',['as'=>'admin.banner.addbanner','uses'=>'BannerController@post_add_banner']);
+
+		/*Edit Banner*/
+		Route::get('edit',['as'=>'admin.banner.edit','uses'=>'BannerController@get_edit_banner']);
+		Route::post('edit',['as'=>'admin.banner.edit','uses'=>'BannerController@post_edit_banner']);
+
+		/*Delete Banner*/
+		Route::get('delete',['as'=>'admin.banner.delete','uses'=>'BannerController@get_delete_banner']);
+		Route::post('delete',['as'=>'admin.banner.delete','uses'=>'BannerController@post_delete_banner']);
+	});
+
+	/*Contact Pages*/
+	Route::group(['prefix'=>'contact'], function(){
+		/*Show Contacts info*/
+		Route::get('show',['as'=>'admin.contact.show','uses'=>'ContactController@show']);
+
+		/*View Contacts Details*/
+		Route::get('detail',['as'=>'admin.contact.detail','uses'=>'ContactController@view_contact_detail']);
+
+		/*Add Contacts*/
+		Route::post('add',['as'=>'admin.contact.addbanner','uses'=>'ContactController@post_add_contact']);
+
+		/*Edit Contacts*/
+		Route::get('edit',['as'=>'admin.contact.edit','uses'=>'ContactController@get_edit_contact']);
+		Route::post('edit',['as'=>'admin.contact.edit','uses'=>'ContactController@post_edit_contact']);
+
+		/*Delete Contacts*/
+		Route::get('delete',['as'=>'admin.contact.delete','uses'=>'ContactController@get_delete_contact']);
+		Route::post('delete',['as'=>'admin.contact.delete','uses'=>'ContactController@post_delete_contact']);
 	});
 
 });

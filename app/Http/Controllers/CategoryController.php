@@ -35,7 +35,7 @@ class CategoryController extends Controller
     }
 
     /*Add category*/
-    public function getaddcate(){
+    public function get_add_cate(){
         $category = Category::select('id', 'name', 'parent_id')->get();
         foreach ($category as $parent) {
             $id=$parent->id;
@@ -45,7 +45,7 @@ class CategoryController extends Controller
         }
 
     }
-    public function addcate(Request $request){
+    public function post_add_cate(Request $request){
     	$rules = [
             'add_name'        => 'unique:users,name'
         ];
@@ -63,19 +63,20 @@ class CategoryController extends Controller
             $data = New Category;
             $data->name        = $request -> input('add_name');
             $data->alias       = convert_vi_to_en($request -> input('add_name'));
-            $data->order       = $request -> input('add_order');
             $data->parent_id   = $request -> input('add_parent');
             $data->keywords    = $request -> input('add_keywords');
             $data->description = $request -> input('add_description');
 
             if($data->save()){
-                $request->session()->flash('alert-success', 'Add '.$request->input('add_name').' successfully');
+                 return response()->json([
+                    'add_cate'=>true
+                ],200);
             }
         }
     }
 
     /*Edit Category*/
-    public function view_edit(Request $request){
+    public function get_edit_cate(Request $request){
 
         if($request->ajax()){
             $id=$request->id;
@@ -113,14 +114,14 @@ class CategoryController extends Controller
         }
     }
 
-    public function edit(Request $request){
+    public function post_edit_cate(Request $request){
 
         $id=$request->old_id_edit;
         $rules = [
-            'edit_order' => 'required',
+            'edit_keyword' => 'required',
             ];
         $messages = [
-            'edit_order.required' => 'Please enter password.'
+            'edit_keyword.required' => 'Please enter keywords.'
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -132,17 +133,18 @@ class CategoryController extends Controller
         }else{
             $cate_edit = Category::find($id);
             $cate_edit->parent_id = $request->edit_parent;
-            $cate_edit->order = $request->edit_order;
             $cate_edit->keywords = $request->edit_keyword;
             $cate_edit->description = $request->edit_description;
 
             if($cate_edit->save()){
-                $request->session()->flash('alert-success', 'Update user successful.');
+                return response()->json([
+                    'edit_cate'=>true
+                ],200);
             }
         }
     }
 
-    public function delete_view(Request $request){
+    public function get_delete_cate(Request $request){
         if($request->ajax()){
             $id=$request->id;
             $info=Category::find($id);
@@ -166,7 +168,7 @@ class CategoryController extends Controller
             }
         }
     }
-    public function delete(Request $request){
+    public function post_delete_cate(Request $request){
         if($request->ajax()){
             $id=$request->id;
             $cate_delete=Category::find($id);

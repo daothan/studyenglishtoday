@@ -42,11 +42,12 @@ class LoginController extends Controller
             $password = $request -> input('user_password');
 
             if(Auth::attempt(['name'=>$name, 'password'=>$password])){
-                $request->session()->flash('alert-flash_welcome', 'Welcome '.' '.Auth::user()->name.' !');
                 $level = Auth::user()->level;
+                $username = Auth::user()->name;
                 return response()->json([
-                'level'   =>true,
-                'value' =>$level
+                'level'    =>true,
+                'value'    =>$level,
+                'username' =>$username
                 ],200);
 
             }else{

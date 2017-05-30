@@ -256,16 +256,13 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 							if(data.messages.tittle != undefined){
 								$('.errorTittle_add').show().text(data.messages.tittle[0]);
 							}
-						}else{
+						}
+						if(data.add_detail == true){
 							$('#detail_table').load('/laravel1/admin/detail/show #detail_table');
 							setTimeout(function() { $('#adddetailModal').modal('hide');}, 200);
-							setTimeout(function(){
-						        $("#add_detail_success").modal('show');
-						    },1000);
-							setTimeout(function(){
-						        $("#add_detail_success").modal('hide');
-						    },3000);
-							setTimeout(function() { window.location.href = "/laravel1/admin/detail/show";}, 4500);
+							setTimeout(function(){ $("#add_detail_success").modal('show');},1000);
+							setTimeout(function(){ $("#add_detail_success").modal('hide'); },3000);
+							setTimeout(function() { window.location.href = "/laravel1/admin/detail/show";}, 4000);
 						}
 					}
 				})
@@ -273,7 +270,7 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 		});
 	});
 
-	/*Edit Detial*/
+	/*Edit Detail*/
 	$("#edit_detail").click(function(event){
 	    event.preventDefault();
 	    if(checked==0){
@@ -281,6 +278,9 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 		}
 		if(checked==1){
 			$('#editdetailModal').modal('show');
+			$('#close').click(function(){/*Reload data select*/
+				$('#edit_category').load('/laravel1/admin/cate/show #edit_category');
+			})
 		    $(".table input:checkbox:checked").map(function(){
 		    	var searchIDs = [];
 		        searchIDs.push($(this).val());
@@ -377,16 +377,13 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 											if(data.messages.edit_tittle != undefined){
 												$('.errorTittle_edit').show().text(data.messages.edit_tittle[0]);
 											}
-										}else{
+										}
+										if(data.edit_detail == true){
 										    $('#detail_table').load('/laravel1/admin/detail/show #detail_table');
-											setTimeout(function() { $('#editdetailModal').modal('hide');}, 200);
-											setTimeout(function(){
-										        $("#edit_detail_success").modal('show');
-										    },1000);
-											setTimeout(function(){
-										        $("#edit_detail_success").modal('hide');
-										    },3000);
-											setTimeout(function() { window.location.href = "/laravel1/admin/detail/show";}, 4500);
+											setTimeout(function(){$('#editdetailModal').modal('hide');}, 200);
+											setTimeout(function(){$("#edit_detail_success").modal('show');},1000);
+											setTimeout(function(){$("#edit_detail_success").modal('hide');},3000);
+											setTimeout(function(){ window.location.href = "/laravel1/admin/detail/show";}, 4000);
 										}
 									}
 								})

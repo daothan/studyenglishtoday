@@ -295,6 +295,17 @@
 		</div>
 	  </div>
 	</div>
+	<!-- Modal Login Successful-->
+	<div id="login_success" class="modal fade" role="dialog">
+	    <div class="modal-dialog">
+	    <!-- Modal content-->
+		    <div class="modal-content">
+			    <div class="modal-body">
+			        <h3 align="center" style="color:green;">Welcome '<span class ="username"></span>' to Studying English.</h3>
+			    </div>
+		    </div>
+		</div>
+	</div>
 
 	<!-- Modal Register-->
 	<div id="register" class="modal fade" role="dialog">
@@ -330,7 +341,17 @@
 
 	  </div>
 	</div>
-
+	<!-- Modal Register Successful-->
+	<div id="register_success" class="modal fade" role="dialog">
+	    <div class="modal-dialog">
+	    <!-- Modal content-->
+		    <div class="modal-content">
+			    <div class="modal-body">
+			        <h3 align="center" style="color:green;">Account '<span class ="username"></span>' signed up successful.</h3>
+			    </div>
+		    </div>
+		</div>
+	</div>
 
 	<!-- banner -->
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">

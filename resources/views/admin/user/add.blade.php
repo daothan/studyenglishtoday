@@ -60,10 +60,13 @@
     </div>
 </div>
 <!-- message add success -->
-<div id="add_user_success" class="modalDialog fade">
-    <div>
-        <h2 align="center" class="text-info">Add success</h2>
-        <h3 align="center" class="text-success"><i><hr>User has added successfully !</i></h3>
+<div id="add_user_success" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+    <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3 align="center" style="color:green;">User has added successfully !</h3>
+            </div>
+        </div>
     </div>
 </div>
-

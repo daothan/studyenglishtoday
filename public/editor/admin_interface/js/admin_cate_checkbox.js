@@ -62,7 +62,6 @@
 
 				        $("#view_titlename").text(result.info.name);
 				        $("#view_catename").text(result.info.name);
-				        $("#view_cateorder").text(result.info.order);
 				        $("#view_cateparent").text(cate_parent);
 				        $("#view_catekeyword").text(result.info.keywords);
 				        $("#view_catedescription").text(result.info.description);
@@ -140,10 +139,6 @@
 					required:true,
 					maxlength:50
 				},
-				add_order:{
-					required:true,
-					number: true
-				},
 				add_keywords:{
 					required:true,
 					minlength:6,
@@ -166,7 +161,6 @@
 					data: {
 						'add_parent'     : $('#add_parent').val(),
 						'add_name'       : $('#add_name').val(),
-						'add_order'      : $('#add_order').val(),
 						'add_keywords'   : $('#add_keywords').val(),
 						'add_description': $('#add_description').val()
 					},
@@ -177,25 +171,19 @@
 							if(data.messages.add_name != undefined){
 								$('.errorName_add').show().text(data.messages.add_name[0]);
 							}
-							if(data.messages.add_order != undefined){
-								$('.errorOrder_add').show().text(data.messages.add_order[0]);
-							}
 							if(data.messages.add_keywords != undefined){
 								$('.errorKeyword_add').show().text(data.messages.add_keywords[0]);
 							}
 							if(data.messages.add_description != undefined){
 								$('.errorDescription_add').show().text(data.messages.add_description[0]);
 							}
-						}else{
+						}
+						if(data.add_cate == true){
 							$('#cate_table').load('/laravel1/admin/cate/show #cate_table');
-							setTimeout(function() { $('#addcateModal').modal('hide');}, 200);
-							setTimeout(function(){
-						        $("#add_cate_success").modal('show');
-						    },1000);
-							setTimeout(function(){
-						        $("#add_cate_success").modal('hide');
-						    },3000);
-							setTimeout(function() { window.location.href = "/laravel1/admin/cate/show";}, 4500);
+							setTimeout(function(){ $('#addcateModal').modal('hide');}, 200);
+							setTimeout(function(){ $("#add_cate_success").modal('show');},1000);
+							setTimeout(function(){ $("#add_cate_success").modal('hide');},3000);
+							setTimeout(function(){ window.location.href = "/laravel1/admin/cate/show";}, 4000);
 						}
 					}
 				})
@@ -269,16 +257,11 @@
 								$("#old_id_edit").val(result[0].info.id);
 								$('#edit_parent').val(result[0].info.parent_id);
 								$('#edit_name').val(result[0].info.name);
-								$('#edit_order').val(result[0].info.order);
 								$('#edit_keyword').val(result[0].info.keywords);
 								$('#edit_description').val(result[0].info.description);
 
 								$("#validate_edit_cate").validate({
 									rules:{
-										edit_order:{
-											required:true,
-											number: true
-										},
 										edit_keyword:{
 											required:true,
 											minlength:6,
@@ -302,7 +285,6 @@
 												'old_id_edit':$("#old_id_edit").val(),
 												'edit_parent' : $('#edit_parent').val(),
 												'edit_name' : $('#edit_name').val(),
-												'edit_order' : $('#edit_order').val(),
 												'edit_keyword':$('#edit_keyword').val(),
 												'edit_description':$('#edit_description').val()
 											},
@@ -312,16 +294,13 @@
 													if(data.messages.edit_name != undefined){
 														$('.errorName_edit').show().text(data.messages.edit_name[0]);
 													}
-												}else{
+												}
+												if(data.edit_cate == true){
 													$('#cate_table').load('/laravel1/admin/cate/show #cate_table');
 													setTimeout(function() { $('#editcateModal').modal('hide');}, 200);
-													setTimeout(function(){
-												        $("#edit_cate_success").modal('show');
-												    },1000);
-													setTimeout(function(){
-												        $("#edit_cate_success").modal('hide');
-												    },3000);
-												   setTimeout(function() { window.location.href = "/laravel1/admin/cate/show";}, 4500);
+													setTimeout(function(){$("#edit_cate_success").modal('show');},1000);
+													setTimeout(function(){$("#edit_cate_success").modal('hide');},3000);
+												   setTimeout(function() { window.location.href = "/laravel1/admin/cate/show";}, 4000);
 												}
 											}
 										})

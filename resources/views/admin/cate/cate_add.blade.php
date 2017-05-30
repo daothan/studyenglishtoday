@@ -30,14 +30,6 @@
 					</div>
 
 					<div class="form-group">
-						<label class="col-md-4 control-label">Category Order</label>
-						<div class="col-md-6">
-							<input type="text" class="form-control" id="add_order" name="add_order" placeholder="Please Enter Category Order">
-							<div class="has-error"><i><span class="help-block errorOrder_add"></span></i></div>
-						</div>
-					</div>
-
-					<div class="form-group">
 						<label class="col-md-4 control-label">Category keywords</label>
 						<div class="col-md-6">
 							<input type="text" class="form-control" id="add_keywords" name="add_keywords" placeholder="Please Enter Category Keywords" value="{{old('keywords')}}">
@@ -67,10 +59,15 @@
 </div>
 
 <!-- message add success -->
-<div id="add_cate_success" class="modalDialog fade">
-    <div>
-        <h2 align="center" class="text-info">Add success</h2>
-        <h3 align="center" class="text-success"><i><hr>Category has added successfully !</i></h3>
-    </div>
+
+<div id="add_cate_success" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+    <!-- Modal content-->
+	    <div class="modal-content">
+		    <div class="modal-body">
+		        <h3 align="center" style="color:green;">Category has added successfully !</h3>
+		    </div>
+	    </div>
+	</div>
 </div>
 

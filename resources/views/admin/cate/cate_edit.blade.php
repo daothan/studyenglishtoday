@@ -1,7 +1,7 @@
 
 <!-- Modal Add User-->
 
-<div id="editcateModal" class="modal fade" role="dialog">
+<div id="editcateModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
         <div class="content modal_background">
             <div class="panel-title">
@@ -29,13 +29,6 @@
 					</div>
 
 					<div class="form-group">
-						<label class="col-md-4 control-label">Category Order</label>
-						<div class="col-md-6">
-							<input type="text" class="form-control" id="edit_order" name="edit_order" placeholder="Please Enter Category Order">
-						</div>
-					</div>
-
-					<div class="form-group">
 						<label class="col-md-4 control-label">Category keywords</label>
 						<div class="col-md-6">
 							<input type="text" class="form-control" id="edit_keyword" name="edit_keyword" placeholder="Please Enter Category Keywords">
@@ -52,7 +45,7 @@
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
                             <button type="submit" class="btn_admin primary">Submit</button>
-                			<button type="button" class="btn_admin danger" data-dismiss="modal" id="close">Close</button>
+                			<button type="button" class="btn_admin danger pull-right" data-dismiss="modal" id="close">Close</button>
                         </div>
                     </div>
                 </form>
@@ -81,9 +74,13 @@
     </div>
 
 <!-- message edit success -->
-<div id="edit_cate_success" class="modalDialog fade">
-    <div>
-        <h2 align="center" class="text-info">Edit success</h2>
-        <h3 align="center" class="text-success"><i><hr>Category has edited successfully !</i></h3>
+<div id="edit_cate_success" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+    <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3 align="center" style="color:green;">Category has edited successfully !</h3>
+            </div>
+        </div>
     </div>
 </div>
