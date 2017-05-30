@@ -15,8 +15,8 @@
                         <label class="col-md-1 control-label">Tittle</label>
                         <div class="col-md-10">
                             <input type="text" class="form-control" name="tittle_banner"  id="tittle_banner" autofocus>
+                            <div class="has-error"><i><span class="help-block error_tittle_add_banner"></span></i></div>
                         </div>
-                        <div class="has-error"><i><span class="help-block error_tittle_add_banner"></span></i></div>
                     </div>
 
                     <div class="form-group">

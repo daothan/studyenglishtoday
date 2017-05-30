@@ -125,7 +125,7 @@ for (instance in CKEDITOR.instances) {
     CKEDITOR.instances[instance].updateElement();
 }
 	/*View detail banner*/
-	$('#view_banner').click(function(){
+	$('#view_banner').click(function(event){
 		event.preventDefault();
 		if(checked==0){
 			$('#viewbanner_errorModal').modal('show');
@@ -145,8 +145,8 @@ for (instance in CKEDITOR.instances) {
 						//console.log(result);
 						$('#view_title_banner').text(result.tittle);
 						$('#view_banner_tittle').text(result.tittle);
-						$('#view_banner_introduce').text(result.introduce);
-						$('#view_banner_content').text(result.content);
+						$('#view_banner_introduce').html(result.introduce);
+						$('#view_banner_content').html(result.content);
 
 				        var d = new Date();
 							var my_date_format = function(input){
@@ -180,13 +180,11 @@ for (instance in CKEDITOR.instances) {
 				},
 				introduce_banner:{
 					required:true,
-					minlength:20,
-					maxlength:200
+					minlength:20
 				},
 				content_banner:{
 					required:true,
-					minlength:30,
-					maxlength:500
+					minlength:30
 				}
 
 			},
@@ -205,14 +203,14 @@ for (instance in CKEDITOR.instances) {
 						'content_banner'    : $('#content_banner').val()
 					},
 					success:function(data){
-						console.log(data);
 						if(data.error_add_banner == true){
 							$('.error').hide();
-							if(data.messages.tittle != undefined){
+							if(data.messages.tittle_banner != undefined){
 								$('.error_tittle_add_banner').show().text(data.messages.tittle_banner[0]);
 							}
 						}
 						if(data.add_banner == true){
+							$('#banner_table').load('/laravel1/admin/banner/show #banner_table');
 							setTimeout(function() { $('#addbannerModal').modal('hide');}, 200);
 							setTimeout(function(){ $("#add_banner_success").modal('show');},1000);
 							setTimeout(function(){ $("#add_banner_success").modal('hide'); },3000);
@@ -259,13 +257,11 @@ for (instance in CKEDITOR.instances) {
 								},
 								introduce_banner_edit:{
 									required:true,
-									minlength:20,
-									maxlength:200
+									minlength:20
 								},
 								content_banner_edit:{
 									required:true,
-									minlength:30,
-									maxlength:500
+									minlength:30
 								}
 							},
 							submitHandler:function(){
@@ -291,6 +287,7 @@ for (instance in CKEDITOR.instances) {
 											}
 										}
 										if(data.edit_banner==true){
+											$('#banner_table').load('/laravel1/admin/banner/show #banner_table');
 											setTimeout(function() { $('#editbannerModal').modal('hide');}, 200);
 											setTimeout(function(){ $("#edit_banner_success").modal('show');},1000);
 											setTimeout(function(){ $("#edit_banner_success").modal('hide'); },3000);

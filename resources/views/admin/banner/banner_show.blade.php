@@ -3,7 +3,7 @@
 
 @section('content')
 	<!-- /.row -->
-    <div class="row"  id="banner_table">
+    <div class="row" id="banner_table">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">

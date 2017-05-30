@@ -39,15 +39,13 @@
 							    <div class="bar3"></div>
 							</div>
 						</div>
-						<h1 class="w3ls-logo"><a class="logo"><p>Free English</p></a></h1>
+						<h1 class="w3ls-logo {{((url()->current())!=route('user.home')) ? 'hidden' : ''}}"><a href="#top" class="logo"><p>Free English</p></a></h1>
+						<h1 class="w3ls-logo {{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}" class="logo"><p>Free English</p></a></h1>
 					</div>
 
 					<div id="navbar" class="navbar-collapse collapse ">
 						<ul class="nav navbar-nav">
-						<!-- Home -->
-							<li class="{{((url()->current())!=route('user.home')) ? 'hidden' : ''}}"><a href="#top">Home</a></li>
-							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}">Home</a></li>
-						<!-- - -->						<!-- Newest -->
+						<!-- Newest -->
 							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a href="#newest_post" class="scroll">Newest Posts</a></li>
 							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#newest_post">Newest Posts</a></li>
 						<!-- - -->
@@ -354,61 +352,30 @@
 	</div>
 
 	<!-- banner -->
+	<!-- banner -->
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1" class=""></li>
-			<li data-target="#myCarousel" data-slide-to="2" class=""></li>
-			<li data-target="#myCarousel" data-slide-to="3" class=""></li>
-			<li data-target="#myCarousel" data-slide-to="4" class=""></li>
+			<?php $i=0;?>
+			@foreach($banner as $data)
+			<?php $i++;?>
+			<li data-target="#myCarousel" data-slide-to="{{$i-1}}" class="{{($i==1) ? 'active' :''}}"></li>
+			@endforeach
 		</ol>
 		<div class="carousel-inner" role="listbox">
-			<div class="item active">
+			<?php $i=0;?>
+			@foreach($banner as $data)
+			<?php $i++;?>
+			<div class="item {{($i==1 ? 'active' : 'item'.$i)}}">
 				<div class="container">
 					<div class="carousel-caption">
-						<h2>English</h2>
-						<p>English is an important language nowadays. We have asked DPUIC students their opinions about English and why they are studying English</p>
-						<button class="btn_user success" href="#english" data-toggle="modal">English</button>
+						<h2>{{$data->tittle}}</h2>
+						<p>{!!htmlspecialchars_decode($data->introduce)!!}</p>
+						<button class="btn_user btn{{$i}}" href="#{{$data->tittle}}" data-toggle="modal">{{$data->tittle}}</button>
 					</div>
 				</div>
 			</div>
-			<div class="item item2">
-				<div class="container">
-					<div class="carousel-caption">
-						<h3>Studying English</h3>
-						<p>Here are some helpful guidelines as to how to study that should help you vary your approach and improve more quickly.</p>
-						<button class="btn_user info" href="#study_english" data-toggle="modal">Study English</button>
-					</div>
-				</div>
-			</div>
-			<div class="item item3">
-				<div class="container">
-					<div class="carousel-caption">
-						<h3>Listening</h3>
-						<p>Listening is key to all effective communication. Without the ability to listen effectively, messages are easily misunderstood. </p>
-						<button class="btn_user primary" href="#listening" data-toggle="modal">Listening</button>
-					</div>
-				</div>
-			</div>
-			<div class="item item4">
-				<div class="container">
-					<div class="carousel-caption">
-						<h3>Reading</h3>
-						<p>Students need good reading skills not just in English but in all classes. Here are some ways you can help them develop those skills..</p>
-						<button class="btn_user warning" href="#reading" data-toggle="modal">Reading</button>
-					</div>
-				</div>
-			</div>
-			<div class="item item5">
-				<div class="container">
-					<div class="carousel-caption">
-						<h3>Writing</h3>
-						<p>How to improve your writing skills.</p>
-						<button class="btn_user danger" href="#writing" data-toggle="modal">Writing</button>
-					</div>
-				</div>
-			</div> 
+			@endforeach
 		</div>
 		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
 			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -420,22 +387,18 @@
 		</a>
 
 		<!-- POP UP MESSAGE -->
-
-		<!-- English -->
-		<div id="english" class="modal wthree-modal" tabindex="-1">
+		@foreach($banner as $data)
+		<!-- {{$data->tittle}} -->
+		<div id="{{$data->tittle}}" class="modal wthree-modal" tabindex="-1">
 			<!-- Modal content -->
-			<div class="modal-content">
+			<div class="modal-content modal-dialog-scroll">
 				<div class="modal-tittle">
 					<span class="close" data-dismiss="modal" >&times;</span>
-					<h3 class="modal_header">English</h3>
+					<h3 class="modal_header">{{$data->tittle}}</h3>
 				</div>
-				<div class="modal-body grid_3">
+				<div class="modal-body grid_3 modal-body-scroll">
 					<p>
-					1. English is the most commonly spoken language in the world. One out of five people can speak or at least understand English!
-					2. English is the language of science, of aviation, computers, diplomacy, and tourism. Knowing English increases your chances of getting a good job in a multinational company within your home country or of finding work abroad.
-					3. English is the official language of 53 countries. That is a lot of people to meet and speak to.
-					4. English is spoken as a first language by around 400 million people around the world.
-					5. English is the language of the media industry. If you speak English, you won’t need to rely on translations and subtitles anymore to enjoy your favourite books, songs, films and TV shows.
+					{!!htmlspecialchars_decode($data->content)!!}
 					</p>
 				</div>
 				<div class="modal-footer">
@@ -443,122 +406,11 @@
 				</div>
 			</div>
 		</div>
-
-		<!-- study_english -->
-		<div id="study_english" class="modal wthree-modal" tabindex="-1">
-			<!-- Modal content -->
-			<div class="modal-content">
-				<div class="modal-tittle">
-					<span class="close" data-dismiss="modal" >&times;</span>
-					<h3 class="modal_header">Study English</h3>
-				</div>
-				<div class="modal-body grid_3">
-					<p>Study Every Day
-
-   						 It's important to study English every day. However, don't exaggerate! Study for thirty minutes every day instead of two hours once a week. Short, steady practice is much better for learning than long periods on an irregular basis. This habit of studying English every day will help keep English in your brain fresh.
-					</p>
-					<p>A Little Grammar, a Little Listening, a Little Reading, and a little Writing
-
-						Next, make sure to study a number of areas rather than focusing on just one topic. Study a little grammar, then do a short listening exercise, then perhaps read an article on the same topic. Don't do too much, twenty minutes on three different types of exercises is plenty!
-					</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn_user warning" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-
-		<!-- Listening -->
-		<div id="listening" class="modal wthree-modal" tabindex="-1">
-			<!-- Modal content -->
-			<div class="modal-content">
-				<div class="modal-tittle">
-					<span class="close" data-dismiss="modal" >&times;</span>
-					<h3 class="modal_header">Listening</h3>
-				</div>
-				<div class="modal-body grid_3">
-					<p>Good listening skills also have benefits in our personal lives, including:
-
-						A greater number of friends and social networks, improved self-esteem and confidence, higher grades at school and in academic work and even better health and general well-being.
-
-						Studies have shown that, whereas speaking raises blood pressure, attentive listening can bring it down.
-						Listening is Not the Same as Hearing
-
-						Hearing refers to the sounds that enter your ears. It is a physical process that, provided you do not have any hearing problems, happens automatically.
-
-						Listening, however, requires more than that: it requires focus and concentrated effort, both mental and sometimes physical as well.
-
-						Listening means paying attention not only to the story, but how it is told, the use of language and voice, and how the other person uses his or her body. In other words, it means being aware of both verbal and non-verbal messages. Your ability to listen effectively depends on the degree to which you perceive and understand these messages.
-
-						Listening is not a passive process. In fact, the listener can, and should, be at least as engaged in the process as the speaker. The phrase ‘active listening’ is used to describe this process of being fully involved.
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn_user warning" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-
-		<!-- Reading -->
-		<div id="reading" class="modal wthree-modal" tabindex="-1">
-			<!-- Modal content -->
-			<div class="modal-content">
-				<div class="modal-tittle">
-					<h3 class="modal_header">Reading</h3>
-				</div>
-				<div class="modal-body grid_3">
-					<p>
-						how-to-improve-english-reading
-						By yuliyageikhman
-						Is Reading English Hard? Improve Your Reading Skills with 8 Easy Steps
-
-						Did you read anything in English this past week?
-
-						How much of it did you understand?
-
-						Even if you read 15 English books every week, this doesn’t help your learning much unless you actually understand all those books.
-
-						Understanding what is written is called “reading comprehension,” and even some native English speakers suffer from poor reading comprehension.
-
-						The reasons can be different for everyone: maybe you don’t know enough vocabulary words to understand the text, or maybe you got interrupted halfway through and forgot where you were. Maybe it’s just a difficult or boring text.
-
-						We’re always telling you to practice reading a lot, so it can be frustrating when you can’t understand a lot of what you read.
-
-						If you’re having trouble with your reading comprehension, take some time to improve it, and you’ll find that learning English becomes a little easier!
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn_user warning" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-
-		<!-- Writing -->
-		<div id="writing" class="modal wthree-modal" tabindex="-1">
-			<!-- Modal content -->
-			<div class="modal-content">
-				<div class="modal-tittle">
-					<span class="close" data-dismiss="modal" >&times;</span>
-					<h3 class="modal_header">Writing</h3>
-				</div>
-				<div class="modal-body grid_3">
-					<p>
-						1. USE FREE GRAMMAR CHECKERS
-						I use Grammarly Lite, which is a great tool in my opinion. It corrects you every time you make a mistake. By using it you will become more aware of making the same mistakes, and will eventually learn to stop and remember the correct way. It works anywhere on the net, for example on Facebook, Twitter, websites and blogs. Or use other grammar checkers to instantly proofread your writing.
-
-						2. UTILIZE USEFUL TOOLS
-						Check out 2 of our most popular blog posts: 18 Websites That Help You to Improve Writing Skills in English and 6 Ways to Improve Your English Writing Skills. Plus 50 Free Resources That Will Improve Your Writing Skills where you will find resources even for professional writers.
-
-						3. READ MORE
-						To Improve your English writing skills you should read more. Start reading blogs and magazines about things that interest you. You will begin to recognise sentence structures, understand how they are formed and eventually use them in your own writing.
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn_user warning" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-
+		@endforeach
 		<!-- ENDPOP UP MESSAGE -->
-
     </div>
+
+	<!-- //banner -->
 	<!-- //banner -->
 
 

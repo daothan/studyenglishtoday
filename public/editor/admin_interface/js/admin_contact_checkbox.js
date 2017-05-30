@@ -27,7 +27,7 @@
 
 
 	/*View detail contact*/
-	$('#view_contact').click(function(){
+	$('#view_contact').click(function(event){
 		event.preventDefault();
 		if(checked==0){
 			$('#viewcontact_errorModal').modal('show');

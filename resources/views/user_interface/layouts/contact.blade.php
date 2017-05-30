@@ -1,4 +1,3 @@
-
 <!-- contact -->
 	<div id="contactModal"  class="modal fade contact" role="dialog">
 		<div class="modal-dialog"></div>
@@ -7,7 +6,7 @@
 			<div class="contact-row agileits-w3layouts  grid_3 grid_4 contact_grid3">
 			<button id="reset" type="reset" class="close" data-dismiss="modal" style="color:black;"><span class="glyphicon glyphicon-remove"></span></button>
 				<div class="agileits-title">
-					<h3 class="w3ls-hdg contact_tittle">Contact Us</h3>
+					<h3 class="w3ls-hdg contact_tittle">Contact Us </h3>
 				</div>
 				<div class="col-md-5 contact-w3lsleft">
 					<div class="contact-grid agileits">
@@ -34,7 +33,9 @@
 						</div>
 						<div class="col-xs-9 address-right">
 							<h5>Visit Us</h5>
-							<p>Cau Giay district <br>Ha Noi capital</p>
+							@foreach($contact as $data)
+							<p>{{$data->address}} <br></p>
+							@endforeach
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -44,8 +45,9 @@
 						</div>
 						<div class="col-xs-9 address-right">
 							<h5>Mail Us</h5>
-							<p><a href="mailto:info@example.com"> daothan1211@gmail.com</a></p>
-							<p><a href="mailto:info@example.com"> thankthn@gmail.com</a></p>
+							@foreach($contact as $data)
+							<p><a href="mailto:info@example.com">{{$data->email}}</a></p>
+							@endforeach
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -55,8 +57,9 @@
 						</div>
 						<div class="col-xs-9 address-right">
 							<h5>Call Us</h5>
-							<p>+84 989 677 020<br></p>
-							<p>+84 943 725 418</p>
+							@foreach($contact as $data)
+							<p>{{$data->phone}}<br></p>
+							@endforeach
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -66,8 +69,10 @@
 						</div>
 						<div class="col-xs-9 address-right">
 							<h5>Working Hours</h5>
-							<p>Mon - Fri : 8:00 am to 10:30 pm<br>
-							Sat - Sun : 9:00 am to 11:30 pm</p>
+							@foreach($last_contact as $data)
+							<p>Mon - Fri : {{$data->hour_week}}<br>
+							Sat - Sun : {{$data->hour_weekend}}</p>
+							@endforeach
 						</div>
 						<div class="clearfix"> </div>
 					</div>

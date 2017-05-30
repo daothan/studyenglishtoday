@@ -10,7 +10,7 @@
 
             <form action="" method="post" class="form-horizontal" role="form" id="validate_edit_contact"  name="validate_edit_contact">
                 <div class="modal-body modal-body-detail">
-                    <input type="text" name="old_id_contact" id="old_id_contact">
+                    <input type="text" name="old_id_contact" id="old_id_contact" class="hidden">
                     <div class="form-group">
                         <label class="col-md-1 control-label">prior</label>
                         <div class="col-md-10">

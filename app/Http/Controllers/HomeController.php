@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Detail;
+use App\Banner;
+use App\Contact;
 use Auth;
 use Validator;
 use Illuminate\Support\MessageBag;
@@ -36,28 +38,55 @@ class HomeController extends Controller
         $reading_article   = Detail::where('type','reading')->get();
         $writing_article   = Detail::where('type','writing')->get();
 
-        return view('user_interface.user_home', compact('detail','max_id','last_post','listening_article', 'reading_article', 'writing_article'));
+        $banner            = Banner::select('id','tittle','introduce','content')->get();
+
+        $contact           = Contact::where('prior',1)->get();
+        $max_id_contact    = Contact::max('id');
+        $last_contact      = Contact::where('id',$max_id_contact)->get();
+
+        return view('user_interface.user_home', compact('detail','max_id','last_post','listening_article', 'reading_article', 'writing_article','banner','contact','last_contact'));
+        return view('user_interface.layouts.user_header', compact('banner'));
     }
     /*New post Page*/
     public function new_post(){
         $new_post = Detail::orderBy('id','DESC')->paginate(6);
-        return view('user_interface.article_detail.new_post', compact('new_post'));
+        $banner            = Banner::select('id','tittle','introduce','content')->get();
+
+        $contact           = Contact::where('prior',1)->get();
+        $max_id_contact    = Contact::max('id');
+        $last_contact      = Contact::where('id',$max_id_contact)->get();
+        return view('user_interface.article_detail.new_post', compact('new_post','banner','contact','last_contact'));
     }
 
     /*Listening Page*/
     public function listening(){
         $listening = Detail::where('type','listening')->orderBy('id','DESC')->paginate(6);
-        return view('user_interface.article_detail.listening_page',compact('listening'));
+        $banner            = Banner::select('id','tittle','introduce','content')->get();
+
+        $contact           = Contact::where('prior',1)->get();
+        $max_id_contact    = Contact::max('id');
+        $last_contact      = Contact::where('id',$max_id_contact)->get();
+        return view('user_interface.article_detail.listening_page',compact('listening','banner','contact','last_contact'));
     }
     /*Reading Page*/
     public function reading(){
         $reading = Detail::where('type','reading')->orderBy('id','DESC')->paginate(6);
-        return view('user_interface.article_detail.reading_page', compact('reading'));
+        $banner            = Banner::select('id','tittle','introduce','content')->get();
+
+        $contact           = Contact::where('prior',1)->get();
+        $max_id_contact    = Contact::max('id');
+        $last_contact      = Contact::where('id',$max_id_contact)->get();
+        return view('user_interface.article_detail.reading_page', compact('reading','banner','contact','last_contact'));
     }
     /*Writing Page*/
     public function writing(){
         $writing = Detail::where('type','writing')->orderBy('id','DESC')->paginate(6);
-        return view('user_interface.article_detail.writing_page',compact('writing'));
+        $banner            = Banner::select('id','tittle','introduce','content')->get();
+
+        $contact           = Contact::where('prior',1)->get();
+        $max_id_contact    = Contact::max('id');
+        $last_contact      = Contact::where('id',$max_id_contact)->get();
+        return view('user_interface.article_detail.writing_page',compact('writing','banner','contact','last_contact'));
     }
 
     /*Contact*/
