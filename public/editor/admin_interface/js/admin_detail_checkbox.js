@@ -331,6 +331,7 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 						/*Send values to edit cate form*/
 						//console.log(result[0].info_detail);
 						$('#old_id_edit_detail').val(result[0].info_detail.id);
+						$('#edit_type_article').val(result[0].info_detail.type);
 						$('#edit_tittle').val(result[0].info_detail.tittle);
 						$('#edit_introduce').val(result[0].info_detail.introduce);
 						CKEDITOR.instances['edit_content'].setData(result[0].info_detail.content);
@@ -340,6 +341,9 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 							ignore:[], /*ignore hidden field*/
 							rules:{
 								edit_category:{
+									required:true
+								},
+								edit_type_article:{
 									required:true
 								},
 								edit_tittle:{
@@ -366,6 +370,7 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 									'type' :'POST',
 									'data': {
 										'old_id_edit_detail'    : $('#old_id_edit_detail').val(),
+										'edit_type_article'     : $('#edit_type_article').val(),
 										'edit_category'  		: $('#edit_category').val(),
 										'edit_tittle'    		: $('#edit_tittle').val(),
 										'edit_introduce' 		: $('#edit_introduce').val(),

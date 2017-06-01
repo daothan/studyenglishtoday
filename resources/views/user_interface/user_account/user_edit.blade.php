@@ -1,5 +1,5 @@
 
-<!-- View Modal start -->
+<!-- View Modal edit -->
 <div id="edituser" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="content modal_background">

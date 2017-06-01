@@ -33,11 +33,11 @@ Route::get('/', 'HomeController@index');
 		Route::get('google/redirect',['as'=>'user.google','uses'=>'SocialController@googleredirect']);
 		Route::get('google/callback', ['as'=>'user.google.callback', 'uses'=>'SocialController@googlecallback']);
 	/*Show information user*/
-		Route::get('information', ['as'=>'admin.user.information', 'uses'=>'UserController@information']);
+		Route::get('information', ['as'=>'admin.user.information', 'uses'=>'UserController@information_user']);
 
 	/*Edit information user*/
-		Route::get('edit',['as'=>'user.edit', 'uses'=>'UserController@view_edit']);
-		Route::post('edit',['as'=>'user.edit', 'uses'=>'UserController@edit']);
+		Route::get('edit',['as'=>'user.edit', 'uses'=>'UserController@get_edit_user']);
+		Route::post('edit',['as'=>'user.edit', 'uses'=>'UserController@post_edit_user']);
 
 	/*Logout*/
 		Route::get('home/logout', ['as'=>'user.logout', 'uses'=>'LoginController@logout']);

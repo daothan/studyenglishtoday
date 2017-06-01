@@ -96,14 +96,14 @@
 					<button class="button"><span>Reading</span></button>
 				</a><br><br><br>
 
-				<h2><p class="agiletext-border agiletext-style">Reading articles...</p></h2>
+				<h2><p class="agiletext-border agiletext-style">Listening articles...</p></h2>
 					<?php $no=0;?>
 					@foreach($reading_article as $detail)
 					<?php $no++;?>
 						@if($no==1)
 							<div class="col-md-10 col-md-offset-1">
 								<h4 class="w3t-text" align="center">{!!remove_dash(htmlspecialchars_decode($detail->alias))!!}</h4>
-								<palign="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
+								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
 								<h4 align="center"><a href="">Continue read..</a></h4>
 							</div>
 						@endif

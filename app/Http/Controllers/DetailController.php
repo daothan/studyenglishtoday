@@ -124,6 +124,7 @@ class DetailController extends Controller
             /*Request data*/
             $detail->tittle    = $request->edit_tittle;
             $detail->alias     = convert_vi_to_en(($request->edit_tittle));
+            $detail->type      =$request->edit_type_article;
             $detail->introduce =$request->edit_introduce;
             $detail->content   =$request->edit_content;
             $detail->cate_id   = $request->edit_category;

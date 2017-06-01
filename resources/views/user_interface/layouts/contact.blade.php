@@ -1,4 +1,3 @@
-<!-- contact -->
 	<div id="contactModal"  class="modal fade contact" role="dialog">
 		<div class="modal-dialog"></div>
 
@@ -82,26 +81,17 @@
 			</div>
 		</div>
 	</div>
-<!-- //contact -->
 
 <!-- Contact success -->
 <div id="contact_success" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+    <div class="modal-dialog">
     <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-body">
-        <h3 align="center" style="color:green;">Thanks for your idea, we will reply your email as soon as possible.</h3>
-      </div>
-  </div>
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3 align="center" style="color:green;">Thanks for your idea, we will reply your email as soon as possible.</h3>
+            </div>
+        </div>
+    </div>
 </div>
 
-<!-- Contact success -->
-<div id="loading" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-body">
-        <h3 align="center" style="color:green;">Please wait...</h3>
-      </div>
-  </div>
-</div>
+<!-- //contact -->

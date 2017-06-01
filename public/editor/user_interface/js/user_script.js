@@ -1,5 +1,17 @@
 
-
+/*Home js*/
+	$('html, body').hide();
+    if (window.location.hash) {
+        setTimeout(function() {
+            $('html, body').scrollTop(0).show();
+            $('html, body').animate({
+                scrollTop: $(window.location.hash).offset().top
+                }, 1000)
+        }, 0);
+    }
+    else {
+        $('html, body').show();
+    }
 jQuery(document).ready(function($) {
 	$(".scroll").click(function(event){
 			event.preventDefault();
@@ -305,22 +317,8 @@ $("#validate_register").validate({
 		    })
 	}
 
-/*Home js*/
-	$('html, body').hide();
-    if (window.location.hash) {
-        setTimeout(function() {
-            $('html, body').scrollTop(0).show();
-            $('html, body').animate({
-                scrollTop: $(window.location.hash).offset().top
-                }, 1000)
-        }, 0);
-    }
-    else {
-        $('html, body').show();
-    }
 /*Contact*/
-function contact(){
-	$('#contact').click(function(){
+function contact_us(){
 		$('#contactModal').modal('show');
 		$('#contact_validate').validate({
 			rules:{
@@ -373,5 +371,4 @@ function contact(){
 				})
 			}
 		})
-	})
 }

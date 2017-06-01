@@ -62,7 +62,7 @@
 							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#writing_cate">Writing</a></li>
 						<!-- - -->
 						<!-- Contact -->
-							<li id="contact"><a data-toggle="modal" data-target="" onclick="contact()">Contact</a></li>
+							<li><a data-toggle="modal" data-target="" onclick="contact_us()">Contact</a></li>
 						<!-- - -->
 						</ul>
 
@@ -233,19 +233,8 @@
 			            </ul>
 					</div>
 				</div>
-				@extends('user_interface.user_account.user_edit')
 				@extends('user_interface.user_account.user_information')
-				<!-- Show Flash Message -->
-			    <div>
-			    	@foreach (['danger', 'warning', 'success', 'info', 'flash_welcome'] as $msg)
-				        @if(Session::has('alert-' . $msg))
-							<h2 class="flash text-center text-{{ $msg }}"><i>{{Session::get('alert-'. $msg)}}</i></h2>
-				        @endif
-				    @endforeach
-			    </div>
-	           <script type="text/javascript">$('h2.flash').delay(3000).slideUp();</script>
-	           <!-- End Show Flash Message -->
-
+				@extends('user_interface.user_account.user_edit')
 			</nav>
 		</div>
     </div>
@@ -417,6 +406,7 @@
 @yield('content')
 <!-- Contact -->
 @extends('user_interface.layouts.contact')
+
 
 
 	<!-- footer -->

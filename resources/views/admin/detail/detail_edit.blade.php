@@ -11,16 +11,27 @@
             <form method="POST" class="form-horizontal" role="form"  name="validate_edit_detail" id="validate_edit_detail" enctype="multipart/form-data">
                 <div class="modal-body modal-body-detail">
 
-					<div class="form-group">
-						<label class="col-md-1 control-label">Category</label>
-						<div class="col-md-10">
-							<select name="edit_category" id="edit_category" class="form-control" autofocus >
-								<option disabled selected hidden>Please Choose Catgeory...</option>
-								<option value="0" class="{{Auth::user()->level==1 ? 'hidden':''}}">Parent Category</option>
-							</select>
-						</div>
-					</div>
                     <input type="text" name="old_id_edit_detail" id="old_id_edit_detail" class="hidden">
+                    <div class="form-group">
+                        <label class="col-md-1 control-label">Category</label>
+                        <div class="col-md-10">
+                            <select name="edit_category" id="edit_category" class="form-control" autofocus >
+                                <option disabled selected hidden>Please Choose Catgeory...</option>
+                                <option value="0" class="{{Auth::user()->level==1 ? 'hidden':''}}">Parent Category</option>
+                            </select>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="col-md-1 control-label">Type</label>
+                        <div class="col-md-10">
+                           <select name="edit_type_article" id="edit_type_article" class="form-control" >
+                                <option disabled selected hidden>Please Choose Type Of Article...</option>
+                                <option value="listening">Listening</option>
+                                <option value="reading">Reading</option>
+                                <option value="writing">Writing</option>
+                           </select>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label class="col-md-1 control-label">Tittle</label>
                         <div class="col-md-10">
