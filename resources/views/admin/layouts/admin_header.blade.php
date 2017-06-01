@@ -249,6 +249,9 @@
                                 <li>
                                     <a href="{{route('admin.contact.show')}}">Contacts</a>
                                 </li>
+                                <li>
+                                    <a href="{{route('admin.listening.show')}}">Listenings</a>
+                                </li>
                             </ul>
                         </li>
 
@@ -307,6 +310,7 @@
         <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_detail_checkbox.js')}}"></script>
         <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_banner_checkbox.js')}}"></script>
         <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_contact_checkbox.js')}}"></script>
+        <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_listening_checkbox.js')}}"></script>
 
 
 

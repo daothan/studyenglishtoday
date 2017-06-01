@@ -47,6 +47,7 @@ Route::get('/', 'HomeController@index');
 		Route::get('listening', ['as'=>'user.listening', 'uses'=>'HomeController@listening']);
 		Route::get('reading', ['as'=>'user.reading', 'uses'=>'HomeController@reading']);
 		Route::get('writing', ['as'=>'user.writing', 'uses'=>'HomeController@writing']);
+		Route::get('/{type}/{tittle}',['as'=>'user.detail_article','uses'=>'HomeController@detail_article']);
 
 	/*Contact us*/
 		Route::post('contact', ['as'=>'user.contact', 'uses'=>'HomeController@contact']);
@@ -164,6 +165,24 @@ Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 		/*Delete Contacts*/
 		Route::get('delete',['as'=>'admin.contact.delete','uses'=>'ContactController@get_delete_contact']);
 		Route::post('delete',['as'=>'admin.contact.delete','uses'=>'ContactController@post_delete_contact']);
+	});
+
+	/*Listening Pages*/
+	Route::group(['prefix'=>'listening'], function(){
+		Route::get('show',['as'=>'admin.listening.show', 'uses'=>'ListeningController@show']);
+
+		/*View Contacts Listening*/
+		Route::get('detail',['as'=>'admin.listening.detail','uses'=>'ListeningController@view_listening_detail']);
+
+		/*Add Listening*/
+		Route::post('add',['as'=>'admin.listening.add','uses'=>'ListeningController@post_add_listening']);
+
+		/*Edit Listening*/
+		Route::get('edit',['as'=>'admin.listening.edit','uses'=>'ListeningController@get_edit_listening']);
+		Route::post('edit',['as'=>'admin.listening.edit','uses'=>'ListeningController@post_edit_listening']);
+
+		/*Delete Listening*/
+		Route::post('delete',['as'=>'admin.listening.delete','uses'=>'ListeningController@post_delete_listening']);
 	});
 
 });

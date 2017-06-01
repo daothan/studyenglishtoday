@@ -8,7 +8,6 @@ use App\Detail;
 use App\Category;
 use Validator;
 use Auth;
-
 use Illuminate\Validation\Rule;
 
 class DetailController extends Controller
@@ -51,7 +50,7 @@ class DetailController extends Controller
 
             /*Request data*/
             $detail->tittle = $request->tittle;
-            $detail->alias = convert_vi_to_en(($request->tittle));
+            $detail->alias = tittle(($request->tittle));
             $detail->type = $request->type_article;
             $detail->introduce=$request->introduce;
             $detail->content=$request->content;
@@ -123,7 +122,7 @@ class DetailController extends Controller
 
             /*Request data*/
             $detail->tittle    = $request->edit_tittle;
-            $detail->alias     = convert_vi_to_en(($request->edit_tittle));
+            $detail->alias     = tittle(($request->edit_tittle));
             $detail->type      =$request->edit_type_article;
             $detail->introduce =$request->edit_introduce;
             $detail->content   =$request->edit_content;

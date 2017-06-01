@@ -15,9 +15,9 @@
 					<?php $no++;?>
 						@if($no==1)
 							<div class="col-md-10 col-md-offset-1">
-								<h4 class="w3t-text" align="center">{!!remove_dash(htmlspecialchars_decode($detail->alias))!!}</h4>
+								<h4 class="w3t-text" align="center">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</h4>
 								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="">Continue read..</a></h4>
+								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 							<div class="col-md-10">
 								<h2><p class="agiletext-border agiletext-style">More articles..</p></h2>
@@ -25,16 +25,16 @@
 						@endif
 						@if($no>=2 && $no<=3)
 							<div class="col-sm-6 col-xs-6 w3ltext-grids">
-								<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->alias))!!} </h4>
+								<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </h4>
 								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="">Continue read..</a></h4>
+								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=4 && $no<=6)
 							<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
-								<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->alias))!!} </h4>
+								<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </h4>
 								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!} </p>
-								<h4 align="center"><a href="">Continue read..</a></h4>
+								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 					@endforeach
@@ -60,23 +60,23 @@
 					<?php $no++;?>
 						@if($no==1)
 							<div class="col-md-10 col-md-offset-1">
-								<h4 class="w3t-text" align="center">{!!remove_dash(htmlspecialchars_decode($detail->alias))!!}</h4>
+								<h4 class="w3t-text" align="center">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</h4>
 								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="">Continue read..</a></h4>
+								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=2 && $no<=3)
 							<div class="col-sm-6 col-xs-6 w3ltext-grids">
-								<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->alias))!!} </h4>
+								<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </h4>
 								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="">Continue read..</a></h4>
+								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=4 && $no<=6)
 							<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
-								<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->alias))!!} </h4>
+								<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </h4>
 								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!} </p>
-								<h4 align="center"><a href="">Continue read..</a></h4>
+								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 					@endforeach
@@ -102,23 +102,23 @@
 					<?php $no++;?>
 						@if($no==1)
 							<div class="col-md-10 col-md-offset-1">
-								<h4 class="w3t-text" align="center">{!!remove_dash(htmlspecialchars_decode($detail->alias))!!}</h4>
+								<h4 class="w3t-text" align="center">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</h4>
 								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="">Continue read..</a></h4>
+								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=2 && $no<=3)
 							<div class="col-sm-6 col-xs-6 w3ltext-grids">
-								<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->alias))!!} </h4>
+								<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </h4>
 								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="">Continue read..</a></h4>
+								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=4 && $no<=6)
 							<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
-								<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->alias))!!} </h4>
+								<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </h4>
 								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!} </p>
-								<h4 align="center"><a href="">Continue read..</a></h4>
+								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 					@endforeach
@@ -144,23 +144,23 @@
 					<?php $no++;?>
 						@if($no==1)
 							<div class="col-md-10 col-md-offset-1">
-								<h4 class="w3t-text" align="center" >{!!remove_dash(htmlspecialchars_decode($detail->alias))!!}</h4>
+								<h4 class="w3t-text" align="center" >{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</h4>
 								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="">Continue read..</a></h4>
+								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=2 && $no<=3)
 							<div class="col-sm-6 col-xs-6 w3ltext-grids">
-								<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->alias))!!} </h4>
+								<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </h4>
 								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="">Continue read..</a></h4>
+								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=4 && $no<=6)
 							<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
-								<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->alias))!!} </h4>
+								<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </h4>
 								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!} </p>
-								<h4 align="center"><a href="">Continue read..</a></h4>
+								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 					@endforeach

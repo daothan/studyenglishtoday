@@ -12,6 +12,7 @@ use Validator;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Input;
 
 class HomeController extends Controller
 {
@@ -87,6 +88,20 @@ class HomeController extends Controller
         $max_id_contact    = Contact::max('id');
         $last_contact      = Contact::where('id',$max_id_contact)->get();
         return view('user_interface.article_detail.writing_page',compact('writing','banner','contact','last_contact'));
+    }
+
+    /*Show detail article*/
+    public function detail_article(Request $request,$type,$tittle){
+        $relate_article = Detail::where('type',$type)->where('alias','!=',$tittle);
+
+        $detail_article = Detail::where('alias',$tittle)->get();
+
+        $banner         = Banner::select('id','tittle','introduce','content')->get();
+        $contact        = Contact::where('prior',1)->get();
+        $max_id_contact = Contact::max('id');
+        $last_contact   = Contact::where('id',$max_id_contact)->get();
+
+        return view('user_interface.article_detail.article_content', compact('detail_article','relate_article','banner','contact','last_contact'));
     }
 
     /*Contact*/
