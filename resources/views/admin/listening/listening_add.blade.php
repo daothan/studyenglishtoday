@@ -2,14 +2,14 @@
 <!-- Modal Add listening-->
 
 <div id="addlisteningModal" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-lg modal-dialog-listening">
+    <div class="modal-dialog modal-lg modal-dialog-detail">
         <div class="content modal_background">
             <div class="panel-title">
                 <h3 class="modal_header" align="center">Add listening</h3>
             </div>
 
             <form method="POST" class="form-horizontal" role="form"  name="validate_add_listening" id="validate_add_listening" enctype="multipart/form-data">
-                <div class="modal-body modal-body-listening">
+                <div class="modal-body modal-body-detail">
 
                     <div class="form-group">
                         <label class="col-md-1 control-label">Tittle</label>
@@ -27,14 +27,14 @@
                     </div>
 
                     <label class="col-md-1 control-label">Audio</label>
-                    <div class="input-group image-preview">
+                    <div class="input-group image-preview col-md-10">
                         <input type="text" class="form-control image-preview-filename">
                         <span class="input-group-btn">
                             <!-- image-preview-input -->
                             <div class="btn btn-default image-preview-input">
                                 <span class="glyphicon glyphicon-folder-open"></span>
                                 <span class="image-preview-input-title">Choose File</span>
-                                <input type="file" id="audio_listening_edit" name="audio_listening_edit"/>
+                                <input type="file" id="audio_listening" name="audio_listening"/>
                             </div>
                         </span>
                     </div>
