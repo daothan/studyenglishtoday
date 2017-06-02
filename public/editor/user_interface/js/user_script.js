@@ -114,7 +114,7 @@ $("#validate_login").validate({
 					$('#login').modal('hide');
 					setTimeout(function(){$('#login_success').modal('show');},200);
 					setTimeout(function(){$('#login_success').modal('hide');},2300);
-					setTimeout(function(){window.location.href='/laravel1/admin/dashboard';},2200);
+					window.setTimeout('location.reload()', 2200);
 				}
 			}
 			}
