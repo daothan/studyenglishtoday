@@ -54,6 +54,7 @@ Route::get('/', 'HomeController@index');
 	/*Comment*/
 		Route::get('comment/{acticle_id}/{acticle_tittle}/{article_type}',['as'=>'user.comment','uses'=>'CommentController@comment']);
 		Route::post('comment/{acticle_id}/{acticle_tittle}/{article_type}',['as'=>'user.comment','uses'=>'CommentController@comment']);
+		Route::get('delete/comment/{id}',['as'=>'user.delete_comment','uses'=>'CommentController@delete']);
 
 	/*Contact us*/
 		Route::post('/contact', ['as'=>'user.contact', 'uses'=>'HomeController@contact']);

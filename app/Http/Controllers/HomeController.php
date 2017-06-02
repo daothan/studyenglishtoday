@@ -109,7 +109,7 @@ class HomeController extends Controller
 
         $detail_article = Detail::where('alias',$tittle)->get();
 
-        $comment_info   = Comment::where('article_type','listening')->orWhere('article_type','reading')->orWhere('article_type','writing')->where('article_name',$tittle)->paginate(10);
+        $comment_info   = Comment::where('article_type','listening')->orWhere('article_type','reading')->orWhere('article_type','writing')->where('article_name',$tittle)->orderBy('id','DESC')->paginate(10);
 
         $banner         = Banner::select('id','tittle','introduce','content')->get();
         $contact        = Contact::where('prior',1)->get();
@@ -125,7 +125,7 @@ class HomeController extends Controller
 
         $detail_audio = Listening::where('tittle',$tittle_audio)->get();
 
-        $comment_info   = Comment::where('article_type','audio')->where('article_name',$tittle_audio)->paginate(10);
+        $comment_info   = Comment::where('article_type','audio')->where('article_name',$tittle_audio)->orderBy('id','DESC')->paginate(10);
 
         $banner         = Banner::select('id','tittle','introduce','content')->get();
         $contact        = Contact::where('prior',1)->get();

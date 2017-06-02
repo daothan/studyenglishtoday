@@ -66,4 +66,11 @@ class CommentController extends Controller
             }
         }
     }
+
+    public function delete(Request $resquest, $id){
+        $comment_delete = Comment::find($id);
+        if($comment_delete->delete($id)){
+            return redirect()->back()->with('success_comment',"Delete successfully");
+        }
+    }
 }

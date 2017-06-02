@@ -53,6 +53,12 @@
 									</div>
 									<!-- Show Comments-->
 									@foreach($comment_info as $comment)
+									<div class="delete_comment_admin {{((isset(Auth::user()->name) && (Auth::user()->level < 2)) ? '':'hidden')}}">
+										@if(session('success_comment'))
+											<p style="color:green;"><b><i>{{session('success_comment')}}</i></b></p>
+									    @endif
+						           	 	<a href="{{route('user.delete_comment',$comment->id)}}"><button type="button" class="btn_user danger">Delete</button></a>
+									</div>
 						            <div class="panel panel-white post panel-shadow">
 						                <div class="post-heading">
 						                    <div class="pull-left meta">
