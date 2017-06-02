@@ -28,6 +28,17 @@
                         </div>
                     </div>
 
+                    <!-- Add Level -->
+                    <div class="form-group {{((Auth::user()->level ==0)? '' : 'hidden')}}">
+                        <label for="level" class="col-md-4 control-label">Level</label>
+                        <div class="col-md-6">
+                           <select name="add_level_user" id="add_level_user" class="form-control" >
+                                <option value="1">Admin</option>
+                                <option value="2" selected>Member</option>
+                           </select>
+                        </div>
+                    </div>
+
                     <!-- Add Password -->
                     <div class="form-group">
                         <label for="password" class="col-md-4 control-label">Password</label>

@@ -30,8 +30,8 @@
 							</div>
 						</div>
 						<div class="form-group col-centered">
-							<label class="control-label text-info">Transcript</label>
-							<div id="listening_transcript"></div>
+							<button type="button" class="btn_admin success" data-toggle="collapse" data-target="#listening_transcript">Transcript</button>
+							<div id="listening_transcript" class="collapse"></div>
 						</div>
 					</div>
 				</div>

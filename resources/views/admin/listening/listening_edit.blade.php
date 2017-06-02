@@ -28,9 +28,13 @@
                         </div>
                     </div>
 
-					<label class="col-md-1 control-label">Audio</label>
-					<div class="col-md-10"><b class="text-info">Current File:</b><p id="old_audio"></p></div>
-					<div class="input-group image-preview col-md-10">
+                    <div class="form-group">
+                        <div class="col-md-10 col-md-offset-1">
+                            <b class="text-info">Current File:</b><p id="old_audio"></p>
+                        </div>
+                    </div>
+                    <label class="col-md-1 control-label">Audio</label>
+                    <div class="input-group image-preview col-md-10">
 		                <input type="text" class="form-control image-preview-filename">
 		                <span class="input-group-btn">
 		                    <!-- image-preview-input -->

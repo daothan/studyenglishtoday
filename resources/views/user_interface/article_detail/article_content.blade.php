@@ -25,6 +25,62 @@
 				            <p>{!!htmlspecialchars_decode($data->introduce)!!}</p>
 				            <p>{!!htmlspecialchars_decode($data->content)!!}</p>
 			            </div><!-- /.blog-post -->
+						<!-- Comment -->
+						<hr>
+						<div class="container">
+						    <div class="row">
+						        <div class="col-sm-8">
+						        <!-- Show Form Add Comments-->
+									<div class="well {{(isset(Auth::user()->name)? '':'hidden')}}">
+									    <h4><i class="fa fa-paper-plane-o"></i> Leave a Comment:</h4>
+									    @if(session('error'))
+											<p style="color:red;"><b><i>{{session('error')}}</i></b></p>
+									    @endif
+									    @if(session('success'))
+											<p style="color:green;"><b><i>{{session('success')}}</i></b></p>
+									    @endif
+									    <form role="form" action="{{route('user.comment',[$data->id,$data->tittle,$data->type])}}">
+									        <div class="form-group">
+									            <textarea class="comment_form" id="comment_form" name="comment_form"></textarea>
+												<script type="text/javascript">ckeditor("comment_form", "config", "basic")</script>
+									        </div>
+									        <button type="submit" class="btn btn-primary"><i class="fa fa-reply"></i> Submit</button>
+									    </form>
+									</div>
+									<div class="well {{(isset(Auth::user()->name) ? 'hidden' : '')}}">
+										<p align="center"><b>Login to comment:</b><br>
+										<a data-toggle="modal" data-target="#login">Login <span class="glyphicon glyphicon-log-in"></span></a></p>
+									</div>
+									<!-- Show Comments-->
+									@foreach($comment_info as $comment)
+						            <div class="panel panel-white post panel-shadow">
+						                <div class="post-heading">
+						                    <div class="pull-left meta">
+						                        <div class="title h5">
+						                            <a><b>{{$comment->user_comment}}</b></a>
+						                        </div>
+						                        <h6 class="text-muted time">Commented at <i>{{$data->created_at->format('H:i:s d-m-Y')}}</i></h6>
+						                    </div>
+						                </div>
+						                <div class="post-description">
+						                    <p>{!!htmlspecialchars_decode($comment->comment)!!}</p>
+						                </div>
+						            </div>
+						            @endforeach
+						            Total Pages: {!! $comment_info->lastPage() !!}
+									<div class="pagination pull-right">
+										<a href="{{$comment_info->url(1)}}" class="{{($comment_info->currentPage()==1) ? 'hidden':''}}">&laquo;</a>
+										<a href="{{$comment_info->url($comment_info->currentPage()-1)}}" class="{{($comment_info->currentPage()==1) ? 'hidden':''}}">Prev</a>
+										@for($i=1; $i<=$comment_info->lastPage(); $i++)
+											<a href="{{$comment_info->url($i)}}" class="{{($comment_info->currentPage()==$i)? 'active':''}}">{{$i}}</a>
+										@endfor
+										<a href="{{$comment_info->url($comment_info->currentPage()+1)}}" class="{{($comment_info->currentPage()==$comment_info->lastPage())?'hidden' : ''}}">Next</a>
+										<a href="{{$comment_info->url($comment_info->lastPage())}}" class="{{($comment_info->currentPage()==$comment_info->lastPage())?'hidden' : ''}}">&raquo;</a>
+									</div>
+						        </div>
+						    </div>
+						</div>
+
 			        </div><!-- /.blog-main -->
 
 			        <div class="col-sm-3 offset-sm-1 blog-sidebar">
@@ -46,10 +102,6 @@
 			    </div><!-- /.row -->
 				@endforeach
 				<footer class="blog-footer">
-				    <div class="{{(isset(Auth::user()->name) ? 'hidden' : '')}}">
-						Login to comment:<br>
-						<a data-toggle="modal" data-target="#login">Login <span class="glyphicon glyphicon-log-in"></span></a>
-					</div>
 				</footer>
 
 				<a href="{{URL::previous()}}"><button class="btn_user warning">Back</button></a>

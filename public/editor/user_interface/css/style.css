@@ -44,6 +44,7 @@ label.error{
     font-weight: inherit;
     color: red;
 }
+
 .w3ls-logo .logo {
     float: left;
     height: inherit;
@@ -235,7 +236,111 @@ label.error{
     background-image: linear-gradient(to bottom, rgba(192, 204, 206, 0.69) 0%, #212435 100%), linear-gradient(to bottom, rgba(192, 204, 206, 0.69) 0%, #212435 100%);
 }
 
+/* Post Comment */
+.panel-shadow {
+    box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+}
+.panel-white {
+  border: 1px solid #dddddd;
+}
+.panel-white  .panel-heading {
+  color: #333;
+  background-color: #fff;
+  border-color: #ddd;
+}
+.panel-white  .panel-footer {
+  background-color: #fff;
+  border-color: #ddd;
+}
 
+.post .post-heading {
+  height: 95px;
+  padding: 20px 15px;
+}
+.post .post-heading .avatar {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin-right: 15px;
+}
+.post .post-heading .meta .title {
+  margin-bottom: 0;
+}
+.post .post-heading .meta .title a {
+  color: black;
+}
+.post .post-heading .meta .title a:hover {
+  color: #aaaaaa;
+}
+.post .post-heading .meta .time {
+  margin-top: 8px;
+  color: #999;
+}
+.post .post-image .image {
+  width: 100%;
+  height: auto;
+}
+.post .post-description {
+  padding: 0 15px 5px 15px;
+}
+.post .post-description p {
+  font-size: 14px;
+}
+.post .post-description .stats {
+  margin-top: 20px;
+}
+.post .post-description .stats .stat-item {
+  display: inline-block;
+  margin-right: 15px;
+}
+.post .post-description .stats .stat-item .icon {
+  margin-right: 8px;
+}
+.post .post-footer {
+  border-top: 1px solid #ddd;
+  padding: 15px;
+}
+.post .post-footer .input-group-addon a {
+  color: #454545;
+}
+.post .post-footer .comments-list {
+  padding: 0;
+  margin-top: 20px;
+  list-style-type: none;
+}
+.post .post-footer .comments-list .comment {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+}
+.post .post-footer .comments-list .comment .avatar {
+  width: 35px;
+  height: 35px;
+}
+.post .post-footer .comments-list .comment .comment-heading {
+  display: block;
+  width: 100%;
+}
+.post .post-footer .comments-list .comment .comment-heading .user {
+  font-size: 14px;
+  font-weight: bold;
+  display: inline;
+  margin-top: 0;
+  margin-right: 10px;
+}
+.post .post-footer .comments-list .comment .comment-heading .time {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 0;
+  display: inline;
+}
+.post .post-footer .comments-list .comment .comment-body {
+  margin-left: 50px;
+}
+.post .post-footer .comments-list .comment > .comments-list {
+  margin-left: 50px;
+}
+/* end Comment */
 /*-- The Modal--*/
 .modal {
     display: none; /* Hidden by default */
@@ -713,7 +818,7 @@ ul.w3list-style li {
 .button {
     border: none;
     text-align: center;
-    font-size: 1.8em;
+    font-size: 1.6em;
     width: 180px;
     transition: all 0.5s;
     cursor: pointer;
@@ -787,18 +892,20 @@ ul.w3list-style li {
 .default {background-color: #e7e7e7; color: black;} /* Gray */
 .default:hover {background: #ddd;}
 
-.btn1,.btn5 {background-color: #4CAF50;} /* Green */
-.btn1:hover,.btn5:hover {background-color: rgba(76, 175, 80, 0.62);}
+.btn1,.btn6 {background-color: #4CAF50;} /* Green */
+.btn1:hover,.btn6:hover {background-color: rgba(76, 175, 80, 0.62);}
 
-.btn2,.btn6 {background-color: #2d7ab7;} /* Blue */
-.btn2:hover,.btn6:hover {background: rgba(45, 122, 183, 0.74);}
+.btn2,.btn7 {background-color: #2d7ab7;} /* Blue */
+.btn2:hover,.btn7:hover {background: rgba(45, 122, 183, 0.74);}
 
-.btn3,.btn7 {background-color: rgba(218, 171, 30, 0.93);} /* Orange */
-.btn3:hover,.btn7:hover {background: rgba(183, 146, 4, 0.93);}
+.btn3,.btn8 {background-color: #1f8471 } /* Orange */
+.btn3:hover,.btn8:hover {background: rgba(31, 132, 113, 0.64);}
 
-.btn4, .btn8 {background-color: #af342b;} /* Red */
-.btn4:hover, .btn8:hover {background: rgba(175, 52, 43, 0.73);}
+.btn4, .btn9 {background-color: rgba(218, 171, 30, 0.93);;} /* */
+.btn4:hover, .btn9:hover {background-color: rgba(183, 146, 4, 0.93);} /*  */
 
+.btn5, .btn10 {background: #af342b;} /* Red*/
+.btn5:hover, .btn10:hover {background: rgba(175, 52, 43, 0.73);}/* Red*/
 
 /* End Button */
 

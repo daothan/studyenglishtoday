@@ -152,13 +152,14 @@
 					'data': {
 						'add_name' : $('#add_name').val(),
 						'add_email' : $('#add_email').val(),
+						'add_level_user' : $('#add_level_user').val(),
 						'add_password':$('#add_password').val(),
 						'add_password_confirmation':$('#add_password_confirmation').val()
 					},
 					'type' :'POST',
 					success: function(data){
+						console.log(data);
 						if(data.error_add_user ==true){
-						//console.log(data);
 							$('.error').hide();
 							if(data.messages.add_name != undefined){
 								$('.errorName_add').show().text(data.messages.add_name[0]);
@@ -217,7 +218,7 @@
 		            $("#old_id").val(result.info.id);
 		            $("#old_name").val(result.info.name);
 		            $("#old_email").val(result.info.email);
-		            $("#old_level").val(result.info.level);
+		            $("#old_level_user").val(result.info.level);
 			        }
 		   		}
 		   	});
@@ -244,7 +245,7 @@
 							'old_id' : $('#old_id').val(),
 							'name' : $('#old_name').val(),
 							'email' : $('#old_email').val(),
-							'level' : $('#old_level').val(),
+							'level' : $('#old_level_user').val(),
 							'password':$('#old_password').val(),
 							'password_confirmation':$('#old_password_confirmation').val()
 						},

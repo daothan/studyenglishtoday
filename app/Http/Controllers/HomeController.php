@@ -8,6 +8,7 @@ use App\Detail;
 use App\Banner;
 use App\Contact;
 use App\Listening;
+use App\Comment;
 use Auth;
 use Validator;
 use Illuminate\Support\MessageBag;
@@ -108,12 +109,14 @@ class HomeController extends Controller
 
         $detail_article = Detail::where('alias',$tittle)->get();
 
+        $comment_info   = Comment::where('article_type','listening')->orWhere('article_type','reading')->orWhere('article_type','writing')->where('article_name',$tittle)->paginate(10);
+
         $banner         = Banner::select('id','tittle','introduce','content')->get();
         $contact        = Contact::where('prior',1)->get();
         $max_id_contact = Contact::max('id');
         $last_contact   = Contact::where('id',$max_id_contact)->get();
 
-        return view('user_interface.article_detail.article_content', compact('detail_article','relate_article','banner','contact','last_contact'));
+        return view('user_interface.article_detail.article_content', compact('detail_article','relate_article','banner','contact','last_contact','comment_info'));
     }
 
      /*Show detail article*/
@@ -122,14 +125,15 @@ class HomeController extends Controller
 
         $detail_audio = Listening::where('tittle',$tittle_audio)->get();
 
+        $comment_info   = Comment::where('article_type','audio')->where('article_name',$tittle_audio)->paginate(10);
+
         $banner         = Banner::select('id','tittle','introduce','content')->get();
         $contact        = Contact::where('prior',1)->get();
         $max_id_contact = Contact::max('id');
         $last_contact   = Contact::where('id',$max_id_contact)->get();
 
-        return view('user_interface.article_detail.audio_content', compact('detail_audio','relate_audio','banner','contact','last_contact'));
+        return view('user_interface.article_detail.audio_content', compact('detail_audio','relate_audio','banner','contact','last_contact','comment_info'));
     }
-
 
     /*Contact*/
     public function contact(Request $request){

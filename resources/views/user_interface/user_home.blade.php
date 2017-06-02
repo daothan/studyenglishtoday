@@ -47,74 +47,94 @@
 	</div>
 
 	<!-- Listening -->
-	<div class="codes agileitsbg3">
-		<div class="container">
-			<div id="listening_cate" class="grid_3 grid_5 w3-agileits">
-				<a href="{{route('user.listening')}}">
-					<button class="button"><span>Listening</span></button>
-				</a><br><br><br>
+	<button id="iterateEffects" class="pt-touch-button">Click Here To Choose Article or Listening Practice</button>
+		<div id="pt-main" class="pt-perspective">
+			<div class="pt-page pt-page-1">
+				<div class="codes agileitsbg3">
+					<div class="container">
+						<div id="listening_cate" class="grid_3 grid_5 w3-agileits">
+							<a href="{{route('user.listening')}}">
+								<button class="button"><span>Listening Article</span></button>
+							</a><br><br><br>
+							<h2><p class="agiletext-border agiletext-style">Listening articles...</p></h2>
+								<?php $no=0;?>
+								@foreach($listening_article as $detail)
+								<?php $no++;?>
+									@if($no==1)
+										<div class="col-md-10 col-md-offset-1">
+											<h4 class="w3t-text" align="center">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</h4>
+											<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
+											<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+										</div>
+									@endif
+									@if($no>=2 && $no<=3)
+										<div class="col-sm-6 col-xs-6 w3ltext-grids">
+											<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </h4>
+											<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
+											<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+										</div>
+									@endif
+									@if($no>=4 && $no<=6)
+										<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
+											<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </h4>
+											<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!} </p>
+											<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+										</div>
+									@endif
+								@endforeach
+							<div class="clearfix"> </div>
+							<script>$(function () {
+							  $('[data-toggle="tooltip"]').tooltip()
+							})</script>
+						</div>
+					</div>
+				</div>
+			</div>
 
-				<h2><p class="agiletext-border agiletext-style">Listening articles...</p></h2>
-					<?php $no=0;?>
-					@foreach($listening_article as $detail)
-					<?php $no++;?>
-						@if($no==1)
-							<div class="col-md-10 col-md-offset-1">
-								<h4 class="w3t-text" align="center">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</h4>
-								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
-							</div>
-						@endif
-						@if($no>=2 && $no<=3)
-							<div class="col-sm-6 col-xs-6 w3ltext-grids">
-								<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </h4>
-								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
-							</div>
-						@endif
-						@if($no>=4 && $no<=6)
-							<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
-								<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </h4>
-								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!} </p>
-								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
-							</div>
-						@endif
-					@endforeach
-<div class="clearfix"> </div>
-<br><br><br>
-					<h2><p class="agiletext-border agiletext-style">Practice Listening...</p></h2>
-					<?php $no=0;?>
-					@foreach($audio as $audio)
-					<?php $no++;?>
-						@if($no==1)
-							<div class="col-md-10 col-md-offset-1">
-								<h4 class="w3t-text" align="center">{!!remove_dash(htmlspecialchars_decode($audio->tittle))!!}</h4>
-								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($audio->introduce))!!}</p>
-								<h4 align="center"><a href="{{route('user.tittle_audio',[$audio->tittle])}}">Continue read..</a></h4>
-							</div>
-						@endif
-						@if($no>=2 && $no<=3)
-							<div class="col-sm-6 col-xs-6 w3ltext-grids">
-								<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($audio->tittle))!!} </h4>
-								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($audio->introduce))!!}</p>
-								<h4 align="center"><a href="{{route('user.tittle_audio',[$audio->tittle])}}">Continue read..</a></h4>
-							</div>
-						@endif
-						@if($no>=4 && $no<=6)
-							<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
-								<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($audio->tittle))!!} </h4>
-								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($audio->introduce))!!} </p>
-								<h4 align="center"><a href="{{route('user.tittle_audio',[$audio->tittle])}}">Continue read..</a></h4>
-							</div>
-						@endif
-					@endforeach
-				<div class="clearfix"> </div>
-				<script>$(function () {
-				  $('[data-toggle="tooltip"]').tooltip()
-				})</script>
+			<div class="pt-page pt-page-2">
+				<div class="codes agileitsbg3">
+					<div class="container">
+						<div id="listening_cate" class="grid_3 grid_5 w3-agileits">
+							<a href="{{route('user.listening')}}">
+								<button class="button"><span>Practice Listening</span></button>
+							</a><br><br><br>
+							<h2><p class="agiletext-border agiletext-style">Practice Listening...</p></h2>
+								<?php $no=0;?>
+								@foreach($audio as $audio)
+								<?php $no++;?>
+									@if($no==1)
+										<div class="col-md-10 col-md-offset-1">
+											<h4 class="w3t-text" align="center">{!!remove_dash(htmlspecialchars_decode($audio->tittle))!!}</h4>
+											<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($audio->introduce))!!}</p>
+											<h4 align="center"><a href="{{route('user.tittle_audio',[$audio->tittle])}}">Continue read..</a></h4>
+										</div>
+									@endif
+									@if($no>=2 && $no<=3)
+										<div class="col-sm-6 col-xs-6 w3ltext-grids">
+											<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($audio->tittle))!!} </h4>
+											<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($audio->introduce))!!}</p>
+											<h4 align="center"><a href="{{route('user.tittle_audio',[$audio->tittle])}}">Continue read..</a></h4>
+										</div>
+									@endif
+									@if($no>=4 && $no<=6)
+										<div class="col-md-4 col-sm-4 col-xs-4 w3ltext-grids">
+											<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($audio->tittle))!!} </h4>
+											<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($audio->introduce))!!} </p>
+											<h4 align="center"><a href="{{route('user.tittle_audio',[$audio->tittle])}}">Continue read..</a></h4>
+										</div>
+									@endif
+								@endforeach
+
+							<div class="clearfix"> </div>
+							<script>$(function () {
+							  $('[data-toggle="tooltip"]').tooltip()
+							})</script>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
+
 
 	<!-- Reading -->
 	<div class="codes agileitsbg4">
@@ -199,7 +219,6 @@
 			</div>
 		</div>
 	</div>
-
 
 @stop
 

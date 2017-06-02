@@ -26,7 +26,18 @@
                             <div class="has-error"><i><span class="help-block error errorEmail"></span></i></div>
                         </div>
                     </div>
-                    <input type="text" name="old_level" id="old_level" class="hidden">
+
+                    <!-- Add Level -->
+                    <div class="form-group {{((Auth::user()->level ==0)? '' : 'hidden')}}">
+                        <label for="level" class="col-md-4 control-label">Level</label>
+                        <div class="col-md-6">
+                           <select name="old_level_user" id="old_level_user" class="form-control" >
+                                <option value="1">Admin</option>
+                                <option value="2">Member</option>
+                           </select>
+                        </div>
+                    </div>
+
                     <!-- Add Password -->
                     <div class="form-group">
                         <label for="password" class="col-md-4 control-label">Password</label>

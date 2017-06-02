@@ -47,7 +47,7 @@ class UserController extends Controller
             $data->name     = $request->input('add_name');
             $data->email    = $request->input('add_email');
             $data->password = bcrypt($request->input('add_password'));
-            $data->level    = 2; /*Register just become a member*/
+            $data->level    = $request->add_level_user;
 
             if($data->save()){
                 return response()->json([

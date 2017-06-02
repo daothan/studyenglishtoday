@@ -51,8 +51,12 @@ Route::get('/', 'HomeController@index');
 		Route::get('{type}/{tittle}',['as'=>'user.detail_article','uses'=>'HomeController@detail_article']);
 		Route::get('practice/listening/{tittle_audio}',['as'=>'user.tittle_audio','uses'=>'HomeController@tittle_audio']);
 
+	/*Comment*/
+		Route::get('comment/{acticle_id}/{acticle_tittle}/{article_type}',['as'=>'user.comment','uses'=>'CommentController@comment']);
+		Route::post('comment/{acticle_id}/{acticle_tittle}/{article_type}',['as'=>'user.comment','uses'=>'CommentController@comment']);
+
 	/*Contact us*/
-		Route::post('contact', ['as'=>'user.contact', 'uses'=>'HomeController@contact']);
+		Route::post('/contact', ['as'=>'user.contact', 'uses'=>'HomeController@contact']);
 	});
 
 
@@ -185,6 +189,18 @@ Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 
 		/*Delete Listening*/
 		Route::post('delete',['as'=>'admin.listening.delete','uses'=>'ListeningController@post_delete_listening']);
+	});
+
+	/*Comment Pages*/
+	Route::group(['prefix'=>'comment'], function(){
+		Route::get('show',['as'=>'admin.comment.show', 'uses'=>'CommentController@show']);
+
+		/*View Contacts Comment*/
+		Route::get('detail',['as'=>'admin.comment.detail','uses'=>'CommentController@view_comment_detail']);
+
+		/*Delete Comment*/
+		Route::get('delete',['as'=>'admin.comment.delete','uses'=>'CommentController@get_delete_comment']);
+		Route::post('delete',['as'=>'admin.comment.delete','uses'=>'CommentController@post_delete_comment']);
 	});
 
 });

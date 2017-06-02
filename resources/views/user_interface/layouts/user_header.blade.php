@@ -8,6 +8,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Fantastic Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 		SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+
+		<meta name="description" content="A Collection of Page Transitions with CSS Animations" />
+		<meta name="keywords" content="page transition, css animation, website, effect, css3, jquery" />
+		<meta name="author" content="Codrops" />
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -17,12 +21,21 @@
 	<link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/user_interface/css/style.css')}}">
 	<link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/user_interface/css/carousel.css')}}">
 	<link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/user_interface/css/font-awesome.css')}}">
+	<link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/user_interface/css/animate_body.css')}}">
+	<link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/user_interface/css/animations.css')}}">
 	<link href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200,300,400,700" rel="stylesheet">
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
 	<!-- Add Js -->
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/jquery-3.2.1.min.js')}}"></script>
+
 	<script type="text/javascript" src="{{URL::asset('public/editor/jquery/jquery.validate.min.js')}}"></script>
+	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/modernizr.custom.js')}}"></script>
+
+    <!-- Ckeditor and Ckfinder -->
+    <script type="text/javascript" src="{{URL::asset('public/editor/ckeditor/ckeditor.js')}}" ></script>
+    <script type="text/javascript" src="{{URL::asset('public/editor/ckfinder/ckfinder.js')}}" ></script>
+    <script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/ckeditor_config.js')}}" ></script>
 
 </head>
 <body>
@@ -435,6 +448,8 @@
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/jquery.nicescroll.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/bootstrap.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/user_script.js')}}"></script>
+	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/jquery.dlmenu.js')}}"></script>
+	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/pagetransitions.js')}}"></script>
 
 </body>
 </html>
