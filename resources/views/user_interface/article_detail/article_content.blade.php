@@ -14,7 +14,7 @@
 
 			            <div class="blog-post">
 				            <h2 class="blog-post-title">{{$data->tittle}}</h2>
-				            <p class="blog-post-meta">Created <i>{{$data->created_at->format('H:i:s d-m-Y')}}</i> by 
+				            <p class="blog-post-meta">Created <i class="{{(isset(Auth::user()->name) && Auth::user()->level<2) ? '':'hidden'}}">{{$data->created_at->format('H:i:s d-m-Y')}}</i> by 
 				            	<b>
 				            		@foreach($user as $user)
 										{{$user->name}}
@@ -63,7 +63,17 @@
 						                <div class="post-heading">
 						                    <div class="pull-left meta">
 						                        <div class="title h5">
-						                            <a><b>{{$comment->user_comment}}</b></a>
+						                            <a><b>
+														<?php $user=DB::table('users')->where('name',$comment["user_comment"])->get(); ?>
+														@foreach($user as $user)
+															@if(is_numeric($user->name))
+																{{$user->name_social}}
+															@endif
+															@if(!is_numeric($user->name))
+																{{$user->name}}
+															@endif
+														@endforeach
+						                            </b></a>
 						                        </div>
 						                        <h6 class="text-muted time">Commented at <i>{{$data->created_at->format('H:i:s d-m-Y')}}</i></h6>
 						                    </div>

@@ -10,13 +10,13 @@
 					@foreach($detail_audio as $data)
 					<?php $user = DB::table('users')->where('id', $data->user_id)->get();?>
 
-					<h3 class="modal_header col-centered" align="center" align="center" style="margin-bottom: 50px;">{{$data->tittle}}</h3>
+					<h3 class="modal_header col-centered" align="center" align="center" style="margin-bottom: 50px;">Practice Listening</h3>
 
 			        <div class="col-sm-8 blog-main">
 
 			            <div class="blog-post">
 				            <h2 class="blog-post-title">{{$data->tittle}}</h2>
-				            <p class="blog-post-meta">Created <i>{{$data->created_at->format('H:i:s d-m-Y')}}</i> by 
+				            <p class="blog-post-meta">Created <i class="{{(isset(Auth::user()->name) && Auth::user()->level<2) ? '':'hidden'}}">{{$data->created_at->format('H:i:s d-m-Y')}}</i> by 
 				            	<b>
 				            		@foreach($user as $user)
 										{{$user->name}}
@@ -28,13 +28,19 @@
 							    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$data->audio_path}}" />
 							    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$data->audio_path}}"/>
 							</audio>
-				            <p>{!!htmlspecialchars_decode($data->transcript)!!}</p>
+
+							<p>
+							<button class="button" data-toggle="collapse" data-target="#transcript">Transcript</button>
+							<div id="transcript" class="collapse" style="overflow-y: scroll; height:300px;">
+				            	{!!htmlspecialchars_decode($data->transcript)!!}
+							</div>
+							</p>
 			            </div><!-- /.blog-post -->
 			            <!-- Comment -->
 						<hr>
 						<div class="container">
 						    <div class="row">
-						        <div class="col-sm-8">
+						        <div class="col-sm-7">
 						        <!-- Show Form Add Comments-->
 									<div class="well {{(isset(Auth::user()->name)? '':'hidden')}}">
 									    <h4><i class="fa fa-paper-plane-o"></i> Leave a Comment:</h4>
@@ -58,6 +64,7 @@
 									</div>
 									<!-- Show Comments-->
 									@foreach($comment_info as $comment)
+
 									<div class="delete_comment_admin {{((isset(Auth::user()->name) && (Auth::user()->level < 2)) ? '':'hidden')}}">
 										@if(session('success_comment'))
 											<p style="color:green;"><b><i>{{session('success_comment')}}</i></b></p>
@@ -68,7 +75,17 @@
 						                <div class="post-heading">
 						                    <div class="pull-left meta">
 						                        <div class="title h5">
-						                            <a><b>{{$comment->user_comment}}</b></a>
+						                            <a><b>
+														<?php $user=DB::table('users')->where('name',$comment["user_comment"])->get(); ?>
+														@foreach($user as $user)
+															@if(is_numeric($user->name))
+																{{$user->name_social}}
+															@endif
+															@if(!is_numeric($user->name))
+																{{$user->name}}
+															@endif
+														@endforeach
+						                            </b></a>
 						                        </div>
 						                        <h6 class="text-muted time">Commented at <i>{{$data->created_at->format('H:i:s d-m-Y')}}</i></h6>
 						                    </div>
@@ -79,7 +96,7 @@
 						            </div>
 						            @endforeach
 						            Total Pages: {!! $comment_info->lastPage() !!}
-									<div class="pagination pull-right">
+									<div class="pagination pull-right {{($comment_info->lastPage()==0) ? 'hidden':''}}">
 										<a href="{{$comment_info->url(1)}}" class="{{($comment_info->currentPage()==1) ? 'hidden':''}}">&laquo;</a>
 										<a href="{{$comment_info->url($comment_info->currentPage()-1)}}" class="{{($comment_info->currentPage()==1) ? 'hidden':''}}">Prev</a>
 										@for($i=1; $i<=$comment_info->lastPage(); $i++)
@@ -112,10 +129,6 @@
 			    </div><!-- /.row -->
 				@endforeach
 				<footer class="blog-footer">
-				    <div class="{{(isset(Auth::user()->name) ? 'hidden' : '')}}">
-						Login to comment:<br>
-						<a data-toggle="modal" data-target="#login">Login <span class="glyphicon glyphicon-log-in"></span></a>
-					</div>
 				</footer>
 
 				<a href="{{URL::previous()}}"><button class="btn_user warning">Back</button></a>

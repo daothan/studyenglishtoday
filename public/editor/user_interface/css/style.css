@@ -1108,6 +1108,11 @@ input[type="checkbox"],input[type="radio"]{
 .pa_italic span {
     display: none;
 }
+.collapse.in{
+    height: 300px;
+    display: block;
+}
+
 .collapsed span {
     display: inline-block;
     left: -1.5em;

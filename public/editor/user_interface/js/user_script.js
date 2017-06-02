@@ -103,7 +103,7 @@ $("#validate_login").validate({
 				}
 			}
 			if(data.level == true){
-				console.log(data.username);
+				//console.log(data.username);
 				$('.username').text(data.username);
 				if(data.value>1){
 					$('#login').modal('hide');
@@ -259,7 +259,7 @@ $("#validate_register").validate({
 		        type:"GET",
 		        data: {"id":id},
 					success:function(result){
-						console.log(result);
+						//console.log(result);
 
 						$("#old_id_login").val(result.info.id);
 			            $("#old_name_login").val(result.info.name);
@@ -296,7 +296,7 @@ $("#validate_register").validate({
 						},
 						'type' :'POST',
 						success: function(data){
-						console.log(data);
+						//console.log(data);
 							if(data.error_edit ==true){
 								$('.error').hide();
 								if(data.messages.email != undefined){
