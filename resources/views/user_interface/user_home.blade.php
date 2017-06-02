@@ -9,7 +9,8 @@
 			<div id="newest_post" class="grid_3 grid_5 w3-agileits">
 				<a href="{{route('user.new_post')}}">
 					<button class="button"><span>Newest Posts</span></button>
-				</a>
+				</a><br><br><br>
+				<h2><p class="agiletext-border agiletext-style">Newest Article...</p></h2>
 				<?php $no=0;?>
 					@foreach($detail as $detail)
 					<?php $no++;?>
