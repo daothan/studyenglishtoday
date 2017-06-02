@@ -22,7 +22,6 @@
 	<link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/user_interface/css/carousel.css')}}">
 	<link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/user_interface/css/font-awesome.css')}}">
 	<link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/user_interface/css/animate_body.css')}}">
-	<link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/user_interface/css/animations.css')}}">
 	<link href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200,300,400,700" rel="stylesheet">
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 

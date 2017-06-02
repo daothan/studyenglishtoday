@@ -274,7 +274,7 @@ $("#edit_listening").click(function(event){
 										if(data.error_edit_listening ==true){
 											$('.error').hide();
 											if(data.messages.tittle_listening_edit != undefined){
-												$('.errorTittle_edit').show().text(data.messages.tittle_listening_edit[0]);
+												$('.errortittle_listening_edit').show().text(data.messages.tittle_listening_edit[0]);
 											}
 										}
 										if(data.edit_listening == true){

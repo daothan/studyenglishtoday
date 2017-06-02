@@ -4,7 +4,7 @@
 	<div class="codes agileitsbg5">
 		<div class="container">
 			<div class="grid_3 grid_5 w3-agileits">
-				<h3 class="w3ls-hdg">Listening</h3><br>
+				<h3 class="w3ls-hdg">Listening Article</h3><br>
 					@foreach($listening as $detail)
 						<div class="col-sm-6 col-xs-6 w3ltext-grids">
 							<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </h4>

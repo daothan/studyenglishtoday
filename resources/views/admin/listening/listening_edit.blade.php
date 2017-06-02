@@ -11,7 +11,7 @@
 
             <form method="POST" class="form-horizontal" role="form"  name="validate_edit_listening" id="validate_edit_listening" enctype="multipart/form-data">
                 <div class="modal-body modal-body-listening">
-                <input type="text" name="old_id_edit_listening" id="old_id_edit_listening">
+                <input type="text" name="old_id_edit_listening" id="old_id_edit_listening" class="hidden">
 
                     <div class="form-group">
                         <label class="col-md-1 control-label">Tittle</label>

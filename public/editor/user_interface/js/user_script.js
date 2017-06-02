@@ -374,3 +374,23 @@ function contact_us(){
 		})
 }
 
+/*Show Hide Article and Practice listening*/
+$('#practice').toggleClass('show');
+$('#article_choose').toggleClass('show');
+
+$('#article').toggleClass('hide');
+$('#practice_choose').toggleClass('hide');
+
+$('#article_choose').click(function(){
+	$('#article').removeClass('hide').addClass('show');
+	$('#practice_choose').removeClass('hide').addClass('show');
+	$('#practice').removeClass('show').addClass('hide');
+	$('#article_choose').removeClass('show').addClass('hide');
+})
+
+$('#practice_choose').click(function(){
+	$('#article').removeClass('show').addClass('hide');
+	$('#practice_choose').removeClass('show').addClass('hide');
+	$('#practice').removeClass('hide').addClass('show');
+	$('#article_choose').removeClass('hide').addClass('show');
+})
