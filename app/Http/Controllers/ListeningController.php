@@ -60,36 +60,33 @@ class ListeningController extends Controller
             }
             $request->file('audio_listening')->move($folder,$file_name);
 
-            $listening = new Listening;
-
+            $detail = new Detail;
             /*Request data*/
-            $listening->tittle     = $request->tittle_listening;
-            $listening->introduce  = $request->introduce_listening;
-            $listening->audio      = $file_name;
-            $listening->audio_path = $folder.'/'.$file_name;
-            $listening->transcript = $request->transcript_listening;
-            $listening->user_id    = Auth::user()->id;
+            $detail->tittle = $request->tittle_listening;
+            $detail->alias = tittle(($request->tittle_listening));
+            $detail->type = "audio";
+            $detail->introduce=$request->introduce_listening;
+            $detail->content="Audio File";
+            $detail->user_id = Auth::user()->id;
+            $detail->cate_id =$request->cate_listening;
 
-            if($listening->save()){
-                $detail = new Detail;
-
+            if($detail->save()){
+                $listening = new Listening;
                 /*Request data*/
-                $detail->tittle = $request->tittle_listening;
-                $detail->alias = tittle(($request->tittle_listening));
-                $detail->type = "audio";
-                $detail->introduce=$request->introduce_listening;
-                $detail->content="Audio File";
-                $detail->user_id = Auth::user()->id;
-                $detail->cate_id =$request->cate_listening;
+                $listening->tittle     = $request->tittle_listening;
+                $listening->introduce  = $request->introduce_listening;
+                $listening->audio      = $file_name;
+                $listening->audio_path = $folder.'/'.$file_name;
+                $listening->transcript = $request->transcript_listening;
+                $listening->user_id    = Auth::user()->id;
 
-                if($detail->save()){
+                if($listening->save()){
                     return response()->json([
                         'add_listening' =>true,
                         'detail'        => $detail
                     ],200);
                 }
             }
-
         }
     }
 
