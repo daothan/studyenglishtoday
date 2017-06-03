@@ -6,7 +6,7 @@
 			<div class="grid_3 grid_5 w3-agileits">
 				<h3 class="w3ls-hdg">Writing</h3><br>
 					@foreach($writing as $detail)
-						<div class="col-sm-6 col-xs-6 w3ltext-grids">
+						<div class="col-sm-5 col-xs-5 w3ltext-grids md_5 desktop">
 							<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </h4>
 							<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!} </p>
 							<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>

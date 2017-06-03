@@ -165,9 +165,32 @@ p{
   background: transparent;
 }
 
-/*
+/*Blog Main*/
+.blog-main{
+    padding: 40px;
+    background-color: rgba(234, 234, 234, 0.61);
+}
+@media(max-width: 768px){
+  .blog-sidebar{
+    margin-top: 30px;
+  }
+}
+/* Audio width */
+.audio_width_mobile{
+  width:200px;
+}
+.audio_width_desktop{
+  width:370;
+}
 
-
+/* Show more */
+.list-unstyled{
+    box-shadow: 5px 4px 5px #d2d2d2;
+    padding: 40px;
+    background-color: rgba(234, 234, 234, 0.61);
+    padding: 5px;
+    list-style: none;
+}
 /*-- banner --*/
 .carousel .item.item{
   	background:-webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/laravel1/storage/uploads/interface_images/panel/english.jpg) no-repeat top center fixed;
@@ -615,7 +638,7 @@ img.modal-img2 {
 }
 .sidebar-module-inset {
   padding: 1rem;
-  background-color: #f5f5f5;
+  background-color: #d4d2d2;
   border-radius: .25rem;
 }
 .sidebar-module-inset p:last-child,

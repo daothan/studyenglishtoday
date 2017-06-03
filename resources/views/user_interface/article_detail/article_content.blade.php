@@ -12,7 +12,7 @@
 
 			        <div class="col-sm-8 blog-main">
 
-			            <div class="blog-post">
+			            <div class="blog-post overflow">
 				            <h2 class="blog-post-title">{{$data->tittle}}</h2>
 				            <p class="blog-post-meta">Created <i class="{{(isset(Auth::user()->name) && Auth::user()->level<2) ? '':'hidden'}}">{{$data->created_at->format('H:i:s d-m-Y')}}</i><i class="{{(isset(Auth::user()->name) && Auth::user()->level==2) ? '':'hidden'}}">{{$data->created_at->format('d-m-Y')}}</i><i class="{{(isset(Auth::user()->name)) ? 'hidden':''}}">{{$data->created_at->format('d-m-Y')}}</i> by
 				            	<b>
@@ -29,7 +29,7 @@
 						<hr>
 						<div class="container">
 						    <div class="row">
-						        <div class="col-sm-8">
+						        <div class="col-sm-6 comment">
 						        <!-- Show Form Add Comments-->
 									<div class="well {{(isset(Auth::user()->name)? '':'hidden')}}">
 									    <h4><i class="fa fa-paper-plane-o"></i> Leave a Comment:</h4>
@@ -52,11 +52,11 @@
 										<a data-toggle="modal" data-target="#login">Login <span class="glyphicon glyphicon-log-in"></span></a></p>
 									</div>
 									<!-- Show Comments-->
+									@if(session('success_comment'))
+										<p style="color:green;"><b><i>{{session('success_comment')}}</i></b></p>
+								    @endif
 									@foreach($comment_info as $comment)
 									<div class="delete_comment_admin {{((isset(Auth::user()->name) && (Auth::user()->level < 2)) ? '':'hidden')}}">
-										@if(session('success_comment'))
-											<p style="color:green;"><b><i>{{session('success_comment')}}</i></b></p>
-									    @endif
 						           	 	<a href="{{route('user.delete_comment',$comment->id)}}"><button type="button" class="btn_user danger">Delete</button></a>
 									</div>
 						            <div class="panel panel-white post panel-shadow">
@@ -84,7 +84,7 @@
 						            </div>
 						            @endforeach
 						            Total Pages: {!! $comment_info->lastPage() !!}
-									<div class="pagination pull-right">
+									<div class="pagination pull-right {{($comment_info->lastPage()==0) ? 'hidden':''}}">
 										<a href="{{$comment_info->url(1)}}" class="{{($comment_info->currentPage()==1) ? 'hidden':''}}">&laquo;</a>
 										<a href="{{$comment_info->url($comment_info->currentPage()-1)}}" class="{{($comment_info->currentPage()==1) ? 'hidden':''}}">Prev</a>
 										@for($i=1; $i<=$comment_info->lastPage(); $i++)
@@ -99,7 +99,7 @@
 
 			        </div><!-- /.blog-main -->
 
-			        <div class="col-sm-3 offset-sm-1 blog-sidebar">
+			        <div class="col-sm-4 offset-sm-1 blog-sidebar">
 			            <div class="sidebar-module sidebar-module-inset">
 				            <h3 align="center"><b>Related articles</b></h3>
 			            </div>
@@ -117,10 +117,10 @@
 			        </div><!-- /.blog-sidebar -->
 			    </div><!-- /.row -->
 				@endforeach
-				<footer class="blog-footer">
+				<a href="{{URL::previous()}}"><button class="btn_user warning" style="margin-top: 20px;">Back</button></a>
+				<footer class="blog-footer" style="margin-top: 20px;">
 				</footer>
 
-				<a href="{{URL::previous()}}"><button class="btn_user warning">Back</button></a>
 			</div>
 		</div>
 	</div>

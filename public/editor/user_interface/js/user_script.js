@@ -404,6 +404,9 @@ function checkWidth() {
         $('.md_3').removeClass('desktop').removeClass('col-md-3').removeClass('col-sm-3').removeClass('col-xs-3').removeClass('w3ltext-grids').addClass('col-md-10').addClass('col-md-offset-1').addClass('mobile_screen');
         $('#article_choose').removeClass('pull-right');
         $('#practice_choose').removeClass('pull-right');
+
+        $('.audioPlayer').removeClass('audio_width_desktop');
+        $('.audioPlayer').addClass('audio_width_mobile');
     };
 
     if ($window.width() > 800) {
@@ -412,8 +415,25 @@ function checkWidth() {
         $('.md_3').removeClass('col-md-10').removeClass('col-md-offset-1').removeClass('mobile_screen').addClass('col-md-3').addClass('col-sm-3').addClass('col-xs-3').addClass('w3ltext-grids').addClass('desktop');
         $('#article_choose').addClass('pull-right');
         $('#practice_choose').addClass('pull-right');
+
+        $('.audioPlayer').removeClass('audio_width_mobile');
+        $('.audioPlayer').addClass('audio_width_desktop');
     }
 }
 checkWidth();
 $(window).resize(checkWidth);
+
+$('a').addClass('overflow');
+
+/*Show comment form*/
+function comment_form() {
+    if ($window.width() <= 1080) {
+        $('.comment').removeClass('col-sm-7').addClass('col-sm-6');
+    };
+
+    if ($window.width() > 1080) {
+        $('.comment').removeClass('col-sm-6').addClass('col-sm-7');
+    }
+}
+comment_form();
 
