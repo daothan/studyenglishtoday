@@ -117,8 +117,9 @@ label.error{
     margin-left: 40px;
   }
 }
-.overflow{
-    word-wrap: break-word;
+
+.overflow {
+  word-wrap: break-word;
 }
 .w3t-text{
   word-wrap: break-word;
@@ -727,12 +728,7 @@ h2.text-flash_welcome{
     margin-bottom: 10px;
     height: 250px;
 }
-.overflow {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  padding-right: 10px;
-}
+
  p.agiletext-style:first-letter {
     font-size: 1.4em;
     margin-right: 3px;

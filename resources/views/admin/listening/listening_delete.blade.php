@@ -8,6 +8,9 @@
                 </div>
                 <div class="modal-body">
                     <strong class="text-info"><h3 align="center"><b><i>Are you sure you want to delete <br><span class="name_delete_listening text-info"></span></i><b></h3></strong>
+                    <form method="POST">
+                        <input type="text" name="id_delete_listening" id="id_delete_listening" class="hidden">
+                    </form>
                 </div>
                 <div class="modal-footer">
 		            <button class="btn_admin danger" id="confirmdelete">Confirm</button>

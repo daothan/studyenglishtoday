@@ -98,8 +98,9 @@ class ListeningController extends Controller
         if($request->ajax()){
             $id=$request->id;
             $info_audio=Listening::find($id);
+            $id_detail = Detail::where('tittle',$info_audio->tittle)->select('id')->get();
 
-            return response()->json($info_audio);
+            return response()->json(array(['info_audio'=>$info_audio,'id_detail'=>$id_detail]));
         }
     }
 
@@ -119,7 +120,7 @@ class ListeningController extends Controller
                 'messages'=>$validator->errors()
                 ],200);
         }else{
-            $detail = Listening::find($id);
+            $listening = Listening::find($id);
 
             if($request->audio_listening_edit){
                 File::deleteDirectory('storage/uploads/listenings/'.tittle($request->tittle));
@@ -132,20 +133,30 @@ class ListeningController extends Controller
                     File::makeDirectory($folder, 0777, true);
                 }
                 $request->file('audio_listening_edit')->move($folder,$file_name);
-                $detail->audio      = $file_name;
-                $detail->audio_path = $folder.'/'.$file_name;
+                $listening->audio      = $file_name;
+                $listening->audio_path = $folder.'/'.$file_name;
             }
 
 
             /*Request data*/
-            $detail->tittle     = $request->tittle_listening_edit;
-            $detail->introduce  = $request->introduce_listening_edit;
-            $detail->transcript = $request->transcript_listening_edit;
+            $listening->tittle     = $request->tittle_listening_edit;
+            $listening->introduce  = $request->introduce_listening_edit;
+            $listening->transcript = $request->transcript_listening_edit;
 
-            if($detail->save()){
-                return response()->json([
-                    'edit_listening'=>true
-                ],200);
+            $detail =Detail::find($request->old_id_edit_detail1);
+
+            if($listening->save()){
+
+                $detail->tittle = $request->tittle_listening_edit;
+                $detail->alias = tittle(($request->tittle_listening_edit));
+                $detail->introduce=$request->introduce_listening_edit;
+
+                if($detail->save()){
+                    return response()->json([
+                        'edit_listening' =>true,
+                        'detail'        => $detail
+                    ],200);
+                }
             }else{
                 $a=['errors'=>"error saving data"];
                 return response()->json($a);
@@ -154,8 +165,20 @@ class ListeningController extends Controller
         }
     }
 
-    public function post_delete_listening(Request $request){
+    public function get_delete_listening(Request $request){
         if($request->ajax()){
+            $id=$request->id;
+            $info_audio=Listening::find($id);
+            $id_detail = Detail::where('tittle',$info_audio->tittle)->select('id')->get();
+
+            return response()->json($id_detail);
+        }
+    }
+    public function post_delete_listening(Request $request){
+        $detail_delete=Detail::find($request->id_delete_listening);
+        $detail_delete->delete($request->id_delete_listening);
+        if($request->ajax()){
+
             $id=$request->id;
             $listening_delete=Listening::find($id);
             File::deleteDirectory('storage/uploads/listenings/'.tittle($listening_delete->tittle));

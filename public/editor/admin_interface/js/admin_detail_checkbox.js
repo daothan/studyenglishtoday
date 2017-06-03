@@ -412,37 +412,41 @@ $('#delete_detail').click(function(event){
         searchIDs.push($(this).val());
     	//console.log(searchIDs[0]);
     	id = searchIDs[0];
-    		$('#deletedetailModal').modal('show');
-			$.ajax({
-				url: '/laravel1/admin/detail/delete_view',
+    		$.ajax({
+				url: '/laravel1/admin/detail/delete',
 				type:"GET",
 				data: {"id":id},
 				success:function(result){
-					$('.name_delete_detail').show().html(result.tittle);
-					//console.log(result);
-					$('#deletedetailModal').find('#confirmdelete').on('click',function(){
-						$.ajaxSetup({
-						    headers: {
-						        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-						    }
-						});
-						$.ajax({
-							url: '/laravel1/admin/detail/delete',
-							method:"POST",
-							data: {id:id},
-							success:function(){
-								$('#deletedetailModal').modal('hide');
-								for(var i=0; i<id.length; i++){
-									$('tr#'+id+'').css('background-color','#ccc');
-									$('tr#'+id+'').fadeOut(1000);
+					if(result.error_delete_listening==true){
+						$('#view_error_delete').modal('show');
+					}else{
+		    			$('#deletedetailModal').modal('show');
+						$('.name_delete_detail').show().html(result.tittle);
+						console.log(result);
+						$('#deletedetailModal').find('#confirmdelete').on('click',function(){
+							$.ajaxSetup({
+							    headers: {
+							        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+							    }
+							});
+							$.ajax({
+								url: '/laravel1//admin/detail/delete',
+								method:"POST",
+								data: {id:id},
+								success:function(){
+									$('#deletedetailModal').modal('hide');
+									for(var i=0; i<id.length; i++){
+										$('tr#'+id+'').css('background-color','#ccc');
+										$('tr#'+id+'').fadeOut(1000);
 
+									}
+									setTimeout(function() { window.location.href = "/laravel1/admin/detail/show";}, 1200);
 								}
-								setTimeout(function() { window.location.href = "/laravel1/admin/detail/show";}, 1200);
-							}
-						});
-					})
+							})
+						})
+					}
 				}
 			})
-		})
-    }
+    	})
+	}
 })

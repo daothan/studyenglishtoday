@@ -17,22 +17,22 @@
 						@if($no==1)
 							<div class="col-md-10 col-md-offset-1 md_10 desktop">
 								<h4 class="w3t-text" align="center" >{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</h4>
-								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center" ><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+								<div class="overflow"><p align="center" class="">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p></div>
+								<h4 align="center" ><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[$detail->tittle]) : route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=2 && $no<=3)
 							<div class="col-sm-5 col-xs-5 w3ltext-grids md_5 desktop">
 								<h4 class="w3t-text" align="center" >{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </h4>
 								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center" ><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+								<h4 align="center" ><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[$detail->tittle]) : route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=4 && $no<=6)
 							<div class="col-md-3 col-sm-3 col-xs-3 w3ltext-grids md_3 desktop">
 								<h4 class="w3t-text" align="center" >{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </h4>
 								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!} </p>
-								<h4 align="center" ><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+								<h4 align="center" ><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[$detail->tittle]) : route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 					@endforeach

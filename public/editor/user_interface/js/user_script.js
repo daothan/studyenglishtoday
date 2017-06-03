@@ -417,4 +417,3 @@ function checkWidth() {
 checkWidth();
 $(window).resize(checkWidth);
 
-$('p').addClass('overflow');

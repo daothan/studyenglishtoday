@@ -224,6 +224,8 @@ var id="";
 			}
 	    })
 
+
+/*Edit Audio*/
 $("#edit_listening").click(function(event){
 	    event.preventDefault();
 	    if(checked==0){
@@ -242,12 +244,13 @@ $("#edit_listening").click(function(event){
 				type: "GET",
 				data:{"id":id},
 					success: function(result){
-						console.log(result);
-						$('#old_id_edit_listening').val(result.id);
-						$('#tittle_listening_edit').val(result.tittle);
-						$('#old_audio').html(result.audio);
-						CKEDITOR.instances['introduce_listening_edit'].setData(result.introduce);
-						CKEDITOR.instances['transcript_listening_edit'].setData(result.transcript);
+						//console.log(result);
+						$('#old_id_edit_listening').val(result[0].info_audio.id);
+						$('#old_id_edit_detail1').val(result[0].id_detail[0].id);
+						$('#tittle_listening_edit').val(result[0].info_audio.tittle);
+						$('#old_audio').html(result[0].info_audio.audio);
+						CKEDITOR.instances['introduce_listening_edit'].setData(result[0].info_audio.introduce);
+						CKEDITOR.instances['transcript_listening_edit'].setData(result[0].info_audio.transcript);
 
 						/*Validate and edit data*/
 						$('#validate_edit_listening').validate({
@@ -325,27 +328,45 @@ $('#delete_listening').click(function(event){
     	//console.log(searchIDs[0]);
     	id = searchIDs[0];
     		$('#deletelisteningModal').modal('show');
-			$('#deletelisteningModal').find('#confirmdelete').on('click',function(){
-				$.ajaxSetup({
-				    headers: {
-				        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-				    }
-				});
-				$.ajax({
-					url: '/laravel1/admin/listening/delete',
-					method:"POST",
-					data: {id:id},
-					success:function(){
-						$('#deletelisteningModal').modal('hide');
-						for(var i=0; i<id.length; i++){
-							$('tr#'+id+'').css('background-color','#ccc');
-							$('tr#'+id+'').fadeOut(1000);
+    		$.ajax({
+				url: '/laravel1/admin/listening/delete',
+				type:"GET",
+				data: {"id":id},
+				success:function(result){
+					console.log(result);
+					if(result.error_delete_cate==true){
+						$('#view_error_delete').modal('show');
+					}else{
+						$('#deletecateModal').modal('show');
+						$('#id_delete_listening').val(result[0].id);
 
-						}
-						setTimeout(function() { window.location.href = "/laravel1/admin/listening/show";}, 1200);
+						$('#deletelisteningModal').find('#confirmdelete').on('click',function(){
+							$.ajaxSetup({
+							    headers: {
+							        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+							    }
+							});
+							$.ajax({
+								url: '/laravel1/admin/listening/delete',
+								method:"POST",
+								data: {
+									"id":id,
+									"id_delete_listening":$('#id_delete_listening').val()
+								},
+								success:function(){
+									$('#deletelisteningModal').modal('hide');
+									for(var i=0; i<id.length; i++){
+										$('tr#'+id+'').css('background-color','#ccc');
+										$('tr#'+id+'').fadeOut(1000);
+
+									}
+									setTimeout(function() { window.location.href = "/laravel1/admin/listening/show";}, 1200);
+								}
+							});
+						})
 					}
-				});
-			})
-		})
+				}
+	    	})
+	    })
     }
 })

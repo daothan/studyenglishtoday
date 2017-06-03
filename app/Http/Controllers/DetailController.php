@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\DetailRequest;
 use App\Detail;
 use App\Category;
+use App\Listening;
 use Validator;
 use Auth;
 use Illuminate\Validation\Rule;
@@ -139,12 +140,20 @@ class DetailController extends Controller
 
         }
     }
+
     /*Delete Detail*/
     public function get_delete_detail(Request $request){
         if($request->ajax()){
             $id=$request->id;
             $info_detail_delete=Detail::find($id);
-            return response()->json($info_detail_delete);
+
+            if($info_detail_delete->type=="audio"){
+                return response()->json([
+                    'error_delete_listening'=>true,
+                    ]);
+            }else{
+               return response()->json($info_detail_delete);
+            }
         }
     }
     public function post_delete_detail(Request $request){

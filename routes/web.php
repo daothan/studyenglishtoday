@@ -129,7 +129,7 @@ Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 		Route::post('edit', ['as'=>'admin.detail.editdetail', 'uses'=>'DetailController@post_edit_detail']);
 
 		/*Delete details*/
-		Route::get('delete_view', ['as'=>'admin.detail.delete', 'uses'=>'DetailController@get_delete_detail']);
+		Route::get('delete', ['as'=>'admin.detail.delete', 'uses'=>'DetailController@get_delete_detail']);
 		Route::post('delete', ['as'=>'admin.detail.delete', 'uses'=>'DetailController@post_delete_detail']);
 
 	});
@@ -190,6 +190,7 @@ Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 		Route::post('edit',['as'=>'admin.listening.edit','uses'=>'ListeningController@post_edit_listening']);
 
 		/*Delete Listening*/
+		Route::get('delete',['as'=>'admin.listening.delete','uses'=>'ListeningController@get_delete_listening']);
 		Route::post('delete',['as'=>'admin.listening.delete','uses'=>'ListeningController@post_delete_listening']);
 	});
 
