@@ -10,7 +10,7 @@
 
             <form method="POST" class="form-horizontal" role="form"  name="validate_add_listening" id="validate_add_listening" enctype="multipart/form-data">
                 <div class="modal-body modal-body-detail">
-
+                    <input type="text" name="cate_listening" id="cate_listening" class="hidden">
                     <div class="form-group">
                         <label class="col-md-1 control-label">Tittle</label>
                         <div class="col-md-10">

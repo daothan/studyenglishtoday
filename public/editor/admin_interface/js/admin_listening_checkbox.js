@@ -123,63 +123,70 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 };
 
 
-/*Add listening*/
-
-/*Validate form and add*/
 	for (instance in CKEDITOR.instances) {
         CKEDITOR.instances[instance].updateElement();
     }
+/*Add listening*/
 	$('#add_listening').click(function(){
-
 		$('#addlisteningModal').modal('show');
 
-		$('#validate_add_listening').validate({
-			ignore: [],/*ignore hidden field*/
-			rules:{
-				tittle_listening:{
-					required:true
-				},
-				audio_listening:{
-					required:true
-				},
-	            transcript_listening: {
-	            	required  :true
-	            }
-			},
-			submitHandler: function () {
-	        	$.ajaxSetup({
-				    headers: {
-				        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-				    }
-				});
+		$.ajax({
+	    	url: '/laravel1/admin/listening/add',
+	    	type: "GET",
+	    	success: function(result){
+	    		//console.log(result);
+	    		$('#cate_listening').val(result[0].id);
 
-				$.ajax({
-				    url: '/laravel1/admin/listening/add',
-				    type: "POST",
-				    async: true,
-				    dataType: "json", // or html if you want...
-				    contentType: false, // high importance!
-				    data:new FormData($("#validate_add_listening")[0]), // high importance!
-				    processData: false, // high importance!
-				    success: function (data) {
-						console.log(data);
-						if(data.error_add_listening ==true){
-							$('.error').hide();
-							if(data.messages.tittle_listening != undefined){
-								$('.errortittle_listening_add').show().text(data.messages.tittle_listening[0]);
-							}
-						}
-						if(data.add_listening == true){
-							$('#listening_table').load('/laravel1/admin/listening/show #listening_table');
-							setTimeout(function() { $('#addlisteningModal').modal('hide');}, 200);
-							setTimeout(function(){ $("#add_listening_success").modal('show');},1000);
-							setTimeout(function(){ $("#add_listening_success").modal('hide'); },3000);
-							setTimeout(function() { window.location.href = "/laravel1/admin/listening/show";}, 3200);
-						}
-				    },
-				})
+/*Validate form and add*/
+				$('#validate_add_listening').validate({
+					ignore: [],/*ignore hidden field*/
+					rules:{
+						tittle_listening:{
+							required:true
+						},
+						audio_listening:{
+							required:true
+						},
+			            transcript_listening: {
+			            	required  :true
+			            }
+					},
+					submitHandler: function () {
+			        	$.ajaxSetup({
+						    headers: {
+						        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+						    }
+						});
+
+						$.ajax({
+						    url: '/laravel1/admin/listening/add',
+						    type: "POST",
+						    async: true,
+						    dataType: "json", // or html if you want...
+						    contentType: false, // high importance!
+						    data:new FormData($("#validate_add_listening")[0]), // high importance!
+						    processData: false, // high importance!
+						    success: function (data) {
+								console.log(data);
+								if(data.error_add_listening ==true){
+									$('.error').hide();
+									if(data.messages.tittle_listening != undefined){
+										$('.errortittle_listening_add').show().text(data.messages.tittle_listening[0]);
+									}
+								}
+								if(data.add_listening == true){
+									$('#listening_table').load('/laravel1/admin/listening/show #listening_table');
+									setTimeout(function() { $('#addlisteningModal').modal('hide');}, 200);
+									setTimeout(function(){ $("#add_listening_success").modal('show');},1000);
+									setTimeout(function(){ $("#add_listening_success").modal('hide'); },3000);
+									setTimeout(function() { window.location.href = "/laravel1/admin/listening/show";}, 3200);
+								}
+						    },
+						})
+			    	}
+				});
 	    	}
-		});
+	    });
 	});
 
 /*View Content*/

@@ -29,7 +29,6 @@
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/jquery-3.2.1.min.js')}}"></script>
 
 	<script type="text/javascript" src="{{URL::asset('public/editor/jquery/jquery.validate.min.js')}}"></script>
-	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/modernizr.custom.js')}}"></script>
 
     <!-- Ckeditor and Ckfinder -->
     <script type="text/javascript" src="{{URL::asset('public/editor/ckeditor/ckeditor.js')}}" ></script>
@@ -447,8 +446,6 @@
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/jquery.nicescroll.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/bootstrap.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/user_script.js')}}"></script>
-	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/jquery.dlmenu.js')}}"></script>
-	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/pagetransitions.js')}}"></script>
 
 </body>
 </html>

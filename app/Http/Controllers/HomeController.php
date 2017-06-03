@@ -32,10 +32,8 @@ class HomeController extends Controller
     }
     /*Show details*/
     public function user_home(){
-        $detail            = Detail::orderBy('id','DESC')->get();
 
-        $max_id            = Detail::max('id');
-        $last_post         = Detail::find($max_id);
+        $newest_post = Detail::orderBy('id', 'DESC')->get();
 
         $listening_article = Detail::where('type','listening')->get();
         $audio          = Listening::orderBy('id','DESC')->paginate(6);
@@ -48,7 +46,7 @@ class HomeController extends Controller
         $max_id_contact    = Contact::max('id');
         $last_contact      = Contact::where('id',$max_id_contact)->get();
 
-        return view('user_interface.user_home', compact('detail','max_id','last_post','listening_article', 'audio','reading_article', 'writing_article','banner','contact','last_contact'));
+        return view('user_interface.user_home', compact('newest_post','listening_article', 'audio','reading_article', 'writing_article','banner','contact','last_contact'));
         return view('user_interface.layouts.user_header', compact('banner'));
     }
     /*New post Page*/

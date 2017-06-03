@@ -20,10 +20,10 @@
 										{{$user->name}}
 									@endforeach
 								</b>
-				            </p>
+				            </p><hr>
 
-				            <p>{!!htmlspecialchars_decode($data->introduce)!!}</p>
-				            <p>{!!htmlspecialchars_decode($data->content)!!}</p>
+				            <p><i>{!!htmlspecialchars_decode($data->introduce)!!}</i></p><br><br>
+				            <p style="word-wrap: break-word">{!!htmlspecialchars_decode($data->content)!!}</p>
 			            </div><!-- /.blog-post -->
 						<!-- Comment -->
 						<hr>

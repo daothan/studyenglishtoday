@@ -394,3 +394,27 @@ $('#practice_choose').click(function(){
 	$('#practice').removeClass('hide').addClass('show');
 	$('#article_choose').removeClass('hide').addClass('show');
 })
+
+/*Change class based on width screen*/
+var $window = $(window);
+function checkWidth() {
+    if ($window.width() <= 800) {
+    	$('.md_10').removeClass('desktop').addClass('mobile_screen');
+        $('.md_5').removeClass('desktop').removeClass('col-sm-5').removeClass('col-xs-5').removeClass('w3ltext-grids').addClass('col-md-10').addClass('col-md-offset-1').addClass('mobile_screen');
+        $('.md_3').removeClass('desktop').removeClass('col-md-3').removeClass('col-sm-3').removeClass('col-xs-3').removeClass('w3ltext-grids').addClass('col-md-10').addClass('col-md-offset-1').addClass('mobile_screen');
+        $('#article_choose').removeClass('pull-right');
+        $('#practice_choose').removeClass('pull-right');
+    };
+
+    if ($window.width() > 800) {
+    	$('.md_10').removeClass('mobile_screen').addClass('desktop');
+        $('.md_5').removeClass('col-md-10').removeClass('col-md-offset-1').removeClass('mobile_screen').addClass('col-sm-5').addClass('col-xs-5').addClass('w3ltext-grids').addClass('desktop');
+        $('.md_3').removeClass('col-md-10').removeClass('col-md-offset-1').removeClass('mobile_screen').addClass('col-md-3').addClass('col-sm-3').addClass('col-xs-3').addClass('w3ltext-grids').addClass('desktop');
+        $('#article_choose').addClass('pull-right');
+        $('#practice_choose').addClass('pull-right');
+    }
+}
+checkWidth();
+$(window).resize(checkWidth);
+
+$('p').addClass('overflow');

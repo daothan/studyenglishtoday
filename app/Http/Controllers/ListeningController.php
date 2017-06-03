@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Detail;
 use App\Listening;
+use App\Category;
 use Validator;
 use Auth;
 use File;
@@ -24,7 +26,14 @@ class ListeningController extends Controller
             return response()->json($content);
         }
     }
+    /*Add Video*/
+    public function get_add_listening(){
+        $category = Category::where('name',"listening")->get();
 
+        return response()->json($category);
+
+
+    }
     public function post_add_listening(Request $request){
     	$rules =[
             'tittle_listening' => 'unique:listenings,tittle'
@@ -51,21 +60,34 @@ class ListeningController extends Controller
             }
             $request->file('audio_listening')->move($folder,$file_name);
 
-            $detail = new Listening;
+            $listening = new Listening;
 
             /*Request data*/
-            $detail->tittle     = $request->tittle_listening;
-            $detail->introduce  = $request->introduce_listening;
-            $detail->audio      = $file_name;
-            $detail->audio_path = $folder.'/'.$file_name;
-            $detail->transcript = $request->transcript_listening;
-            $detail->user_id    = Auth::user()->id;
+            $listening->tittle     = $request->tittle_listening;
+            $listening->introduce  = $request->introduce_listening;
+            $listening->audio      = $file_name;
+            $listening->audio_path = $folder.'/'.$file_name;
+            $listening->transcript = $request->transcript_listening;
+            $listening->user_id    = Auth::user()->id;
 
-            if($detail->save()){
-                return response()->json([
-                    'add_listening' =>true,
-                    'detail'        => $detail
-                ],200);
+            if($listening->save()){
+                $detail = new Detail;
+
+                /*Request data*/
+                $detail->tittle = $request->tittle_listening;
+                $detail->alias = tittle(($request->tittle_listening));
+                $detail->type = "audio";
+                $detail->introduce=$request->introduce_listening;
+                $detail->content="Audio File";
+                $detail->user_id = Auth::user()->id;
+                $detail->cate_id =$request->cate_listening;
+
+                if($detail->save()){
+                    return response()->json([
+                        'add_listening' =>true,
+                        'detail'        => $detail
+                    ],200);
+                }
             }
 
         }

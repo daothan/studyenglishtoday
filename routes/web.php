@@ -182,6 +182,7 @@ Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 		Route::get('detail',['as'=>'admin.listening.detail','uses'=>'ListeningController@view_listening_detail']);
 
 		/*Add Listening*/
+		Route::get('add',['as'=>'admin.listening.add','uses'=>'ListeningController@get_add_listening']);
 		Route::post('add',['as'=>'admin.listening.add','uses'=>'ListeningController@post_add_listening']);
 
 		/*Edit Listening*/
