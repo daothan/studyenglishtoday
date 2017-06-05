@@ -17,21 +17,62 @@
 						@if($no==1)
 							<div class="col-md-10 col-md-offset-1 md_10 desktop">
 								<h4 class="w3t-text" align="center" >{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</h4>
-								<div class="overflow"><p align="center" class="">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p></div>
+								<!--- If audio then show audio-->
+								<div class="{{($detail->type=="audio")? 'hidden':''}}">
+									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
+								</div>
+								<div class="{{($detail->type=="audio")? '':'hidden'}} home_audio">
+									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
+									<?php $audio_path= DB::table('listenings')->where('tittle',$detail->tittle)->get();?>
+									@foreach($audio_path as $data)
+										<audio id="audioPlayer" class="audioPlayer" height="30" controls="controls">
+										    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$data->audio_path}}" />
+										    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$data->audio_path}}"/>
+										</audio>
+									@endforeach
+								</div>
+								<!--- If audio then show audio-->
 								<h4 align="center" ><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[$detail->tittle]) : route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=2 && $no<=3)
 							<div class="col-sm-5 col-xs-5 w3ltext-grids md_5 desktop">
 								<h4 class="w3t-text" align="center" >{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </h4>
-								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
+								<!--- If audio then show audio-->
+								<div class="{{($detail->type=="audio")? 'hidden':''}}">
+									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
+								</div>
+								<div class="{{($detail->type=="audio")? '':'hidden'}} home_audio_5">
+									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
+									<?php $audio_path= DB::table('listenings')->where('tittle',$detail->tittle)->get();?>
+									@foreach($audio_path as $data)
+										<audio id="audioPlayer" class="audioPlayer5" height="30" controls="controls">
+										    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$data->audio_path}}" />
+										    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$data->audio_path}}"/>
+										</audio>
+									@endforeach
+								</div>
+								<!--- If audio then show audio-->
 								<h4 align="center" ><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[$detail->tittle]) : route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=4 && $no<=6)
 							<div class="col-md-3 col-sm-3 col-xs-3 w3ltext-grids md_3 desktop">
 								<h4 class="w3t-text" align="center" >{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </h4>
-								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!} </p>
+								<!--- If audio then show audio-->
+								<div class="{{($detail->type=="audio")? 'hidden':''}}">
+									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
+								</div>
+								<div class="{{($detail->type=="audio")? '':'hidden'}} home_audio_3">
+									<?php $audio_path= DB::table('listenings')->where('tittle',$detail->tittle)->get();?>
+									@foreach($audio_path as $data)
+										<audio id="audioPlayer" class="audioPlayer3" height="30" controls="controls">
+										    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$data->audio_path}}" />
+										    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$data->audio_path}}"/>
+										</audio>
+									@endforeach
+								</div>
+								<!--- If audio then show audio-->
 								<h4 align="center" ><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[$detail->tittle]) : route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
@@ -64,6 +105,12 @@
 					<div class="col-md-10 col-md-offset-1 md_10 desktop">
 						<h4 class="w3t-text" align="center" >{!!remove_dash(htmlspecialchars_decode($audio->tittle))!!}</h4>
 						<p align="center" class="overflow" >{!!remove_dash(htmlspecialchars_decode($audio->introduce))!!}</p>
+						<div class="home_audio">
+							<audio id="audioPlayer" class="audioPlayer" height="30" controls="controls">
+							    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$audio->audio_path}}" />
+							    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$audio->audio_path}}"/>
+							</audio>
+						</div>
 						<h4 align="center"><a href="{{route('user.tittle_audio',[$audio->tittle])}}">Continue read..</a></h4>
 					</div>
 				@endif
@@ -71,13 +118,24 @@
 					<div class="col-sm-5 col-xs-5 w3ltext-grids md_5 desktop">
 						<h4 class="w3t-text" align="center" >{!!remove_dash(htmlspecialchars_decode($audio->tittle))!!} </h4>
 						<p align="center" class="overflow" >{!!remove_dash(htmlspecialchars_decode($audio->introduce))!!}</p>
+						<div class="home_audio_5">
+							<audio id="audioPlayer" class="audioPlayer5" height="30" controls="controls">
+							    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$audio->audio_path}}" />
+							    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$audio->audio_path}}"/>
+							</audio>
+						</div>
 						<h4 align="center"><a href="{{route('user.tittle_audio',[$audio->tittle])}}">Continue read..</a></h4>
 					</div>
 				@endif
 				@if($no>=4 && $no<=6)
 					<div class="col-md-3 col-sm-3 col-xs-3 w3ltext-grids md_3 desktop">
 						<h4 class="w3t-text" align="center" >{!!remove_dash(htmlspecialchars_decode($audio->tittle))!!} </h4>
-						<p align="center" class="overflow" >{!!remove_dash(htmlspecialchars_decode($audio->introduce))!!} </p>
+						<div class="home_audio_3">
+							<audio id="audioPlayer" class="audioPlayer3" height="30" controls="controls">
+							    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$audio->audio_path}}" />
+							    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$audio->audio_path}}"/>
+							</audio>
+						</div>
 						<h4 align="center"><a href="{{route('user.tittle_audio',[$audio->tittle])}}">Continue read..</a></h4>
 					</div>
 				@endif

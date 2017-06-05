@@ -10,7 +10,6 @@
 
             <form method="POST" class="form-horizontal" role="form"  name="validate_add_detail" id="validate_add_detail" enctype="multipart/form-data">
                 <div class="modal-body modal-body-detail">
-
 					<div class="form-group">
 						<label class="col-md-1 control-label">Category</label>
 						<div class="col-md-10">

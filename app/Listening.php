@@ -10,4 +10,5 @@ class Listening extends Model
     protected $fillable = ['id', 'tittle', 'introduce',' audio', 'audio_path','transcript',' user_id'];
 
     public $timestamps=true;
+
 }

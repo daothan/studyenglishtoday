@@ -9,6 +9,11 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function routeNotificationForMail()
+    {
+        return $this->email_address;
+        $user->notify(new notification($comment));
+    }
     /**
      * The attributes that are mass assignable.
      *

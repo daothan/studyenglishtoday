@@ -407,6 +407,12 @@ function checkWidth() {
 
         $('.audioPlayer').removeClass('audio_width_desktop');
         $('.audioPlayer').addClass('audio_width_mobile');
+
+        $('.audioPlayer3').removeClass('audio_width_desktop_3');
+        $('.audioPlayer3').addClass('audio_width_mobile_3');
+
+        $('.audioPlayer5').removeClass('audio_width_desktop_5');
+        $('.audioPlayer5').addClass('audio_width_mobile_5');
     };
 
     if ($window.width() > 800) {
@@ -418,6 +424,12 @@ function checkWidth() {
 
         $('.audioPlayer').removeClass('audio_width_mobile');
         $('.audioPlayer').addClass('audio_width_desktop');
+
+        $('.audioPlayer3').removeClass('audio_width_mobile_3');
+        $('.audioPlayer3').addClass('audio_width_desktop_3');
+
+        $('.audioPlayer5').removeClass('audio_width_mobile_5');
+        $('.audioPlayer5').addClass('audio_width_desktop_5');
     }
 }
 checkWidth();

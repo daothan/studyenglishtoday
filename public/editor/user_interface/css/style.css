@@ -90,7 +90,7 @@ label.error{
 .mobile_screen{
     border-radius: 5px;
     background-color: rgba(236, 236, 236, 0.68);
-    margin: 25px;
+    margin: 25px 0px 25px 0px;
     padding: 10px;
 }
 .desktop{
@@ -113,8 +113,110 @@ label.error{
   }
 }
 @media(max-width: 800px){
+  .md_3{
+    margin-left: 10px;
+  }
+  .md_5{
+    margin-left: 10px;
+  }
   .md_10{
-    margin-left: 40px;
+    margin-left: 10px;
+  }
+}
+
+/* Audio width */
+.audio_width_desktop{
+  width:600px;
+}
+
+.audio_width_desktop_3{
+  width:180px;
+}
+
+.audio_width_desktop_5{
+  width:320px;
+}
+.home_audio{
+    width: 600px;
+    margin: auto;
+}
+.home_audio_3{
+    width: 180px;
+    margin: auto;
+}
+.home_audio_5{
+    width: 320px;
+    margin: auto;
+}
+@media(max-width: 990px){
+  .home_audio{
+    width: 500px;
+    margin: auto;
+  }
+  .home_audio_3{
+    width: 500px;
+    margin: auto;
+  }
+  .home_audio_5{
+      width: 500px;
+      margin: auto;
+  }
+  .audio_width_mobile{
+  width:500px;
+  }
+  .audio_width_mobile_5{
+    width:500px;
+  }
+  .audio_width_mobile_3{
+    width:500px;
+  }
+}
+
+@media(max-width: 480px){
+  .home_audio{
+    width: 260px;
+    margin: auto;
+  }
+  .home_audio_3{
+    width: 260px;
+    margin: auto;
+  }
+  .home_audio_5{
+      width: 260px;
+      margin: auto;
+  }
+  .audio_width_mobile{
+  width:250px;
+  }
+  .audio_width_mobile_5{
+    width:250px;
+  }
+  .audio_width_mobile_3{
+    width:250px;
+  }
+}
+
+@media(max-width: 320px){
+  .home_audio{
+    width: 220px;
+    margin: auto;
+  }
+  .home_audio_3{
+    width: 220px;
+    margin: auto;
+  }
+  .home_audio_5{
+    width: 220px;
+    margin: auto;
+  }
+  .audio_width_mobile{
+    width:220px;
+  }
+  .audio_width_mobile_5{
+    width:220px;
+  }
+  .audio_width_mobile_3{
+    width:220px;
   }
 }
 
@@ -175,13 +277,7 @@ p{
     margin-top: 30px;
   }
 }
-/* Audio width */
-.audio_width_mobile{
-  width:200px;
-}
-.audio_width_desktop{
-  width:370;
-}
+
 
 /* Show more */
 .list-unstyled{

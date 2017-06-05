@@ -33,7 +33,7 @@ class SocialController extends Controller
         if($facebook){ /*If has user the login*/
         	$user_facebook = User::where('email_social', $email_social)->first();
         	Auth::login($user_facebook);
-        	return redirect()->route('user.home');
+        	return redirect()->back();
         }else{/*If user is not exists in table socials, then create*/
 
         	$new_user_facebook = new Social;
@@ -57,7 +57,7 @@ class SocialController extends Controller
 
 			Auth::login($user);
 
-			return redirect()->route('user.home');
+			return redirect()->back();
    		}
     }
 

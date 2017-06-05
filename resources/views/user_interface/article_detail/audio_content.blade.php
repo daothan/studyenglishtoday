@@ -15,7 +15,7 @@
 			        <div class="col-sm-8 blog-main">
 
 			            <div class="blog-post overflow">
-				            <h2 class="blog-post-title">{{$data->tittle}}</h2>
+				            <h2 class="blog-post-title"><a href="">{{$data->tittle}}</a></h2>
 				            <p class="blog-post-meta">Created <i class="{{(isset(Auth::user()->name) && Auth::user()->level<2) ? '':'hidden'}}">{{$data->created_at->format('H:i:s d-m-Y')}}</i><i class="{{(isset(Auth::user()->name) && Auth::user()->level==2) ? '':'hidden'}}">{{$data->created_at->format('d-m-Y')}}</i><i class="{{(isset(Auth::user()->name)) ? 'hidden':''}}">{{$data->created_at->format('d-m-Y')}}</i> by
 				            	<b>
 				            		@foreach($user as $user)
@@ -52,8 +52,9 @@
 									    @endif
 									    <form role="form" action="{{route('user.comment',[$data->id,$data->tittle,"audio"])}}">
 									        <div class="form-group">
+									       		<input type="text" name="current_url_comment" id="current_url_comment" value="{{url()->current()}}" class="hidden">
 									            <textarea class="comment_form" id="comment_form" name="comment_form"></textarea>
-												<script type="text/javascript">ckeditor("comment_form", "config", "basic")</script>
+												<script type="text/javascript">ckeditor("comment_form", "config", "comment")</script>
 									        </div>
 									        <button type="submit" class="btn btn-primary"><i class="fa fa-reply"></i> Submit</button>
 									    </form>
@@ -119,7 +120,7 @@
 			            @if($no<=6)
 				            <div class="sidebar-module">
 					            <ol class="list-unstyled">
-					              <li><a href="#">{{$relate->tittle}}</a></li>
+					              <li><a href="{{route('user.tittle_audio',[$relate->tittle])}}">{{$relate->tittle}}</a></li>
 					            </ol>
 				            </div>
 			            @endif

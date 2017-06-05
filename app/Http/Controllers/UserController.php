@@ -10,6 +10,7 @@ use Illuminate\Support\MessageBag;
 use App\User;
 use App\Social;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -48,6 +49,17 @@ class UserController extends Controller
             $data->email    = $request->input('add_email');
             $data->password = bcrypt($request->input('add_password'));
             $data->level    = $request->add_level_user;
+
+            $user = [
+                'name'=>Auth::user()->name,
+                'action'=>" added user",
+                'tittle'=>$request->input('add_name'),
+                'link'=>route('admin.user.show')
+            ];
+            Mail::send('user_interface.notifications.add_detail', $user,function($msg){
+                $msg->from('daothan12111@gmail.com', 'Add User Successfull');
+                $msg->to('daothan12111@gmail.com','Quoc Than')->subject('New user added on studyenglishtoday.org');
+            });
 
             if($data->save()){
                 return response()->json([
@@ -170,6 +182,17 @@ class UserController extends Controller
 	            $user = User::find($id);
 	            $user->password = bcrypt($request->password);
 	            $user->level    = $request->level;
+
+                $user = [
+                    'name'=>Auth::user()->name,
+                    'action'=>" edited user",
+                    'tittle'=>$request->input('add_name'),
+                    'link'=>route('admin.user.show')
+                ];
+                Mail::send('user_interface.notifications.add_detail', $user,function($msg){
+                    $msg->from('daothan12111@gmail.com', 'Edit User Successfull');
+                    $msg->to('daothan12111@gmail.com','Quoc Than')->subject('New user edited on studyenglishtoday.org');
+                });
 
 	            if($user->save()){
 	                return response()->json([

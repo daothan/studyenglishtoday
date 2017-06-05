@@ -15,8 +15,8 @@ class Detail extends Model
     	return $this -> belongTo('App\Category');
     }
 
-    public function detailimage(){
-    	return $this -> hasMany('App\DetailImage');
+    public function comment(){
+        return $this -> hasMany('App\Comment');
     }
 
     public function user(){

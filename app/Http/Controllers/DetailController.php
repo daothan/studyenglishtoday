@@ -9,6 +9,7 @@ use App\Category;
 use App\Listening;
 use Validator;
 use Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 
 class DetailController extends Controller
@@ -57,6 +58,17 @@ class DetailController extends Controller
             $detail->content=$request->content;
             $detail->user_id = Auth::user()->id;
             $detail->cate_id = $request->category;
+
+            $data = [
+                'name'=>Auth::user()->name." added article",
+                'action'=>" added article",
+                'tittle'=>$request->tittle,
+                'link'=>route('admin.detail.show')
+            ];
+            Mail::send('user_interface.notifications.add_detail', $data,function($msg){
+                $msg->from('daothan12111@gmail.com', 'Add Article Successfull From Studyenglishtoday');
+                $msg->to('daothan12111@gmail.com','Quoc Than')->subject('Add Article on studyenglishtoday.org');
+            });
 
             if($detail->save()){
                 return response()->json([
@@ -128,7 +140,16 @@ class DetailController extends Controller
             $detail->introduce =$request->edit_introduce;
             $detail->content   =$request->edit_content;
             $detail->cate_id   = $request->edit_category;
-
+            $data = [
+                'name'=>Auth::user()->name,
+                'action'=>" added article",
+                'tittle'=>$request->tittle,
+                'link'=>route('admin.detail.show')
+            ];
+            Mail::send('user_interface.notifications.add_detail', $data,function($msg){
+                $msg->from('daothan12111@gmail.com', 'Add Article Successfull From Studyenglishtoday');
+                $msg->to('daothan12111@gmail.com','Quoc Than')->subject('Add Article on studyenglishtoday.org');
+            });
             if($detail->save()){
                 return response()->json([
                     'edit_detail'=>true

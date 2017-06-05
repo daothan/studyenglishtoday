@@ -262,7 +262,7 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 							setTimeout(function() { $('#adddetailModal').modal('hide');}, 200);
 							setTimeout(function(){ $("#add_detail_success").modal('show');},1000);
 							setTimeout(function(){ $("#add_detail_success").modal('hide'); },3000);
-							setTimeout(function() { window.location.href = "/laravel1/admin/detail/show";}, 4000);
+							setTimeout(function() { window.location.href = "/laravel1/admin/detail/show";}, 3200);
 						}
 					}
 				})
@@ -388,7 +388,7 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 											setTimeout(function(){$('#editdetailModal').modal('hide');}, 200);
 											setTimeout(function(){$("#edit_detail_success").modal('show');},1000);
 											setTimeout(function(){$("#edit_detail_success").modal('hide');},3000);
-											setTimeout(function(){ window.location.href = "/laravel1/admin/detail/show";}, 4000);
+											setTimeout(function(){ window.location.href = "/laravel1/admin/detail/show";}, 3200);
 										}
 									}
 								})
@@ -440,7 +440,7 @@ $('#delete_detail').click(function(event){
 										$('tr#'+id+'').fadeOut(1000);
 
 									}
-									setTimeout(function() { window.location.href = "/laravel1/admin/detail/show";}, 1200);
+									setTimeout(function() { window.location.href = "/laravel1/admin/detail/show";}, 1000);
 								}
 							})
 						})

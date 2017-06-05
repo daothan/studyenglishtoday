@@ -8,6 +8,7 @@ use App\Category;
 use Auth;
 use Illuminate\Support\MessageBag;
 use Validator;
+use Illuminate\Support\Facades\Mail;
 
 class CategoryController extends Controller
 {
@@ -66,6 +67,17 @@ class CategoryController extends Controller
             $data->parent_id   = $request -> input('add_parent');
             $data->keywords    = $request -> input('add_keywords');
             $data->description = $request -> input('add_description');
+
+            $cate = [
+                    'name'=>Auth::user()->name,
+                    'action'=>" added category",
+                    'tittle'=>$request->input('add_name'),
+                    'link'=>route('admin.cate.show')
+                ];
+                Mail::send('user_interface.notifications.add_detail', $cate,function($msg){
+                    $msg->from('daothan12111@gmail.com', 'Add Category Successfull');
+                    $msg->to('daothan12111@gmail.com','Quoc Than')->subject('New category added on studyenglishtoday.org');
+                });
 
             if($data->save()){
                  return response()->json([
@@ -135,7 +147,16 @@ class CategoryController extends Controller
             $cate_edit->parent_id = $request->edit_parent;
             $cate_edit->keywords = $request->edit_keyword;
             $cate_edit->description = $request->edit_description;
-
+            $cate = [
+                    'name'=>Auth::user()->name,
+                    'action'=>" edited category",
+                    'tittle'=>$request->input('add_name'),
+                    'link'=>route('admin.cate.show')
+                ];
+                Mail::send('user_interface.notifications.add_detail', $cate,function($msg){
+                    $msg->from('daothan12111@gmail.com', 'Edit Category Successfull');
+                    $msg->to('daothan12111@gmail.com','Quoc Than')->subject('New category edit on studyenglishtoday.org');
+                });
             if($cate_edit->save()){
                 return response()->json([
                     'edit_cate'=>true

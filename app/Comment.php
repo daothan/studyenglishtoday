@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     protected $table="comments";
-    protected $fillable=['id','article_id','article_name','article_type','user_comment','comment'];
+    protected $fillable=['id','article_type','article_name','user_comment','comment','article_id'];
     public $timestamps = true;
+
+    public function detail(){
+    	return $this -> belongTo('App\Detail');
+    }
 }

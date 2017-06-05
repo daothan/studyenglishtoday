@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comment;
+use App\Detail;
 use Auth;
 use Validator;
+use App\User;
+use Illuminate\Support\Facades\Mail;
 
 class CommentController extends Controller
 {
@@ -53,19 +56,31 @@ class CommentController extends Controller
             return redirect()->back()->with('error',"Please enter your comment");
         }
         else{
+            $article_id=Detail::where('tittle',$acticle_tittle)->select('id')->first();
             $comment = new Comment;
 
-            $comment->article_id=$acticle_id;
+            $comment->article_id=$article_id["id"];
             $comment->article_name=$acticle_tittle;
             $comment->article_type=$article_type;
             $comment->user_comment=Auth::user()->name;
             $comment->comment=$request->comment_form;
 
+            $data = [
+                'name'=>Auth::user()->name,
+                'messages'=>$request->comment_form,
+                'link'=>$request->input('current_url_comment')
+            ];
+            Mail::send('user_interface.notifications.comment', $data,function($msg){
+                $msg->from('daothan12111@gmail.com', 'Comment From Studyenglishtoday');
+                $msg->to('daothan12111@gmail.com','Quoc Than')->subject('Comment on studyenglishtoday.org');
+            });
             if($comment->save()){
                 return redirect()->back()->with('success',"Your idea sent successfully");
             }
+
         }
     }
+
 
     public function delete(Request $resquest, $id){
         $comment_delete = Comment::find($id);

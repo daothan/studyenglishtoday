@@ -103,7 +103,7 @@ class HomeController extends Controller
 
     /*Show detail article*/
     public function detail_article(Request $request,$type,$tittle){
-        $relate_article = Detail::where('type',$type)->where('alias','!=',$tittle);
+        $relate_article = Detail::where('type',$type)->where('alias','!=',$tittle)->orderBy('id','DESC')->get();
 
         $detail_article = Detail::where('alias',$tittle)->get();
 
@@ -141,7 +141,8 @@ class HomeController extends Controller
             'messages'=>$request->input('message_contact')
         ];
         Mail::send('user_interface.layouts.content_contact', $data,function($msg){
-            $msg->to('daothan12111@gmail.com','Quoc Than')->subject('Here is first email');
+            $msg->from('daothan12111@gmail.com', 'Studyingenglishtoday');
+            $msg->to('daothan1211@gmail.com','Quoc Than')->subject('Response from studyenglish.org');
         });
     }
 
