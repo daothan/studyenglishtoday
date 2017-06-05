@@ -5,6 +5,7 @@ function ckeditor(name, config, toolbar){
 	config.entities_latin = false;
 	config.filebrowserBrowseUrl ='/laravel1/public/editor/ckfinder/ckfinder.html';
 	config.filebrowserImageBrowseUrl = '/laravel1/public/editor/ckfinder/ckfinder.html';
+	config.extraPlugins = 'videoembed';
 
 
 	if(toolbar == 'standard'){

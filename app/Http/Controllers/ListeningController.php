@@ -154,17 +154,6 @@ class ListeningController extends Controller
 
             $detail =Detail::find($request->old_id_edit_detail1);
 
-            $data = [
-                    'name'=>Auth::user()->name,
-                    'action'=>" edited article audio",
-                    'tittle'=>$request->input('add_name'),
-                    'link'=>route('admin.listening.show')
-                ];
-                Mail::send('user_interface.notifications.add_detail', $data,function($msg){
-                    $msg->from('daothan12111@gmail.com', 'Edit Audio Successfull');
-                    $msg->to('daothan12111@gmail.com','Quoc Than')->subject('New audio edited on studyenglishtoday.org');
-                });
-
             if($listening->save()){
 
                 $detail->tittle = $request->tittle_listening_edit;
