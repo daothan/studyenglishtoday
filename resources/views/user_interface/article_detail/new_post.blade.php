@@ -13,14 +13,14 @@
 									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
 								</div>
 								<div class="{{($detail->type=="audio")? '':'hidden'}} home_audio_5">
-									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
 									<?php $audio_path= DB::table('listenings')->where('tittle',$detail->tittle)->get();?>
 									@foreach($audio_path as $data)
 										<audio id="audioPlayer" class="audioPlayer5" height="30" controls="controls">
-										    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$data->audio_path}}" />
-										    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$data->audio_path}}"/>
+										    <source id="oggSource" type="audio/ogg" src="{{'/'.$data->audio_path}}" />
+										    <source id="mp3Source" type="audio/mp3" src="{{'/'.$data->audio_path}}"/>
 										</audio>
 									@endforeach
+									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
 								</div>
 								<!--- If audio then show audio-->
 							<h4 align="center"><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[$detail->tittle]) : route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
