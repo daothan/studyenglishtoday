@@ -413,6 +413,10 @@ function checkWidth() {
 
         $('.audioPlayer5').removeClass('audio_width_desktop_5');
         $('.audioPlayer5').addClass('audio_width_mobile_5');
+
+
+        $('.article_content').removeClass('break_word_desktop');
+        $('.article_content').addClass('break_word_mobile');
     };
 
     if ($window.width() > 800) {
@@ -430,6 +434,9 @@ function checkWidth() {
 
         $('.audioPlayer5').removeClass('audio_width_mobile_5');
         $('.audioPlayer5').addClass('audio_width_desktop_5');
+
+        $('.article_content').removeClass('break_word_mobile');
+        $('.article_content').addClass('break_word_desktop');
     }
 }
 checkWidth();

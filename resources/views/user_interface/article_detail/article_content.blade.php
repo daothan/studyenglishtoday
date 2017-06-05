@@ -10,20 +10,22 @@
 
 					<h3 class="modal_header col-centered" align="center" align="center" style="margin-bottom: 50px;">{{$data->type}}</h3>
 
-			        <div class="col-sm-8 blog-main">
+			        <div class="col-sm-8 blog-main overflow">
 
-			            <div class="blog-post overflow">
-				            <h2 class="blog-post-title"><a href>{{$data->tittle}}</a></h2>
+			            <div class="blog-post">
+				            <h2 class=""><a href="">{{$data->tittle}}</a></h2>
 				            <p class="blog-post-meta">Created <i class="{{(isset(Auth::user()->name) && Auth::user()->level<2) ? '':'hidden'}}">{{$data->created_at->format('H:i:s d-m-Y')}}</i><i class="{{(isset(Auth::user()->name) && Auth::user()->level==2) ? '':'hidden'}}">{{$data->created_at->format('d-m-Y')}}</i><i class="{{(isset(Auth::user()->name)) ? 'hidden':''}}">{{$data->created_at->format('d-m-Y')}}</i> by
 				            	<b>
 				            		@foreach($user as $user)
 										{{$user->name}}
 									@endforeach
 								</b>
-				            </p><hr>
+				            </p>
 
-				            <p><i>{!!htmlspecialchars_decode($data->introduce)!!}</i></p><br><br>
-				            <p style="word-wrap: break-word">{!!htmlspecialchars_decode($data->content)!!}</p>
+				            <h4><i>{!!htmlspecialchars_decode($data->introduce)!!}</i></h4><br><br>
+				            <div class="article_content">
+				            	<h4 style="word-wrap: break-word">{!!htmlspecialchars_decode($data->content)!!}</h4>
+				            </div>
 			            </div><!-- /.blog-post -->
 						<!-- Comment -->
 						<hr>
@@ -41,7 +43,7 @@
 									    @endif
 									    <form role="form" action="{{route('user.comment',[$data->id,$data->tittle,$data->type])}}">
 									        <div class="form-group">
-									        <input type="text" name="current_url_comment" id="current_url_comment" value="{{url()->current()}}" class="hidden">
+									        	<input type="text" name="current_url_comment" id="current_url_comment" value="{{url()->current()}}" class="hidden">
 									            <textarea class="comment_form" id="comment_form" name="comment_form"></textarea>
 												<script type="text/javascript">ckeditor("comment_form", "config", "comment")</script>
 									        </div>
@@ -49,7 +51,7 @@
 									    </form>
 									</div>
 									<div class="well {{(isset(Auth::user()->name) ? 'hidden' : '')}}">
-										<p align="center"><b>Login to comment:</b><br>
+										<p align="center">Login to comment:<br>
 										<a data-toggle="modal" data-target="#login">Login <span class="glyphicon glyphicon-log-in"></span></a></p>
 									</div>
 									<!-- Show Comments-->
@@ -84,8 +86,8 @@
 						                </div>
 						            </div>
 						            @endforeach
-						            Total Pages: {!! $comment_info->lastPage() !!}
-									<div class="pagination pull-right {{($comment_info->lastPage()==0) ? 'hidden':''}}">
+					            	Total Pages: {!! $comment_info->lastPage() !!}
+									<div class="pagination pull-right {{($comment_info->lastPage()==0)?'hidden':''}}">
 										<a href="{{$comment_info->url(1)}}" class="{{($comment_info->currentPage()==1) ? 'hidden':''}}">&laquo;</a>
 										<a href="{{$comment_info->url($comment_info->currentPage()-1)}}" class="{{($comment_info->currentPage()==1) ? 'hidden':''}}">Prev</a>
 										@for($i=1; $i<=$comment_info->lastPage(); $i++)
@@ -121,7 +123,6 @@
 				<a href="{{URL::previous()}}"><button class="btn_user warning" style="margin-top: 20px;">Back</button></a>
 				<footer class="blog-footer" style="margin-top: 20px;">
 				</footer>
-
 			</div>
 		</div>
 	</div>

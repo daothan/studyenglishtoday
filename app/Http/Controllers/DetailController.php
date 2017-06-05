@@ -17,7 +17,7 @@ class DetailController extends Controller
 
 	/*Show details*/
 	public function show(){
-        $detail = Detail::orderBy('id','DESC')->get();
+        $detail = Detail::where('type','!=',"audio")->orderBy('id','DESC')->get();
 		return view('admin.detail.detail_show', compact('detail'));
 	}
 

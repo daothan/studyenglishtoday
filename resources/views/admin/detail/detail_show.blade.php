@@ -26,7 +26,7 @@
                             	<th class="text-center hidden">ID</th>
 								<th class="text-center">No</th>
 								<th class="text-center">Tittle</th>
-								<th class="text-center">Category</th>
+								<th class="text-center">Type</th>
 								<th class="text-center">Date</th>
 								<th class="text-center">User</th>
                             </tr>
@@ -41,10 +41,7 @@
 								<td class="text-center">{!!htmlspecialchars_decode($data->tittle)!!}</td>
 
 								<!-- Show parent category -->
-								<td>
-									<?php $parent = DB::table('categories')->where('id', $data["cate_id"])->first();
-									echo $parent->name;
-								?>
+								<td class="text-center">{{$data->type}}</td>
 
 								<!-- Show Date -->
 								<td class="text-center">

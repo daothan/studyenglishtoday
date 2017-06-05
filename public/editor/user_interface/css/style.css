@@ -220,6 +220,17 @@ label.error{
   }
 }
 
+/* Article content */
+.break_word_desktop{
+  width:400px;
+  margin:auto;
+}
+.break_word_mobile{
+  width:250px;
+  margin:auto;
+}
+
+/*End  Article content */
 .overflow {
   word-wrap: break-word;
 }
