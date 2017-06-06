@@ -94,14 +94,14 @@
 	<!-- Library -->
 	<div class="codes agileitsbg3">
 		<div class="container">
-			<div id="writing_cate" class="grid_3 grid_5 w3-agileits">
-				<a href="{{route('user.writing')}}">
+			<div id="library_cate" class="grid_3 grid_5 w3-agileits">
+				<a href="{{route('user.library')}}">
 					<button class="button"><span>Knowledge Library </span></button>
 				</a><br><br><br>
 
 				<h2><p class="agiletext-border agiletext-style">Library...</p></h2>
 				<?php $no=0;?>
-					@foreach($writing_article as $detail)
+					@foreach($library_article as $detail)
 					<?php $no++;?>
 						@if($no==1)
 							<div class="col-md-10 col-md-offset-1 md_10 ">
@@ -239,7 +239,7 @@
 					<button class="button"><span>Reading</span></button>
 				</a><br><br><br>
 
-				<h2><p class="agiletext-border agiletext-style">Listening articles...</p></h2>
+				<h2><p class="agiletext-border agiletext-style">Reading articles...</p></h2>
 					<?php $no=0;?>
 					@foreach($reading_article as $detail)
 					<?php $no++;?>

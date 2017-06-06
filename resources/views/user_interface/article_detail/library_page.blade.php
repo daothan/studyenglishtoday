@@ -5,7 +5,7 @@
 		<div class="container">
 			<div class="grid_3 grid_5 w3-agileits">
 				<h3 class="w3ls-hdg">Knowledge Library</h3><br>
-					@foreach($writing as $detail)
+					@foreach($library as $detail)
 						<div class="col-sm-5 col-xs-5 w3ltext-grids md_5 desktop">
 							<h4 class="w3t-text"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
 							<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!} </p>
@@ -17,16 +17,16 @@
 				<script>$(function () {
 				  $('[data-toggle="tooltip"]').tooltip()
 				})</script>
-					Total Pages: {!! $writing->lastPage() !!}
+					Total Pages: {!! $library->lastPage() !!}
 
 					<div class="pagination pull-right">
-						<a href="{{$writing->url(1)}}" class="{{($writing->currentPage()==1) ? 'hidden':''}}">&laquo;</a>
-						<a href="{{$writing->url($writing->currentPage()-1)}}" class="{{($writing->currentPage()==1) ? 'hidden':''}}">Prev</a>
-						@for($i=1; $i<=$writing->lastPage(); $i++)
-							<a href="{{$writing->url($i)}}" class="{{($writing->currentPage()==$i)? 'active':''}}">{{$i}}</a>
+						<a href="{{$library->url(1)}}" class="{{($library->currentPage()==1) ? 'hidden':''}}">&laquo;</a>
+						<a href="{{$library->url($library->currentPage()-1)}}" class="{{($library->currentPage()==1) ? 'hidden':''}}">Prev</a>
+						@for($i=1; $i<=$library->lastPage(); $i++)
+							<a href="{{$library->url($i)}}" class="{{($library->currentPage()==$i)? 'active':''}}">{{$i}}</a>
 						@endfor
-						<a href="{{$writing->url($writing->currentPage()+1)}}" class="{{($writing->currentPage()==$writing->lastPage())?'hidden' : ''}}">Next</a>
-						<a href="{{$writing->url($writing->lastPage())}}" class="{{($writing->currentPage()==$writing->lastPage())?'hidden' : ''}}">&raquo;</a>
+						<a href="{{$library->url($library->currentPage()+1)}}" class="{{($library->currentPage()==$library->lastPage())?'hidden' : ''}}">Next</a>
+						<a href="{{$library->url($library->lastPage())}}" class="{{($library->currentPage()==$library->lastPage())?'hidden' : ''}}">&raquo;</a>
 					</div>
 			</div>
 		</div>

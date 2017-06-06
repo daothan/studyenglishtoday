@@ -38,7 +38,7 @@ class HomeController extends Controller
         $listening_article = Detail::where('type','listening')->get();
         $audio          = Listening::orderBy('id','DESC')->paginate(6);
         $reading_article   = Detail::where('type','reading')->get();
-        $writing_article   = Detail::where('type','writing')->get();
+        $library_article   = Detail::where('type','library')->get();
 
         $banner            = Banner::select('id','tittle','introduce','content')->get();
 
@@ -46,7 +46,7 @@ class HomeController extends Controller
         $max_id_contact    = Contact::max('id');
         $last_contact      = Contact::where('id',$max_id_contact)->get();
 
-        return view('user_interface.user_home', compact('newest_post','listening_article', 'audio','reading_article', 'writing_article','banner','contact','last_contact'));
+        return view('user_interface.user_home', compact('newest_post','listening_article', 'audio','reading_article', 'library_article','banner','contact','last_contact'));
         return view('user_interface.layouts.user_header', compact('banner'));
     }
     /*New post Page*/
@@ -58,6 +58,16 @@ class HomeController extends Controller
         $max_id_contact    = Contact::max('id');
         $last_contact      = Contact::where('id',$max_id_contact)->get();
         return view('user_interface.article_detail.new_post', compact('new_post','banner','contact','last_contact'));
+    }
+    /*Library Page*/
+    public function library(){
+        $library = Detail::where('type','library')->orderBy('id','DESC')->paginate(6);
+        $banner            = Banner::select('id','tittle','introduce','content')->get();
+
+        $contact           = Contact::where('prior',1)->get();
+        $max_id_contact    = Contact::max('id');
+        $last_contact      = Contact::where('id',$max_id_contact)->get();
+        return view('user_interface.article_detail.library_page',compact('library','banner','contact','last_contact'));
     }
 
     /*Listening Page*/
@@ -90,16 +100,6 @@ class HomeController extends Controller
         $last_contact      = Contact::where('id',$max_id_contact)->get();
         return view('user_interface.article_detail.reading_page', compact('reading','banner','contact','last_contact'));
     }
-    /*Writing Page*/
-    public function writing(){
-        $writing = Detail::where('type','writing')->orderBy('id','DESC')->paginate(6);
-        $banner            = Banner::select('id','tittle','introduce','content')->get();
-
-        $contact           = Contact::where('prior',1)->get();
-        $max_id_contact    = Contact::max('id');
-        $last_contact      = Contact::where('id',$max_id_contact)->get();
-        return view('user_interface.article_detail.writing_page',compact('writing','banner','contact','last_contact'));
-    }
 
     /*Show detail article*/
     public function detail_article(Request $request,$type,$tittle){
@@ -107,7 +107,7 @@ class HomeController extends Controller
 
         $detail_article = Detail::where('alias',$tittle)->get();
 
-        $comment_info   = Comment::where('article_type','listening')->orWhere('article_type','reading')->orWhere('article_type','writing')->where('article_name',$tittle)->orderBy('id','DESC')->paginate(10);
+        $comment_info   = Comment::where('article_type','listening')->orWhere('article_type','reading')->orWhere('article_type','library')->where('article_name',$tittle)->orderBy('id','DESC')->paginate(10);
 
         $banner         = Banner::select('id','tittle','introduce','content')->get();
         $contact        = Contact::where('prior',1)->get();

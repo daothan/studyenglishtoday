@@ -47,7 +47,7 @@ Route::get('/', 'HomeController@index');
 		Route::get('listening', ['as'=>'user.listening', 'uses'=>'HomeController@listening']);
 		Route::get('practice_listening', ['as'=>'user.practice_listening', 'uses'=>'HomeController@practice_listening']);
 		Route::get('reading', ['as'=>'user.reading', 'uses'=>'HomeController@reading']);
-		Route::get('writing', ['as'=>'user.writing', 'uses'=>'HomeController@writing']);
+		Route::get('library', ['as'=>'user.library', 'uses'=>'HomeController@library']);
 		Route::get('{type}/{tittle}',['as'=>'user.detail_article','uses'=>'HomeController@detail_article']);
 		Route::get('practice/listening/{tittle_audio}',['as'=>'user.tittle_audio','uses'=>'HomeController@tittle_audio']);
 
