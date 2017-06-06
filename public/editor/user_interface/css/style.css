@@ -883,7 +883,7 @@ h3.w3ls-hdg {
     letter-spacing: 1px;
 }
 h4.w3t-text {
-    font-size: 1.8em;
+    font-size: 1.8em !important;
     margin-bottom: .5em;
     font-weight: 300;
     color: #00BCD4;
