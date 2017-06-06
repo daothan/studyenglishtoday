@@ -4,15 +4,11 @@
 	<title>Studying English</title>
 	<link rel="icon" href="{!! asset('/storage/uploads/interface_images/icon.ico') !!}"/>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="Fantastic Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 		SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
-
-		<meta name="description" content="A Collection of Page Transitions with CSS Animations" />
-		<meta name="keywords" content="page transition, css animation, website, effect, css3, jquery" />
-		<meta name="author" content="Codrops" />
 	<meta name="csrf-token" content="{{ csrf_token() }}">
+	<meta name="description" content="Responsive &amp; Touch-Friendly Audio Player" />
 
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
@@ -22,12 +18,15 @@
 	<link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/user_interface/css/carousel.css')}}">
 	<link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/user_interface/css/font-awesome.css')}}">
 	<link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/user_interface/css/animate_body.css')}}">
+	<link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/user_interface/css/audioplayer.css')}}">
 	<link href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200,300,400,700" rel="stylesheet">
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+	<script>
+		(function(doc){var addEvent='addEventListener',type='gesturestart',qsa='querySelectorAll',scales=[1,1],meta=qsa in doc?doc[qsa]('meta[name=viewport]'):[];function fix(){meta.content='width=device-width,minimum-scale='+scales[0]+',maximum-scale='+scales[1];doc.removeEventListener(type,fix,true);}if((meta=meta[meta.length-1])&&addEvent in doc){fix();scales=[.25,1.6];doc[addEvent](type,fix,true);}}(document));
+	</script>
 
 	<!-- Add Js -->
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/jquery-3.2.1.min.js')}}"></script>
-
 	<script type="text/javascript" src="{{URL::asset('public/editor/jquery/jquery.validate.min.js')}}"></script>
 
     <!-- Ckeditor and Ckfinder -->
@@ -325,14 +324,15 @@
 		</div>
 	</div>
 	<!-- //footer -->
-
-
 	<!-- Script -->
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/move-top.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/easing.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/jquery.nicescroll.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/bootstrap.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/user_script.js')}}"></script>
+	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/audioplayer.js')}}"></script>
+
+	<script>$( function() { $( 'audio' ).audioPlayer(); } );</script>
 
 </body>
 </html>

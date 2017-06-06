@@ -132,7 +132,7 @@ class ListeningController extends Controller
             $listening = Listening::find($id);
 
             if($request->audio_listening_edit){
-                File::deleteDirectory('storage/uploads/listenings/'.tittle($request->tittle));
+                File::deleteDirectory('storage/uploads/listenings/'.tittle($listening->tittle));
                 $file_name = $request->file('audio_listening_edit')->getClientOriginalName();
 
                 $folder_create = tittle($request->tittle_listening_edit);
@@ -144,6 +144,16 @@ class ListeningController extends Controller
                 $request->file('audio_listening_edit')->move($folder,$file_name);
                 $listening->audio      = $file_name;
                 $listening->audio_path = $folder.'/'.$file_name;
+            }else{
+                $folder_create = tittle($request->tittle_listening_edit);
+                $folder = 'storage/uploads/listenings/' .$folder_create;
+                if(!file_exists($folder)){
+                    File::makeDirectory($folder, 0777, true);
+                }
+                File::move('storage/uploads/listenings/'.tittle($listening->tittle).'/'.($listening->audio), $folder.'/'.($listening->tittle_listening_edit).'/'.($listening->audio));
+                File::deleteDirectory('storage/uploads/listenings/'.tittle($listening->tittle));
+                $listening->audio      = $listening->audio;
+                $listening->audio_path = $folder.'/'.$listening->audio;
             }
 
 

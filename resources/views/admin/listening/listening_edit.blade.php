@@ -6,7 +6,7 @@
     <div class="modal-dialog modal-lg modal-dialog-listening">
         <div class="content modal_background">
             <div class="panel-title">
-                <h3 class="modal_header" align="center">edit listening</h3>
+                <h3 class="modal_header" align="center">Edit listening</h3>
             </div>
 
             <form method="POST" class="form-horizontal" role="form"  name="validate_edit_listening" id="validate_edit_listening" enctype="multipart/form-data">

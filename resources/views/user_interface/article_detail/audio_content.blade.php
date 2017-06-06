@@ -24,15 +24,15 @@
 								</b>
 				            </p>
 				            <p>{!!htmlspecialchars_decode($data->introduce)!!}</p>
-				            <div class="home_audio_5">
-								<audio id="audioPlayer" class="audioPlayer5" height="30" controls="controls">
+				            <div class="">
+								<audio preload="auto" controls>
 								    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$data->audio_path}}" />
 								    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$data->audio_path}}"/>
 								</audio>
 				            </div>
 
 							<p>
-							<button class="button" data-toggle="collapse" data-target="#transcript">Transcript</button>
+							<button class="button transcript_btn" data-toggle="collapse" data-target="#transcript">Transcript</button>
 							<div id="transcript" class="collapse" style="overflow-y: scroll; height:300px;">
 				            	{!!htmlspecialchars_decode($data->transcript)!!}
 							</div>

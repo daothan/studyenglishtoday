@@ -7,17 +7,18 @@
 				<h3 class="w3ls-hdg">Newest Posts</h3><br>
 					@foreach($new_post as $detail)
 						<div class="col-sm-5 col-xs-5 w3ltext-grids md_5 desktop">
-							<h4 class="w3t-text">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </h4>
+							<h4 class="w3t-text"><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[$detail->tittle]) : route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
 							<!--- If audio then show audio-->
 								<div class="{{($detail->type=="audio")? 'hidden':''}}">
 									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
 								</div>
-								<div class="{{($detail->type=="audio")? '':'hidden'}} home_audio_5">
+								<div class="{{($detail->type=="audio")? '':'hidden'}}">
 									<?php $audio_path= DB::table('listenings')->where('tittle',$detail->tittle)->get();?>
 									@foreach($audio_path as $data)
-										<audio id="audioPlayer" class="audioPlayer5" height="30" controls="controls">
-										    <source id="oggSource" type="audio/ogg" src="{{'/'.$data->audio_path}}" />
-										    <source id="mp3Source" type="audio/mp3" src="{{'/'.$data->audio_path}}"/>
+										<audio preload="auto" controls>
+										    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$data->audio_path}}" />
+										    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$data->audio_path}}"/>
+										    <source id="mp3Source" type="audio/wav" src="{{'/'.$data->audio_path}}"/>
 										</audio>
 									@endforeach
 									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>

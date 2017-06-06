@@ -5,7 +5,7 @@
     <div class="modal-dialog modal-lg modal-dialog-detail">
         <div class="content modal_background">
             <div class="panel-title">
-                <h3 class="modal_header" align="center">Add Detail</h3>
+                <h3 class="modal_header" align="center">Edit Detail</h3>
             </div>
 
             <form method="POST" class="form-horizontal" role="form"  name="validate_edit_detail" id="validate_edit_detail" enctype="multipart/form-data">
