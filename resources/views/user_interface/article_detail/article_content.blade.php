@@ -8,7 +8,9 @@
 					@foreach($detail_article as $data)
 					<?php $user = DB::table('users')->where('id', $data->user_id)->get();?>
 
-					<h3 class="modal_header col-centered" align="center" align="center" style="margin-bottom: 50px;">{{$data->type}}</h3>
+					<h3 class="modal_header col-centered" align="center" align="center" style="margin-bottom: 50px;">
+						{{($data->type=="writing") ? 'Knowlegde Library' : 'Reading Practice'}}
+					</h3>
 
 			        <div class="col-sm-8 blog-main overflow">
 

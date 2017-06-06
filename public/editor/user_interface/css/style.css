@@ -128,7 +128,9 @@ label.error{
 .audio_width_desktop{
   width:600px;
 }
-
+.audioplayer{
+	margin-bottom: 25px;
+}
 .audio_width_desktop_3{
   width:180px;
 }
