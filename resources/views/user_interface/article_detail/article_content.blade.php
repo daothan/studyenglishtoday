@@ -23,7 +23,7 @@
 				            </p>
 
 				            <h4><i>{!!htmlspecialchars_decode($data->introduce)!!}</i></h4><br><br>
-				            <div class="article_content">
+				            <div class="reading_content">
 				            	<h4 style="word-wrap: break-word">{!!htmlspecialchars_decode($data->content)!!}</h4>
 				            </div>
 			            </div><!-- /.blog-post -->

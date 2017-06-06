@@ -17,16 +17,16 @@
 				<script>$(function () {
 				  $('[data-toggle="tooltip"]').tooltip()
 				})</script>
-					Total Pages: {!! $listening->lastPage() !!}
+					Total Pages: {!! $reading->lastPage() !!}
 
 					<div class="pagination pull-right">
-						<a href="{{$listening->url(1)}}" class="{{($listening->currentPage()==1) ? 'hidden':''}}">&laquo;</a>
-						<a href="{{$listening->url($listening->currentPage()-1)}}" class="{{($listening->currentPage()==1) ? 'hidden':''}}">Prev</a>
+						<a href="{{$reading->url(1)}}" class="{{($reading->currentPage()==1) ? 'hidden':''}}">&laquo;</a>
+						<a href="{{$reading->url($reading->currentPage()-1)}}" class="{{($reading->currentPage()==1) ? 'hidden':''}}">Prev</a>
 						@for($i=1; $i<=$reading->lastPage(); $i++)
-							<a href="{{$listening->url($i)}}" class="{{($listening->currentPage()==$i)? 'active':''}}">{{$i}}</a>
+							<a href="{{$reading->url($i)}}" class="{{($reading->currentPage()==$i)? 'active':''}}">{{$i}}</a>
 						@endfor
-						<a href="{{$listening->url($listening->currentPage()+1)}}" class="{{($listening->currentPage()==$listening->lastPage())?'hidden' : ''}}">Next</a>
-						<a href="{{$listening->url($listening->lastPage())}}" class="{{($listening->currentPage()==$listening->lastPage())?'hidden' : ''}}">&raquo;</a>
+						<a href="{{$reading->url($reading->currentPage()+1)}}" class="{{($reading->currentPage()==$reading->lastPage())?'hidden' : ''}}">Next</a>
+						<a href="{{$reading->url($reading->lastPage())}}" class="{{($reading->currentPage()==$reading->lastPage())?'hidden' : ''}}">&raquo;</a>
 					</div>
 			</div>
 		</div>
