@@ -4,7 +4,7 @@
 	<div class="codes agileitsbg5">
 		<div class="container">
 			<div class="grid_3 grid_5 w3-agileits">
-				<h3 class="w3ls-hdg">Writing</h3><br>
+				<h3 class="w3ls-hdg">Knowledge Library</h3><br>
 					@foreach($writing as $detail)
 						<div class="col-sm-5 col-xs-5 w3ltext-grids md_5 desktop">
 							<h4 class="w3t-text"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>

@@ -183,17 +183,6 @@ class UserController extends Controller
 	            $user->password = bcrypt($request->password);
 	            $user->level    = $request->level;
 
-                $user = [
-                    'name'=>Auth::user()->name,
-                    'action'=>" edited user",
-                    'tittle'=>$request->input('add_name'),
-                    'link'=>route('admin.user.show')
-                ];
-                Mail::send('user_interface.notifications.add_detail', $user,function($msg){
-                    $msg->from('daothan12111@gmail.com', 'Edit User Successfull');
-                    $msg->to('daothan12111@gmail.com','Quoc Than')->subject('New user edited on studyenglishtoday.org');
-                });
-
 	            if($user->save()){
 	                return response()->json([
                         'edit_user'=>true

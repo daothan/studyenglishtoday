@@ -26,9 +26,9 @@
                         <div class="col-md-10">
                            <select name="edit_type_article" id="edit_type_article" class="form-control" >
                                 <option disabled selected hidden>Please Choose Type Of Article...</option>
+                                <option value="library">Knowledge Library</option>
                                 <option value="listening">Listening</option>
                                 <option value="reading">Reading</option>
-                                <option value="writing">Writing</option>
                            </select>
                         </div>
                     </div>

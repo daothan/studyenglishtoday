@@ -5,6 +5,11 @@
 
 	<!-- Newest Post -->
 	<div class="codes agileitsbg2">
+	<!-- Like Share -->
+		<div style="padding-left: 100px; margin-bottom: 20px;">
+			<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+		</div>
+	<!-- End Like Share -->
 		<div class="container">
 			<div id="newest_post" class="grid_3 grid_5 w3-agileits">
 				<a href="{{route('user.new_post')}}">

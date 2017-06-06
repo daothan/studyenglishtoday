@@ -49,7 +49,6 @@
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<!-- Like Button -->
 
-
 	<!-- navbar -->
 	<div  class="navbar-wrapper">
 		<div class="container">
@@ -73,6 +72,10 @@
 							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a href="#newest_post" class="scroll">Newest Posts</a></li>
 							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#newest_post">Newest Posts</a></li>
 						<!-- - -->
+						<!-- Knowledge Library -->
+							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a href="#writing_cate" class="scroll">Knowledge Library</a></li>
+							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#writing_cate">Knowledge Library</a></li>
+						<!-- - -->
 						<!-- Listening -->
 							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a href="#listening_cate" class="scroll">Listening</a></li>
 							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#listening_cate">Listening</a></li>
@@ -80,10 +83,6 @@
 						<!-- Reading -->
 							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a href="#reading_cate" class="scroll">Reading</a></li>
 							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#reading_cate">Reading</a></li>
-						<!-- - -->
-						<!-- Writing -->
-							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a href="#writing_cate" class="scroll">Writing</a></li>
-							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#writing_cate">Writing</a></li>
 						<!-- - -->
 						<!-- Contact -->
 							<li><a data-toggle="modal" data-target="" onclick="contact_us()">Contact</a></li>
@@ -321,6 +320,12 @@
 
 
 	<!-- footer -->
+	<!-- Like Share -->
+		<p align="center"><i>Like and Share Website For Your Friends</i></p>
+		<div style="padding-left: 100px;" class="center-block">
+			<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+		</div>
+	<!-- End Like Share -->
 	<div class="footer">
 		<div class="container">
 			<div class="w3social-icons">Login with<br><br>
