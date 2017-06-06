@@ -38,6 +38,13 @@
 							</div>
 							</p>
 			            </div><!-- /.blog-post -->
+
+
+						<!-- Like Share -->
+							<p><i>Like and Share Website For Your Friends</i></p>
+							<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+						<!-- End Like Share -->
+
 			            <!-- Comment -->
 						<hr>
 						<div class="container">
