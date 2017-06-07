@@ -44,6 +44,54 @@ label.error{
     font-weight: inherit;
     color: red;
 }
+/* Pop up dictionary */
+/* Styling dfn tag to highlight the word with the tooltip */
+a.tooltips {
+  color: #1600af;
+  font-weight: 500;
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+a.tooltips span {
+    visibility: hidden;
+    width: 300px;
+    background-color: rgb(85, 153, 212);
+    color: #090331;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: -36%;
+    margin-left: -109px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+@media(max-width: 800px){
+  a.tooltips span {
+    width: 130px;
+    left: 36%;
+    margin-left: -52px;
+  }
+}
+a.tooltips span:after {
+  content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #090331 transparent transparent transparent;
+}
+a:hover.tooltips span {
+  visibility: visible;
+    opacity: 1;
+}
+/* Pop up dictionary */
+
 
 .w3ls-logo .logo {
     display: inline-flex;
