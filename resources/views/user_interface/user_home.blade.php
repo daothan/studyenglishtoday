@@ -6,7 +6,10 @@
 	<!-- Newest Post -->
 	<div class="codes agileitsbg2">
 	<!-- Like Share -->
-		<div style="padding-left: 100px; margin-bottom: 20px;">
+		<div style="padding-left: 100px;" class="facebook_button">
+			<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+		</div>
+		<div style="padding-left: 100px;" class="facebook_button1">
 			<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
 		</div>
 	<!-- End Like Share -->
@@ -27,7 +30,6 @@
 									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
 								</div>
 								<div class="{{($detail->type=="audio")? '':'hidden'}} ">
-									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
 									<?php $audio_path= DB::table('listenings')->where('tittle',$detail->tittle)->get();?>
 									@foreach($audio_path as $data)
 										<audio preload="auto" controls>
@@ -35,6 +37,7 @@
 										    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$data->audio_path}}"/>
 										</audio>
 									@endforeach
+									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
 								</div>
 								<!--- If audio then show audio-->
 								<h4 align="center" ><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[$detail->tittle]) : route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
@@ -48,7 +51,6 @@
 									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
 								</div>
 								<div class="{{($detail->type=="audio")? '':'hidden'}} ">
-									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
 									<?php $audio_path= DB::table('listenings')->where('tittle',$detail->tittle)->get();?>
 									@foreach($audio_path as $data)
 										<audio preload="auto" controls>
@@ -56,6 +58,7 @@
 										    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$data->audio_path}}"/>
 										</audio>
 									@endforeach
+									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
 								</div>
 								<!--- If audio then show audio-->
 								<h4 align="center" ><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[$detail->tittle]) : route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>

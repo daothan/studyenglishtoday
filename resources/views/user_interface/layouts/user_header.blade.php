@@ -10,6 +10,15 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="description" content="Responsive &amp; Touch-Friendly Audio Player" />
 
+	<!-- Link share FB-->
+	<meta property="og:url"           content="http://studyenglishtoday.org/" />
+ 	<meta property="og:type"          content="StudyingEnglishToday" />
+  	<meta property="og:title"         content="Improving your English every day" />
+  	<meta property="og:description"   content="This website will provide you the way, knowledge may help you improving English" />
+  	<meta property="og:image"         content="http://studyenglishtoday.org/storage/uploads/files/study-english.jpg" />
+  	<meta property="og:image:width"   content="1200px" />
+	<meta property="og:image:height"  content="630px" />
+	<!-- Link share FB-->
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 	<!-- Add Css -->
@@ -62,8 +71,8 @@
 							    <div class="bar3"></div>
 							</div>
 						</div>
-						<h1 class="w3ls-logo {{((url()->current())!=route('user.home')) ? 'hidden' : ''}}"><a href="#top" class="logo"><p>Free English</p></a></h1>
-						<h1 class="w3ls-logo {{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}" class="logo"><p>Free English</p></a></h1>
+						<h1 class="w3ls-logo {{((url()->current())!=route('user.home')) ? 'hidden' : ''}}"><a href="#top" class="logo"><p style="color:#339fd4;">Studying</p><p style="color:#6ce05a;">English</p><p style="color: #da4d4d;">Today</p></a></h1>
+						<h1 class="w3ls-logo {{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}" class="logo"><p style="color:#339fd4;">Studying</p><p style="color:#6ce05a;">English</p><p style="color: #da4d4d;">Today</p></a></h1>
 					</div>
 
 					<div id="navbar" class="navbar-collapse collapse ">
@@ -73,8 +82,8 @@
 							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#newest_post">Newest Posts</a></li>
 						<!-- - -->
 						<!-- Knowledge Library -->
-							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a href="#writing_cate" class="scroll">Knowledge Library</a></li>
-							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#writing_cate">Knowledge Library</a></li>
+							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a href="#library_cate" class="scroll">Knowledge Library</a></li>
+							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#library_cate">Knowledge Library</a></li>
 						<!-- - -->
 						<!-- Listening -->
 							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a href="#listening_cate" class="scroll">Listening</a></li>
@@ -322,7 +331,10 @@
 	<!-- footer -->
 	<!-- Like Share -->
 		<p align="center"><i>Like and Share Website For Your Friends</i></p>
-		<div style="padding-left: 100px;" class="center-block">
+		<div style="padding-left: 100px;" class="facebook_button">
+			<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+		</div>
+		<div style="padding-left: 100px;" class="facebook_button1">
 			<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
 		</div>
 	<!-- End Like Share -->

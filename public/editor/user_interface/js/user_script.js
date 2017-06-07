@@ -417,6 +417,9 @@ function checkWidth() {
 
         $('.article_content').removeClass('break_word_desktop');
         $('.article_content').addClass('break_word_mobile');
+
+        $('.facebook_button').removeClass('show').addClass('hide');
+        $('.facebook_button1').removeClass('hide').addClass('show');
     };
 
     if ($window.width() > 800) {
@@ -437,6 +440,9 @@ function checkWidth() {
 
         $('.article_content').removeClass('break_word_mobile');
         $('.article_content').addClass('break_word_desktop');
+
+        $('.facebook_button').removeClass('hide').addClass('show');
+        $('.facebook_button1').removeClass('show').addClass('hide');
     }
 }
 checkWidth();
