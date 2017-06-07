@@ -7,7 +7,7 @@
 				<h3 class="w3ls-hdg">Newest Posts</h3><br>
 					@foreach($new_post as $detail)
 						<div class="col-sm-5 col-xs-5 w3ltext-grids md_5 desktop">
-							<h4 class="w3t-text"><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[tittle($detail->tittle)]) : route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
+							<h4 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[tittle($detail->tittle)]) : route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
 							<!--- If audio then show audio-->
 								<div class="{{($detail->type=="audio")? 'hidden':''}}">
 									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
@@ -21,10 +21,9 @@
 										    <source id="mp3Source" type="audio/wav" src="{{'/'.$data->audio_path}}"/>
 										</audio>
 									@endforeach
-									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
 								</div>
 								<!--- If audio then show audio-->
-							<h4 align="center"><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[tittle($detail->tittle)]) : route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+							<h4 align="center" style="margin-top:30px;"><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[tittle($detail->tittle)]) : route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 						</div>
 					@endforeach
 				<div class="clearfix">

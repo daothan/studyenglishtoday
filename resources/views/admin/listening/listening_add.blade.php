@@ -45,6 +45,8 @@
 							<textarea class="form-control" name="transcript_listening" id="transcript_listening" rows="3"></textarea>
 						</div>
 					</div>
+                    <div id="loading_text" style="width: 800px; margin: auto; display: none;" ><p class="text-danger">Please wait...</p></div>
+                    <div id="loading" style="width: 800px; margin: auto;  display: none;"><img src='/laravel1/storage/uploads/images/loading.gif' /></div>
                 </div>
                 <div class="modal-footer modal-body-footer">
                     <!-- Submit -->

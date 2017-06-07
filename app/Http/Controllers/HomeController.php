@@ -33,12 +33,12 @@ class HomeController extends Controller
     /*Show details*/
     public function user_home(){
 
-        $newest_post = Detail::orderBy('id', 'DESC')->get();
+        $newest_post       = Detail::orderBy('id', 'DESC')->get();
 
-        $listening_article = Detail::where('type','listening')->get();
-        $audio          = Listening::orderBy('id','DESC')->paginate(6);
-        $reading_article   = Detail::where('type','reading')->get();
-        $library_article   = Detail::where('type','library')->get();
+        $audio             = Listening::orderBy('id','DESC')->paginate(6);
+        $listening_article = Detail::where('type','listening')->orderBy('id','DESC')->get();
+        $reading_article   = Detail::where('type','reading')->orderBy('id','DESC')->get();
+        $library_article   = Detail::where('type','library')->orderBy('id','DESC')->get();
 
         $banner            = Banner::select('id','tittle','introduce','content')->get();
 
@@ -61,7 +61,7 @@ class HomeController extends Controller
     }
     /*Library Page*/
     public function library(){
-        $library = Detail::where('type','library')->orderBy('id','DESC')->paginate(6);
+        $library           = Detail::where('type','library')->orderBy('id','DESC')->paginate(6);
         $banner            = Banner::select('id','tittle','introduce','content')->get();
 
         $contact           = Contact::where('prior',1)->get();

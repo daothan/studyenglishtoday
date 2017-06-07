@@ -35,23 +35,23 @@ function ckeditor(name, config, toolbar){
 	if(toolbar == 'standard'){
 		config.toolbarGroups = [
 		{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
-		{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
 		{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+		{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
 		{ name: 'forms', groups: [ 'forms' ] },
 		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
 		{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
 		{ name: 'links', groups: [ 'links' ] },
 		{ name: 'insert', groups: [ 'insert' ] },
 		'/',
-		'/',
 		{ name: 'styles', groups: [ 'styles' ] },
 		{ name: 'colors', groups: [ 'colors' ] },
 		{ name: 'tools', groups: [ 'tools' ] },
+		'/',
 		{ name: 'others', groups: [ 'others' ] },
 		{ name: 'about', groups: [ 'about' ] }
 	];
 
-	config.removeButtons = 'NewPage,Save,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Find,Replace,SelectAll,Scayt,Form,TextField,Textarea,Select,Button,ImageButton,HiddenField,Strike,Subscript,Superscript,CopyFormatting,RemoveFormat,NumberedList,BulletedList,Outdent,Indent,Blockquote,CreateDiv,BidiLtr,BidiRtl,Language,Anchor,Unlink,PageBreak,TextColor,Maximize,ShowBlocks,BGColor,About';
+	config.removeButtons = 'Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Find,Replace,SelectAll,Scayt,Form,TextField,Select,Button,ImageButton,HiddenField,Textarea,Strike,Subscript,Superscript,CopyFormatting,RemoveFormat,NumberedList,BulletedList,Outdent,Indent,Blockquote,BidiLtr,BidiRtl,Language,Unlink,Anchor,PageBreak,About,Maximize';
 
 	}if(toolbar =='basic'){
 		config.toolbarGroups = [
@@ -102,11 +102,11 @@ function ckeditor(name, config, toolbar){
 /*Show editor and ckfinder on Modal*/
 //console.log('#tittle'.length);
 if($('#tittle_listening').length){
-	ckeditor("introduce_listening", "config", "basic")
+	ckeditor("introduce_listening", "config", "standard")
 	ckeditor("transcript_listening", "config", "standard")
 }
 if($('#introduce_listening_edit').length){
-	ckeditor("introduce_listening_edit", "config", "basic")
+	ckeditor("introduce_listening_edit", "config", "standard")
 	ckeditor("transcript_listening_edit", "config", "standard")
 }
 
@@ -167,6 +167,14 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 						    contentType: false, // high importance!
 						    data:new FormData($("#validate_add_listening")[0]), // high importance!
 						    processData: false, // high importance!
+						    beforeSend: function(){
+						        $('#loading_text').show();
+						        $('#loading').show();
+					    	},
+				   		   	complete: function(){
+						    	    $('#loading_text').hide();
+						    	    $('#loading').hide();
+					    	},
 						    success: function (data) {
 								console.log(data);
 								if(data.error_add_listening ==true){
@@ -281,6 +289,14 @@ $("#edit_listening").click(function(event){
 								    contentType: false, // high importance!
 								    data:new FormData($("#validate_edit_listening")[0]), // high importance!
 								    processData: false, // high importance!
+								    beforeSend: function(){
+							        $('#loading_text').show();
+							        $('#loading').show();
+							    	},
+						   		   	complete: function(){
+								    	    $('#loading_text').hide();
+								    	    $('#loading').hide();
+						    		},
 								    success: function (data){
 										if(data.error_edit_listening ==true){
 											$('.error').hide();
