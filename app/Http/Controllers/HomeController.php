@@ -106,8 +106,10 @@ class HomeController extends Controller
         $relate_article = Detail::where('type',$type)->where('alias','!=',$tittle)->orderBy('id','DESC')->get();
 
         $detail_article = Detail::where('alias',$tittle)->get();
-
-        $comment_info   = Comment::where('article_type','listening')->orWhere('article_type','reading')->orWhere('article_type','library')->where('article_name',$tittle)->orderBy('id','DESC')->paginate(10);
+        foreach($detail_article as $id_article){
+            $article_id = $id_article->id;
+        }
+        $comment_info   = Comment::where('article_type','listening')->orWhere('article_type','reading')->orWhere('article_type','library')->where('article_id',$article_id)->orderBy('id','DESC')->paginate(10);
 
         $banner         = Banner::select('id','tittle','introduce','content')->get();
         $contact        = Contact::where('prior',1)->get();
@@ -119,11 +121,15 @@ class HomeController extends Controller
 
      /*Show detail article*/
     public function tittle_audio(Request $request,$tittle_audio){
-        $relate_audio = Listening::where('tittle','!=',$tittle_audio)->orderBy('id','DESC')->get();
+        $relate_audio = Listening::where('tittle','!=',convert_tittle($tittle_audio))->orderBy('id','DESC')->get();
 
-        $detail_audio = Listening::where('tittle',$tittle_audio)->get();
+        $detail_audio = Listening::where('tittle',convert_tittle($tittle_audio))->get();
+        $detail_article = Detail::where('alias',$tittle_audio)->get();
+        foreach($detail_article as $id_audio){
+            $audio_id = $id_audio->id;
+        }
 
-        $comment_info   = Comment::where('article_type','audio')->where('article_name',$tittle_audio)->orderBy('id','DESC')->paginate(10);
+        $comment_info   = Comment::where('article_type','audio')->where('article_id',$audio_id)->orderBy('id','DESC')->paginate(10);
 
         $banner         = Banner::select('id','tittle','introduce','content')->get();
         $contact        = Contact::where('prior',1)->get();

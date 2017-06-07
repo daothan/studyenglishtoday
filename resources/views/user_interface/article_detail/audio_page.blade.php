@@ -6,7 +6,7 @@
 				<h3 class="w3ls-hdg">Practice Listening</h3><br>
 					@foreach($audio as $detail)
 						<div class="col-sm-5 col-xs-5 w3ltext-grids md_5 desktop">
-							<h4 class="w3t-text"><a href="{{route('user.tittle_audio',[$detail->tittle])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
+							<h4 class="w3t-text"><a href="{{route('user.tittle_audio',[tittle($detail->tittle)])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
 							<div class="">
 								<audio preload="auto" controls>
 								    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$detail->audio_path}}" />
@@ -14,7 +14,7 @@
 								</audio>
 							</div>
 							<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!} </p>
-							<h4 align="center"><a href="{{route('user.tittle_audio',[$detail->tittle])}}">Continue read..</a></h4>
+							<h4 align="center"><a href="{{route('user.tittle_audio',[tittle($detail->tittle)])}}">Continue read..</a></h4>
 						</div>
 					@endforeach
 				<div class="clearfix">

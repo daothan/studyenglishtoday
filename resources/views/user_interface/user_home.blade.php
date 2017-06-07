@@ -6,10 +6,10 @@
 	<!-- Newest Post -->
 	<div class="codes agileitsbg2">
 	<!-- Like Share -->
-		<div style="padding-left: 100px;" class="facebook_button">
+		<div style="padding-left: 150px; padding-bottom: 20px;" class="facebook_button">
 			<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
 		</div>
-		<div style="padding-left: 100px;" class="facebook_button1">
+		<div style="padding-left: 150px; padding-bottom: 20px;" class="facebook_button1">
 			<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
 		</div>
 	<!-- End Like Share -->
@@ -24,7 +24,7 @@
 					<?php $no++;?>
 						@if($no==1)
 							<div class="col-md-10 col-md-offset-1 md_10 ">
-								<h4 class="w3t-text" align="center" ><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[$detail->tittle]) : route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a></h4>
+								<h4 class="w3t-text" align="center" ><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[tittle($detail->tittle)]) : route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a></h4>
 								<!--- If audio then show audio-->
 								<div class="{{($detail->type=="audio")? 'hidden':''}}">
 									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
@@ -40,12 +40,12 @@
 									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
 								</div>
 								<!--- If audio then show audio-->
-								<h4 align="center" ><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[$detail->tittle]) : route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+								<h4 align="center" ><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[tittle($detail->tittle)]) : route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=2 && $no<=3)
 							<div class="col-sm-5 col-xs-5 w3ltext-grids md_5 ">
-								<h4 class="w3t-text" align="center" ><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[$detail->tittle]) : route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a> </h4>
+								<h4 class="w3t-text" align="center" ><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[tittle($detail->tittle)]) : route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a> </h4>
 								<!--- If audio then show audio-->
 								<div class="{{($detail->type=="audio")? 'hidden':''}}">
 									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
@@ -61,12 +61,12 @@
 									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
 								</div>
 								<!--- If audio then show audio-->
-								<h4 align="center" ><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[$detail->tittle]) : route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+								<h4 align="center" ><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[tittle($detail->tittle)]) : route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=4 && $no<=6)
 							<div class="col-md-3 col-sm-3 col-xs-3 w3ltext-grids md_3 ">
-								<h4 class="w3t-text" align="center" ><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[$detail->tittle]) : route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
+								<h4 class="w3t-text" align="center" ><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[tittle($detail->tittle)]) : route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
 								<!--- If audio then show audio-->
 								<div class="{{($detail->type=="audio")? 'hidden':''}}">
 									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
@@ -81,7 +81,7 @@
 									@endforeach
 								</div>
 								<!--- If audio then show audio-->
-								<h4 align="center" ><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[$detail->tittle]) : route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+								<h4 align="center" ><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[tittle($detail->tittle)]) : route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 					@endforeach

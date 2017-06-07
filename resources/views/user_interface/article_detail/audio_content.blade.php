@@ -8,7 +8,11 @@
 
 			    <div class="row">
 					@foreach($detail_audio as $data)
-					<?php $user = DB::table('users')->where('id', $data->user_id)->get();?>
+					<?php $user = DB::table('users')->where('id', $data->user_id)->get();
+						foreach($user as $user){
+							$user_name_comment = $user->name;
+						}
+					?>
 
 					<h3 class="modal_header col-centered" align="center" align="center" style="margin-bottom: 50px;">Listening Practice</h3>
 
@@ -17,12 +21,17 @@
 			            <div class="blog-post overflow">
 				            <h2 class="blog-post-title"><a href="">{{$data->tittle}}</a></h2>
 				            <p class="blog-post-meta">Created <i class="{{(isset(Auth::user()->name) && Auth::user()->level<2) ? '':'hidden'}}">{{$data->created_at->format('H:i:s d-m-Y')}}</i><i class="{{(isset(Auth::user()->name) && Auth::user()->level==2) ? '':'hidden'}}">{{$data->created_at->format('d-m-Y')}}</i><i class="{{(isset(Auth::user()->name)) ? 'hidden':''}}">{{$data->created_at->format('d-m-Y')}}</i> by
-				            	<b>
-				            		@foreach($user as $user)
-										{{$user->name}}
-									@endforeach
-								</b>
+				            	<b>{{$user_name_comment}}</b>
 				            </p>
+				            <!-- Like Share -->
+							<p><i class="text-success">Like and Share Website For Your Friends</i></p>
+							<div class="facebook_button">
+								<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+							</div>
+							<div class="facebook_button1">
+								<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+							</div><br>
+							<!-- End Like Share -->
 				            <p>{!!htmlspecialchars_decode($data->introduce)!!}</p>
 				            <div class="">
 								<audio preload="auto" controls>
@@ -38,17 +47,6 @@
 							</div>
 							</p>
 			            </div><!-- /.blog-post -->
-
-
-						<!-- Like Share -->
-							<p><i>Like and Share Website For Your Friends</i></p>
-							<div class="facebook_button">
-								<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
-							</div>
-							<div class="facebook_button1">
-								<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
-							</div>
-						<!-- End Like Share -->
 
 			            <!-- Comment -->
 						<hr>
@@ -82,9 +80,11 @@
 										<p style="color:green;"><b><i>{{session('success_comment')}}</i></b></p>
 								    @endif
 									@foreach($comment_info as $comment)
-									<div class="delete_comment_admin {{((isset(Auth::user()->name) && (Auth::user()->level < 2)) ? '':'hidden')}}">
+									<!-- Delete-->
+									<div class="delete_comment_admin {{((isset(Auth::user()->name) && (Auth::user()->level < 2 || Auth::user()->name == $comment->user_comment)) ? '':'hidden')}}">
 						           	 	<a href="{{route('user.delete_comment',$comment->id)}}"><button type="button" class="btn_user danger">Delete</button></a>
 									</div>
+									<!-- Delete-->
 						            <div class="panel panel-white post panel-shadow">
 						                <div class="post-heading">
 						                    <div class="pull-left meta">
