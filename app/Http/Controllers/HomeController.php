@@ -31,6 +31,17 @@ class HomeController extends Controller
     public function error_404(){
         return view('user_interface.layouts.user_404');
     }
+
+    /*Search*/
+    public function search(Request $request){
+        $results = Detail::where('tittle','like','%'.$request->get('search').'%')->paginate(10);
+        $banner            = Banner::select('id','tittle','introduce','content')->get();
+
+        $contact           = Contact::where('prior',1)->get();
+        $max_id_contact    = Contact::max('id');
+        $last_contact      = Contact::where('id',$max_id_contact)->get();
+        return view('user_interface.article_detail.result_search',compact('results','banner','contact','last_contact'));
+    }
     /*Show details*/
     public function user_home(Request $request){
         $newest_post       = Detail::orderBy('id', 'DESC')->get();
@@ -48,8 +59,7 @@ class HomeController extends Controller
 
         /*Search*/
         if($request->has('search')){
-            $results = Detail::where('tittle','like','%'.$request->get('search').'%')->paginate(10);
-            return view('user_interface.article_detail.result',compact('results','banner','contact','last_contact'));
+            return redirect()->route('search',['search='.$request->get('search')]);
         }
         /*EndSearch*/
 
@@ -66,8 +76,7 @@ class HomeController extends Controller
         $last_contact      = Contact::where('id',$max_id_contact)->get();
         /*Search*/
         if($request->has('search')){
-            $results = Detail::where('tittle','like','%'.$request->get('search').'%')->paginate(10);
-            return view('user_interface.article_detail.result',compact('results','banner','contact','last_contact'));
+            return redirect()->route('search',['search='.$request->get('search')]);
         }
         /*EndSearch*/
         return view('user_interface.article_detail.new_post', compact('new_post','banner','contact','last_contact'));
@@ -82,8 +91,7 @@ class HomeController extends Controller
         $last_contact      = Contact::where('id',$max_id_contact)->get();
         /*Search*/
         if($request->has('search')){
-            $results = Detail::where('tittle','like','%'.$request->get('search').'%')->where('type','library')->paginate(10);
-            return view('user_interface.article_detail.result',compact('results','banner','contact','last_contact'));
+            return redirect()->route('search',['search='.$request->get('search')]);
         }
         /*EndSearch*/
         return view('user_interface.article_detail.library_page',compact('library','banner','contact','last_contact'));
@@ -99,8 +107,7 @@ class HomeController extends Controller
         $last_contact   = Contact::where('id',$max_id_contact)->get();
         /*Search*/
         if($request->has('search')){
-            $results = Detail::where('tittle','like','%'.$request->get('search').'%')->where('type','audio')->paginate(10);
-            return view('user_interface.article_detail.result',compact('results','banner','contact','last_contact'));
+            return redirect()->route('search',['search='.$request->get('search')]);
         }
         /*EndSearch*/
         return view('user_interface.article_detail.listening_page',compact('listening','banner','contact','last_contact'));
@@ -115,8 +122,7 @@ class HomeController extends Controller
         $last_contact   = Contact::where('id',$max_id_contact)->get();
         /*Search*/
         if($request->has('search')){
-            $results = Detail::where('tittle','like','%'.$request->get('search').'%')->where('type','audio')->paginate(10);
-            return view('user_interface.article_detail.result',compact('results','banner','contact','last_contact'));
+            return redirect()->route('search',['search='.$request->get('search')]);
         }
         /*EndSearch*/
         return view('user_interface.article_detail.audio_page',compact('audio','banner','contact','last_contact'));
@@ -131,8 +137,7 @@ class HomeController extends Controller
         $last_contact      = Contact::where('id',$max_id_contact)->get();
         /*Search*/
         if($request->has('search')){
-            $results = Detail::where('tittle','like','%'.$request->get('search').'%')->where('type','reading')->paginate(10);
-            return view('user_interface.article_detail.result',compact('results','banner','contact','last_contact'));
+            return redirect()->route('search',['search='.$request->get('search')]);
         }
         /*EndSearch*/
         return view('user_interface.article_detail.reading_page', compact('reading','banner','contact','last_contact'));
@@ -154,8 +159,7 @@ class HomeController extends Controller
         $last_contact   = Contact::where('id',$max_id_contact)->get();
         /*Search*/
         if($request->has('search')){
-            $results = Detail::where('tittle','like','%'.$request->get('search').'%')->where('type',$type)->paginate(10);
-            return view('user_interface.article_detail.result',compact('results','banner','contact','last_contact'));
+            return redirect()->route('search',['search='.$request->get('search')]);
         }
         /*EndSearch*/
 
@@ -180,8 +184,7 @@ class HomeController extends Controller
         $last_contact   = Contact::where('id',$max_id_contact)->get();
         /*Search*/
         if($request->has('search')){
-            $results = Detail::where('tittle','like','%'.$request->get('search').'%')->where('type','audio')->paginate(10);
-            return view('user_interface.article_detail.result',compact('results','banner','contact','last_contact'));
+            return redirect()->route('search',['search='.$request->get('search')]);
         }
         /*EndSearch*/
 

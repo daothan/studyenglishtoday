@@ -4,7 +4,7 @@
 	<!-- CONTENT -->
 	<div class="form_search">
 		<form >
-		  <input type="text" name="search" placeholder="Search all articles..">
+		  <input type="text" name="search" placeholder="Search ...">
 		</form>
 	</div>
 	<!-- Newest Post -->

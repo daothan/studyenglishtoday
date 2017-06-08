@@ -2,7 +2,7 @@
 @section('content')
 <div class="form_search">
 	<form >
-	  <input type="text" name="search" placeholder="Search articles..">
+	  <input type="text" name="search" placeholder="Search ...">
 	</form>
 </div>
 	<div class="codes agileitsbg5">

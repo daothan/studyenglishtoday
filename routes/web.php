@@ -58,6 +58,9 @@
 
 		Route::get('/article/{type}/{tittle}',['as'=>'detail_article','uses'=>'HomeController@detail_article']);
 
+	/*Search*/
+		Route::get('search', ['as'=>'search', 'uses'=>'HomeController@search']);
+
 
 /*Admin Page*/
 
