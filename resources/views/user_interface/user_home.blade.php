@@ -2,20 +2,26 @@
 
 @section('content')
 	<!-- CONTENT -->
-
+	<div class="form_search">
+		<form >
+		  <input type="text" name="search" placeholder="Search all articles..">
+		</form>
+	</div>
 	<!-- Newest Post -->
 	<div class="codes agileitsbg2">
 	<!-- Like Share -->
 		<div style="padding-left: 130px; padding-bottom: 20px;" class="facebook_button">
+			<p align=""><i>Like and Share Website</i></p>
 			<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
 		</div>
 		<div style="padding-left: 130px; padding-bottom: 20px;" class="facebook_button1">
+			<p align=""><i>Like and Share Website</i></p>
 			<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
 		</div>
 	<!-- End Like Share -->
 		<div class="container">
 			<div id="newest_post" class="grid_3 grid_5 w3-agileits">
-				<a href="{{route('user.new_post')}}">
+				<a href="{{route('new_post')}}">
 					<button class="button"><span>Newest Posts</span></button>
 				</a><br><br><br>
 				<h2><p class="agiletext-border agiletext-style">Newest Article...</p></h2>
@@ -24,7 +30,7 @@
 					<?php $no++;?>
 						@if($no==1)
 							<div class="col-md-10 col-md-offset-1 md_10 ">
-								<h4 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[tittle($detail->tittle)]) : route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a></h4>
+								<h4 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a></h4>
 								<!--- If audio then show audio-->
 								<div class="{{($detail->type=="audio")? 'hidden':''}}">
 									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
@@ -39,12 +45,12 @@
 									@endforeach
 								</div>
 								<!--- If audio then show audio-->
-								<h4 align="center" style="margin-top: 30px;"><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[tittle($detail->tittle)]) : route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+								<h4 align="center" style="margin-top: 30px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=2 && $no<=3)
 							<div class="col-sm-5 col-xs-5 w3ltext-grids md_5 ">
-								<h4 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[tittle($detail->tittle)]) : route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a> </h4>
+								<h4 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a> </h4>
 								<!--- If audio then show audio-->
 								<div class="{{($detail->type=="audio")? 'hidden':''}}">
 									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
@@ -59,12 +65,12 @@
 									@endforeach
 								</div>
 								<!--- If audio then show audio-->
-								<h4 align="center" style="margin-top: 30px;"><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[tittle($detail->tittle)]) : route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+								<h4 align="center" style="margin-top: 30px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=4 && $no<=6)
 							<div class="col-md-3 col-sm-3 col-xs-3 w3ltext-grids md_3 ">
-								<h4 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[tittle($detail->tittle)]) : route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
+								<h4 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
 								<!--- If audio then show audio-->
 								<div class="{{($detail->type=="audio")? 'hidden':''}}">
 									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
@@ -79,7 +85,7 @@
 									@endforeach
 								</div>
 								<!--- If audio then show audio-->
-								<h4 align="center" style="margin-top: 30px;"><a href="{{($detail->type=="audio")?  route('user.tittle_audio',[tittle($detail->tittle)]) : route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+								<h4 align="center" style="margin-top: 30px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 					@endforeach
@@ -96,7 +102,7 @@
 	<div class="codes agileitsbg3">
 		<div class="container">
 			<div id="library_cate" class="grid_3 grid_5 w3-agileits">
-				<a href="{{route('user.library')}}">
+				<a href="{{route('library')}}">
 					<button class="button"><span>Knowledge Library </span></button>
 				</a><br><br><br>
 
@@ -106,23 +112,23 @@
 					<?php $no++;?>
 						@if($no==1)
 							<div class="col-md-10 col-md-offset-1 md_10 ">
-								<h4 class="w3t-text" align="center" ><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a></h4>
+								<h4 class="w3t-text" align="center" ><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a></h4>
 								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+								<h4 align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=2 && $no<=3)
 							<div class="col-sm-5 col-xs-5 w3ltext-grids md_5 ">
-								<h4 class="w3t-text" align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
+								<h4 class="w3t-text" align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
 								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+								<h4 align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=4 && $no<=6)
 							<div class="col-md-3 col-sm-3 col-xs-3 w3ltext-grids md_3 ">
-								<h4 class="w3t-text" align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
+								<h4 class="w3t-text" align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
 								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!} </p>
-								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+								<h4 align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 					@endforeach
@@ -143,7 +149,7 @@
 
 		<!-- Audio -->
 		<div id="practice">
-			<a href="{{route('user.practice_listening')}}">
+			<a href="{{route('practice_listening')}}">
 				<button class="button"><span>View More Audio</span></button>
 			</a><br><br><br>
 			<h2><p class="agiletext-border agiletext-style">Practice Listening...</p></h2>
@@ -152,38 +158,38 @@
 			<?php $no++;?>
 				@if($no==1)
 					<div class="col-md-10 col-md-offset-1 md_10 ">
-						<h4 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{route('user.tittle_audio',[tittle($audio->tittle)])}}">{!!remove_dash(htmlspecialchars_decode($audio->tittle))!!}</a></h4>
+						<h4 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{route('tittle_audio',[tittle($audio->tittle)])}}">{!!remove_dash(htmlspecialchars_decode($audio->tittle))!!}</a></h4>
 						<div class="">
 							<audio preload="auto" controls>
 							    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$audio->audio_path}}" />
 							    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$audio->audio_path}}"/>
 							</audio>
 						</div>
-						<h4 align="center" style="margin-top: 30px;"><a href="{{route('user.tittle_audio',[tittle($audio->tittle)])}}">Continue read..</a></h4>
+						<h4 align="center" style="margin-top: 30px;"><a href="{{route('tittle_audio',[tittle($audio->tittle)])}}">Continue read..</a></h4>
 					</div>
 				@endif
 				@if($no>=2 && $no<=3)
 					<div class="col-sm-5 col-xs-5 w3ltext-grids md_5 ">
-						<h4 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{route('user.tittle_audio',[tittle($audio->tittle)])}}">{!!remove_dash(htmlspecialchars_decode($audio->tittle))!!}</a> </h4>
+						<h4 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{route('tittle_audio',[tittle($audio->tittle)])}}">{!!remove_dash(htmlspecialchars_decode($audio->tittle))!!}</a> </h4>
 						<div class="">
 							<audio preload="auto" controls>
 							    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$audio->audio_path}}" />
 							    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$audio->audio_path}}"/>
 							</audio>
 						</div>
-						<h4 align="center" style="margin-top: 30px;"><a href="{{route('user.tittle_audio',[tittle($audio->tittle)])}}">Continue read..</a></h4>
+						<h4 align="center" style="margin-top: 30px;"><a href="{{route('tittle_audio',[tittle($audio->tittle)])}}">Continue read..</a></h4>
 					</div>
 				@endif
 				@if($no>=4 && $no<=6)
 					<div class="col-md-3 col-sm-3 col-xs-3 w3ltext-grids md_3 ">
-						<h4 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{route('user.tittle_audio',[tittle($audio->tittle)])}}">{!!remove_dash(htmlspecialchars_decode($audio->tittle))!!} </a></h4>
+						<h4 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{route('tittle_audio',[tittle($audio->tittle)])}}">{!!remove_dash(htmlspecialchars_decode($audio->tittle))!!} </a></h4>
 						<div class="">
 							<audio preload="auto" controls>
 							    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$audio->audio_path}}" />
 							    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$audio->audio_path}}"/>
 							</audio>
 						</div>
-						<h4 align="center" style="margin-top: 30px;"><a href="{{route('user.tittle_audio',[tittle($audio->tittle)])}}">Continue read..</a></h4>
+						<h4 align="center" style="margin-top: 30px;"><a href="{{route('tittle_audio',[tittle($audio->tittle)])}}">Continue read..</a></h4>
 					</div>
 				@endif
 			@endforeach
@@ -191,7 +197,7 @@
 		<!-- /Audio -->
 		<!-- Listening Article -->
 		<div id="article">
-				<a href="{{route('user.listening')}}">
+				<a href="{{route('listening')}}">
 					<button class="button"><span>View More Article</span></button>
 				</a><br><br><br>
 				<h2><p class="agiletext-border agiletext-style">Article Listening...</p></h2>
@@ -200,23 +206,23 @@
 					<?php $no++;?>
 						@if($no==1)
 							<div class="col-md-10 col-md-offset-1 md_10 ">
-								<h4 class="w3t-text" align="center" ><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a></h4>
+								<h4 class="w3t-text" align="center" ><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a></h4>
 								<p align="center" class="overflow" >{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+								<h4 align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=2 && $no<=3)
 							<div class="col-sm-5 col-xs-5 w3ltext-grids md_5 ">
-								<h4 class="w3t-text" align="center" ><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
+								<h4 class="w3t-text" align="center" ><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
 								<p align="center" class="overflow" >{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+								<h4 align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=4 && $no<=6)
 							<div class="col-md-3 col-sm-3 col-xs-3 w3ltext-grids md_3 ">
-								<h4 class="w3t-text" align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
+								<h4 class="w3t-text" align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
 								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!} </p>
-								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+								<h4 align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 					@endforeach
@@ -234,7 +240,7 @@
 	<div class="codes agileitsbg5">
 		<div class="container">
 			<div id="reading_cate" class="grid_3 grid_5 w3-agileits">
-				<a href="{{route('user.reading')}}">
+				<a href="{{route('reading')}}">
 					<button class="button"><span>Reading</span></button>
 				</a><br><br><br>
 
@@ -244,23 +250,23 @@
 					<?php $no++;?>
 						@if($no==1)
 							<div class="col-md-10 col-md-offset-1 md_10 ">
-								<h4 class="w3t-text" align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a></h4>
+								<h4 class="w3t-text" align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a></h4>
 								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+								<h4 align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=2 && $no<=3)
 							<div class="col-sm-5 col-xs-5 w3ltext-grids md_5 ">
-								<h4 class="w3t-text" align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
+								<h4 class="w3t-text" align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
 								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+								<h4 align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=4 && $no<=6)
 							<div class="col-md-3 col-sm-3 col-xs-3 w3ltext-grids md_3 ">
-								<h4 class="w3t-text" align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
+								<h4 class="w3t-text" align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
 								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!} </p>
-								<h4 align="center"><a href="{{route('user.detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+								<h4 align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 					@endforeach

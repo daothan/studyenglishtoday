@@ -85,7 +85,7 @@
                         <!-- Logout -->
                         <li class="divider"></li>
                         <li>
-                            <a href="{{route('user.logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <a href="{{route('logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                         <!-- End Logout -->
                     </ul>
@@ -93,11 +93,11 @@
                 <!-- END USER -->
 
                 <!-- Login and Register -->
-                <li class="{{isset(Auth::user()->name) || (url()->current()==route('user.login')) ? 'hidden' : null}}">
-                    <a href="{{route('user.login')}}"><strong>Login</strong></a>
+                <li class="{{isset(Auth::user()->name) || (url()->current()==route('login')) ? 'hidden' : null}}">
+                    <a href="{{route('login')}}"><strong>Login</strong></a>
                 </li>
-                <li class="{{isset(Auth::user()->name) || (url()->current()==route('user.register')) ? 'hidden' : null}}">
-                    <a href="{{route('user.register')}}"><strong>Register</strong></a>
+                <li class="{{isset(Auth::user()->name) || (url()->current()==route('register')) ? 'hidden' : null}}">
+                    <a href="{{route('register')}}"><strong>Register</strong></a>
                 </li>
                 <!-- End Login and Register -->
             </ul>
@@ -111,7 +111,7 @@
 
                         <!-- Dashboard -->
                         <li>
-                            <a href="{{route('user.home')}}"><i class="glyphicon glyphicon-home"></i> Home User</a>
+                            <a href="{{route('home')}}"><i class="glyphicon glyphicon-home"></i> Home User</a>
                         </li>
 
                         <li>

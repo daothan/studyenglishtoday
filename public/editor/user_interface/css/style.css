@@ -84,7 +84,7 @@ a.tooltips span:after {
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #090331 transparent transparent transparent;
+    border-color: rgb(85, 153, 212) transparent transparent transparent;
 }
 a:hover.tooltips span {
   visibility: visible;
@@ -92,7 +92,28 @@ a:hover.tooltips span {
 }
 /* Pop up dictionary */
 
+/* Search Form  */
+input[type=text] {
+    width: 200px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    margin:auto;
+}
 
+input[type=text]:focus {
+    width: 100%;
+    margin:auto;
+}
+
+/* Search Form  */
 .w3ls-logo .logo {
     display: inline-flex;
     float: left;
@@ -1413,10 +1434,10 @@ input[type="checkbox"],input[type="radio"]{
 .pa_italic span {
     display: none;
 }
-.collapse.in{
+/* .collapse.in{
     height: 300px;
     display: block;
-}
+} */
 
 .collapsed span {
     display: inline-block;

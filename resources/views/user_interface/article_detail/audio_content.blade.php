@@ -1,7 +1,11 @@
 @extends('user_interface.layouts.user_header')
 @section('content')
 
-
+<div class="form_search">
+	<form >
+	  <input type="text" name="search" placeholder="Search audio articles..">
+	</form>
+</div>
 	<div class="codes agileitsbg5">
 		<div class="container">
 			<div class="grid_3 grid_5 w3-agileits">
@@ -24,7 +28,7 @@
 				            	<b>{{$user_name_comment}}</b>
 				            </p>
 				            <!-- Like Share -->
-							<p><i class="text-success">Like and Share Website For Your Friends</i></p>
+							<p><i class="text-success">Like and Share Website</i></p>
 							<div class="facebook_button">
 								<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
 							</div>
@@ -41,10 +45,7 @@
 				            </div>
 
 							<p>
-							<button class="button transcript_btn" data-toggle="collapse" data-target="#transcript">Transcript</button>
-							<div id="transcript" class="collapse" style="overflow-y: scroll; height:300px;">
 				            	{!!htmlspecialchars_decode($data->transcript)!!}
-							</div>
 							</p>
 			            </div><!-- /.blog-post -->
 
@@ -62,7 +63,7 @@
 									    @if(session('success'))
 											<p style="color:green;"><b><i>{{session('success')}}</i></b></p>
 									    @endif
-									    <form role="form" action="{{route('user.comment',[$data->id,$data->tittle,"audio"])}}">
+									    <form role="form" action="{{route('comment',[$data->id,$data->tittle,"audio"])}}">
 									        <div class="form-group">
 									       		<input type="text" name="current_url_comment" id="current_url_comment" value="{{url()->current()}}" class="hidden">
 									            <textarea class="comment_form" id="comment_form" name="comment_form"></textarea>
@@ -82,7 +83,7 @@
 									@foreach($comment_info as $comment)
 									<!-- Delete-->
 									<div class="delete_comment_admin {{((isset(Auth::user()->name) && (Auth::user()->level < 2 || Auth::user()->name == $comment->user_comment)) ? '':'hidden')}}">
-						           	 	<a href="{{route('user.delete_comment',$comment->id)}}"><button type="button" class="btn_user danger">Delete</button></a>
+						           	 	<a href="{{route('delete_comment',$comment->id)}}"><button type="button" class="btn_user danger">Delete</button></a>
 									</div>
 									<!-- Delete-->
 						            <div class="panel panel-white post panel-shadow">
@@ -134,7 +135,7 @@
 			            @if($no<=6)
 				            <div class="sidebar-module">
 					            <ol class="list-unstyled">
-					              <li><a href="{{route('user.tittle_audio',[$relate->tittle])}}">{{$relate->tittle}}</a></li>
+					              <li><a href="{{route('tittle_audio',[tittle($relate->tittle)])}}">{{$relate->tittle}}</a></li>
 					            </ol>
 				            </div>
 			            @endif

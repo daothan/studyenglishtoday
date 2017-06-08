@@ -71,27 +71,27 @@
 							    <div class="bar3"></div>
 							</div>
 						</div>
-						<h1 class="w3ls-logo {{((url()->current())!=route('user.home')) ? 'hidden' : ''}}"><a href="#top" class="logo"><p style="color:#339fd4;">Studying</p><p style="color:#6ce05a;">English</p><p style="color: #da4d4d;">Today</p></a></h1>
-						<h1 class="w3ls-logo {{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}" class="logo"><p style="color:#339fd4;">Studying</p><p style="color:#6ce05a;">English</p><p style="color: #da4d4d;">Today</p></a></h1>
+						<h1 class="w3ls-logo {{((url()->current())!=route('home')) ? 'hidden' : ''}}"><a href="#top" class="logo"><p style="color:#339fd4;">Studying</p><p style="color:#6ce05a;">English</p><p style="color: #da4d4d;">Today</p></a></h1>
+						<h1 class="w3ls-logo {{((url()->current())!=route('home')) ? '' : 'hidden'}}"><a href="{{route('home')}}" class="logo"><p style="color:#339fd4;">Studying</p><p style="color:#6ce05a;">English</p><p style="color: #da4d4d;">Today</p></a></h1>
 					</div>
 
 					<div id="navbar" class="navbar-collapse collapse ">
 						<ul class="nav navbar-nav">
 						<!-- Newest -->
-							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a href="#newest_post" class="scroll">Newest Posts</a></li>
-							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#newest_post">Newest Posts</a></li>
+							<li class="{{((url()->current())==route('home')) ? '' : 'hidden'}}"><a href="#newest_post" class="scroll">Newest Posts</a></li>
+							<li class="{{((url()->current())!=route('home')) ? '' : 'hidden'}}"><a href="{{route('home')}}#newest_post">Newest Posts</a></li>
 						<!-- - -->
 						<!-- Knowledge Library -->
-							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a href="#library_cate" class="scroll">Knowledge Library</a></li>
-							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#library_cate">Knowledge Library</a></li>
+							<li class="{{((url()->current())==route('home')) ? '' : 'hidden'}}"><a href="#library_cate" class="scroll">Knowledge Library</a></li>
+							<li class="{{((url()->current())!=route('home')) ? '' : 'hidden'}}"><a href="{{route('home')}}#library_cate">Knowledge Library</a></li>
 						<!-- - -->
 						<!-- Listening -->
-							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a href="#listening_cate" class="scroll">Listening</a></li>
-							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#listening_cate">Listening</a></li>
+							<li class="{{((url()->current())==route('home')) ? '' : 'hidden'}}"><a href="#listening_cate" class="scroll">Listening</a></li>
+							<li class="{{((url()->current())!=route('home')) ? '' : 'hidden'}}"><a href="{{route('home')}}#listening_cate">Listening</a></li>
 						<!-- - -->
 						<!-- Reading -->
-							<li class="{{((url()->current())==route('user.home')) ? '' : 'hidden'}}"><a href="#reading_cate" class="scroll">Reading</a></li>
-							<li class="{{((url()->current())!=route('user.home')) ? '' : 'hidden'}}"><a href="{{route('user.home')}}#reading_cate">Reading</a></li>
+							<li class="{{((url()->current())==route('home')) ? '' : 'hidden'}}"><a href="#reading_cate" class="scroll">Reading</a></li>
+							<li class="{{((url()->current())!=route('home')) ? '' : 'hidden'}}"><a href="{{route('home')}}#reading_cate">Reading</a></li>
 						<!-- - -->
 						<!-- Contact -->
 							<li><a data-toggle="modal" data-target="" onclick="contact_us()">Contact</a></li>
@@ -101,11 +101,11 @@
 						<!-- Sign Up and Login -->
 						<ul class="nav navbar-nav navbar-right user">
 
-							<li class="{{isset(Auth::user()->name) || (url()->current()==route('user.register')) ? 'hidden' : null}}">
+							<li class="{{isset(Auth::user()->name) || (url()->current()==route('register')) ? 'hidden' : null}}">
 					        	<a data-toggle="modal" data-target="#login">Login <span class="glyphicon glyphicon-log-in"></span></a>
 					        </li>
 
-					        <li class="{{isset(Auth::user()->name) || (url()->current()==route('user.login')) ? 'hidden' : null}}">
+					        <li class="{{isset(Auth::user()->name) || (url()->current()==route('login')) ? 'hidden' : null}}">
 					        	<a data-toggle="modal" data-target="#register"><span class="glyphicon glyphicon-user"></span> Register</a>
 					        </li>
 					    </ul>
@@ -142,7 +142,7 @@
 			                        <!-- Logout -->
 			                        <li role="separator" class="divider"></li>
 			                        <li>
-			                            <a href="{{route('user.logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+			                            <a href="{{route('logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 			                        </li>
 			                        <!-- End Logout -->
 								</ul>
@@ -189,8 +189,8 @@
 						<p><i><strong>or Connect with.... </strong></i></p>
 							<div class="social-icons">
 								<ul>
-									<li><a href="{{route('user.facebook')}}">Facebook </a></li>
-									<li><a href="{{route('user.google')}}">Google </a></li>
+									<li><a href="{{route('facebook')}}">Facebook </a></li>
+									<li><a href="{{route('google')}}">Google </a></li>
 								</ul>
 								<div class="clearfix"> </div>
 							</div>
@@ -321,7 +321,6 @@
 	<!-- //banner -->
 	<!-- //banner -->
 
-
 @yield('content')
 <!-- Contact -->
 @extends('user_interface.layouts.contact')
@@ -330,11 +329,12 @@
 
 	<!-- footer -->
 	<!-- Like Share -->
-		<p align="center"><i>Like and Share Website For Your Friends</i></p>
 		<div style="padding-left: 100px;" class="facebook_button">
+			<p align=""><i>Like and Share Website</i></p>
 			<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
 		</div>
 		<div style="padding-left: 100px;" class="facebook_button1">
+			<p align=""><i>Like and Share Website</i></p>
 			<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
 		</div>
 	<!-- End Like Share -->
@@ -342,8 +342,8 @@
 		<div class="container">
 			<div class="w3social-icons">Login with<br><br>
 				<ul>
-					<li><a href="{{route('user.facebook')}}" class="fb"><i class="fa fa-facebook"></i></a></li>
-					<li><a href="{{route('user.google')}}" class="gp"><i class="fa fa-google-plus"></i></a></li>
+					<li><a href="{{route('facebook')}}" class="fb"><i class="fa fa-facebook"></i></a></li>
+					<li><a href="{{route('google')}}" class="gp"><i class="fa fa-google-plus"></i></a></li>
 				</ul>
 			</div>
 		</div>

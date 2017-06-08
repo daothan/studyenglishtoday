@@ -24,6 +24,6 @@ class CheckAdmin
                 return $next($request);
             }return redirect()->route('error_404');
         }
-        return redirect()->route('user.home');
+        return redirect()->route('home');
     }
 }

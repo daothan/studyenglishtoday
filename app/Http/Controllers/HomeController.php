@@ -11,6 +11,7 @@ use App\Listening;
 use App\Comment;
 use Auth;
 use Validator;
+use Session;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -31,8 +32,7 @@ class HomeController extends Controller
         return view('user_interface.layouts.user_404');
     }
     /*Show details*/
-    public function user_home(){
-
+    public function user_home(Request $request){
         $newest_post       = Detail::orderBy('id', 'DESC')->get();
 
         $audio             = Listening::orderBy('id','DESC')->paginate(6);
@@ -46,58 +46,95 @@ class HomeController extends Controller
         $max_id_contact    = Contact::max('id');
         $last_contact      = Contact::where('id',$max_id_contact)->get();
 
+        /*Search*/
+        if($request->has('search')){
+            $results = Detail::where('tittle','like','%'.$request->get('search').'%')->paginate(10);
+            return view('user_interface.article_detail.result',compact('results','banner','contact','last_contact'));
+        }
+        /*EndSearch*/
+
         return view('user_interface.user_home', compact('newest_post','listening_article', 'audio','reading_article', 'library_article','banner','contact','last_contact'));
         return view('user_interface.layouts.user_header', compact('banner'));
     }
     /*New post Page*/
-    public function new_post(){
+    public function new_post(Request $request){
         $new_post = Detail::orderBy('id','DESC')->paginate(6);
         $banner            = Banner::select('id','tittle','introduce','content')->get();
 
         $contact           = Contact::where('prior',1)->get();
         $max_id_contact    = Contact::max('id');
         $last_contact      = Contact::where('id',$max_id_contact)->get();
+        /*Search*/
+        if($request->has('search')){
+            $results = Detail::where('tittle','like','%'.$request->get('search').'%')->paginate(10);
+            return view('user_interface.article_detail.result',compact('results','banner','contact','last_contact'));
+        }
+        /*EndSearch*/
         return view('user_interface.article_detail.new_post', compact('new_post','banner','contact','last_contact'));
     }
     /*Library Page*/
-    public function library(){
+    public function library(Request $request){
         $library           = Detail::where('type','library')->orderBy('id','DESC')->paginate(6);
         $banner            = Banner::select('id','tittle','introduce','content')->get();
 
         $contact           = Contact::where('prior',1)->get();
         $max_id_contact    = Contact::max('id');
         $last_contact      = Contact::where('id',$max_id_contact)->get();
+        /*Search*/
+        if($request->has('search')){
+            $results = Detail::where('tittle','like','%'.$request->get('search').'%')->where('type','library')->paginate(10);
+            return view('user_interface.article_detail.result',compact('results','banner','contact','last_contact'));
+        }
+        /*EndSearch*/
         return view('user_interface.article_detail.library_page',compact('library','banner','contact','last_contact'));
     }
 
     /*Listening Page*/
-    public function listening(){
+    public function listening(Request $request){
         $listening      = Detail::where('type','listening')->orderBy('id','DESC')->paginate(6);
         $banner         = Banner::select('id','tittle','introduce','content')->get();
 
         $contact        = Contact::where('prior',1)->get();
         $max_id_contact = Contact::max('id');
         $last_contact   = Contact::where('id',$max_id_contact)->get();
+        /*Search*/
+        if($request->has('search')){
+            $results = Detail::where('tittle','like','%'.$request->get('search').'%')->where('type','audio')->paginate(10);
+            return view('user_interface.article_detail.result',compact('results','banner','contact','last_contact'));
+        }
+        /*EndSearch*/
         return view('user_interface.article_detail.listening_page',compact('listening','banner','contact','last_contact'));
     }
     /*Listening Page*/
-    public function practice_listening(){
+    public function practice_listening(Request $request){
         $audio          = Listening::orderBy('id','DESC')->paginate(6);
 
         $banner         = Banner::select('id','tittle','introduce','content')->get();
         $contact        = Contact::where('prior',1)->get();
         $max_id_contact = Contact::max('id');
         $last_contact   = Contact::where('id',$max_id_contact)->get();
+        /*Search*/
+        if($request->has('search')){
+            $results = Detail::where('tittle','like','%'.$request->get('search').'%')->where('type','audio')->paginate(10);
+            return view('user_interface.article_detail.result',compact('results','banner','contact','last_contact'));
+        }
+        /*EndSearch*/
         return view('user_interface.article_detail.audio_page',compact('audio','banner','contact','last_contact'));
     }
     /*Reading Page*/
-    public function reading(){
+    public function reading(Request $request){
         $reading = Detail::where('type','reading')->orderBy('id','DESC')->paginate(6);
         $banner            = Banner::select('id','tittle','introduce','content')->get();
 
         $contact           = Contact::where('prior',1)->get();
         $max_id_contact    = Contact::max('id');
         $last_contact      = Contact::where('id',$max_id_contact)->get();
+        /*Search*/
+        if($request->has('search')){
+            $results = Detail::where('tittle','like','%'.$request->get('search').'%')->where('type','reading')->paginate(10);
+            return view('user_interface.article_detail.result',compact('results','banner','contact','last_contact'));
+        }
+        /*EndSearch*/
         return view('user_interface.article_detail.reading_page', compact('reading','banner','contact','last_contact'));
     }
 
@@ -115,6 +152,12 @@ class HomeController extends Controller
         $contact        = Contact::where('prior',1)->get();
         $max_id_contact = Contact::max('id');
         $last_contact   = Contact::where('id',$max_id_contact)->get();
+        /*Search*/
+        if($request->has('search')){
+            $results = Detail::where('tittle','like','%'.$request->get('search').'%')->where('type',$type)->paginate(10);
+            return view('user_interface.article_detail.result',compact('results','banner','contact','last_contact'));
+        }
+        /*EndSearch*/
 
         return view('user_interface.article_detail.article_content', compact('detail_article','relate_article','banner','contact','last_contact','comment_info'));
     }
@@ -135,6 +178,12 @@ class HomeController extends Controller
         $contact        = Contact::where('prior',1)->get();
         $max_id_contact = Contact::max('id');
         $last_contact   = Contact::where('id',$max_id_contact)->get();
+        /*Search*/
+        if($request->has('search')){
+            $results = Detail::where('tittle','like','%'.$request->get('search').'%')->where('type','audio')->paginate(10);
+            return view('user_interface.article_detail.result',compact('results','banner','contact','last_contact'));
+        }
+        /*EndSearch*/
 
         return view('user_interface.article_detail.audio_content', compact('detail_audio','relate_audio','banner','contact','last_contact','comment_info'));
     }

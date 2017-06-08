@@ -11,57 +11,56 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
-/*404*/
-	Route::get('error_404',['as'=>'error_404', 'uses'=>'HomeController@error_404']);
-
 /*User interface*/
-	Route::group(['prefix'=>'user'], function(){
 	/*Home*/
-		Route::get('home',['as'=>'user.home', 'uses'=>'HomeController@user_home']);
+		Route::get('',['as'=>'home', 'uses'=>'HomeController@user_home']);
+	/*404*/
+		Route::get('error_404',['as'=>'error_404', 'uses'=>'HomeController@error_404']);
 
 	/*Register*/
-		Route::post('home/register',['as'=>'user.register', 'uses'=>'RegisterController@postRegister_modal']);
+		Route::post('register',['as'=>'register', 'uses'=>'RegisterController@postRegister_modal']);
 
 	/*Login*/
-		Route::post('home/login',['as'=>'user.login', 'uses'=>'LoginController@postLogin_modal']);
+		Route::post('login',['as'=>'login', 'uses'=>'LoginController@postLogin_modal']);
 
 	/*Login by FaceBook*/
-		Route::get('facebook/redirect',['as'=>'user.facebook','uses'=>'SocialController@facebookredirect']);
-		Route::get('facebook/callback', ['as'=>'user.facebook.callback', 'uses'=>'SocialController@facebookcallback']);
+		Route::get('facebook/redirect',['as'=>'facebook','uses'=>'SocialController@facebookredirect']);
+		Route::get('facebook/callback', ['as'=>'facebook.callback', 'uses'=>'SocialController@facebookcallback']);
 	/*Login by Google*/
-		Route::get('google/redirect',['as'=>'user.google','uses'=>'SocialController@googleredirect']);
-		Route::get('google/callback', ['as'=>'user.google.callback', 'uses'=>'SocialController@googlecallback']);
+		Route::get('google/redirect',['as'=>'google','uses'=>'SocialController@googleredirect']);
+		Route::get('google/callback', ['as'=>'google.callback', 'uses'=>'SocialController@googlecallback']);
 	/*Show information user*/
 		Route::get('information', ['as'=>'admin.user.information', 'uses'=>'UserController@information_user']);
 
 	/*Edit information user*/
-		Route::get('edit',['as'=>'user.edit', 'uses'=>'UserController@get_edit_user']);
-		Route::post('edit',['as'=>'user.edit', 'uses'=>'UserController@post_edit_user']);
+		Route::get('edit',['as'=>'edit', 'uses'=>'UserController@get_edit_user']);
+		Route::post('edit',['as'=>'edit', 'uses'=>'UserController@post_edit_user']);
 
 	/*Logout*/
-		Route::get('home/logout', ['as'=>'user.logout', 'uses'=>'LoginController@logout']);
+		Route::get('logout', ['as'=>'logout', 'uses'=>'LoginController@logout']);
 
 	/*Article detail*/
-		Route::get('new_post', ['as'=>'user.new_post', 'uses'=>'HomeController@new_post']);
-		Route::get('listening', ['as'=>'user.listening', 'uses'=>'HomeController@listening']);
-		Route::get('practice_listening', ['as'=>'user.practice_listening', 'uses'=>'HomeController@practice_listening']);
-		Route::get('reading', ['as'=>'user.reading', 'uses'=>'HomeController@reading']);
-		Route::get('library', ['as'=>'user.library', 'uses'=>'HomeController@library']);
-		Route::get('{type}/{tittle}',['as'=>'user.detail_article','uses'=>'HomeController@detail_article']);
-		Route::get('practice/listening/{tittle_audio}',['as'=>'user.tittle_audio','uses'=>'HomeController@tittle_audio']);
+		Route::get('new_post', ['as'=>'new_post', 'uses'=>'HomeController@new_post']);
+		Route::get('listening', ['as'=>'listening', 'uses'=>'HomeController@listening']);
+		Route::get('reading', ['as'=>'reading', 'uses'=>'HomeController@reading']);
+		Route::get('library', ['as'=>'library', 'uses'=>'HomeController@library']);
 
-	/*Comment*/
-		Route::get('comment/{acticle_id}/{acticle_tittle}/{article_type}',['as'=>'user.comment','uses'=>'CommentController@comment']);
-		Route::post('comment/{acticle_id}/{acticle_tittle}/{article_type}',['as'=>'user.comment','uses'=>'CommentController@comment']);
-		Route::get('delete/comment/{id}',['as'=>'user.delete_comment','uses'=>'CommentController@delete']);
+		Route::get('practice_listening', ['as'=>'practice_listening', 'uses'=>'HomeController@practice_listening']);
+		Route::get('practice/listening/{tittle_audio}',['as'=>'tittle_audio','uses'=>'HomeController@tittle_audio']);
+
+		/*Comment*/
+		Route::get('comment/{acticle_id}/{acticle_tittle}/{article_type}',['as'=>'comment','uses'=>'CommentController@comment']);
+		Route::post('comment/{acticle_id}/{acticle_tittle}/{article_type}',['as'=>'comment','uses'=>'CommentController@comment']);
+		Route::get('delete/comment/{id}',['as'=>'delete_comment','uses'=>'CommentController@delete']);
 
 	/*Contact us*/
-		Route::post('/contact', ['as'=>'user.contact', 'uses'=>'HomeController@contact']);
-	});
+		Route::post('contact', ['as'=>'contact', 'uses'=>'HomeController@contact']);
+
+		Route::get('/article/{type}/{tittle}',['as'=>'detail_article','uses'=>'HomeController@detail_article']);
 
 
 /*Admin Page*/
+
 
 Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 
@@ -196,7 +195,7 @@ Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 
 	/*Comment Pages*/
 	Route::group(['prefix'=>'comment'], function(){
-		Route::get('show',['as'=>'admin.comment.show', 'uses'=>'CommentController@show']);
+		Route::get('show-comment',['as'=>'admin.comment.show', 'uses'=>'CommentController@show']);
 
 		/*View Contacts Comment*/
 		Route::get('detail',['as'=>'admin.comment.detail','uses'=>'CommentController@view_comment_detail']);
@@ -207,7 +206,5 @@ Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 	});
 
 });
-
-
 
 

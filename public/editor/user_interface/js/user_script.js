@@ -82,7 +82,7 @@ $("#validate_login").validate({
 		    }
 		});
 		$.ajax({
-			'url' : '/laravel1/user/home/login',
+			'url' : '/laravel1/login',
 			'data': {
 				'username' : $('#username').val(),
 				'user_password':$('#user_password').val()
@@ -149,7 +149,7 @@ $("#validate_register").validate({
 		    }
 		});
 		$.ajax({
-			'url' : '/laravel1/user/home/register',
+			'url' : '/laravel1/register',
 			'data': {
 				'name' : $('#name').val(),
 				'email' : $('#email').val(),
@@ -192,7 +192,7 @@ $("#validate_register").validate({
 		$('#viewModal').modal('show');
 		//console.log(id);
 		$.ajax({
-			url:'/laravel1/user/information',
+			url:'/laravel1/information',
 			type:"GET",
 			data:{"id":id},
 			success:function(result){
@@ -255,7 +255,7 @@ $("#validate_register").validate({
 	function edit_user(id){
 		$('#edituser').modal('show');
 			$.ajax({
-		        url: '/laravel1/user/edit',
+		        url: '/laravel1/edit',
 		        type:"GET",
 		        data: {"id":id},
 					success:function(result){
@@ -285,7 +285,7 @@ $("#validate_register").validate({
 					    }
 					});
 					$.ajax({
-						'url' : '/laravel1/user/edit',
+						'url' : '/laravel1/edit',
 						'data': {
 							'old_id' : $('#old_id_login').val(),
 							'name' : $('#old_name_login').val(),
@@ -310,7 +310,7 @@ $("#validate_register").validate({
 								}
 							}else{
 								setTimeout(function() { $('#editModal').modal('hide');}, 500);
-			   					setTimeout(function() { window.location.href = "/laravel1/user/home";}, 500);
+			   					setTimeout(function() { window.location.href = "/laravel1/home";}, 500);
 							}
 						}
 					});
@@ -353,7 +353,7 @@ function contact_us(){
 				    }
 				});
 				$.ajax({
-					'url':'/laravel1/user/contact',
+					'url':'/laravel1/contact',
 					'data':{
 						'name_contact'		:$('#name_contact').val(),
 						'email_contact'		:$('#email_contact').val(),
@@ -367,7 +367,7 @@ function contact_us(){
 						setTimeout(function(){$('#contact_success').modal('hide');},4000);
 				    },
 					success:function(data){
-						$('#contact_validate').load('/laravel1/user/home #contact_validate');
+						$('#contact_validate').load('/laravel1/home #contact_validate');
 					},
 				})
 			}
