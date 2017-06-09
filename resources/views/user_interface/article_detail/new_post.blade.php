@@ -1,34 +1,31 @@
 @extends('user_interface.layouts.user_header')
 @section('content')
-<div class="form_search">
-	<form >
-	  <input type="text" name="search" placeholder="Search ...">
-	</form>
-</div>
-
 	<div class="codes agileitsbg5">
 		<div class="container">
 			<div class="grid_3 grid_5 w3-agileits">
 				<h3 class="w3ls-hdg">Newest Posts</h3><br>
 					@foreach($new_post as $detail)
-						<div class="col-sm-5 col-xs-5 w3ltext-grids md_5 desktop">
-							<h4 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
-							<!--- If audio then show audio-->
-								<div class="{{($detail->type=="audio")? 'hidden':''}}">
-									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
+						<div class="col-md-8 col-md-offset-3 md_8 each_page">
+							<div class="article_item_md8 each_page_item">
+								<div class="article_img_md8 each_page_img">
+									<img class="article_img_md8 img_thumbnail each_page_img" src="/laravel1/storage/uploads/files/writing.jpg">
 								</div>
-								<div class="{{($detail->type=="audio")? '':'hidden'}}">
-									<?php $audio_path= DB::table('listenings')->where('tittle',$detail->tittle)->get();?>
-									@foreach($audio_path as $data)
-										<audio preload="auto" controls>
-										    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$data->audio_path}}" />
-										    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$data->audio_path}}"/>
-										    <source id="mp3Source" type="audio/wav" src="{{'/'.$data->audio_path}}"/>
-										</audio>
-									@endforeach
+								<div class="article_info_md8 each_page_info">
+									<h3 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h3>
 								</div>
-								<!--- If audio then show audio-->
-							<h4 align="center" style="margin-top:30px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+								<div class="article_type_md8 each_page_type" align="center">
+									@if($detail->type=="audio")
+										<a class="label label_article" href="{{route('practice_listening')}}">{{$detail->type}}</a>
+									@endif
+									@if($detail->type=="library")
+										<a class="label label_article" href="{{route('library')}}">{{$detail->type}}</a>
+									@endif
+									@if($detail->type=="reading")
+										<a class="label label_article" href="{{route('listening')}}">{{$detail->type}}</a>
+									@endif
+									<i class="label label_date"><b>{{$detail->created_at->format('d-m-Y')}}</b></i>
+								</div>
+							</div>
 						</div>
 					@endforeach
 				<div class="clearfix">
@@ -50,5 +47,6 @@
 			</div>
 		</div>
 	</div>
+
 
 @stop

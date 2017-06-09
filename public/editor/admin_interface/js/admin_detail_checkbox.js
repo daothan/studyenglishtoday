@@ -112,9 +112,11 @@ function ckeditor(name, config, toolbar){
 /*Show editor and ckfinder on Modal*/
 //console.log('#tittle'.length);
 if($('#tittle').length){
+	ckeditor("introduce", "config", "standard")
 	ckeditor("content", "config", "standard")
 }
 if($('#edit_tittle').length){
+	ckeditor("edit_introduce", "config", "standard")
 	ckeditor("edit_content", "config", "standard")
 }
 
@@ -129,7 +131,39 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
         }
     })
 };
+/*Upload image*/
+$(document).on('change', '.btn-file :file', function() {
+    var input = $(this),
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [label]);
+    });
 
+    $('.btn-file :file').on('fileselect', function(event, label) {
+        var input = $(this).parents('.input-group').find(':text'),
+            log = label;
+        if( input.length ) {
+            input.val(log);
+        } else {
+            if( log ) alert(log);
+        }
+    });
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#img-upload').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#image_detail").change(function(){
+        readURL(this);
+    });
+    $("#image_detail_edit").change(function(){
+        readURL(this);
+    });
+/*Add listening*/
 /*Show Detail Content*/
 	var id="";
 	$("#view_detail").click(function(event){
@@ -332,6 +366,7 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 						$('#old_id_edit_detail').val(result[0].info_detail.id);
 						$('#edit_type_article').val(result[0].info_detail.type);
 						$('#edit_tittle').val(result[0].info_detail.tittle);
+						$('#old_image_detail').html(result[0].info_audio.image);
 						$('#edit_introduce').val(result[0].info_detail.introduce);
 						CKEDITOR.instances['edit_content'].setData(result[0].info_detail.content);
 

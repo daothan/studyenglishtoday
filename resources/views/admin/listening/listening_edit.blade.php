@@ -31,7 +31,27 @@
 
                     <div class="form-group">
                         <div class="col-md-10 col-md-offset-1">
-                            <b class="text-info">Current File:</b><p id="old_audio"></p>
+                            <b class="text-info">Current Image:</b><p id="old_image"></p>
+                        </div>
+                    </div>
+                    <label class="col-md-1 control-label">Image</label>
+                    <div class="input-group image-preview col-md-10">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <span class="btn btn-default btn-file ">
+                                    <span class="glyphicon glyphicon-picture"></span>
+                                    <span class="image-preview-input-title">Choose Image</span>
+                                    <input type="file" id="image_listening_edit" name="image_listening_edit">
+                                </span>
+                            </span>
+                            <input type="text" class="form-control" readonly>
+                        </div>
+                        <img id='img-upload'/>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-10 col-md-offset-1">
+                            <b class="text-info">Current Audio:</b><p id="old_audio"></p>
                         </div>
                     </div>
                     <label class="col-md-1 control-label">Audio</label>

@@ -2,11 +2,6 @@
 
 @section('content')
 	<!-- CONTENT -->
-	<div class="form_search">
-		<form >
-		  <input type="text" name="search" placeholder="Search ...">
-		</form>
-	</div>
 	<!-- Newest Post -->
 	<div class="codes agileitsbg2">
 	<!-- Like Share -->
@@ -19,6 +14,9 @@
 			<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
 		</div>
 	<!-- End Like Share -->
+	@if(Session::has('error_search'))
+		{{Session::get('error_search')}}
+	@endif
 		<div class="container">
 			<div id="newest_post" class="grid_3 grid_5 w3-agileits">
 				<a href="{{route('new_post')}}">
@@ -29,63 +27,76 @@
 					@foreach($newest_post as $detail)
 					<?php $no++;?>
 						@if($no==1)
-							<div class="col-md-10 col-md-offset-1 md_10 ">
-								<h4 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a></h4>
-								<!--- If audio then show audio-->
-								<div class="{{($detail->type=="audio")? 'hidden':''}}">
-									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
+							<div class="col-md-10 col-md-offset-1 md_10 level1">
+								<div class="article_item_md10 level1_item">
+									<div class="article_img_md10 level1_img">
+										<img class="article_img_md10 img_thumbnail level1_img" src="/laravel1/storage/uploads/files/writing.jpg">
+									</div>
+									<div class="article_info_md10 level1_info">
+										<h3 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h3>
+									</div>
+									<div class="article_info_md10 level1_introduce">
+										<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
+									</div>
+									<div class="article_type_md10 level1_type" align="center">
+										@if($detail->type=="audio")
+											<a class="label label_article" href="{{route('practice_listening')}}">{{$detail->type}}</a>
+										@endif
+										@if($detail->type=="library")
+											<a class="label label_article" href="{{route('library')}}">{{$detail->type}}</a>
+										@endif
+										@if($detail->type=="reading")
+											<a class="label label_article" href="{{route('listening')}}">{{$detail->type}}</a>
+										@endif
+										<i class="label label_date"><b>{{$detail->created_at->format('d-m-Y')}}</b></i>
+									</div>
 								</div>
-								<div class="{{($detail->type=="audio")? '':'hidden'}} ">
-									<?php $audio_path= DB::table('listenings')->where('tittle',$detail->tittle)->get();?>
-									@foreach($audio_path as $data)
-										<audio preload="auto" controls>
-										    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$data->audio_path}}" />
-										    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$data->audio_path}}"/>
-										</audio>
-									@endforeach
-								</div>
-								<!--- If audio then show audio-->
-								<h4 align="center" style="margin-top: 30px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=2 && $no<=3)
-							<div class="col-sm-5 col-xs-5 w3ltext-grids md_5 ">
-								<h4 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a> </h4>
-								<!--- If audio then show audio-->
-								<div class="{{($detail->type=="audio")? 'hidden':''}}">
-									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
+							<div class="col-sm-5 col-xs-5 md_5 level2">
+								<div class="article_item_md5 level2_item">
+									<div class="article_img_md5 level2_img">
+										<img class="article_img img_thumbnail level2_img" src="/laravel1/storage/uploads/files/writing.jpg">
+									</div>
+									<div class="article_info_md5 level2_info">
+										<h3 align="center"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h3>
+									</div>
+									<div class="article_type_md5 level2_type" align="center">
+										@if($detail->type=="audio")
+											<a class="label label_article" href="{{route('practice_listening')}}">{{$detail->type}}</a>
+										@endif
+										@if($detail->type=="library")
+											<a class="label label_article" href="{{route('library')}}">{{$detail->type}}</a>
+										@endif
+										@if($detail->type=="reading")
+											<a class="label label_article" href="{{route('listening')}}">{{$detail->type}}</a>
+										@endif
+									</div>
 								</div>
-								<div class="{{($detail->type=="audio")? '':'hidden'}} ">
-									<?php $audio_path= DB::table('listenings')->where('tittle',$detail->tittle)->get();?>
-									@foreach($audio_path as $data)
-										<audio preload="auto" controls>
-										    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$data->audio_path}}" />
-										    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$data->audio_path}}"/>
-										</audio>
-									@endforeach
-								</div>
-								<!--- If audio then show audio-->
-								<h4 align="center" style="margin-top: 30px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 						@if($no>=4 && $no<=6)
-							<div class="col-md-3 col-sm-3 col-xs-3 w3ltext-grids md_3 ">
-								<h4 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
-								<!--- If audio then show audio-->
-								<div class="{{($detail->type=="audio")? 'hidden':''}}">
-									<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
+							<div class="col-md-3 col-sm-3 md_3 level3">
+								<div class="article_item_md3">
+									<div class="article_img_md3">
+										<img class=" img_thumbnail" src="/laravel1/storage/uploads/files/writing.jpg">
+									</div>
+									<div class="article_info_md3">
+										<h4 align="center"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
+									</div>
+									<div class="article_type_md3">
+										@if($detail->type=="audio")
+											<a class="label label_article" href="{{route('practice_listening')}}">{{$detail->type}}</a>
+										@endif
+										@if($detail->type=="library")
+											<a class="label label_article" href="{{route('library')}}">{{$detail->type}}</a>
+										@endif
+										@if($detail->type=="reading")
+											<a class="label label_article" href="{{route('listening')}}">{{$detail->type}}</a>
+										@endif
+									</div>
 								</div>
-								<div class="{{($detail->type=="audio")? '':'hidden'}} ">
-									<?php $audio_path= DB::table('listenings')->where('tittle',$detail->tittle)->get();?>
-									@foreach($audio_path as $data)
-										<audio preload="auto" controls>
-										    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$data->audio_path}}" />
-										    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$data->audio_path}}"/>
-										</audio>
-									@endforeach
-								</div>
-								<!--- If audio then show audio-->
-								<h4 align="center" style="margin-top: 30px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
 							</div>
 						@endif
 					@endforeach
@@ -111,24 +122,40 @@
 					@foreach($library_article as $detail)
 					<?php $no++;?>
 						@if($no==1)
-							<div class="col-md-10 col-md-offset-1 md_10 ">
-								<h4 class="w3t-text" align="center" ><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a></h4>
-								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+							<div class="col-md-10 col-md-offset-1 md_10 level1">
+								<div class="article_item_md10 level1_item">
+									<div class="article_img_md10 level1_img">
+										<img class="article_img_md10 img_thumbnail level1_img" src="/laravel1/storage/uploads/files/writing.jpg">
+									</div>
+									<div class="article_info_md10 level1_info">
+										<h3 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a></h3>
+									</div>
+									<div class="article_info_md10 level1_introduce">
+										<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
+									</div>
+									<div class="article_type_md10 level1_type" align="center">
+										@if($detail->type=="library")
+											<a class="label label_article" href="{{route('library')}}">{{$detail->type}}</a>
+										@endif
+									</div>
+								</div>
 							</div>
 						@endif
-						@if($no>=2 && $no<=3)
-							<div class="col-sm-5 col-xs-5 w3ltext-grids md_5 ">
-								<h4 class="w3t-text" align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
-								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
-							</div>
-						@endif
-						@if($no>=4 && $no<=6)
-							<div class="col-md-3 col-sm-3 col-xs-3 w3ltext-grids md_3 ">
-								<h4 class="w3t-text" align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
-								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!} </p>
-								<h4 align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+						@if($no>=2 && $no<=5)
+							<div class="col-sm-5 col-xs-5 md_5 level2">
+								<div class="article_item_md5 level2_item">
+									<div class="article_img_md5 level2_img">
+										<img class="article_img img_thumbnail level2_img" src="/laravel1/storage/uploads/files/writing.jpg">
+									</div>
+									<div class="article_info_md5 level2_info">
+										<h3 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a></h3>
+									</div>
+									<div class="article_type_md5 level2_type" align="center">
+										@if($detail->type=="library")
+											<a class="label label_article" href="{{route('library')}}">{{$detail->type}}</a>
+										@endif
+									</div>
+								</div>
 							</div>
 						@endif
 					@endforeach
@@ -144,89 +171,51 @@
 	<div class="codes agileitsbg4">
 		<div class="container">
 			<div id="listening_cate" class="grid_3 grid_5 w3-agileits">
-			<!-- <button class="button pull-right" id="article_choose"><span>View Article</span></button>
-			<button class="button pull-right" id="practice_choose" ><span>View Audio</span></button> -->
-
-		<!-- Audio -->
-		<div id="practice">
-			<a href="{{route('practice_listening')}}">
-				<button class="button"><span>View More Audio</span></button>
-			</a><br><br><br>
-			<h2><p class="agiletext-border agiletext-style">Practice Listening...</p></h2>
-			<?php $no=0;?>
-			@foreach($audio as $audio)
-			<?php $no++;?>
-				@if($no==1)
-					<div class="col-md-10 col-md-offset-1 md_10 ">
-						<h4 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{route('tittle_audio',[tittle($audio->tittle)])}}">{!!remove_dash(htmlspecialchars_decode($audio->tittle))!!}</a></h4>
-						<div class="">
-							<audio preload="auto" controls>
-							    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$audio->audio_path}}" />
-							    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$audio->audio_path}}"/>
-							</audio>
-						</div>
-						<h4 align="center" style="margin-top: 30px;"><a href="{{route('tittle_audio',[tittle($audio->tittle)])}}">Continue read..</a></h4>
+				<!-- Audio -->
+				<div id="practice">
+					<a href="{{route('practice_listening')}}">
+						<button class="button"><span>View More Audio</span></button>
+					</a><br><br><br>
+					<h2><p class="agiletext-border agiletext-style">Practice Listening...</p></h2>
+					<?php $no=0;?>
+					@foreach($audio as $audio)
+						<?php $no++;?>
+							@if($no==1)
+								<div class="col-md-10 col-md-offset-1 md_10 level1">
+									<div class="article_item_md10 level1_item">
+										<div class="article_img_md10 level1_img">
+											<img class="article_img_md10 img_thumbnail level1_img" src="/laravel1/storage/uploads/files/writing.jpg">
+										</div>
+										<div class="article_info_md10 level1_info">
+											<h3 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{route('tittle_audio',[tittle($audio->tittle)])}}">{!!remove_dash(htmlspecialchars_decode($audio->tittle))!!}</a></h3>
+										</div>
+										<div class="article_info_md10 level1_introduce">
+											<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($audio->introduce))!!}</p>
+										</div>
+										<div class="article_type_md10 level1_type" align="center">
+											<a class="label label_article" href="{{route('practice_listening')}}">audio</a>
+										</div>
+									</div>
+								</div>
+							@endif
+							@if($no>=2 && $no<=5)
+								<div class="col-sm-5 col-xs-5 md_5 level2">
+									<div class="article_item_md5 level2_item">
+										<div class="article_img_md5 level2_img">
+											<img class="article_img img_thumbnail level2_img" src="/laravel1/storage/uploads/files/writing.jpg">
+										</div>
+										<div class="article_info_md5 level2_info">
+											<h3 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{route('tittle_audio',[tittle($audio->tittle)])}}">{!!remove_dash(htmlspecialchars_decode($audio->tittle))!!}</a></h3>
+										</div>
+										<div class="article_type_md5 level2_type" align="center">
+											<a class="label label_article" href="{{route('practice_listening')}}">audio</a>
+										</div>
+									</div>
+								</div>
+							@endif
+						@endforeach
 					</div>
-				@endif
-				@if($no>=2 && $no<=3)
-					<div class="col-sm-5 col-xs-5 w3ltext-grids md_5 ">
-						<h4 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{route('tittle_audio',[tittle($audio->tittle)])}}">{!!remove_dash(htmlspecialchars_decode($audio->tittle))!!}</a> </h4>
-						<div class="">
-							<audio preload="auto" controls>
-							    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$audio->audio_path}}" />
-							    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$audio->audio_path}}"/>
-							</audio>
-						</div>
-						<h4 align="center" style="margin-top: 30px;"><a href="{{route('tittle_audio',[tittle($audio->tittle)])}}">Continue read..</a></h4>
-					</div>
-				@endif
-				@if($no>=4 && $no<=6)
-					<div class="col-md-3 col-sm-3 col-xs-3 w3ltext-grids md_3 ">
-						<h4 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{route('tittle_audio',[tittle($audio->tittle)])}}">{!!remove_dash(htmlspecialchars_decode($audio->tittle))!!} </a></h4>
-						<div class="">
-							<audio preload="auto" controls>
-							    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$audio->audio_path}}" />
-							    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$audio->audio_path}}"/>
-							</audio>
-						</div>
-						<h4 align="center" style="margin-top: 30px;"><a href="{{route('tittle_audio',[tittle($audio->tittle)])}}">Continue read..</a></h4>
-					</div>
-				@endif
-			@endforeach
-		</div>
-		<!-- /Audio -->
-		<!-- Listening Article -->
-		<div id="article">
-				<a href="{{route('listening')}}">
-					<button class="button"><span>View More Article</span></button>
-				</a><br><br><br>
-				<h2><p class="agiletext-border agiletext-style">Article Listening...</p></h2>
-				<?php $no=0;?>
-					@foreach($listening_article as $detail)
-					<?php $no++;?>
-						@if($no==1)
-							<div class="col-md-10 col-md-offset-1 md_10 ">
-								<h4 class="w3t-text" align="center" ><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a></h4>
-								<p align="center" class="overflow" >{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
-							</div>
-						@endif
-						@if($no>=2 && $no<=3)
-							<div class="col-sm-5 col-xs-5 w3ltext-grids md_5 ">
-								<h4 class="w3t-text" align="center" ><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
-								<p align="center" class="overflow" >{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
-							</div>
-						@endif
-						@if($no>=4 && $no<=6)
-							<div class="col-md-3 col-sm-3 col-xs-3 w3ltext-grids md_3 ">
-								<h4 class="w3t-text" align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
-								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!} </p>
-								<h4 align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
-							</div>
-						@endif
-					@endforeach
-		</div>
+				<!-- /Audio -->
 				<div class="clearfix"> </div>
 				<script>$(function () {
 				  $('[data-toggle="tooltip"]').tooltip()
@@ -247,26 +236,42 @@
 				<h2><p class="agiletext-border agiletext-style">Reading articles...</p></h2>
 					<?php $no=0;?>
 					@foreach($reading_article as $detail)
-					<?php $no++;?>
+						<?php $no++;?>
 						@if($no==1)
-							<div class="col-md-10 col-md-offset-1 md_10 ">
-								<h4 class="w3t-text" align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a></h4>
-								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+							<div class="col-md-10 col-md-offset-1 md_10 level1">
+								<div class="article_item_md10 level1_item">
+									<div class="article_img_md10 level1_img">
+										<img class="article_img_md10 img_thumbnail level1_img" src="/laravel1/storage/uploads/files/writing.jpg">
+									</div>
+									<div class="article_info_md10 level1_info">
+										<h3 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a></h3>
+									</div>
+									<div class="article_info_md10 level1_introduce">
+										<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
+									</div>
+									<div class="article_type_md10 level1_type" align="center">
+										@if($detail->type=="reading")
+											<a class="label label_article" href="{{route('reading')}}">{{$detail->type}}</a>
+										@endif
+									</div>
+								</div>
 							</div>
 						@endif
-						@if($no>=2 && $no<=3)
-							<div class="col-sm-5 col-xs-5 w3ltext-grids md_5 ">
-								<h4 class="w3t-text" align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
-								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
-								<h4 align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
-							</div>
-						@endif
-						@if($no>=4 && $no<=6)
-							<div class="col-md-3 col-sm-3 col-xs-3 w3ltext-grids md_3 ">
-								<h4 class="w3t-text" align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
-								<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!} </p>
-								<h4 align="center"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">Continue read..</a></h4>
+						@if($no>=2 && $no<=5)
+							<div class="col-sm-5 col-xs-5 md_5 level2">
+								<div class="article_item_md5 level2_item">
+									<div class="article_img_md5 level2_img">
+										<img class="article_img img_thumbnail level2_img" src="/laravel1/storage/uploads/files/writing.jpg">
+									</div>
+									<div class="article_info_md5 level2_info">
+										<h3 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!}</a></h3>
+									</div>
+									<div class="article_type_md5 level2_type" align="center">
+										@if($detail->type=="reading")
+											<a class="label label_article" href="{{route('reading')}}">{{$detail->type}}</a>
+										@endif
+									</div>
+								</div>
 							</div>
 						@endif
 					@endforeach

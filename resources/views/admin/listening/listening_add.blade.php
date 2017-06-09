@@ -26,15 +26,30 @@
                         </div>
                     </div>
 
+                    <label class="col-md-1 control-label">Image</label>
+                    <div class="input-group image-preview col-md-10">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <span class="btn btn-default btn-file ">
+                                    <span class="glyphicon glyphicon-picture"></span>
+                                    <span class="image-preview-input-title">Choose Image</span>
+                                    <input type="file" id="image_listening" name="image_listening">
+                                </span>
+                            </span>
+                            <input type="text" class="form-control" readonly>
+                        </div>
+                        <img id='img-upload'/>
+                    </div>
+
                     <label class="col-md-1 control-label">Audio</label>
                     <div class="input-group image-preview col-md-10">
                         <input type="text" class="form-control image-preview-filename">
                         <span class="input-group-btn">
                             <!-- image-preview-input -->
                             <div class="btn btn-default image-preview-input">
-                                <span class="glyphicon glyphicon-folder-open"></span>
-                                <span class="image-preview-input-title">Choose File</span>
-                                <input type="file" id="audio_listening" name="audio_listening"/>
+                                <span class="glyphicon glyphicon-facetime-video"></span>
+                                <span class="image-preview-input-title">Choose Audio</span>
+                                <input type="file" id="audio_listening" name="audio_listening" multiple=""/>
                             </div>
                         </span>
                     </div>
@@ -45,8 +60,8 @@
 							<textarea class="form-control" name="transcript_listening" id="transcript_listening" rows="3"></textarea>
 						</div>
 					</div>
-                    <div id="loading_text" style="width: 800px; margin: auto; display: none;" ><p class="text-danger">Please wait...</p></div>
-                    <div id="loading" style="width: 800px; margin: auto;  display: none;"><img src='/laravel1/storage/uploads/images/loading.gif' /></div>
+                    <div id="loading_text_add" style="width: 800px; margin: auto; display: none;" ><p class="text-danger">Please wait...</p></div>
+                    <div id="loading_add" style="width: 800px; margin: auto;  display: none;"><img src='/laravel1/storage/uploads/images/loading.gif' /></div>
                 </div>
                 <div class="modal-footer modal-body-footer">
                     <!-- Submit -->

@@ -14,7 +14,7 @@ class Detail extends Model
         return ('search');
     }
     protected $table = 'details';
-    protected $fillable = ['id','tittle', 'alias', 'type', 'introduce','content', 'user_id', 'cate_id'];
+    protected $fillable = ['id','tittle', 'alias', 'type','image','image_path', 'introduce','content', 'user_id', 'cate_id'];
 
     public $timestamps = true;
 

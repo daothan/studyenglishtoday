@@ -1,10 +1,6 @@
 @extends('user_interface.layouts.user_header')
 @section('content')
-<div class="form_search">
-	<form >
-	  <input type="text" name="search" placeholder="Search ...">
-	</form>
-</div>
+
 	<div class="codes agileitsbg5">
 		<div class="container">
 			<div class="grid_3 grid_5 w3-agileits">
@@ -24,7 +20,7 @@
 			        <div class="col-sm-8 blog-main overflow">
 
 			            <div class="blog-post">
-				            <h2 class=""><a href="">{{$data->tittle}}</a></h2>
+				            <h2 class=""><a>{{$data->tittle}}</a></h2>
 				            <p class="blog-post-meta">Created <i class="{{(isset(Auth::user()->name) && Auth::user()->level<2) ? '':'hidden'}}">{{$data->created_at->format('H:i:s d-m-Y')}}</i><i class="{{(isset(Auth::user()->name) && Auth::user()->level==2) ? '':'hidden'}}">{{$data->created_at->format('d-m-Y')}}</i><i class="{{(isset(Auth::user()->name)) ? 'hidden':''}}">{{$data->created_at->format('d-m-Y')}}</i> by
 				            	<b>{{$user_name_comment}}</b>
 				            </p>

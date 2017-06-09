@@ -47,6 +47,27 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <div class="col-md-10 col-md-offset-1">
+                            <b class="text-info">Current Image:</b><p id="old_image_detail"></p>
+                        </div>
+                    </div>
+                    <label class="col-md-1 control-label">Image</label>
+                    <div class="input-group image-preview col-md-10">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <span class="btn btn-default btn-file ">
+                                    <span class="glyphicon glyphicon-picture"></span>
+                                    <span class="image-preview-input-title">Choose Image</span>
+                                    <input type="file" id="image_detail_edit" name="image_detail_edit">
+                                </span>
+                            </span>
+                            <input type="text" class="form-control" readonly>
+                        </div>
+                        <img id='img-upload'/>
+                    </div>
+
+
 					<div class="form-group">
 						<label class="col-md-1 control-label">Content</label>
 						<div class="col-md-10">

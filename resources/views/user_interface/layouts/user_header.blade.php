@@ -320,6 +320,16 @@
 
 	<!-- //banner -->
 	<!-- //banner -->
+<div class="form_search form_search col-md-10 col-md-offset-1">
+	<form >
+	  <input type="text" name="search" placeholder="Search ...">
+	</form>
+</div>
+@if(Session::has('error_search'))
+  <div class="alert-box danger">
+  <h2>{!! Session::get('error_search') !!}</h2>
+  </div>
+@endif
 
 @yield('content')
 <!-- Contact -->

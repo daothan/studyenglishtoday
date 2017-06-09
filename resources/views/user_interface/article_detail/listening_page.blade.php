@@ -1,11 +1,5 @@
 @extends('user_interface.layouts.user_header')
 @section('content')
-<div class="form_search">
-	<form >
-	  <input type="text" name="search" placeholder="Search ...">
-	</form>
-</div>
-
 	<div class="codes agileitsbg5">
 		<div class="container">
 			<div class="grid_3 grid_5 w3-agileits">

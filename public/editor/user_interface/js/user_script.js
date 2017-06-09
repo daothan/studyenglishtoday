@@ -399,9 +399,34 @@ $('#practice_choose').click(function(){
 var $window = $(window);
 function checkWidth() {
     if ($window.width() <= 800) {
-    	$('.md_10').removeClass('desktop').addClass('mobile_screen');
-        $('.md_5').removeClass('desktop').removeClass('col-sm-5').removeClass('col-xs-5').removeClass('w3ltext-grids').addClass('col-md-10').addClass('col-md-offset-1').addClass('mobile_screen');
-        $('.md_3').removeClass('desktop').removeClass('col-md-3').removeClass('col-sm-3').removeClass('col-xs-3').removeClass('w3ltext-grids').addClass('col-md-10').addClass('col-md-offset-1').addClass('mobile_screen');
+    	/*When reduce screen, then change all class to md3 type css*/
+    	/*MD10 -> MD3*/
+    	$('.level1').removeClass('desktop').removeClass('col-md-10').removeClass('col-md-offset-1').removeClass('md_10').addClass('mobile_screen');
+    	$('.level1_item').removeClass('article_item_md10').addClass('article_item_md3')
+    	$('.level1_img').removeClass('article_img_md10').addClass('article_img_md3')
+    	$('.level1_info').removeClass('article_info_md10').addClass('article_info_md3')
+    	$('.level1_type').removeClass('article_type_md10').addClass('article_type_md3')
+    	$('.level1_introduce').addClass('hide')
+
+    	/*MD8 -> MD3*/
+    	$('.each_page').removeClass('desktop').removeClass('col-md-8').removeClass('col-md-offset-3').removeClass('md_8').addClass('mobile_screen');
+    	$('.each_page_item').removeClass('article_item_md8').addClass('article_item_md3')
+    	$('.each_page_img').removeClass('article_img_md8').addClass('article_img_md3')
+    	$('.each_page_info').removeClass('article_info_md8').addClass('article_info_md3')
+    	$('.each_page_type').removeClass('article_type_md8').addClass('article_type_md3')
+    	$('.label_date').addClass('hide')
+
+    	/*MD5 -> MD3*/
+        $('.level2').removeClass('desktop').removeClass('col-sm-5').removeClass('col-xs-5 ').removeClass('md_5').addClass('mobile_screen');
+    	$('.level2_item').removeClass('article_item_md5').addClass('article_item_md3')
+    	$('.level2_img').removeClass('article_img_md5').addClass('article_img_md3')
+    	$('.level2_info').removeClass('article_info_md5').addClass('article_info_md3')
+    	$('.level2_type').removeClass('article_type_md5').addClass('article_type_md3')
+
+    	/*MD3*/
+        $('.level3').removeClass('desktop').removeClass('col-md-3').removeClass('col-sm-3 ').removeClass('md_3').addClass('mobile_screen');
+
+
         $('#article_choose').removeClass('pull-right');
         $('#practice_choose').removeClass('pull-right');
 
@@ -423,9 +448,32 @@ function checkWidth() {
     };
 
     if ($window.width() > 800) {
-    	$('.md_10').removeClass('mobile_screen').addClass('desktop');
-        $('.md_5').removeClass('col-md-10').removeClass('col-md-offset-1').removeClass('mobile_screen').addClass('col-sm-5').addClass('col-xs-5').addClass('w3ltext-grids').addClass('desktop');
-        $('.md_3').removeClass('col-md-10').removeClass('col-md-offset-1').removeClass('mobile_screen').addClass('col-md-3').addClass('col-sm-3').addClass('col-xs-3').addClass('w3ltext-grids').addClass('desktop');
+
+    	/*When reduce desktop, then change all class to original type css*/
+    	/*MD10 -> MD3*/
+    	$('.level1').removeClass('mobile_screen').addClass('desktop').addClass('col-md-10').addClass('col-md-offset-1').addClass('md_10');
+    	$('.level1_item').removeClass('article_item_md3').addClass('article_item_md10')
+    	$('.level1_img').removeClass('article_img_md3').addClass('article_img_md10')
+    	$('.level1_info').removeClass('article_info_md3').addClass('article_info_md10')
+    	$('.level1_type').removeClass('article_type_md3').addClass('article_type_md10')
+
+    	/*MD8 -> MD3*/
+    	$('.each_page').removeClass('mobile_screen').addClass('desktop').addClass('col-md-8').addClass('col-md-offset-3').addClass('md_8');
+    	$('.each_page_item').removeClass('article_item_md3').addClass('article_item_md8')
+    	$('.each_page_img').removeClass('article_img_md3').addClass('article_img_md8')
+    	$('.each_page_info').removeClass('article_info_md3').addClass('article_info_md8')
+    	$('.each_page_type').removeClass('article_type_md3').addClass('article_type_md8')
+
+    	/*MD5 -> MD3*/
+        $('.level2').removeClass('mobile_screen').addClass('desktop').addClass('col-sm-5').addClass('col-xs-5 ').addClass('md_5');
+    	$('.level2_item').removeClass('article_item_md3').addClass('article_item_md5')
+    	$('.level2_img').removeClass('article_img_md3').addClass('article_img_md5')
+    	$('.level2_info').removeClass('article_info_md3').addClass('article_info_md5')
+    	$('.level2_type').removeClass('article_type_md3').addClass('article_type_md5')
+
+    	/*MD3*/
+        $('.level3').removeClass('mobile_screen').addClass('desktop').addClass('col-md-3').addClass('col-sm-3 ').addClass('md_3');
+
         $('#article_choose').addClass('pull-right');
         $('#practice_choose').addClass('pull-right');
 

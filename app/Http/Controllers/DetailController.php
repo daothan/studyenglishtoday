@@ -9,6 +9,7 @@ use App\Category;
 use App\Listening;
 use Validator;
 use Auth;
+use File;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 
@@ -48,6 +49,18 @@ class DetailController extends Controller
                 'messages'=>$validator->errors()
                 ],200);
         }else{
+
+            /*Add Image*/
+            $file_detail_image = $request->file('image_detail')->getClientOriginalName();
+            dd($file_detail_image);die;
+            $folder_create_img = tittle($request->tittle);
+            $folder_img = 'storage/uploads/images/' .$folder_create_img;
+
+            if(!file_exists($folder_img)){
+                File::makeDirectory($folder_img, 0777, true);
+            }
+            $request->file('image_detail')->move($folder_img,$file_detail_image);
+
             $detail = new Detail;
 
             /*Request data*/

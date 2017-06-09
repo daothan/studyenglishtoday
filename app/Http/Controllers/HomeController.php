@@ -34,7 +34,7 @@ class HomeController extends Controller
 
     /*Search*/
     public function search(Request $request){
-        $results = Detail::where('tittle','like','%'.$request->get('search').'%')->paginate(10);
+        $results = Detail::where('tittle','like','%'.$request->get('search').'%')->paginate(6);
         $banner            = Banner::select('id','tittle','introduce','content')->get();
 
         $contact           = Contact::where('prior',1)->get();
@@ -59,7 +59,11 @@ class HomeController extends Controller
 
         /*Search*/
         if($request->has('search')){
-            return redirect()->route('search',['search='.$request->get('search')]);
+            if($request->search != " "){
+                return redirect()->route('search',['search='.$request->get('search')]);
+            }else{
+                 Session::flash('error_search', 'No results found');
+            }
         }
         /*EndSearch*/
 

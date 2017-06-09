@@ -122,7 +122,38 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
     })
 };
 
+/*Upload image*/
+$(document).on('change', '.btn-file :file', function() {
+        var input = $(this),
+            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+        input.trigger('fileselect', [label]);
+        });
 
+        $('.btn-file :file').on('fileselect', function(event, label) {
+            var input = $(this).parents('.input-group').find(':text'),
+                log = label;
+            if( input.length ) {
+                input.val(log);
+            } else {
+                if( log ) alert(log);
+            }
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#img-upload').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#image_listening").change(function(){
+            readURL(this);
+        });
+        $("#image_listening_edit").change(function(){
+            readURL(this);
+        });
 /*Add listening*/
 	$('#add_listening').click(function(){
 		$('#addlisteningModal').modal('show');
@@ -142,6 +173,9 @@ for (instance in CKEDITOR.instances) {
 					ignore: [],/*ignore hidden field*/
 					rules:{
 						tittle_listening:{
+							required:true
+						},
+						image_listening:{
 							required:true
 						},
 						audio_listening:{
@@ -167,12 +201,12 @@ for (instance in CKEDITOR.instances) {
 						    data:new FormData($("#validate_add_listening")[0]), // high importance!
 						    processData: false, // high importance!
 						    beforeSend: function(){
-						        $('#loading_text').show();
-						        $('#loading').show();
+						        $('#loading_text_add').show();
+						        $('#loading_add').show();
 					    	},
 				   		   	complete: function(){
-						    	    $('#loading_text').hide();
-						    	    $('#loading').hide();
+						    	    $('#loading_text_add').hide();
+						    	    $('#loading_add').hide();
 					    	},
 						    success: function (data) {
 								console.log(data);
@@ -256,6 +290,7 @@ $("#edit_listening").click(function(event){
 						$('#old_id_edit_listening').val(result[0].info_audio.id);
 						$('#old_id_edit_detail1').val(result[0].id_detail[0].id);
 						$('#tittle_listening_edit').val(result[0].info_audio.tittle);
+						$('#old_image').html(result[0].info_audio.image);
 						$('#old_audio').html(result[0].info_audio.audio);
 						CKEDITOR.instances['introduce_listening_edit'].setData(result[0].info_audio.introduce);
 						CKEDITOR.instances['transcript_listening_edit'].setData(result[0].info_audio.transcript);
