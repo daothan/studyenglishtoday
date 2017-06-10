@@ -8,10 +8,10 @@
 						<div class="col-md-8 col-md-offset-1 md_8 each_page">
 							<div class="article_item_md8 each_page_item">
 								<div class="article_img_md8 each_page_img">
-									<img class="article_img_md8 img_thumbnail each_page_img" src="/laravel1/storage/uploads/files/writing.jpg">
+									<img class="article_img_md8 img_thumbnail each_page_img" src="{{$detail->image_path}}">
 								</div>
 								<div class="article_info_md8 each_page_info">
-									<h3 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h3>
+									<h3 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{route('tittle_audio',[tittle($detail->tittle)])">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h3>
 								</div>
 								<div class="article_type_md8 each_page_type" align="center">
 									@if($detail->type=="audio")
@@ -35,7 +35,7 @@
 				})</script>
 					Total Pages: {!! $reading->lastPage() !!}
 
-					<div class="pagination pull-right">
+					<div class="pagination pull-right {{($reading->lastPage()==0)?'hidden':''}}">
 						<a href="{{$reading->url(1)}}" class="{{($reading->currentPage()==1) ? 'hidden':''}}">&laquo;</a>
 						<a href="{{$reading->url($reading->currentPage()-1)}}" class="{{($reading->currentPage()==1) ? 'hidden':''}}">Prev</a>
 						@for($i=1; $i<=$reading->lastPage(); $i++)

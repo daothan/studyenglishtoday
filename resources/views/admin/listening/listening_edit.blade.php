@@ -36,9 +36,9 @@
                     </div>
                     <label class="col-md-1 control-label">Image</label>
                     <div class="input-group image-preview col-md-10">
-                        <div class="input-group">
+                        <div class="input-group-edit">
                             <span class="input-group-btn">
-                                <span class="btn btn-default btn-file ">
+                                <span class="btn btn-default btn-file-edit ">
                                     <span class="glyphicon glyphicon-picture"></span>
                                     <span class="image-preview-input-title">Choose Image</span>
                                     <input type="file" id="image_listening_edit" name="image_listening_edit">
@@ -46,7 +46,7 @@
                             </span>
                             <input type="text" class="form-control" readonly>
                         </div>
-                        <img id='img-upload'/>
+                        <img id='img-upload_edit'/>
                     </div>
 
                     <div class="form-group">
@@ -73,8 +73,10 @@
 							<textarea class="form-control" name="transcript_listening_edit" id="transcript_listening_edit" rows="3"></textarea>
 						</div>
 					</div>
-                    <div id="loading_text" style="width: 800px; margin: auto; display: none;" ><p class="text-danger">Please wait...</p></div>
-                    <div id="loading" style="width: 800px; margin: auto;  display: none;"><img src='/laravel1/storage/uploads/images/loading.gif' /></div>
+                    <div class="form-group" style="width:90px; margin:auto; display: none;" id="loading_edit">
+                        <div><p class="text-danger">Please wait...</p></div>
+                        <div><img src='/laravel1/storage/uploads/images/loading.gif'/></div>
+                    </div>
                 </div>
                 <div class="modal-footer modal-body-footer">
                     <!-- Submit -->

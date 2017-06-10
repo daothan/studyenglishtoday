@@ -78,20 +78,23 @@
 					<div id="navbar" class="navbar-collapse collapse ">
 						<ul class="nav navbar-nav">
 						<!-- Newest -->
-							<li class="{{((url()->current())==route('home')) ? '' : 'hidden'}}"><a href="#newest_post" class="scroll">Newest Posts</a></li>
-							<li class="{{((url()->current())!=route('home')) ? '' : 'hidden'}}"><a href="{{route('home')}}#newest_post">Newest Posts</a></li>
+							<!-- <li class="{{((url()->current())==route('home')) ? '' : 'hidden'}}"><a href="#newest_post" class="scroll">Newest Posts</a></li>
+							<li class="{{((url()->current())!=route('home')) ? '' : 'hidden'}}"><a href="{{route('home')}}#newest_post">Newest Posts</a></li> -->
 						<!-- - -->
 						<!-- Knowledge Library -->
-							<li class="{{((url()->current())==route('home')) ? '' : 'hidden'}}"><a href="#library_cate" class="scroll">Knowledge Library</a></li>
-							<li class="{{((url()->current())!=route('home')) ? '' : 'hidden'}}"><a href="{{route('home')}}#library_cate">Knowledge Library</a></li>
+							<!-- <li class="{{((url()->current())==route('home')) ? '' : 'hidden'}}"><a href="#library_cate" class="scroll">Knowledge Library</a></li>
+							<li class="{{((url()->current())!=route('home')) ? '' : 'hidden'}}"><a href="{{route('home')}}#library_cate">Knowledge Library</a></li> -->
+							<li><a href="{{route('library')}}">Knowledge Library</a></li>
 						<!-- - -->
 						<!-- Listening -->
-							<li class="{{((url()->current())==route('home')) ? '' : 'hidden'}}"><a href="#listening_cate" class="scroll">Listening</a></li>
-							<li class="{{((url()->current())!=route('home')) ? '' : 'hidden'}}"><a href="{{route('home')}}#listening_cate">Listening</a></li>
+							<!-- <li class="{{((url()->current())==route('home')) ? '' : 'hidden'}}"><a href="#listening_cate" class="scroll">Listening</a></li>
+							<li class="{{((url()->current())!=route('home')) ? '' : 'hidden'}}"><a href="{{route('home')}}#listening_cate">Listening</a></li> -->
+							<li><a href="{{route('practice_listening')}}">Listening</a></li>
 						<!-- - -->
 						<!-- Reading -->
-							<li class="{{((url()->current())==route('home')) ? '' : 'hidden'}}"><a href="#reading_cate" class="scroll">Reading</a></li>
-							<li class="{{((url()->current())!=route('home')) ? '' : 'hidden'}}"><a href="{{route('home')}}#reading_cate">Reading</a></li>
+							<!-- <li class="{{((url()->current())==route('home')) ? '' : 'hidden'}}"><a href="#reading_cate" class="scroll">Reading</a></li>
+							<li class="{{((url()->current())!=route('home')) ? '' : 'hidden'}}"><a href="{{route('home')}}#reading_cate">Reading</a></li> -->
+							<li><a href="{{route('reading')}}">Reading</a></li>
 						<!-- - -->
 						<!-- Contact -->
 							<li><a data-toggle="modal" data-target="" onclick="contact_us()">Contact</a></li>

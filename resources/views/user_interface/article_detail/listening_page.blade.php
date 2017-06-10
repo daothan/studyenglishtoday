@@ -18,7 +18,7 @@
 				})</script>
 					Total Pages: {!! $listening->lastPage() !!}
 
-					<div class="pagination pull-right">
+					<div class="pagination pull-right {{($listening->lastPage()==0)?'hidden':''}}">
 						<a href="{{$listening->url(1)}}" class="{{($listening->currentPage()==1) ? 'hidden':''}}">&laquo;</a>
 						<a href="{{$listening->url($listening->currentPage()-1)}}" class="{{($listening->currentPage()==1) ? 'hidden':''}}">Prev</a>
 						@for($i=1; $i<=$listening->lastPage(); $i++)

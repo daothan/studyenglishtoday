@@ -3,12 +3,12 @@
 	<div class="codes agileitsbg5">
 		<div class="container">
 			<div class="grid_3 grid_5 w3-agileits">
-				<h3 class="w3ls-hdg">Newest Posts</h3><br>
+				<h3 class="w3ls-hdg">Study English Today</h3><br>
 					@foreach($new_post as $detail)
 						<div class="col-md-8 col-md-offset-3 md_8 each_page">
 							<div class="article_item_md8 each_page_item">
 								<div class="article_img_md8 each_page_img">
-									<img class="article_img_md8 img_thumbnail each_page_img" src="/laravel1/storage/uploads/files/writing.jpg">
+									<img class="article_img_md8 img_thumbnail each_page_img" src="{{$detail->image_path}}">
 								</div>
 								<div class="article_info_md8 each_page_info">
 									<h3 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h3>
@@ -35,7 +35,7 @@
 				})</script>
 					Total Pages: {!! $new_post->lastPage() !!}
 
-					<div class="pagination pull-right">
+					<div class="pagination pull-right {{($new_post->lastPage()==0)?'hidden':''}}">
 						<a href="{{$new_post->url(1)}}" class="{{($new_post->currentPage()==1) ? 'hidden':''}}">&laquo;</a>
 						<a href="{{$new_post->url($new_post->currentPage()-1)}}" class="{{($new_post->currentPage()==1) ? 'hidden':''}}">Prev</a>
 						@for($i=1; $i<=$new_post->lastPage(); $i++)

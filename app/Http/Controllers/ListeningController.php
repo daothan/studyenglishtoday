@@ -78,6 +78,8 @@ class ListeningController extends Controller
             $detail->alias = tittle(($request->tittle_listening));
             $detail->type = "audio";
             $detail->introduce=$request->introduce_listening;
+            $detail->image      = $file_name_image;
+            $detail->image_path = $folder_img.'/'.$file_name_image;
             $detail->content="Audio File";
             $detail->user_id = Auth::user()->id;
             $detail->cate_id =$request->cate_listening;
@@ -143,6 +145,7 @@ class ListeningController extends Controller
                 ],200);
         }else{
             $listening = Listening::find($id);
+            $detail =Detail::find($request->old_id_edit_detail1);
 /*Edit Audio*/
             if($request->audio_listening_edit){
                 File::deleteDirectory('storage/uploads/listenings/'.tittle($listening->tittle));
@@ -182,6 +185,9 @@ class ListeningController extends Controller
                 $request->file('image_listening_edit')->move($folder_image,$file_name_image);
                 $listening->image      = $file_name_image;
                 $listening->image_path = $folder_image.'/'.$file_name_image;
+
+                $detail->image      = $file_name_image;
+                $detail->image_path = $folder_image.'/'.$file_name_image;
             }else{
                 $folder_create_image = tittle($request->tittle_listening_edit);
                 $folder_image = 'storage/uploads/images/' .$folder_create_image;
@@ -192,6 +198,9 @@ class ListeningController extends Controller
                 File::deleteDirectory('storage/uploads/images/'.tittle($listening->tittle));
                 $listening->image      = $listening->image;
                 $listening->image_path = $folder_image.'/'.$listening->image;
+
+                $detail->image      = $listening->image;
+                $detail->image_path =  $folder_image.'/'.$listening->image;
             }
 
 
@@ -199,8 +208,6 @@ class ListeningController extends Controller
             $listening->tittle     = $request->tittle_listening_edit;
             $listening->introduce  = $request->introduce_listening_edit;
             $listening->transcript = $request->transcript_listening_edit;
-
-            $detail =Detail::find($request->old_id_edit_detail1);
 
             if($listening->save()){
 

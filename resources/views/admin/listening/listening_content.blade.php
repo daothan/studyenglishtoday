@@ -17,6 +17,13 @@
 							<div id="listening_introduce"></div>
 						</div>
 						<div class="form-group col-centered">
+							<label class="control-label text-info">Image</label>
+							<div id="listening_image"></div>
+						</div>
+						<div class="form-group col-centered" >
+							<img id="image" src="" style="width: 300px; margin:auto;">
+						</div>
+						<div class="form-group col-centered">
 							<label class="control-label text-info">Audio</label>
 							<div id="listening_audio"></div>
 						</div>

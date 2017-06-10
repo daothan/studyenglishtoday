@@ -123,37 +123,68 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 };
 
 /*Upload image*/
-$(document).on('change', '.btn-file :file', function() {
-        var input = $(this),
-            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-        input.trigger('fileselect', [label]);
-        });
+	$(document).on('change', '.btn-file :file', function() {
+	    var input = $(this),
+	        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+	    input.trigger('fileselect', [label]);
+    });
 
-        $('.btn-file :file').on('fileselect', function(event, label) {
-            var input = $(this).parents('.input-group').find(':text'),
-                log = label;
-            if( input.length ) {
-                input.val(log);
-            } else {
-                if( log ) alert(log);
-            }
-        });
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#img-upload').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
+    $('.btn-file :file').on('fileselect', function(event, label) {
+        var input = $(this).parents('.input-group').find(':text'),
+            log = label;
+        if( input.length ) {
+            input.val(log);
+        } else {
+            if( log ) alert(log);
         }
+    });
 
-        $("#image_listening").change(function(){
-            readURL(this);
-        });
-        $("#image_listening_edit").change(function(){
-            readURL(this);
-        });
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#img-upload').attr('src', e.target.result);
+                $('#img-upload_edit').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#image_listening").change(function(){
+        readURL(this);
+    });
+
+    /*Edit Image*/
+    $(document).on('change', '.btn-file-edit :file', function() {
+	    var input = $(this),
+	        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+	    input.trigger('fileselect', [label]);
+    });
+
+    $('.btn-file-edit :file').on('fileselect', function(event, label) {
+        var input = $(this).parents('.input-group-edit').find(':text'),
+            log = label;
+        if( input.length ) {
+            input.val(log);
+        } else {
+            if( log ) alert(log);
+        }
+    });
+
+    function readURL_edit(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#img-upload_edit').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#image_listening_edit").change(function(){
+        readURL_edit(this);
+    });
+
+
 /*Add listening*/
 	$('#add_listening').click(function(){
 		$('#addlisteningModal').modal('show');
@@ -201,15 +232,13 @@ for (instance in CKEDITOR.instances) {
 						    data:new FormData($("#validate_add_listening")[0]), // high importance!
 						    processData: false, // high importance!
 						    beforeSend: function(){
-						        $('#loading_text_add').show();
 						        $('#loading_add').show();
 					    	},
 				   		   	complete: function(){
-						    	    $('#loading_text_add').hide();
-						    	    $('#loading_add').hide();
+					    	    $('#loading_add').hide();
 					    	},
 						    success: function (data) {
-								console.log(data);
+								//console.log(data);
 								if(data.error_add_listening ==true){
 									$('.error').hide();
 									if(data.messages.tittle_listening != undefined){
@@ -250,13 +279,17 @@ var id="";
 			    		type: "GET",
 			    		data: {"id":id,},
 			    		success:function(result){
-			    			console.log(result);
+			    			//console.log(result);
 			    			$('#viewlisteningModal').modal('show');
 
 			    			$('#listening_tittle').html(result.tittle);
 			    			$('#listening_introduce').html(result.introduce);
+			    			$('#listening_image').html(result.image);
 			    			$('#listening_audio').html(result.audio);
 			    			$('#listening_transcript').html(result.transcript);
+
+			    			var path_img = "http://localhost/laravel1/"+result.image_path;
+			    			$("#image").attr("src", path_img);
 
 			    			var path = "http://localhost/laravel1/"+result.audio_path;
 			    			$("#oggSource").attr("src", path).detach().appendTo("#audioPlayer");
@@ -324,12 +357,10 @@ $("#edit_listening").click(function(event){
 								    data:new FormData($("#validate_edit_listening")[0]), // high importance!
 								    processData: false, // high importance!
 								    beforeSend: function(){
-							        $('#loading_text').show();
-							        $('#loading').show();
+							        	$('#loading_edit').show();
 							    	},
 						   		   	complete: function(){
-								    	    $('#loading_text').hide();
-								    	    $('#loading').hide();
+							    	    $('#loading_edit').hide();
 						    		},
 								    success: function (data){
 										if(data.error_edit_listening ==true){
@@ -384,7 +415,7 @@ $('#delete_listening').click(function(event){
 				type:"GET",
 				data: {"id":id},
 				success:function(result){
-					console.log(result);
+					//console.log(result);
 					if(result.error_delete_cate==true){
 						$('#view_error_delete').modal('show');
 					}else{
