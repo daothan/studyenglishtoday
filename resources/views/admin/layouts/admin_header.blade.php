@@ -121,7 +121,7 @@
                         <!-- Tables -->
                          <li>
                             <a href=""><i class="fa fa-table fa-fw "></i> Tables <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level collapse">
+                            <ul class="nav nav-second-level collapse in">
                                 <li>
                                     <a href="{{route('admin.user.show')}}">Users</a>
                                 </li>
@@ -142,6 +142,9 @@
                                 </li>
                                 <li>
                                     <a href="{{route('admin.comment.show')}}">Comments</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('admin.text_file.show')}}">Text Files</a>
                                 </li>
                             </ul>
                         </li>
@@ -203,6 +206,7 @@
         <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_contact_checkbox.js')}}"></script>
         <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_listening_checkbox.js')}}"></script>
         <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_comment_checkbox.js')}}"></script>
+        <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_file_checkbox.js')}}"></script>
 
 
 

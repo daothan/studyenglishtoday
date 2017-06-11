@@ -260,43 +260,43 @@ for (instance in CKEDITOR.instances) {
 	});
 
 /*View Content*/
-var id="";
+	var id="";
 	$("#view_listening").click(function(event){
-	    event.preventDefault();
-		if(checked==0){
-			$('#viewlistening_errorModal').modal('show');
+    event.preventDefault();
+	if(checked==0){
+		$('#viewlistening_errorModal').modal('show');
+	}
+	if(checked==1){
+		$('#viewlisteningModal').modal('show');
+	    $(".table input:checkbox:checked").map(function(){
+	    	var searchIDs = [];
+	        searchIDs.push($(this).val());
+	    	//console.log(searchIDs[0]);
+	    	id = searchIDs[0];
+		    	$.ajax({
+		    		url:'/laravel1/admin/listening/detail',
+		    		type: "GET",
+		    		data: {"id":id,},
+		    		success:function(result){
+		    			//console.log(result);
+		    			$('#viewlisteningModal').modal('show');
+
+		    			$('#listening_tittle').html(result.tittle);
+		    			$('#listening_introduce').html(result.introduce);
+		    			$('#listening_image').html(result.image);
+		    			$('#listening_audio').html(result.audio);
+		    			$('#listening_transcript').html(result.transcript);
+
+		    			var path_img = "http://localhost/laravel1/"+result.image_path;
+		    			$("#image").attr("src", path_img);
+
+		    			var path = "http://localhost/laravel1/"+result.audio_path;
+		    			$("#oggSource").attr("src", path).detach().appendTo("#audioPlayer");
+		    		}
+		    	})
+		    })
 		}
-		if(checked==1){
-			$('#viewlisteningModal').modal('show');
-		    $(".table input:checkbox:checked").map(function(){
-		    	var searchIDs = [];
-		        searchIDs.push($(this).val());
-		    	//console.log(searchIDs[0]);
-		    	id = searchIDs[0];
-			    	$.ajax({
-			    		url:'/laravel1/admin/listening/detail',
-			    		type: "GET",
-			    		data: {"id":id,},
-			    		success:function(result){
-			    			//console.log(result);
-			    			$('#viewlisteningModal').modal('show');
-
-			    			$('#listening_tittle').html(result.tittle);
-			    			$('#listening_introduce').html(result.introduce);
-			    			$('#listening_image').html(result.image);
-			    			$('#listening_audio').html(result.audio);
-			    			$('#listening_transcript').html(result.transcript);
-
-			    			var path_img = "http://localhost/laravel1/"+result.image_path;
-			    			$("#image").attr("src", path_img);
-
-			    			var path = "http://localhost/laravel1/"+result.audio_path;
-			    			$("#oggSource").attr("src", path).detach().appendTo("#audioPlayer");
-			    		}
-			    	})
-			    })
-			}
-	    })
+    })
 
 
 /*Edit Audio*/

@@ -208,6 +208,25 @@ Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 		Route::post('delete',['as'=>'admin.comment.delete','uses'=>'CommentController@post_delete_comment']);
 	});
 
+	/*Text Files*/
+	Route::group(['prefix'=>'text_file'], function(){
+		Route::get('show',['as'=>'admin.text_file.show', 'uses'=>'TextfileController@show']);
+		/*View Text Files*/
+		Route::get('detail', ['as'=>'admin.text_file.detail', 'uses'=>'TextfileController@detail']);
+
+		/*Add Text Files*/
+		Route::get('add',['as'=>'admin.text_file.add','uses'=>'TextfileController@get_add_file']);
+		Route::post('add',['as'=>'admin.text_file.add','uses'=>'TextfileController@post_add_file']);
+
+		/*Edit Text Files*/
+		Route::get('edit',['as'=>'admin.text_file.edit','uses'=>'TextfileController@get_edit_file']);
+		Route::post('edit',['as'=>'admin.text_file.edit','uses'=>'TextfileController@post_edit_file']);
+
+		/*Delete Listening*/
+		Route::get('delete',['as'=>'admin.text_file.delete','uses'=>'TextfileController@get_delete_file']);
+		Route::post('delete',['as'=>'admin.text_file.delete','uses'=>'TextfileController@post_delete_file']);
+	});
+
 });
 
 
