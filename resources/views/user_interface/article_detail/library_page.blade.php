@@ -23,7 +23,7 @@
 										@if($detail->type=="reading")
 											<a class="label label_article" href="{{route('listening')}}">{{$detail->type}}</a>
 										@endif
-										<i class="label label_date"><b>{{$detail->created_at->format('d-m-Y')}}</b></i>
+										<i class="label label_date each_label"><b>{{$detail->created_at->format('d-m-Y')}}</b></i>
 									</div>
 								</div>
 							</div>

@@ -40,18 +40,11 @@
                         <div class="has-error"><i><span class="help-block errorTittle_add"></span></i></div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="col-md-1 control-label">Introduce</label>
-                        <div class="col-md-10">
-                            <textarea class="form-control" name="introduce" id="introduce" rows="3"></textarea>
-                        </div>
-                    </div>
-
                     <label class="col-md-1 control-label">Image</label>
                     <div class="input-group image-preview col-md-10">
-                        <div class="input-group">
+                        <div class="input-group-detail">
                             <span class="input-group-btn">
-                                <span class="btn btn-default btn-file ">
+                                <span class="btn btn-default btn-file-detail ">
                                     <span class="glyphicon glyphicon-picture"></span>
                                     <span class="image-preview-input-title">Choose Image</span>
                                     <input type="file" id="image_detail" name="image_detail">
@@ -59,7 +52,14 @@
                             </span>
                             <input type="text" class="form-control" readonly>
                         </div>
-                        <img id='img-upload'/>
+                        <img id='img-upload-detail'/>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-1 control-label">Introduce</label>
+                        <div class="col-md-10">
+                            <textarea class="form-control" name="introduce" id="introduce" rows="3"></textarea>
+                        </div>
                     </div>
 
 					<div class="form-group">
@@ -68,6 +68,10 @@
 							<textarea class="form-control" name="content" id="content" rows="3"></textarea>
 						</div>
 					</div>
+                    <div class="form-group" style="width:90px; margin:auto; display: none;" id="loading_add_detail">
+                        <div><p class="text-danger" ><b>Please wait...</b></p></div>
+                        <div><img src='/laravel1/storage/uploads/images/loading.gif' /></div>
+                    </div>
                 </div>
                 <div class="modal-footer modal-body-footer">
                     <!-- Submit -->

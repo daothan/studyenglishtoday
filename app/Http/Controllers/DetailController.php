@@ -52,7 +52,7 @@ class DetailController extends Controller
 
             /*Add Image*/
             $file_detail_image = $request->file('image_detail')->getClientOriginalName();
-            dd($file_detail_image);die;
+            //dd($file_detail_image);die;
             $folder_create_img = tittle($request->tittle);
             $folder_img = 'storage/uploads/images/' .$folder_create_img;
 
@@ -64,13 +64,15 @@ class DetailController extends Controller
             $detail = new Detail;
 
             /*Request data*/
-            $detail->tittle = $request->tittle;
-            $detail->alias = tittle(($request->tittle));
-            $detail->type = $request->type_article;
-            $detail->introduce=$request->introduce;
-            $detail->content=$request->content;
-            $detail->user_id = Auth::user()->id;
-            $detail->cate_id = $request->category;
+            $detail->tittle     = $request->tittle;
+            $detail->alias      = tittle(($request->tittle));
+            $detail->type       = $request->type_article;
+            $detail->introduce  = $request->introduce;
+            $detail->image      = $file_detail_image;
+            $detail->image_path = $folder_img.'/'.$file_detail_image;;
+            $detail->content    = $request->content;
+            $detail->user_id    = Auth::user()->id;
+            $detail->cate_id    = $request->category;
 
             $data = [
                 'name'=>Auth::user()->name." added article",
@@ -144,7 +146,35 @@ class DetailController extends Controller
                     'messages'=>$validator->errors()
                     ],200);
             }else{
+
             $detail = Detail::find($id);
+            /*Edit Image*/
+            if($request->image_detail_edit){
+                File::deleteDirectory('storage/uploads/images/'.tittle($detail->tittle));
+                $file_name_image = $request->file('image_detail_edit')->getClientOriginalName();
+
+                $folder_create_image = tittle($request->edit_tittle);
+                $folder_image = 'storage/uploads/images/' .$folder_create_image;
+
+                if(!file_exists($folder_image)){
+                    File::makeDirectory($folder_image, 0777, true);
+                }
+                $request->file('image_detail_edit')->move($folder_image,$file_name_image);
+
+                $detail->image      = $file_name_image;
+                $detail->image_path = $folder_image.'/'.$file_name_image;
+            }else{
+                $folder_create_image = tittle($request->edit_tittle);
+                $folder_image = 'storage/uploads/images/' .$folder_create_image;
+                if(!file_exists($folder_image)){
+                    File::makeDirectory($folder_image, 0777, true);
+                }
+                File::move('storage/uploads/images/'.tittle($detail->tittle).'/'.($detail->image), $folder_image.'/'.($detail->edit_tittle).'/'.($detail->image));
+                File::deleteDirectory('storage/uploads/images/'.tittle($detail->tittle));
+
+                $detail->image      = $detail->image;
+                $detail->image_path =  $folder_image.'/'.$detail->image;
+            }
 
             /*Request data*/
             $detail->tittle    = $request->edit_tittle;
@@ -185,7 +215,7 @@ class DetailController extends Controller
         if($request->ajax()){
             $id=$request->id;
             $detail_delete=Detail::find($id);
-
+            File::deleteDirectory('storage/uploads/images/'.tittle($detail_delete->tittle));
             $detail_delete->delete($id);
         }
     }

@@ -118,11 +118,11 @@ div.dataTables_paginate ul.pagination {
     margin-left:2px;
 }
 
-.btn-file, .btn-file-edit {
+.btn-file, .btn-file-edit, .btn-file-detail, .btn-file-detail-edit {
     position: relative;
     overflow: hidden;
 }
-.btn-file input[type=file], .btn-file-edit input[type=file] {
+.btn-file input[type=file], .btn-file-edit input[type=file], .btn-file-detail input[type=file], .btn-file-detail-edit input[type=file] {
     position: absolute;
     top: 0;
     right: 0;
@@ -138,15 +138,12 @@ div.dataTables_paginate ul.pagination {
     display: block;
 }
 
-#img-upload{
+#img-upload, #img-upload_edit, #img-upload-detail, #img-upload-detail-edit{
     width: 200px;
     margin: 10px 30%;
 }
-#img-upload_edit{
-    width: 200px;
-    margin: 10px 30%;
-}
-.input-group-edit{
+
+.input-group,.input-group-edit,.input-group-detail,.input-group-detail-edit{
     position: relative;
     display: table;
     border-collapse: separate;

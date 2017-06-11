@@ -41,22 +41,19 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-1 control-label">Introduce</label>
-                        <div class="col-md-10">
-                            <textarea class="form-control" name="edit_introduce" id="edit_introduce" rows="3"></textarea>
+                        <div class="col-md-10 col-md-offset-1">
+                            <b class="text-info">Current Image:</b><p id="old_image_detail_edit"></p>
+                            <div style="width: 300px;margin: auto;">
+                                <img src="" id="old_image_detail_edit_view" style="width: 250px; margin:auto;">
+                            </div>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <div class="col-md-10 col-md-offset-1">
-                            <b class="text-info">Current Image:</b><p id="old_image_detail"></p>
-                        </div>
-                    </div>
                     <label class="col-md-1 control-label">Image</label>
                     <div class="input-group image-preview col-md-10">
-                        <div class="input-group">
+                        <div class="input-group-detail-edit">
                             <span class="input-group-btn">
-                                <span class="btn btn-default btn-file ">
+                                <span class="btn btn-default btn-file-detail-edit ">
                                     <span class="glyphicon glyphicon-picture"></span>
                                     <span class="image-preview-input-title">Choose Image</span>
                                     <input type="file" id="image_detail_edit" name="image_detail_edit">
@@ -64,9 +61,15 @@
                             </span>
                             <input type="text" class="form-control" readonly>
                         </div>
-                        <img id='img-upload'/>
+                        <img id='img-upload-detail-edit'/>
                     </div>
 
+                    <div class="form-group">
+                        <label class="col-md-1 control-label">Introduce</label>
+                        <div class="col-md-10">
+                            <textarea class="form-control" name="edit_introduce" id="edit_introduce" rows="3"></textarea>
+                        </div>
+                    </div>
 
 					<div class="form-group">
 						<label class="col-md-1 control-label">Content</label>
@@ -74,6 +77,10 @@
 							<textarea class="form-control" name="edit_content" id="edit_content" rows="3"></textarea>
 						</div>
 					</div>
+                    <div class="form-group" style="width:90px; margin:auto; display: none;" id="loading_add_detail_edit">
+                        <div><p class="text-danger"><b>Please wait...</b></p></div>
+                        <div><img src='/laravel1/storage/uploads/images/loading.gif' /></div>
+                    </div>
                 </div>
                 <div class="modal-footer modal-body-footer">
                     <!-- Submit -->

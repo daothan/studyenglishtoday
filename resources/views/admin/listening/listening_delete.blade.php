@@ -12,6 +12,10 @@
                         <input type="text" name="id_delete_listening" id="id_delete_listening" class="hidden">
                     </form>
                 </div>
+                <div class="form-group" style="width:90px; margin:auto; display: ;" id="loading_delete">
+                        <div><p class="text-danger" ><b>Please wait...</b></p></div>
+                        <div><img src='/laravel1/storage/uploads/images/loading.gif' /></div>
+                    </div>
                 <div class="modal-footer">
 		            <button class="btn_admin danger" id="confirmdelete">Confirm</button>
                     <button class="btn_admin info" data-dismiss="modal" aria-hidden="true">Cancel</button>

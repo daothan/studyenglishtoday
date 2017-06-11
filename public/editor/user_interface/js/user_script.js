@@ -406,7 +406,7 @@ function checkWidth() {
     	$('.level1_img').removeClass('article_img_md10').addClass('article_img_md3')
     	$('.level1_info').removeClass('article_info_md10').addClass('article_info_md3')
     	$('.level1_type').removeClass('article_type_md10').addClass('article_type_md3')
-    	$('.level1_introduce').addClass('hide')
+    	$('.level1_introduce').removeClass('show_style').addClass('hide_style')
 
     	/*MD8 -> MD3*/
     	$('.each_page').removeClass('desktop').removeClass('col-md-8').removeClass('col-md-offset-3').removeClass('md_8').addClass('mobile_screen');
@@ -414,7 +414,7 @@ function checkWidth() {
     	$('.each_page_img').removeClass('article_img_md8').addClass('article_img_md3')
     	$('.each_page_info').removeClass('article_info_md8').addClass('article_info_md3')
     	$('.each_page_type').removeClass('article_type_md8').addClass('article_type_md3')
-    	$('.label_date').addClass('hide')
+    	$('.label_date').removeClass('show_style').addClass('hide_style')
 
     	/*MD5 -> MD3*/
         $('.level2').removeClass('desktop').removeClass('col-sm-5').removeClass('col-xs-5 ').removeClass('md_5').addClass('mobile_screen');
@@ -443,8 +443,8 @@ function checkWidth() {
         $('.article_content').removeClass('break_word_desktop');
         $('.article_content').addClass('break_word_mobile');
 
-        $('.facebook_button').removeClass('show').addClass('hide');
-        $('.facebook_button1').removeClass('hide').addClass('show');
+        $('.facebook_button').removeClass('show_style').addClass('hide_style');
+        $('.facebook_button1').removeClass('hide_style').addClass('show_style');
     };
 
     if ($window.width() > 800) {
@@ -456,6 +456,7 @@ function checkWidth() {
     	$('.level1_img').removeClass('article_img_md3').addClass('article_img_md10')
     	$('.level1_info').removeClass('article_info_md3').addClass('article_info_md10')
     	$('.level1_type').removeClass('article_type_md3').addClass('article_type_md10')
+    	$('.level1_introduce').removeClass('hide_style').addClass('show_style')
 
     	/*MD8 -> MD3*/
     	$('.each_page').removeClass('mobile_screen').addClass('desktop').addClass('col-md-8').addClass('col-md-offset-3').addClass('md_8');
@@ -463,6 +464,7 @@ function checkWidth() {
     	$('.each_page_img').removeClass('article_img_md3').addClass('article_img_md8')
     	$('.each_page_info').removeClass('article_info_md3').addClass('article_info_md8')
     	$('.each_page_type').removeClass('article_type_md3').addClass('article_type_md8')
+    	$('.label_date').removeClass('hide_style').addClass('show_style')
 
     	/*MD5 -> MD3*/
         $('.level2').removeClass('mobile_screen').addClass('desktop').addClass('col-sm-5').addClass('col-xs-5 ').addClass('md_5');
@@ -489,8 +491,8 @@ function checkWidth() {
         $('.article_content').removeClass('break_word_mobile');
         $('.article_content').addClass('break_word_desktop');
 
-        $('.facebook_button').removeClass('hide').addClass('show');
-        $('.facebook_button1').removeClass('show').addClass('hide');
+        $('.facebook_button').removeClass('hide_style').addClass('show_style');
+        $('.facebook_button1').removeClass('show_style').addClass('hide_style');
     }
 }
 checkWidth();

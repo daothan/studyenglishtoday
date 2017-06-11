@@ -9,15 +9,22 @@
 				<div class="modal-body modal-body-detail">
 					<div class="col-md-10 col-md-offset-1">
 						<div class="form-group col-centered">
-							<label class="control-label"></label>
+							<label class="control-label">Tittle</label>
 							<div id="detail_tittle"></div>
 						</div>
 						<div class="form-group col-centered">
-							<label class="control-label"></label>
+							<label class="control-label">Introduce</label>
 							<div id="detail_introduce"></div>
 						</div>
 						<div class="form-group col-centered">
-							<label class="control-label"></label>
+							<label class="control-label text-info">Image</label>
+							<div id="detail_image"></div>
+						</div>
+						<div class="form-group col-centered" >
+							<img id="image_detail" src="" style="width: 300px; margin:auto;">
+						</div>
+						<div class="form-group col-centered">
+							<label class="control-label">Detail</label>
 							<div id="detail_content"></div>
 						</div>
 					</div>

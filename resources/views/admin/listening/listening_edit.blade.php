@@ -32,6 +32,9 @@
                     <div class="form-group">
                         <div class="col-md-10 col-md-offset-1">
                             <b class="text-info">Current Image:</b><p id="old_image"></p>
+                            <div style="width: 300px;margin: auto;">
+                                <img src="" id="old_image_view" style="width:250px; margin:auto;">
+                            </div>
                         </div>
                     </div>
                     <label class="col-md-1 control-label">Image</label>

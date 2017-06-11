@@ -118,11 +118,11 @@ input[type=text]:focus {
 /* View category User Home*/
 
 /* DESKTOP */
-.hide{
+.hide_style{
    display: none;
       }
-.show{
-  display: block;
+.show_style{
+  display: ;
 }
 .mobile_screen{
     background-color: rgba(84, 203, 208, 0.27);
@@ -181,8 +181,11 @@ input[type=text]:focus {
 }
 .article_img_md10{
     float: left;
-    margin-right: 5px;
+    margin-right: 10px;
     max-height: 160px;
+}
+.article_info_md10{
+  margin-left: 140px;
 }
 /* MD_10 */
 .md_8{

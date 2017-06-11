@@ -144,7 +144,6 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
             var reader = new FileReader();
             reader.onload = function (e) {
                 $('#img-upload').attr('src', e.target.result);
-                $('#img-upload_edit').attr('src', e.target.result);
             }
             reader.readAsDataURL(input.files[0]);
         }
@@ -324,6 +323,8 @@ $("#edit_listening").click(function(event){
 						$('#old_id_edit_detail1').val(result[0].id_detail[0].id);
 						$('#tittle_listening_edit').val(result[0].info_audio.tittle);
 						$('#old_image').html(result[0].info_audio.image);
+						var path_img = "http://localhost/laravel1/"+result[0].info_audio.image_path;
+		    				$("#old_image_view").attr("src", path_img);
 						$('#old_audio').html(result[0].info_audio.audio);
 						CKEDITOR.instances['introduce_listening_edit'].setData(result[0].info_audio.introduce);
 						CKEDITOR.instances['transcript_listening_edit'].setData(result[0].info_audio.transcript);
@@ -435,6 +436,12 @@ $('#delete_listening').click(function(event){
 									"id":id,
 									"id_delete_listening":$('#id_delete_listening').val()
 								},
+								beforeSend: function(){
+							        $('#loading_delete').show();
+						    	},
+					   		   	complete: function(){
+						    	    $('#loading_delete').hide();
+						    	},
 								success:function(){
 									$('#deletelisteningModal').modal('hide');
 									for(var i=0; i<id.length; i++){

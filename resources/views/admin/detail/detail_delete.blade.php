@@ -9,6 +9,10 @@
                 <div class="modal-body">
                     <strong class="text-info"><h3 align="center"><b><i>Are you sure you want to delete <br><span class="name_delete_detail text-info"></span></i><b></h3></strong>
                 </div>
+                <div class="form-group" style="width:90px; margin:auto; display: none;" id="loading_delete_detail">
+                    <div><p class="text-danger" ><b>Please wait...</b></p></div>
+                    <div><img src='/storage/uploads/images/loading.gif' /></div>
+                </div>
                 <div class="modal-footer">
 		            <button class="btn_admin danger" id="confirmdelete">Confirm</button>
                     <button class="btn_admin info" data-dismiss="modal" aria-hidden="true">Cancel</button>

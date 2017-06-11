@@ -131,15 +131,17 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
         }
     })
 };
+
+
 /*Upload image*/
-$(document).on('change', '.btn-file :file', function() {
-    var input = $(this),
-        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-    input.trigger('fileselect', [label]);
+	$(document).on('change', '.btn-file-detail :file', function() {
+	    var input = $(this),
+	        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+	    input.trigger('fileselect', [label]);
     });
 
-    $('.btn-file :file').on('fileselect', function(event, label) {
-        var input = $(this).parents('.input-group').find(':text'),
+    $('.btn-file-detail :file').on('fileselect', function(event, label) {
+        var input = $(this).parents('.input-group-detail').find(':text'),
             log = label;
         if( input.length ) {
             input.val(log);
@@ -147,23 +149,52 @@ $(document).on('change', '.btn-file :file', function() {
             if( log ) alert(log);
         }
     });
-    function readURL(input) {
+
+    function readURL_detail(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
-                $('#img-upload').attr('src', e.target.result);
+                $('#img-upload-detail').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#image_detail").change(function(){
+        readURL_detail(this);
+    });
+
+    /*Edit Image*/
+    $(document).on('change', '.btn-file-detail-edit :file', function() {
+	    var input = $(this),
+	        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+	    input.trigger('fileselect', [label]);
+    });
+
+    $('.btn-file-detail-edit :file').on('fileselect', function(event, label) {
+        var input = $(this).parents('.input-group-detail-edit').find(':text'),
+            log = label;
+        if( input.length ) {
+            input.val(log);
+        } else {
+            if( log ) alert(log);
+        }
+    });
+
+    function readURL_detail_edit(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#img-upload-detail-edit').attr('src', e.target.result);
             }
             reader.readAsDataURL(input.files[0]);
         }
     }
 
-    $("#image_detail").change(function(){
-        readURL(this);
-    });
     $("#image_detail_edit").change(function(){
-        readURL(this);
+        readURL_detail_edit(this);
     });
-/*Add listening*/
+
+
 /*Show Detail Content*/
 	var id="";
 	$("#view_detail").click(function(event){
@@ -184,7 +215,9 @@ $(document).on('change', '.btn-file :file', function() {
 			    		data: {"id":id,},
 			    		success:function(result){
 			    			$('#viewdetailModal').modal('show');
-
+			    			$('#detail_image').html(result.image);
+			    			var path_img = "http://localhost/laravel1/"+result.image_path;
+		    					$("#image_detail").attr("src", path_img);
 			    			$('#detail_tittle').html(result.tittle);
 			    			$('#detail_introduce').html(result.introduce);
 			    			$('#detail_content').html(result.content);
@@ -251,6 +284,9 @@ $(document).on('change', '.btn-file :file', function() {
 				type_article:{
 					required:true
 				},
+				image_detail:{
+					required:true
+				},
 	            tittle: {
 	            	required  :true,
 	            	minlength :20,
@@ -274,14 +310,18 @@ $(document).on('change', '.btn-file :file', function() {
 				});
 				$.ajax({
 					url: '/laravel1/admin/detail/add',
-					type: 'POST',
-					data:{
-						'category'  	: $('#category').val(),
-						'type_article'  : $('#type_article').val(),
-						'tittle'    	: $('#tittle').val(),
-						'introduce'	    : $('#introduce').val(),
-						'content'   	: $('#content').val()
-					},
+					type: "POST",
+				    async: true,
+				    dataType: "json", // or html if you want...
+				    contentType: false, // high importance!
+				    data:new FormData($("#validate_add_detail")[0]), // high importance!
+				    processData: false, // high importance!
+				    beforeSend:function(){
+				    	$('#loading_add_detail').show();
+				    },
+				    complete:function(){
+				    	$('#loading_add_detail').hide();
+				    },
 					success:function(data){
 						if(data.error_add_detail ==true){
 						//console.log(data.messages.tittle[0]);
@@ -365,9 +405,11 @@ $(document).on('change', '.btn-file :file', function() {
 						//console.log(result[0].info_detail);
 						$('#old_id_edit_detail').val(result[0].info_detail.id);
 						$('#edit_type_article').val(result[0].info_detail.type);
+						$('#old_image_detail_edit').html(result[0].info_detail.image);
+						var path_img = "http://localhost/laravel1/"+result[0].info_detail.image_path;
+		    				$("#old_image_detail_edit_view").attr("src", path_img);
 						$('#edit_tittle').val(result[0].info_detail.tittle);
-						$('#old_image_detail').html(result[0].info_audio.image);
-						$('#edit_introduce').val(result[0].info_detail.introduce);
+						CKEDITOR.instances['edit_introduce'].setData(result[0].info_detail.introduce);
 						CKEDITOR.instances['edit_content'].setData(result[0].info_detail.content);
 
 						/*Validate and edit data*/
@@ -401,15 +443,18 @@ $(document).on('change', '.btn-file :file', function() {
 								});
 								$.ajax({
 									'url' : '/laravel1/admin/detail/edit',
-									'type' :'POST',
-									'data': {
-										'old_id_edit_detail'    : $('#old_id_edit_detail').val(),
-										'edit_type_article'     : $('#edit_type_article').val(),
-										'edit_category'  		: $('#edit_category').val(),
-										'edit_tittle'    		: $('#edit_tittle').val(),
-										'edit_introduce' 		: $('#edit_introduce').val(),
-										'edit_content'   		: $('#edit_content').val()
-									},
+									type: "POST",
+								    async: true,
+								    dataType: "json", // or html if you want...
+								    contentType: false, // high importance!
+								    data:new FormData($("#validate_edit_detail")[0]), // high importance!
+								    processData: false, // high importance!
+									beforeSend:function(){
+								    	$('#loading_add_detail_edit').show();
+								    },
+								    complete:function(){
+								    	$('#loading_add_detail_edit').hide();
+								    },
 									success: function(data){
 										if(data.error_edit_detail ==true){
 											$('.error').hide();
@@ -467,6 +512,12 @@ $('#delete_detail').click(function(event){
 								url: '/laravel1//admin/detail/delete',
 								method:"POST",
 								data: {id:id},
+								beforeSend:function(){
+							    	$('#loading_delete_detail').show();
+							    },
+							    complete:function(){
+							    	$('#loading_delete_detail').hide();
+							    },
 								success:function(){
 									$('#deletedetailModal').modal('hide');
 									for(var i=0; i<id.length; i++){

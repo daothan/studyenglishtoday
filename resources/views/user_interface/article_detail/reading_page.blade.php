@@ -11,7 +11,7 @@
 									<img class="article_img_md8 img_thumbnail each_page_img" src="{{$detail->image_path}}">
 								</div>
 								<div class="article_info_md8 each_page_info">
-									<h3 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{route('tittle_audio',[tittle($detail->tittle)])">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h3>
+									<h3 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{route('tittle_audio',[tittle($detail->tittle)])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h3>
 								</div>
 								<div class="article_type_md8 each_page_type" align="center">
 									@if($detail->type=="audio")
