@@ -1,4 +1,17 @@
 
+/*Carousel Banner*/
+$(".carousel").swipe({
+
+swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+
+if (direction == 'left') $(this).carousel('next');
+if (direction == 'right') $(this).carousel('prev');
+
+},
+allowPageScroll:"vertical"
+
+});
+/*Carousel Banner*/
 
 /*Home js*/
 	$('html, body').hide();
@@ -367,7 +380,7 @@ function contact_us(){
 						setTimeout(function(){$('#contact_success').modal('hide');},4000);
 				    },
 					success:function(data){
-						$('#contact_validate').load('/laravel1/home #contact_validate');
+						$('#contact_validate').load(' #contact_validate');
 					},
 				})
 			}
@@ -398,7 +411,7 @@ $('#practice_choose').click(function(){
 /*Change class based on width screen*/
 var $window = $(window);
 function checkWidth() {
-    if ($window.width() <= 800) {
+    if ($window.width() <= 1024) {
     	/*When reduce screen, then change all class to md3 type css*/
     	/*MD10 -> MD3*/
     	$('.level1').removeClass('desktop').removeClass('col-md-10').removeClass('col-md-offset-1').removeClass('md_10').addClass('mobile_screen');
@@ -414,7 +427,7 @@ function checkWidth() {
     	$('.each_page_img').removeClass('article_img_md8').addClass('article_img_md3')
     	$('.each_page_info').removeClass('article_info_md8').addClass('article_info_md3')
     	$('.each_page_type').removeClass('article_type_md8').addClass('article_type_md3')
-    	$('.label_date').removeClass('show_style').addClass('hide_style')
+    	//$('.label_date').removeClass('show_style').addClass('hide_style')
 
     	/*MD5 -> MD3*/
         $('.level2').removeClass('desktop').removeClass('col-sm-5').removeClass('col-xs-5 ').removeClass('md_5').addClass('mobile_screen');
@@ -447,7 +460,7 @@ function checkWidth() {
         $('.facebook_button1').removeClass('hide_style').addClass('show_style');
     };
 
-    if ($window.width() > 800) {
+    if ($window.width() > 1024) {
 
     	/*When reduce desktop, then change all class to original type css*/
     	/*MD10 -> MD3*/
@@ -464,7 +477,7 @@ function checkWidth() {
     	$('.each_page_img').removeClass('article_img_md3').addClass('article_img_md8')
     	$('.each_page_info').removeClass('article_info_md3').addClass('article_info_md8')
     	$('.each_page_type').removeClass('article_type_md3').addClass('article_type_md8')
-    	$('.label_date').removeClass('hide_style').addClass('show_style')
+    	//$('.label_date').removeClass('hide_style').addClass('show_style')
 
     	/*MD5 -> MD3*/
         $('.level2').removeClass('mobile_screen').addClass('desktop').addClass('col-sm-5').addClass('col-xs-5 ').addClass('md_5');
@@ -503,11 +516,11 @@ $('a').addClass('overflow');
 /*Show comment form*/
 function comment_form() {
     if ($window.width() <= 1080) {
-        $('.comment').removeClass('col-sm-7').addClass('col-sm-6');
+        $('.comment').removeClass('').addClass('col-sm-6');
     };
 
     if ($window.width() > 1080) {
-        $('.comment').removeClass('col-sm-6').addClass('col-sm-7');
+        $('.comment').removeClass('col-sm-6').addClass('');
     }
 }
 comment_form();

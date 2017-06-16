@@ -93,6 +93,7 @@ class ListeningController extends Controller
                 $listening->audio_path = $folder.'/'.$file_name_audio;
                 $listening->image      = $file_name_image;
                 $listening->image_path = $folder_img.'/'.$file_name_image;
+                $listening->dictation  = $request->dictation_listening;
                 $listening->transcript = $request->transcript_listening;
                 $listening->user_id    = Auth::user()->id;
 
@@ -207,6 +208,7 @@ class ListeningController extends Controller
             /*Request data*/
             $listening->tittle     = $request->tittle_listening_edit;
             $listening->introduce  = $request->introduce_listening_edit;
+            $listening->dictation  = $request->dictation_listening_edit;
             $listening->transcript = $request->transcript_listening_edit;
 
             if($listening->save()){

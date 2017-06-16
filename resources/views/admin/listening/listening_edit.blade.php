@@ -70,6 +70,13 @@
 		                </span>
 		            </div>
 
+                    <div class="form-group">
+                        <label class="col-md-1 control-label">Dictation</label>
+                        <div class="col-md-10">
+                            <textarea class="form-control" name="dictation_listening_edit" id="dictation_listening_edit" rows="5"></textarea>
+                        </div>
+                    </div>
+
 					<div class="form-group">
 						<label class="col-md-1 control-label">Transcipt</label>
 						<div class="col-md-10">

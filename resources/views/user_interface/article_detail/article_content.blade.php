@@ -21,8 +21,7 @@
 
 			            <div class="blog-post">
 				            <h2 class=""><a>{{$data->tittle}}</a></h2>
-				            <p class="blog-post-meta">Created <i class="{{(isset(Auth::user()->name) && Auth::user()->level<2) ? '':'hidden'}}">{{$data->created_at->format('H:i:s d-m-Y')}}</i><i class="{{(isset(Auth::user()->name) && Auth::user()->level==2) ? '':'hidden'}}">{{$data->created_at->format('d-m-Y')}}</i><i class="{{(isset(Auth::user()->name)) ? 'hidden':''}}">{{$data->created_at->format('d-m-Y')}}</i> by
-				            	<b>{{$user_name_comment}}</b>
+				            <p class="blog-post-meta">Created <i class="{{(isset(Auth::user()->name) && Auth::user()->level<2) ? '':'hidden'}}">{{$data->created_at->format('H:i:s d-m-Y')}}</i><i class="{{(isset(Auth::user()->name) && Auth::user()->level==2) ? '':'hidden'}}">{{$data->created_at->format('d-m-Y')}}</i><i class="{{(isset(Auth::user()->name)) ? 'hidden':''}}">{{$data->created_at->format('d-m-Y')}}</i>
 				            </p>
 				            <!-- Like Share -->
 							<p><i class="text-success">Like and Share Website</i></p>
@@ -44,7 +43,7 @@
 						<hr>
 						<div class="container">
 						    <div class="row">
-						        <div class="col-sm-6 comment">
+						        <div class="comment">
 						        <!-- Show Form Add Comments-->
 									<div class="well {{(isset(Auth::user()->name)? '':'hidden')}}">
 									    <h4><i class="fa fa-paper-plane-o"></i> Leave a Comment:</h4>

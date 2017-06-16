@@ -4,15 +4,17 @@
 <div class="codes agileitsbg5">
 	<div class="container">
 		<div id="" class="grid_3 grid_5 w3-agileits">
-			<h2><p class="agiletext-border agiletext-style">Newest Article...</p></h2>
+			<h2><p class="agiletext-border agiletext-style">Searching results...</p></h2>
 				@foreach($results as $detail)
 					<div class="col-md-8 col-md-offset-3 md_8 each_page">
 						<div class="article_item_md8 each_page_item">
-							<div class="article_img_md8 each_page_img">
-								<img class="article_img_md8 img_thumbnail each_page_img" src="{{$detail->image_path}}">
-							</div>
 							<div class="article_info_md8 each_page_info">
-								<h3 class="w3t-text" align="center" style="margin-bottom: 30px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h3>
+								<h3 class="w3t-text" align="center"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h3>
+							</div>
+							<div class="article_img_md8 each_page_img">
+								<a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">
+									<img class="article_img_md8 img_thumbnail each_page_img" src="{{$detail->image_path}}">
+								</a>
 							</div>
 							<div class="article_type_md8 each_page_type" align="center">
 								@if($detail->type=="audio")

@@ -18,8 +18,7 @@
 
 			            <div class="blog-post overflow">
 				            <h2 class="blog-post-title"><a>{{$data->tittle}}</a></h2>
-				            <p class="blog-post-meta">Created <i class="{{(isset(Auth::user()->name) && Auth::user()->level<2) ? '':'hidden'}}">{{$data->created_at->format('H:i:s d-m-Y')}}</i><i class="{{(isset(Auth::user()->name) && Auth::user()->level==2) ? '':'hidden'}}">{{$data->created_at->format('d-m-Y')}}</i><i class="{{(isset(Auth::user()->name)) ? 'hidden':''}}">{{$data->created_at->format('d-m-Y')}}</i> by
-				            	<b>{{$user_name_comment}}</b>
+				            <p class="blog-post-meta">Created <i class="{{(isset(Auth::user()->name) && Auth::user()->level<2) ? '':'hidden'}}">{{$data->created_at->format('H:i:s d-m-Y')}}</i><i class="{{(isset(Auth::user()->name) && Auth::user()->level==2) ? '':'hidden'}}">{{$data->created_at->format('d-m-Y')}}</i><i class="{{(isset(Auth::user()->name)) ? 'hidden':''}}">{{$data->created_at->format('d-m-Y')}}</i>
 				            </p>
 				            <!-- Like Share -->
 							<p><i class="text-success">Like and Share Website</i></p>
@@ -33,90 +32,121 @@
 				            <p>{!!htmlspecialchars_decode($data->introduce)!!}</p>
 				            <div class="">
 								<audio preload="auto" controls>
-								    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$data->audio_path}}" />
 								    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$data->audio_path}}"/>
+								    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$data->audio_path}}" />
+									<source id="oggSource" type="audio/wav" src="{{'/laravel1/'.$data->audio_path}}">
 								</audio>
 				            </div>
+				            <div class="hint">
+				            	<span align="center">
+				            		<i>End-key or <span class="glyphicon glyphicon-play"></span></i>&nbsp&nbsp: Play / Pause <br>
+				            		<i>Left-key or <span class="glyphicon glyphicon-backward"></span></i>&nbsp &nbsp: backward 4 seconds <br>
+				            		<i>Right-key or <span class="glyphicon glyphicon-forward"></span></i> : forward 4 seconds
+				            	</span>
+				            </div>
+
+							<p align="center">
+								<button class="btn_user info collapsed" data-toggle="collapse" data-target="#dictation"  style="margin-top: 30px; width: 180px;"><h4>Dictation here...</h4></button>
+							</p>
+							<div class="collapse" id="dictation">
+								<div class="inputContainer" id="inputContainer">
+		                            <?php
+		                                $str = $data->dictation;
+		                                $arr =  explode(" ", $str);
+		                                $total = str_word_count($str);
+		                            ?>
+			                        @foreach($arr as $arr)
+			    		                  <div class="editable quick" name="{!!htmlspecialchars_decode($arr)!!}-{!!htmlspecialchars_decode($arr)!!}" id="editable1" p="false" placeholder="Please TYPE here" ></div>
+			                        @endforeach
+			                    </div>
+
+			                    <!-- View score -->
+			                    <button class="btn_user success collapsed" onclick="result_ditation()" data-toggle="collapse" data-target="#score" aria-expanded="false">Your score</button>
+								<div class="collapse" id="score">
+									<div class="panel-body">
+										<p><b>Total words :</b> <i class="total-text"></i></p>
+										<p><b>Correct     :</b> <i class="correct-text"></i></p>
+										<p><b>Point       :</b> <i class="efficient"></i>%</p>
+									</div>
+								</div>
+								<div class="total-word hidden"><?php echo $total; ?></div>
+							</div>
+		                    <!-- View score -->
 
 							<p>
 				            	{!!htmlspecialchars_decode($data->transcript)!!}
 							</p>
 			            </div><!-- /.blog-post -->
-
 			            <!-- Comment -->
 						<hr>
-						<div class="container">
-						    <div class="row">
-						        <div class="col-sm-7 comment">
-						        <!-- Show Form Add Comments-->
-									<div class="well {{(isset(Auth::user()->name)? '':'hidden')}}">
-									    <h4><i class="fa fa-paper-plane-o"></i> Leave a Comment:</h4>
-									    @if(session('error'))
-											<p style="color:red;"><b><i>{{session('error')}}</i></b></p>
-									    @endif
-									    @if(session('success'))
-											<p style="color:green;"><b><i>{{session('success')}}</i></b></p>
-									    @endif
-									    <form role="form" action="{{route('comment',[$data->id,$data->tittle,"audio"])}}">
-									        <div class="form-group">
-									       		<input type="text" name="current_url_comment" id="current_url_comment" value="{{url()->current()}}" class="hidden">
-									            <textarea class="comment_form" id="comment_form" name="comment_form"></textarea>
-												<script type="text/javascript">ckeditor("comment_form", "config", "comment")</script>
-									        </div>
-									        <button type="submit" class="btn btn-primary"><i class="fa fa-reply"></i> Submit</button>
-									    </form>
-									</div>
-									<div class="well {{(isset(Auth::user()->name) ? 'hidden' : '')}}">
-										<p align="center"><b>Login to comment:</b><br>
-										<a data-toggle="modal" data-target="#login">Login <span class="glyphicon glyphicon-log-in"></span></a></p>
-									</div>
-									<!-- Show Comments-->
-									@if(session('success_comment'))
-										<p style="color:green;"><b><i>{{session('success_comment')}}</i></b></p>
-								    @endif
-									@foreach($comment_info as $comment)
-									<!-- Delete-->
-									<div class="delete_comment_admin {{((isset(Auth::user()->name) && (Auth::user()->level < 2 || Auth::user()->name == $comment->user_comment)) ? '':'hidden')}}">
-						           	 	<a href="{{route('delete_comment',$comment->id)}}"><button type="button" class="btn_user danger">Delete</button></a>
-									</div>
-									<!-- Delete-->
-						            <div class="panel panel-white post panel-shadow">
-						                <div class="post-heading">
-						                    <div class="pull-left meta">
-						                        <div class="title h5">
-						                            <a><b>
-														<?php $user=DB::table('users')->where('name',$comment["user_comment"])->get(); ?>
-														@foreach($user as $user)
-															@if(is_numeric($user->name))
-																{{$user->name_social}}
-															@endif
-															@if(!is_numeric($user->name))
-																{{$user->name}}
-															@endif
-														@endforeach
-						                            </b></a>
-						                        </div>
-						                        <h6 class="text-muted time">Commented at <i>{{$data->created_at->format('H:i:s d-m-Y')}}</i></h6>
-						                    </div>
-						                </div>
-						                <div class="post-description">
-						                    <p>{!!htmlspecialchars_decode($comment->comment)!!}</p>
-						                </div>
-						            </div>
-						            @endforeach
-						            Total Pages: {!! $comment_info->lastPage() !!}
-									<div class="pagination pull-right {{($comment_info->lastPage()==0) ? 'hidden':''}}">
-										<a href="{{$comment_info->url(1)}}" class="{{($comment_info->currentPage()==1) ? 'hidden':''}}">&laquo;</a>
-										<a href="{{$comment_info->url($comment_info->currentPage()-1)}}" class="{{($comment_info->currentPage()==1) ? 'hidden':''}}">Prev</a>
-										@for($i=1; $i<=$comment_info->lastPage(); $i++)
-											<a href="{{$comment_info->url($i)}}" class="{{($comment_info->currentPage()==$i)? 'active':''}}">{{$i}}</a>
-										@endfor
-										<a href="{{$comment_info->url($comment_info->currentPage()+1)}}" class="{{($comment_info->currentPage()==$comment_info->lastPage())?'hidden' : ''}}">Next</a>
-										<a href="{{$comment_info->url($comment_info->lastPage())}}" class="{{($comment_info->currentPage()==$comment_info->lastPage())?'hidden' : ''}}">&raquo;</a>
-									</div>
-						        </div>
-						    </div>
-						</div>
+				        <div class="comment">
+				        <!-- Show Form Add Comments-->
+							<div class="well {{(isset(Auth::user()->name)? '':'hidden')}}">
+							    <h4><i class="fa fa-paper-plane-o"></i> Leave a Comment:</h4>
+							    @if(session('error'))
+									<p style="color:red;"><b><i>{{session('error')}}</i></b></p>
+							    @endif
+							    @if(session('success'))
+									<p style="color:green;"><b><i>{{session('success')}}</i></b></p>
+							    @endif
+							    <form role="form" action="{{route('comment',[$data->id,$data->tittle,"audio"])}}">
+							        <div class="form-group">
+							       		<input type="text" name="current_url_comment" id="current_url_comment" value="{{url()->current()}}" class="hidden">
+							            <textarea class="comment_form" id="comment_form" name="comment_form"></textarea>
+										<script type="text/javascript">ckeditor("comment_form", "config", "comment")</script>
+							        </div>
+							        <button type="submit" class="btn btn-primary"><i class="fa fa-reply"></i> Submit</button>
+							    </form>
+							</div>
+							<div class="well {{(isset(Auth::user()->name) ? 'hidden' : '')}}">
+								<p align="center"><b>Login to comment:</b><br>
+								<a data-toggle="modal" data-target="#login">Login <span class="glyphicon glyphicon-log-in"></span></a></p>
+							</div>
+							<!-- Show Comments-->
+							@if(session('success_comment'))
+								<p style="color:green;"><b><i>{{session('success_comment')}}</i></b></p>
+						    @endif
+							@foreach($comment_info as $comment)
+							<!-- Delete-->
+							<div class="delete_comment_admin {{((isset(Auth::user()->name) && (Auth::user()->level < 2 || Auth::user()->name == $comment->user_comment)) ? '':'hidden')}}">
+				           	 	<a href="{{route('delete_comment',$comment->id)}}"><button type="button" class="btn_user danger">Delete</button></a>
+							</div>
+							<!-- Delete-->
+				            <div class="panel panel-white post panel-shadow">
+				                <div class="post-heading">
+				                    <div class="pull-left meta">
+				                        <div class="title h5">
+				                            <a><b>
+												<?php $user=DB::table('users')->where('name',$comment["user_comment"])->get(); ?>
+												@foreach($user as $user)
+													@if(is_numeric($user->name))
+														{{$user->name_social}}
+													@endif
+													@if(!is_numeric($user->name))
+														{{$user->name}}
+													@endif
+												@endforeach
+				                            </b></a>
+				                        </div>
+				                        <h6 class="text-muted time">Commented at <i>{{$data->created_at->format('H:i:s d-m-Y')}}</i></h6>
+				                    </div>
+				                </div>
+				                <div class="post-description">
+				                    <p>{!!htmlspecialchars_decode($comment->comment)!!}</p>
+				                </div>
+				            </div>
+				            @endforeach
+				            Total Pages: {!! $comment_info->lastPage() !!}
+							<div class="pagination pull-right {{($comment_info->lastPage()==0) ? 'hidden':''}}">
+								<a href="{{$comment_info->url(1)}}" class="{{($comment_info->currentPage()==1) ? 'hidden':''}}">&laquo;</a>
+								<a href="{{$comment_info->url($comment_info->currentPage()-1)}}" class="{{($comment_info->currentPage()==1) ? 'hidden':''}}">Prev</a>
+								@for($i=1; $i<=$comment_info->lastPage(); $i++)
+									<a href="{{$comment_info->url($i)}}" class="{{($comment_info->currentPage()==$i)? 'active':''}}">{{$i}}</a>
+								@endfor
+								<a href="{{$comment_info->url($comment_info->currentPage()+1)}}" class="{{($comment_info->currentPage()==$comment_info->lastPage())?'hidden' : ''}}">Next</a>
+								<a href="{{$comment_info->url($comment_info->lastPage())}}" class="{{($comment_info->currentPage()==$comment_info->lastPage())?'hidden' : ''}}">&raquo;</a>
+							</div>
+				        </div>
 			        </div><!-- /.blog-main -->
 
 			        <div class="col-sm-4 offset-sm-1 blog-sidebar">

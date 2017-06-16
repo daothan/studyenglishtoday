@@ -61,6 +61,9 @@
 	/*Search*/
 		Route::get('search', ['as'=>'search', 'uses'=>'HomeController@search']);
 
+	/*Check word*/
+		Route::get('checkword',['as'=>'checkword', 'uses'=>'CheckwordController@checkword']);
+
 
 /*Admin Page*/
 

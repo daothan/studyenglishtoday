@@ -30,6 +30,7 @@
 	<link rel="stylesheet" type="text/css" media="all" href="{{URL::asset('public/editor/user_interface/css/audioplayer.css')}}">
 	<link href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200,300,400,700" rel="stylesheet">
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
 	<script>
 		(function(doc){var addEvent='addEventListener',type='gesturestart',qsa='querySelectorAll',scales=[1,1],meta=qsa in doc?doc[qsa]('meta[name=viewport]'):[];function fix(){meta.content='width=device-width,minimum-scale='+scales[0]+',maximum-scale='+scales[1];doc.removeEventListener(type,fix,true);}if((meta=meta[meta.length-1])&&addEvent in doc){fix();scales=[.25,1.6];doc[addEvent](type,fix,true);}}(document));
 	</script>
@@ -42,6 +43,7 @@
     <script type="text/javascript" src="{{URL::asset('public/editor/ckeditor/ckeditor.js')}}" ></script>
     <script type="text/javascript" src="{{URL::asset('public/editor/ckfinder/ckfinder.js')}}" ></script>
     <script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/ckeditor_config.js')}}" ></script>
+
 
 </head>
 <body>
@@ -322,6 +324,7 @@
     </div>
 
 	<!-- //banner -->
+
 	<!-- //banner -->
 <div class="form_search form_search col-md-10 col-md-offset-1">
 	<form >
@@ -372,8 +375,11 @@
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/easing.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/jquery.nicescroll.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/bootstrap.js')}}"></script>
+	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/jquery.touchSwipe.min.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/user_script.js')}}"></script>
 	<script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/audioplayer.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('public/editor/user_interface/js/checkword.js')}}"></script>
+
 
 	<script>$( function() { $( 'audio' ).audioPlayer(); } );</script>
 

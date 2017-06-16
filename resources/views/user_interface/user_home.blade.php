@@ -27,14 +27,16 @@
 						@if($no==1)
 							<div class="col-md-10 col-md-offset-1 md_10 level1">
 								<div class="article_item_md10 level1_item">
-									<div class="article_img_md10 level1_img">
-										<img class="article_img_md10 img_thumbnail level1_img" src="{{$detail->image_path}}">
-									</div>
 									<div class="article_info_md10 level1_info">
-										<h3 class="w3t-text" align="center" style="margin-bottom: 20px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h3>
+										<h3 class="w3t-text" align="center"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h3>
+									</div>
+									<div class="article_img_md10 level1_img">
+										<a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">
+											<img class="article_img_md8 img_thumbnail each_page_img" src="{{$detail->image_path}}">
+										</a>
 									</div>
 									<div class="article_info_md10 level1_introduce">
-										<p align="center" class="overflow">{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</p>
+										<span align="center" class="overflow"><i>{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</i></span>
 									</div>
 									<div class="article_type_md10 level1_type" align="center">
 										@if($detail->type=="audio")
@@ -54,11 +56,13 @@
 						@if($no>=2 && $no<=3)
 							<div class="col-sm-5 col-xs-5 md_5 level2">
 								<div class="article_item_md5 level2_item">
-									<div class="article_img_md5 level2_img">
-										<img class="article_img img_thumbnail level2_img" src="{{$detail->image_path}}">
-									</div>
 									<div class="article_info_md5 level2_info">
-										<h3 align="center"  style="margin-bottom: 20px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h3>
+										<h3 align="center"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h3>
+									</div>
+									<div class="article_img_md5 level2_img">
+										<a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">
+											<img class="article_img img_thumbnail level2_img" src="{{$detail->image_path}}">
+										</a>
 									</div>
 									<div class="article_type_md5 level2_type" align="center">
 										@if($detail->type=="audio")
@@ -70,6 +74,7 @@
 										@if($detail->type=="reading")
 											<a class="label label_article" href="{{route('listening')}}">{{$detail->type}}</a>
 										@endif
+										<i class="label label_date" style="margin-top: 20px;"><b>{{$detail->created_at->format('d-m-Y')}}</b></i>
 									</div>
 								</div>
 							</div>
@@ -77,11 +82,13 @@
 						@if($no>=4 && $no<=6)
 							<div class="col-md-3 col-sm-3 md_3 level3">
 								<div class="article_item_md3">
-									<div class="article_img_md3">
-										<img class=" img_thumbnail" src="{{$detail->image_path}}">
-									</div>
 									<div class="article_info_md3">
-										<h4 align="center"  style="margin-bottom: 20px;"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
+										<h4 align="center"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h4>
+									</div>
+									<div class="article_img_md3">
+										<a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">
+											<img class=" img_thumbnail" src="{{$detail->image_path}}">
+										</a>
 									</div>
 									<div class="article_type_md3">
 										@if($detail->type=="audio")
@@ -93,6 +100,7 @@
 										@if($detail->type=="reading")
 											<a class="label label_article" href="{{route('listening')}}">{{$detail->type}}</a>
 										@endif
+										<i class="label label_date"><b>{{$detail->created_at->format('d-m-Y')}}</b></i>
 									</div>
 								</div>
 							</div>

@@ -30,6 +30,8 @@
 			{
 				playPause:	 	'playpause',
 				playing:		'playing',
+				backward: 		'backward',
+				forward: 		'forward',
 				time:		 	'time',
 				timeCurrent:	'time-current',
 				timeDuration: 	'time-duration',
@@ -72,17 +74,19 @@
 			}
 			else if( canPlayType( audioFile ) ) isSupport = true;
 
-			var thePlayer = $( '<div class="' + params.classPrefix + '">' + ( isSupport ? $( '<div>' ).append( $this.eq( 0 ).clone() ).html() : '<embed src="' + audioFile + '" width="0" height="0" volume="100" autostart="' + isAutoPlay.toString() +'" loop="' + isLoop.toString() + '" />' ) + '<div class="' + cssClass.playPause + '" title="' + params.strPlay + '"><a href="#">' + params.strPlay + '</a></div></div>' ),
+			var thePlayer = $( '<div class="' + params.classPrefix + '">' + ( isSupport ? $( '<div>' ).append( $this.eq( 0 ).clone() ).html() : '<embed src="' + audioFile + '" width="0" height="0" volume="100" autostart="' + isAutoPlay.toString() +'" loop="' + isLoop.toString() + '" />' ) + '<div class="' + cssClass.playPause + '" title_audio="' + params.strPlay + '"><a href="#">' + params.strPlay + '</a></div></div>' ),
 				theAudio  = isSupport ? thePlayer.find( 'audio' ) : thePlayer.find( 'embed' ), theAudio = theAudio.get( 0 );
 
 			if( isSupport )
 			{
 				thePlayer.find( 'audio' ).css( { 'width': 0, 'height': 0, 'visibility': 'hidden' } );
-				thePlayer.append( '<div class="' + cssClass.time + ' ' + cssClass.timeCurrent + '"></div><div class="' + cssClass.bar + '"><div class="' + cssClass.barLoaded + '"></div><div class="' + cssClass.barPlayed + '"></div></div><div class="' + cssClass.time + ' ' + cssClass.timeDuration + '"></div><div class="' + cssClass.volume + '"><div class="' + cssClass.volumeButton + '" title="' + params.strVolume + '"><a href="#">' + params.strVolume + '</a></div><div class="' + cssClass.volumeAdjust + '"><div><div></div></div></div></div>' );
+				thePlayer.append( '<div class="' + cssClass.backward + '"><span class="glyphicon glyphicon-backward"></span></div><div class="' + cssClass.forward + '"><span class="glyphicon glyphicon-forward"></span></div><div class="' + cssClass.time + ' ' + cssClass.timeCurrent + '"></div><div class="' + cssClass.bar + '"><div class="' + cssClass.barLoaded + '"></div><div class="' + cssClass.barPlayed + '"></div></div><div class="' + cssClass.time + ' ' + cssClass.timeDuration + '"></div><div class="' + cssClass.volume + '"><div class="' + cssClass.volumeButton + '" title_audio="' + params.strVolume + '"><a href="#">' + params.strVolume + '</a></div><div class="' + cssClass.volumeAdjust + '"><div><div></div></div></div></div>' );
 
 				var theBar			  = thePlayer.find( '.' + cssClass.bar ),
 					barPlayed	 	  = thePlayer.find( '.' + cssClass.barPlayed ),
 					barLoaded	 	  = thePlayer.find( '.' + cssClass.barLoaded ),
+					backward	 	  = thePlayer.find( '.' + cssClass.backward ),
+					forward 	 	  = thePlayer.find( '.' + cssClass.forward ),
 					timeCurrent		  = thePlayer.find( '.' + cssClass.timeCurrent ),
 					timeDuration	  = thePlayer.find( '.' + cssClass.timeDuration ),
 					volumeButton	  = thePlayer.find( '.' + cssClass.volumeButton ),
@@ -119,6 +123,62 @@
 					barPlayed.width( ( theAudio.currentTime / theAudio.duration ) * 100 + '%' );
 				});
 
+			/*Space key pause play audio*/
+		        $("body").on("keydown", function (e) {
+		            var charCode = (e.charCode) ? e.charCode : ((e.which) ? e.which : e.keyCode);
+		            if (charCode == 35) {
+		                if( thePlayer.hasClass( cssClass.playing ) )
+						{
+							$( ".audioplayer" ).attr( 'title_audio', params.strPlay ).find( 'a' ).html( params.strPlay );
+							thePlayer.removeClass( cssClass.playing );
+							isSupport ? theAudio.pause() : theAudio.Stop();
+						}
+						else
+						{
+							$( ".audioplayer" ).attr( 'title_audio', params.strPause ).find( 'a' ).html( params.strPause );
+							thePlayer.addClass( cssClass.playing );
+							isSupport ? theAudio.play() : theAudio.Play();
+						}
+						return false;
+		            }
+				});
+			/*Space left key to rewird audio 4 seconds*/
+				$("body").on("keydown", function (e) {
+		            var charCode = (e.charCode) ? e.charCode : ((e.which) ? e.which : e.keyCode);
+		            if (charCode == 37) {
+				        if (theAudio.duration > 4.0) {
+					        theAudio.currentTime -= 4.0;
+					    }else{
+					        theAudio.currentTime = 0;
+					    }
+		            }
+				});
+				thePlayer.find( '.' + cssClass.backward ).on( 'click', function(){
+					if (theAudio.duration > 4.0) {
+				        theAudio.currentTime -= 4.0;
+				    }else{
+				        theAudio.currentTime = 0;
+				    }
+				});
+			/*Space right key to foward audio 4 seconds*/
+				$("body").on("keydown", function (e) {
+		            var charCode = (e.charCode) ? e.charCode : ((e.which) ? e.which : e.keyCode);
+		            if (charCode == 39) {
+				        if (theAudio.duration - theAudio.currentTime > 4.0) {
+					        theAudio.currentTime += 4.0;
+					    }else{
+					        theAudio.currentTime = theAudio.duration;
+					    }
+					}
+				});
+				thePlayer.find( '.' + cssClass.forward ).on( 'click', function(){
+					if (theAudio.duration - theAudio.currentTime > 4.0) {
+				        theAudio.currentTime += 4.0;
+				    }else{
+				        theAudio.currentTime = theAudio.duration;
+				    }
+				});
+			/*End controls key board*/
 				theAudio.addEventListener( 'volumechange', function()
 				{
 					volumeAdjuster.find( 'div' ).height( theAudio.volume * 100 + '%' );
@@ -175,21 +235,21 @@
 			{
 				if( thePlayer.hasClass( cssClass.playing ) )
 				{
-					$( this ).attr( 'title', params.strPlay ).find( 'a' ).html( params.strPlay );
+					$( this ).attr( 'title_audio', params.strPlay ).find( 'a' ).html( params.strPlay );
 					thePlayer.removeClass( cssClass.playing );
 					isSupport ? theAudio.pause() : theAudio.Stop();
 				}
 				else
 				{
-					$( this ).attr( 'title', params.strPause ).find( 'a' ).html( params.strPause );
+					$( this ).attr( 'title_audio', params.strPause ).find( 'a' ).html( params.strPause );
 					thePlayer.addClass( cssClass.playing );
 					isSupport ? theAudio.play() : theAudio.Play();
 				}
 				return false;
-			});
-
+        });
 			$this.replaceWith( thePlayer );
 		});
 		return this;
 	};
 })( jQuery, window, document );
+
