@@ -85,6 +85,6 @@
     function result_ditation() {
         var efficient = parseFloat(correctCount/total*100).toFixed(2);
         $(".total-text").html(total);
-        $(".correct-text").html(Math.ceil(correctCount/2));
+        $(".correct-text").html(Math.ceil(correctCount));
         $(".efficient").html(efficient);
     }

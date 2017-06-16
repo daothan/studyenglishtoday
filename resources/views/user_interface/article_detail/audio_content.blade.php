@@ -48,13 +48,14 @@
 							<p align="center">
 								<button class="btn_user info collapsed" data-toggle="collapse" data-target="#dictation"  style="margin-top: 30px; width: 180px;"><h4>Dictation here...</h4></button>
 							</p>
+							<?php
+                                $str = $data->dictation;
+                                $arr =  explode(" ", $str);
+                                $total = str_word_count($str);
+                            ?>
+							<h4 align="center" class="text-info">Total words: <?php echo $total; ?></h4>
 							<div class="collapse" id="dictation">
 								<div class="inputContainer" id="inputContainer">
-		                            <?php
-		                                $str = $data->dictation;
-		                                $arr =  explode(" ", $str);
-		                                $total = str_word_count($str);
-		                            ?>
 			                        @foreach($arr as $arr)
 			    		                  <div class="editable quick" name="{!!htmlspecialchars_decode($arr)!!}-{!!htmlspecialchars_decode($arr)!!}" id="editable1" p="false" placeholder="Please TYPE here" ></div>
 			                        @endforeach

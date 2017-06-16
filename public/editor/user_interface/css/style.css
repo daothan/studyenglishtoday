@@ -273,7 +273,6 @@ input[type=text]:focus {
 }
 .article_type_md3{
   display: table;
-  width: 90px;
   margin: auto;
   padding-top: 20px;
 }
