@@ -101,6 +101,12 @@ $("#validate_login").validate({
 				'user_password':$('#user_password').val()
 			},
 			'type' :'POST',
+			beforeSend: function(){
+				$("#loading_login").show();
+			},
+			complete: function(){
+				$("#loading_login").hide();
+			},
 			success: function(data){
 			//console.log(data);
 			if(data.error ==true){
@@ -170,6 +176,12 @@ $("#validate_register").validate({
 				'password_confirmation':$('#password_confirmation').val()
 			},
 			'type' :'POST',
+			beforeSend: function(){
+				$("#loading_register").show();
+			},
+			complete: function(){
+				$("#loading_register").hide();
+			},
 			success: function(data){
 			//console.log(data);
 			if(data.error_register ==true){
@@ -525,5 +537,12 @@ function comment_form() {
 }
 comment_form();
 
-
-
+/*Get length audio*/
+/*window.onload = function() {
+	var vid = document.getElementById("myaudio");
+	var time=vid.duration;
+	var minutes = Math.floor(time / 60);
+	time -= minutes * 60;
+	var seconds = parseInt(time % 60, 10);
+	$("#length_audio").text(minutes+":"+seconds);
+}*/

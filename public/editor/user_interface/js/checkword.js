@@ -26,7 +26,7 @@
                     correctCount++;
                 } else {
                     if (txtVal.trim() != "") {
-                        $(this).html("<span class='word-strike'>" + txtVal + "</span>&nbsp;");
+                        $(this).html("<span class='word-strike'>" + txtVal + "</span>&nbsp;<span class='word-incorrect'>" + fullWord + "</span>");
                     } else {
                         $(this).html("<span class='word-incorrect'>" + fullWord + "</span>");
                     }

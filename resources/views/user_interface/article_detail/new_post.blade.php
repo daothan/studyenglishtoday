@@ -17,13 +17,13 @@
 								</div>
 								<div class="article_type_md8 each_page_type" align="center">
 									@if($detail->type=="audio")
-										<a class="label label_article" href="{{route('practice_listening')}}">{{$detail->type}}</a>
+										<b class="label label_article">{{$detail->type}}</b>
 									@endif
 									@if($detail->type=="library")
-										<a class="label label_article" href="{{route('library')}}">{{$detail->type}}</a>
+										<b class="label label_article">{{$detail->type}}</b>
 									@endif
 									@if($detail->type=="reading")
-										<a class="label label_article" href="{{route('listening')}}">{{$detail->type}}</a>
+										<b class="label label_article">{{$detail->type}}</b>
 									@endif
 									<i class="label label_date"><b>{{$detail->created_at->format('d-m-Y')}}</b></i>
 								</div>

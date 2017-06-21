@@ -14,7 +14,7 @@
                 </div>
                 <div class="form-group" style="width:90px; margin:auto; display: none;" id="loading_delete">
                         <div><p class="text-danger" ><b>Please wait...</b></p></div>
-                        <div><img src='/laravel1/storage/uploads/images/loading.gif' /></div>
+                        <div><img src='/laravel1/storage/uploads/loading_images/loading.gif' /></div>
                     </div>
                 <div class="modal-footer">
 		            <button class="btn_admin danger" id="confirmdelete">Confirm</button>

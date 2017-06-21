@@ -40,15 +40,28 @@
 									</div>
 									<div class="article_type_md10 level1_type" align="center">
 										@if($detail->type=="audio")
-											<a class="label label_article" href="{{route('practice_listening')}}">{{$detail->type}}</a>
+											<b class="label label_article">{{$detail->type}}</b>
 										@endif
 										@if($detail->type=="library")
-											<a class="label label_article" href="{{route('library')}}">{{$detail->type}}</a>
+											<b class="label label_article">{{$detail->type}}</b>
 										@endif
 										@if($detail->type=="reading")
-											<a class="label label_article" href="{{route('listening')}}">{{$detail->type}}</a>
+											<b class="label label_article">{{$detail->type}}</b>
 										@endif
 										<i class="label label_date"><b>{{$detail->created_at->format('d-m-Y')}}</b></i>
+										<!-- Total words-->
+										<div class="{{($detail->type=="audio") ? 'total_word':'hidden'}}">
+											<?php
+			                                $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+			                                $dictation="";
+			                                foreach($str as $str){
+			                                	$dictation = $str->dictation;
+			                                }
+			                                $total = str_word_count($dictation);
+				                            ?>
+											<h4 align="center" class="text-info">Total words: <?php echo $total; ?></h4>
+
+										</div>
 									</div>
 								</div>
 							</div>
@@ -66,15 +79,28 @@
 									</div>
 									<div class="article_type_md5 level2_type" align="center">
 										@if($detail->type=="audio")
-											<a class="label label_article" href="{{route('practice_listening')}}">{{$detail->type}}</a>
+											<b class="label label_article">{{$detail->type}}</b>
 										@endif
 										@if($detail->type=="library")
-											<a class="label label_article" href="{{route('library')}}">{{$detail->type}}</a>
+											<b class="label label_article">{{$detail->type}}</b>
 										@endif
 										@if($detail->type=="reading")
-											<a class="label label_article" href="{{route('listening')}}">{{$detail->type}}</a>
+											<b class="label label_article">{{$detail->type}}</b>
 										@endif
 										<i class="label label_date" style="margin-top: 20px;"><b>{{$detail->created_at->format('d-m-Y')}}</b></i>
+										<!-- Total words-->
+										<div class="{{($detail->type=="audio") ? 'total_word':'hidden'}}">
+											<?php
+			                                $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+			                                $dictation="";
+			                                foreach($str as $str){
+			                                	$dictation = $str->dictation;
+			                                }
+			                                $total = str_word_count($dictation);
+				                            ?>
+											<h4 align="center" class="text-info">Total words: <?php echo $total; ?></h4>
+
+										</div>
 									</div>
 								</div>
 							</div>
@@ -92,15 +118,28 @@
 									</div>
 									<div class="article_type_md3">
 										@if($detail->type=="audio")
-											<a class="label label_article" href="{{route('practice_listening')}}">{{$detail->type}}</a>
+											<b class="label label_article">{{$detail->type}}</b>
 										@endif
 										@if($detail->type=="library")
-											<a class="label label_article" href="{{route('library')}}">{{$detail->type}}</a>
+											<b class="label label_article">{{$detail->type}}</b>
 										@endif
 										@if($detail->type=="reading")
-											<a class="label label_article" href="{{route('listening')}}">{{$detail->type}}</a>
+											<b class="label label_article">{{$detail->type}}</b>
 										@endif
 										<i class="label label_date"><b>{{$detail->created_at->format('d-m-Y')}}</b></i>
+										<!-- Total words-->
+										<div class="{{($detail->type=="audio") ? 'total_word':'hidden'}}">
+											<?php
+			                                $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+			                                $dictation="";
+			                                foreach($str as $str1){
+			                                	$dictation = $str1->dictation;
+			                                }
+			                                $total = str_word_count($dictation);
+				                            ?>
+											<h4 align="center" class="text-info">Total words: <?php echo $total; ?></h4>
+
+										</div>
 									</div>
 								</div>
 							</div>

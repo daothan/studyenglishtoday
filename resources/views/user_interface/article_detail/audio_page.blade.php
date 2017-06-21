@@ -16,8 +16,18 @@
 										</a>
 									</div>
 									<div class="article_type_md8 each_page_type" align="center">
-										<a class="label label_article" href="{{route('practice_listening')}}">audio</a>
+										<b class="label label_article">audio</b>
 										<i class="label label_date"><b>{{$detail->created_at->format('d-m-Y')}}</b></i>
+										<!-- Total words-->
+										<?php
+			                                $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+			                                $dictation = "";
+			                                foreach($str as $str1){
+			                                	$dictation = $str1->dictation;
+			                                }
+			                                $total = str_word_count($dictation);
+			                            ?>
+										<h4 align="center" class="text-info total_word">Total words: <?php echo $total;?></h4>
 									</div>
 								</div>
 							</div>

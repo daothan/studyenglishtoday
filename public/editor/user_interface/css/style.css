@@ -254,7 +254,7 @@ input[type=text]:focus {
 
 /* MD_3 */
 .md_3{
-  height: 220px;
+  height: 250px;
   margin-left: 50px;
   margin-top: 60px;
 }
@@ -355,7 +355,10 @@ input[type=text]:focus {
     width: 100%;
     margin: auto;
     margin-top: 20px;
+  }
 }
+.total_word{
+    padding-top: 21px;
 }
 .audio_width_desktop{
   width:600px;
@@ -504,7 +507,18 @@ input[type=text]:focus {
   width:300px;
   margin:auto;
 }
-
+/* Relate article */
+.relate_image{
+    max-width: 100px;
+    float: left;
+    padding-right: 20px;
+}
+.content_relate{
+  padding:2px 0px 20px 0px;
+}
+.li_relate{
+  list-style-type: none;
+}
 /*End  Article content */
 .overflow {
   word-wrap: break-word;
@@ -604,11 +618,14 @@ h2{
 
 /* Show more */
 .list-unstyled{
-    box-shadow: 5px 4px 5px #d2d2d2;
     padding: 40px;
-    background-color: rgba(234, 234, 234, 0.61);
+    background-color: rgba(186, 216, 220, 0.68);
     padding: 5px;
     list-style: none;
+    transition-duration: 0.4s;
+}
+.list-unstyled:hover{
+  box-shadow: 5px 4px 5px #d2d2d2;
 }
 /*-- banner --*/
 .carousel .item.item{
@@ -785,8 +802,8 @@ h2{
 }
 
 .post .post-heading {
-  height: 95px;
-  padding: 20px 15px;
+    height: 60px;
+    padding: 15px 15px;
 }
 .post .post-heading .avatar {
   width: 60px;
@@ -930,18 +947,29 @@ h2{
 .pagination {
     display: inline-block;
     margin: 0px 7px;
+    transition: all 0.5s;
 }
-
+@media(max-width: 800px){
+  .pagination {
+    display: inline-block;
+    margin: -5px 7px;
+    transition: all 0.5s;
+  }
+}
+.pagination:hover{
+    box-shadow: 7px 4px 8px 0px rgba(0,0,0,0.24), 2px 17px 56px 0px rgba(0,0,0,0.19);
+}
 .pagination a {
+    cursor: pointer;
     color: black;
     float: left;
-    padding: 8px 16px;
+    padding: 4px 12px;
     text-decoration: none;
     transition: background-color .3s;
 }
 
 .pagination a.active {
-    background-color: #4CAF50;
+    background-color: rgb(43, 156, 199);
     color: white;
 }
 
@@ -1057,8 +1085,7 @@ img.modal-img2 {
 }
 .sidebar-module-inset {
   padding: 1rem;
-  background-color: #d4d2d2;
-  border-radius: .25rem;
+  background-color: rgba(145, 165, 241, 0.91);
 }
 .sidebar-module-inset p:last-child,
 .sidebar-module-inset ul:last-child,
@@ -1177,7 +1204,7 @@ h2.text-flash_welcome{
     color: #777;
 }
 p.agiletext-border {
-    border-left: 3px solid #f44336;
+    border-left: 3px solid #7d83d2;
     padding-left: 1em;
 }
 /*-- //text styles --*/

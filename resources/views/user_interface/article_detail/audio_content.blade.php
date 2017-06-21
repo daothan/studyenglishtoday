@@ -46,7 +46,7 @@
 				            </div>
 
 							<p align="center">
-								<button class="btn_user info collapsed" data-toggle="collapse" data-target="#dictation"  style="margin-top: 30px; width: 180px;"><h4>Dictation here...</h4></button>
+								<button class="btn_user info collapsed" data-toggle="collapse" data-target="#dictation"  style="margin-top: 30px; width: 180px;"><h4>Take dictation here...</h4></button>
 							</p>
 							<?php
                                 $str = $data->dictation;
@@ -73,10 +73,14 @@
 								<div class="total-word hidden"><?php echo $total; ?></div>
 							</div>
 		                    <!-- View score -->
-
-							<p>
-				            	{!!htmlspecialchars_decode($data->transcript)!!}
+							<p align="center">
+								<button class="button collapsed" data-toggle="collapse" data-target="#transcript"  style="margin-top: 30px; width: 180px;">Transcript</button>
 							</p>
+							<div class="collapse" id="transcript" style="padding: 10px;">
+								<p>
+					            	{!!htmlspecialchars_decode($data->transcript)!!}
+								</p>
+							</div>
 			            </div><!-- /.blog-post -->
 			            <!-- Comment -->
 						<hr>
@@ -153,15 +157,24 @@
 			        <div class="col-sm-4 offset-sm-1 blog-sidebar">
 			            <div class="sidebar-module sidebar-module-inset">
 				            <h3 align="center"><b>Related articles</b></h3>
-			            </div>
+			            </div><hr>
 			            <?php $no=0;?>
 			            @foreach($relate_audio as $relate)
 			            <?php $no++; ?>
 			            @if($no<=6)
-				            <div class="sidebar-module">
-					            <ol class="list-unstyled">
-					              <li><a href="{{route('tittle_audio',[tittle($relate->tittle)])}}">{{$relate->tittle}}</a></li>
-					            </ol>
+				            <div class="">
+				              	<li class="li_relate">
+									<div class="media-block horizontal width-img size-4">
+										<a href="{{route('tittle_audio',[tittle($relate->tittle)])}}" class="img-wrap" title="{{$relate->tittle}}">
+											<img class="relate_image" src="/laravel1/{{$relate->image_path}}">
+										</a>
+										<div class="content_relate">
+											<a href="{{route('tittle_audio',[tittle($relate->tittle)])}}">
+												<h4><span class="title">{{$relate->tittle}}</span></h4>
+											</a>
+										</div>
+									</div>
+				              	</li><hr>
 				            </div>
 			            @endif
 			            @endforeach

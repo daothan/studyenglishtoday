@@ -85,7 +85,7 @@
 					</div>
                     <div class="form-group" style="width:90px; margin:auto; display: none;" id="loading_edit">
                         <div><p class="text-danger">Please wait...</p></div>
-                        <div><img src='/laravel1/storage/uploads/images/loading.gif'/></div>
+                        <div><img src='/laravel1/storage/uploads/loading_images/loading.gif'/></div>
                     </div>
                 </div>
                 <div class="modal-footer modal-body-footer">

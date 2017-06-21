@@ -5,6 +5,9 @@
 	<div class="container">
 		<div id="" class="grid_3 grid_5 w3-agileits">
 			<h2><p class="agiletext-border agiletext-style">Searching results...</p></h2>
+			<div class="col-md-8 col-md-offset-1">
+				<h3 ><p class="agiletext agiletext-style" style="color: #05288a;">{{$results->count()}} results found</p></h3>
+			</div>
 				@foreach($results as $detail)
 					<div class="col-md-8 col-md-offset-3 md_8 each_page">
 						<div class="article_item_md8 each_page_item">
@@ -18,15 +21,27 @@
 							</div>
 							<div class="article_type_md8 each_page_type" align="center">
 								@if($detail->type=="audio")
-									<a class="label label_article" href="{{route('practice_listening')}}">{{$detail->type}}</a>
+									<b class="label label_article">{{$detail->type}}</b>
 								@endif
 								@if($detail->type=="library")
-									<a class="label label_article" href="{{route('library')}}">{{$detail->type}}</a>
+									<b class="label label_article">{{$detail->type}}</b>
 								@endif
 								@if($detail->type=="reading")
-									<a class="label label_article" href="{{route('listening')}}">{{$detail->type}}</a>
+									<b class="label label_article">{{$detail->type}}</b>
 								@endif
 								<i class="label label_date"><b>{{$detail->created_at->format('d-m-Y')}}</b></i>
+								<!-- Total words-->
+								<div class="{{($detail->type=="audio") ? 'total_word':'hidden'}}">
+									<?php
+	                                $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+	                                $dictation_result = "";
+	                                foreach($str as $str){
+	                                	$dictation_result = $str->dictation;
+	                                }
+	                                $total = str_word_count($dictation_result);
+		                            ?>
+									<h4 align="center" class="text-info">Total words: <?php echo $total; ?></h4>
+								</div>
 							</div>
 						</div>
 					</div>

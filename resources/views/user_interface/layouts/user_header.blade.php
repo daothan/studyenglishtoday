@@ -86,17 +86,17 @@
 						<!-- Knowledge Library -->
 							<!-- <li class="{{((url()->current())==route('home')) ? '' : 'hidden'}}"><a href="#library_cate" class="scroll">Knowledge Library</a></li>
 							<li class="{{((url()->current())!=route('home')) ? '' : 'hidden'}}"><a href="{{route('home')}}#library_cate">Knowledge Library</a></li> -->
-							<li><a href="{{route('library')}}">Knowledge Library</a></li>
+							<li><a href="{{route('library')}}">Knowledge-Library</a></li>
 						<!-- - -->
 						<!-- Listening -->
 							<!-- <li class="{{((url()->current())==route('home')) ? '' : 'hidden'}}"><a href="#listening_cate" class="scroll">Listening</a></li>
 							<li class="{{((url()->current())!=route('home')) ? '' : 'hidden'}}"><a href="{{route('home')}}#listening_cate">Listening</a></li> -->
-							<li><a href="{{route('practice_listening')}}">Listening</a></li>
+							<li><a href="{{route('practice_listening')}}">Listening-Dictation</a></li>
 						<!-- - -->
 						<!-- Reading -->
 							<!-- <li class="{{((url()->current())==route('home')) ? '' : 'hidden'}}"><a href="#reading_cate" class="scroll">Reading</a></li>
-							<li class="{{((url()->current())!=route('home')) ? '' : 'hidden'}}"><a href="{{route('home')}}#reading_cate">Reading</a></li> -->
-							<li><a href="{{route('reading')}}">Reading</a></li>
+							<li class="{{((url()->current())!=route('home')) ? '' : 'hidden'}}"><a href="{{route('home')}}#reading_cate">Reading</a></li> 
+							<li><a href="{{route('reading')}}">Reading</a></li>-->
 						<!-- - -->
 						<!-- Contact -->
 							<li><a data-toggle="modal" data-target="" onclick="contact_us()">Contact</a></li>
@@ -184,8 +184,10 @@
 							<div class="has-error"><i><span class="help-block error errorUserName"></span></i></div>
 						<!-- Password -->
 						<input id="user_password" type="password" name="user_password" placeholder="Please enter password">
-							<div class="has-error"><i><span class="help-block error errorUserPassword"></span></i></div>
-
+							<div class="has-error"><i>
+								<span class="help-block error errorUserPassword"></span></i>
+							</div>
+						<div id="loading_login" style="width: 55px;margin: auto; display: none;"><img src="/laravel1/storage/uploads/loading_images/loading_login.gif"></div>
 						<!-- Submit-->
 						<input id="login_modal" type="submit" value="Sign In">
 						<input type="reset" value="Reset">
@@ -240,6 +242,7 @@
 								<div class="has-error"><i><span class="help-block error errorPassword"></span></i></div>
 							<input id="password_confirmation" type="password" name="password_confirmation" class="password" placeholder="Confirm Password"/>
 								<div class="has-error"><i><span class="help-block error errorPassword_confirmation"></span></i></div>
+							<div id="loading_register" style="width: 55px;margin: auto; display: none;"><img src="/laravel1/storage/uploads/loading_images/loading_login.gif"></div>
 
 							<input id="register_modal" type="submit" value="Register"/>
 							<input type="reset" value="Reset">
