@@ -288,6 +288,7 @@ for (instance in CKEDITOR.instances) {
 		    			$('#listening_introduce').html(result.introduce);
 		    			$('#listening_image').html(result.image);
 		    			$('#listening_audio').html(result.audio);
+		    			$('#listening_length').html(result.audio_length);
 		    			$('#listening_transcript').html(result.transcript);
 
 		    			var path_img = "http://localhost/laravel1/"+result.image_path;
@@ -329,6 +330,7 @@ $("#edit_listening").click(function(event){
 						var path_img = "http://localhost/laravel1/"+result[0].info_audio.image_path;
 		    				$("#old_image_view").attr("src", path_img);
 						$('#old_audio').html(result[0].info_audio.audio);
+						$('#length_listening_edit').val(result[0].info_audio.audio_length);
 						$('#dictation_listening_edit').val(result[0].info_audio.dictation);
 						CKEDITOR.instances['introduce_listening_edit'].setData(result[0].info_audio.introduce);
 						CKEDITOR.instances['transcript_listening_edit'].setData(result[0].info_audio.transcript);
@@ -341,6 +343,9 @@ $("#edit_listening").click(function(event){
 									required:true
 								},
 								introduce_listening_edit:{
+									required:true
+								},
+								length_listening_edit:{
 									required:true
 								},
 								dictation_listening_edit:{

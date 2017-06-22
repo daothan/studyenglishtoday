@@ -36,9 +36,9 @@ return [
     ],
 
     'facebook' => [
-        'client_id'     => '228664297623184',
-        'client_secret' => '7b4896caf3b73df86d9b6a85666ce7ef',
-        'redirect'      => 'http://localhost/laravel1/user/facebook/callback',
+        'client_id'     => '1919352095011212',
+        'client_secret' => 'a9ff582344af8287ac6b56b61f307f25',
+        'redirect'      => 'http://localhost/laravel1/facebook/callback',
     ],
     'google' => [
         'client_id'     => '761218673365-e45nusp7mk3jo9ujvdcu4opj6b21aopt.apps.googleusercontent.com',

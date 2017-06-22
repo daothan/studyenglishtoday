@@ -55,6 +55,13 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="col-md-1 control-label">Audio Length</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" name="length_listening" id="length_listening">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label class="col-md-1 control-label">Dictation</label>
                         <div class="col-md-10">
                             <textarea class="form-control" name="dictation_listening" id="dictation_listening" rows="5"></textarea>

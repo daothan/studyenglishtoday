@@ -28,6 +28,10 @@
 							<div id="listening_audio"></div>
 						</div>
 						<div class="form-group col-centered">
+							<label class="control-label text-info">Audio Length</label>
+							<div id="listening_length"></div>
+						</div>
+						<div class="form-group col-centered">
 							<label class="control-label"></label>
 							<div id="listening_audio_show">
 								<audio id="audioPlayer" width="800" height="30" controls="controls">

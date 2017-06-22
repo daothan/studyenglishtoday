@@ -35,9 +35,6 @@
 											<img class="article_img_md8 img_thumbnail each_page_img" src="{{$detail->image_path}}">
 										</a>
 									</div>
-									<div class="article_info_md10 level1_introduce">
-										<span align="center" class="overflow"><i>{!!remove_dash(htmlspecialchars_decode($detail->introduce))!!}</i></span>
-									</div>
 									<div class="article_type_md10 level1_type" align="center">
 										@if($detail->type=="audio")
 											<b class="label label_article">{{$detail->type}}</b>
@@ -54,13 +51,15 @@
 											<?php
 			                                $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
 			                                $dictation="";
+			                                $length="";
 			                                foreach($str as $str){
-			                                	$dictation = $str->dictation;
+												$dictation = $str->dictation;
+												$length    = $str->audio_length;
 			                                }
 			                                $total = str_word_count($dictation);
 				                            ?>
-											<h4 align="center" class="text-info">Total words: <?php echo $total; ?></h4>
-
+											<span align="center" class="text-success total_word_font" style="padding-right: 15px;">Length: <?php echo $length; ?></span>
+											<span align="center" class="text-success total_word_font">Total words: <?php echo $total; ?></span>
 										</div>
 									</div>
 								</div>
@@ -93,13 +92,15 @@
 											<?php
 			                                $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
 			                                $dictation="";
+			                                $length="";
 			                                foreach($str as $str){
-			                                	$dictation = $str->dictation;
+												$dictation = $str->dictation;
+												$length    = $str->audio_length;
 			                                }
 			                                $total = str_word_count($dictation);
 				                            ?>
-											<h4 align="center" class="text-info">Total words: <?php echo $total; ?></h4>
-
+											<span align="center" class="text-success total_word_font" style="padding-right: 15px;">Length: <?php echo $length; ?></span>
+											<span align="center" class="text-success total_word_font">Total words: <?php echo $total; ?></span>
 										</div>
 									</div>
 								</div>
@@ -132,13 +133,15 @@
 											<?php
 			                                $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
 			                                $dictation="";
-			                                foreach($str as $str1){
-			                                	$dictation = $str1->dictation;
+			                                $length="";
+			                                foreach($str as $str){
+												$dictation = $str->dictation;
+												$length    = $str->audio_length;
 			                                }
 			                                $total = str_word_count($dictation);
 				                            ?>
-											<h4 align="center" class="text-info">Total words: <?php echo $total; ?></h4>
-
+											<span align="center" class="text-success total_word_font" style="padding-right: 15px;">Length: <?php echo $length; ?></span>
+											<span align="center" class="text-success total_word_font">Total words: <?php echo $total; ?></span>
 										</div>
 									</div>
 								</div>

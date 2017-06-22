@@ -64,11 +64,18 @@
 		                    <!-- image-preview-input -->
 		                    <div class="btn btn-default image-preview-input">
 		                        <span class="glyphicon glyphicon-folder-open"></span>
-		                        <span class="image-preview-input-title">Choose File</span>
+		                        <span class="image-preview-input-title">Choose Audio</span>
 		                        <input type="file" id="audio_listening_edit" name="audio_listening_edit"/>
 		                    </div>
 		                </span>
 		            </div>
+
+                    <div class="form-group">
+                        <label class="col-md-1 control-label">Audio Length</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" name="length_listening_edit" id="length_listening_edit">
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label class="col-md-1 control-label">Dictation</label>

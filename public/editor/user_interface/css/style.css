@@ -63,7 +63,7 @@ span.answer{
 }
 a.tooltips span {
     visibility: hidden;
-    width: 300px;
+    width: 225px;
     background-color: rgba(85, 153, 212, 0.95);
     color: #090331;
     text-align: center;
@@ -73,7 +73,7 @@ a.tooltips span {
     z-index: 1;
     bottom: 125%;
     left: -36%;
-    margin-left: -109px;
+    margin-left: -55px;
     opacity: 0;
     transition: opacity 1s;
 }
@@ -358,7 +358,13 @@ input[type=text]:focus {
   }
 }
 .total_word{
-    padding-top: 21px;
+    padding-top: 20px;
+    display: table;
+    margin: auto;
+}
+.total_word_font{
+  font-size: 18px;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 .audio_width_desktop{
   width:600px;
@@ -577,8 +583,8 @@ p{
   margin:auto;
 }
 .reading_content{
-  padding-right: 100px;
-  padding-left: 100px;
+  padding-right: 50px;
+  padding-left: 50px;
 }
  h4{
     font-size: 19px !important;

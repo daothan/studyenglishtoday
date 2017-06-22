@@ -87,15 +87,16 @@ class ListeningController extends Controller
             if($detail->save()){
                 $listening = new Listening;
                 /*Request data*/
-                $listening->tittle     = $request->tittle_listening;
-                $listening->introduce  = $request->introduce_listening;
-                $listening->audio      = $file_name_audio;
-                $listening->audio_path = $folder.'/'.$file_name_audio;
-                $listening->image      = $file_name_image;
-                $listening->image_path = $folder_img.'/'.$file_name_image;
-                $listening->dictation  = $request->dictation_listening;
-                $listening->transcript = $request->transcript_listening;
-                $listening->user_id    = Auth::user()->id;
+                $listening->tittle       = $request->tittle_listening;
+                $listening->introduce    = $request->introduce_listening;
+                $listening->audio        = $file_name_audio;
+                $listening->audio_path   = $folder.'/'.$file_name_audio;
+                $listening->image        = $file_name_image;
+                $listening->image_path   = $folder_img.'/'.$file_name_image;
+                $listening->dictation    = $request->dictation_listening;
+                $listening->audio_length = $request->length_listening;
+                $listening->transcript   = $request->transcript_listening;
+                $listening->user_id      = Auth::user()->id;
 
                 $data = [
                     'name'=>Auth::user()->name,
@@ -206,10 +207,11 @@ class ListeningController extends Controller
 
 
             /*Request data*/
-            $listening->tittle     = $request->tittle_listening_edit;
-            $listening->introduce  = $request->introduce_listening_edit;
-            $listening->dictation  = $request->dictation_listening_edit;
-            $listening->transcript = $request->transcript_listening_edit;
+            $listening->tittle       = $request->tittle_listening_edit;
+            $listening->introduce    = $request->introduce_listening_edit;
+            $listening->audio_length = $request->length_listening_edit;
+            $listening->dictation    = $request->dictation_listening_edit;
+            $listening->transcript   = $request->transcript_listening_edit;
 
             if($listening->save()){
 

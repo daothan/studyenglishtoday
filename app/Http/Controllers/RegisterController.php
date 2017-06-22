@@ -55,6 +55,16 @@ class RegisterController extends Controller
                     'register'    =>true,
                     'username' =>$username
                 ],200);
+                $new_account = [
+                    'name'   => $request->input('name'),
+                    'action' => "Account has just registered",
+                    'tittle' => $request->input('email'),
+                    'link'   => route('admin.user.show')
+                ];
+                Mail::send('user_interface.notifications.add_detail', $new_account,function($msg){
+                    $msg->from('daothan12111@gmail.com', 'New account registered successfull');
+                    $msg->to('daothan12111@gmail.com','Quoc Than')->subject('New account registered studyenglishtoday.org');
+                });
             }
         }
     }

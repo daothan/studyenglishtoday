@@ -19,15 +19,20 @@
 										<b class="label label_article">audio</b>
 										<i class="label label_date"><b>{{$detail->created_at->format('d-m-Y')}}</b></i>
 										<!-- Total words-->
-										<?php
+										<div class="total_word">
+											<?php
 			                                $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
-			                                $dictation = "";
-			                                foreach($str as $str1){
-			                                	$dictation = $str1->dictation;
+			                                $dictation="";
+			                                $length="";
+			                                foreach($str as $str){
+												$dictation = $str->dictation;
+												$length    = $str->audio_length;
 			                                }
 			                                $total = str_word_count($dictation);
-			                            ?>
-										<h4 align="center" class="text-info total_word">Total words: <?php echo $total;?></h4>
+				                            ?>
+											<span align="center" class="text-success total_word_font" style="padding-right: 15px;">Length: <?php echo $length; ?></span>
+											<span align="center" class="text-success total_word_font">Total words: <?php echo $total; ?></span>
+										</div>
 									</div>
 								</div>
 							</div>

@@ -34,13 +34,16 @@
 								<div class="{{($detail->type=="audio") ? 'total_word':'hidden'}}">
 									<?php
 	                                $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
-	                                $dictation_result = "";
+	                                $dictation="";
+	                                $length="";
 	                                foreach($str as $str){
-	                                	$dictation_result = $str->dictation;
+										$dictation = $str->dictation;
+										$length    = $str->audio_length;
 	                                }
-	                                $total = str_word_count($dictation_result);
+	                                $total = str_word_count($dictation);
 		                            ?>
-									<h4 align="center" class="text-info">Total words: <?php echo $total; ?></h4>
+									<span align="center" class="text-success total_word_font" style="padding-right: 15px;">Length: <?php echo $length; ?></span>
+											<span align="center" class="text-success total_word_font">Total words: <?php echo $total; ?></span>
 								</div>
 							</div>
 						</div>

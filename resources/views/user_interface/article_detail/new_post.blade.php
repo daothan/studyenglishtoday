@@ -26,6 +26,21 @@
 										<b class="label label_article">{{$detail->type}}</b>
 									@endif
 									<i class="label label_date"><b>{{$detail->created_at->format('d-m-Y')}}</b></i>
+									<!-- Total words-->
+									<div class="{{($detail->type=="audio") ? 'total_word':'hidden'}}">
+										<?php
+		                                $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+		                                $dictation="";
+		                                $length="";
+		                                foreach($str as $str){
+											$dictation = $str->dictation;
+											$length    = $str->audio_length;
+		                                }
+		                                $total = str_word_count($dictation);
+			                            ?>
+										<span align="center" class="text-success total_word_font" style="padding-right: 15px;">Length: <?php echo $length; ?></span>
+										<span align="center" class="text-success total_word_font">Total words: <?php echo $total; ?></span>
+									</div>
 								</div>
 							</div>
 						</div>
