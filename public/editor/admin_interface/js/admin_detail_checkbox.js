@@ -288,14 +288,10 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 					required:true
 				},
 	            tittle: {
-	            	required  :true,
-	            	minlength :20,
-	            	maxlength:120
+	            	required  :true
 	            },
 				introduce:{
-					required  :true,
-					minlength :30,
-					maxlength :300
+					required  :true
 				},
 				content:{
 					required  :true,
@@ -423,12 +419,10 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 									required:true
 								},
 								edit_tittle:{
-									required:true,
-									minlength:20
+									required:true
 								},
 								edit_introduce:{
-									required:true,
-									minlength:30
+									required:true
 								},
 								edit_content:{
 									required:true,

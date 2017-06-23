@@ -422,6 +422,7 @@ $('#practice_choose').click(function(){
 
 /*Change class based on width screen*/
 var $window = $(window);
+
 function checkWidth() {
     if ($window.width() <= 1024) {
     	/*When reduce screen, then change all class to md3 type css*/
@@ -470,6 +471,14 @@ function checkWidth() {
 
         $('.facebook_button').removeClass('show_style').addClass('hide_style');
         $('.facebook_button1').removeClass('hide_style').addClass('show_style');
+
+        /*Change H4 to H3*/
+		$(".article_info_md3 h4").replaceWith(function(){
+			return $("<h3>", {
+				"align": "center",
+				html:$(this).html()
+			});
+		});
     };
 
     if ($window.width() > 1024) {

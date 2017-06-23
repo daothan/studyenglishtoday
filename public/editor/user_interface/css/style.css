@@ -182,10 +182,10 @@ input[type=text]:focus {
 }
 .article_item_md10{
    /*  border: solid 1px #ccc; */
-    padding: 20px;
+    padding: 5px 20px 5px 20px;
     border-radius: 5px;
     clear: both;
-    min-height: 180px;
+    min-height: 145px;
 }
 .article_img_md10{
     float: left;
@@ -311,6 +311,14 @@ input[type=text]:focus {
 }
 .carousel-inner{
     height: 400px;
+}
+.carousel-inner > .item {
+    position: relative;
+    display: none;
+    -webkit-transition: 0.6s ease-in-out left;
+    -moz-transition: 0.6s ease-in-out left;
+    -o-transition: 0.6s ease-in-out left;
+    transition: 0.6s ease-in-out left;
 }
 .carousel-caption {
   position: inherit;
@@ -576,15 +584,15 @@ p{
 /*Blog Main*/
 .blog-main{
     padding: 40px;
-    background-color: rgba(234, 234, 234, 0.61);
+    background-color: rgba(234, 234, 234, 0.35);
 }
 .article_content{
   width:550px;
   margin:auto;
 }
 .reading_content{
-  padding-right: 50px;
-  padding-left: 50px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
  h4{
     font-size: 19px !important;
@@ -604,7 +612,7 @@ h2{
       background-color: rgba(234, 234, 234, 0.61);
   }
   h4{
-    font-size: 22px !important;
+    font-size: 18px !important;
   }
   h2{
     font-size: 32px;
@@ -2379,7 +2387,7 @@ ul.w3list-style {
 }
 @media(max-width:480px){
 .carousel-caption {
-    padding: 9em 0 9em !important;
+    padding: 6em 0 9em !important;
 }
 .navbar-inverse { 
     margin: 0em 0em 0;
@@ -2610,7 +2618,7 @@ h3.w3ls-hdg {
     margin: 1em 2em !important;
 }
 .carousel-caption {
-    padding: 10em 0 10em !important;
+    padding: 6em 0 10em !important;
 }
 .codes {
     padding: 2em 0;

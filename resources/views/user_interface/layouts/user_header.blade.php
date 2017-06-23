@@ -269,7 +269,7 @@
 
 	<!-- banner -->
 	<!-- banner -->
-	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+	<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="10000">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
 			<?php $i=0;?>
@@ -287,7 +287,7 @@
 					<div class="carousel-caption">
 						<h2>{{$data->tittle}}</h2>
 						<p>{!!htmlspecialchars_decode($data->introduce)!!}</p>
-						<button class="btn_user btn{{$i}}" href="#{{$data->tittle}}" data-toggle="modal">{{$data->tittle}}</button>
+						<button class="btn_user btn{{$i}}" href="#{{tittle($data->tittle)}}" data-toggle="modal">View more...</button>
 					</div>
 				</div>
 			</div>
@@ -305,7 +305,7 @@
 		<!-- POP UP MESSAGE -->
 		@foreach($banner as $data)
 		<!-- {{$data->tittle}} -->
-		<div id="{{$data->tittle}}" class="modal wthree-modal" tabindex="-1">
+		<div id="{{tittle($data->tittle)}}" class="modal wthree-modal" tabindex="-1">
 			<!-- Modal content -->
 			<div class="modal-content modal-dialog-scroll">
 				<div class="modal-tittle">

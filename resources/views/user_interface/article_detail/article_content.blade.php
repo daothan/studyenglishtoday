@@ -33,9 +33,9 @@
 							</div><br>
 							<!-- End Like Share -->
 
-				            <h4><i>{!!htmlspecialchars_decode($data->introduce)!!}</i></h4><br><br>
+				            <span><i>{!!htmlspecialchars_decode($data->introduce)!!}</i></span>
 				            <div class="reading_content">
-				            	<h4 style="word-wrap: break-word">{!!htmlspecialchars_decode($data->content)!!}</h4>
+				            	<span style="word-wrap: break-word">{!!htmlspecialchars_decode($data->content)!!}</span>
 				            </div>
 			            </div><!-- /.blog-post -->
 						<!-- Comment -->
