@@ -51,7 +51,7 @@ class LoginController extends Controller
                 ],200);
 
             }else{
-                $errors = new MessageBag(['errorlogin'=>'Email or Password wrong.']);
+                $errors = new MessageBag(['errorlogin'=>'Username or Password wrong.']);
                 return response()->json([
                 'error'   =>true,
                 'message' =>$errors

@@ -129,22 +129,22 @@
                                     <a href="{{route('admin.cate.show')}}">Categories</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('admin.detail.show')}}">Details</a>
-                                </li>
-                                <li>
                                     <a href="{{route('admin.banner.show')}}">Banners</a>
                                 </li>
                                 <li>
                                     <a href="{{route('admin.contact.show')}}">Contacts</a>
                                 </li>
                                 <li>
+                                    <a href="{{route('admin.detail.show')}}">Libraries</a>
+                                </li>
+                                <li>
                                     <a href="{{route('admin.listening.show')}}">Listenings</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('admin.comment.show')}}">Comments</a>
+                                    <a href="{{route('admin.text_file.show')}}">Text Files</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('admin.text_file.show')}}">Text Files</a>
+                                    <a href="{{route('admin.comment.show')}}">Comments</a>
                                 </li>
                             </ul>
                         </li>

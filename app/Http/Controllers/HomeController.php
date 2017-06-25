@@ -34,13 +34,13 @@ class HomeController extends Controller
 
     /*Search*/
     public function search(Request $request){
-        $results = Detail::where('tittle','like','%'.$request->get('search').'%')->paginate(6);
-        $banner            = Banner::select('id','tittle','introduce','content')->get();
-
-        $contact           = Contact::where('prior',1)->get();
-        $max_id_contact    = Contact::max('id');
-        $last_contact      = Contact::where('id',$max_id_contact)->get();
-        return view('user_interface.article_detail.result_search',compact('results','banner','contact','last_contact'));
+        $results        = Detail::where('tittle','like','%'.$request->get('search').'%')->orderBy('id', 'DESC')->paginate(6);
+        $banner         = Banner::select('id','tittle','introduce','content')->get();
+        $results_count  = Detail::where('tittle','like','%'.$request->get('search').'%')->count();
+        $contact        = Contact::where('prior',1)->get();
+        $max_id_contact = Contact::max('id');
+        $last_contact   = Contact::where('id',$max_id_contact)->get();
+        return view('user_interface.article_detail.result_search',compact('results','banner','contact','last_contact','results_count'));
     }
     /*Show details*/
     public function user_home(Request $request){

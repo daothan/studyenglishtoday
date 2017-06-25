@@ -6,7 +6,7 @@
 		<div id="" class="grid_3 grid_5 w3-agileits">
 			<h2><p class="agiletext-border agiletext-style">Searching results...</p></h2>
 			<div class="col-md-8 col-md-offset-1">
-				<h3 ><p class="agiletext agiletext-style" style="color: #05288a;">{{$results->count()}} results found</p></h3>
+				<h3 ><p style="color: #05288a;">{{$results_count}} results found</p></h3>
 			</div>
 				@foreach($results as $detail)
 					<div class="col-md-8 col-md-offset-3 md_8 each_page">
@@ -53,16 +53,37 @@
 			<script>$(function () {
 			  $('[data-toggle="tooltip"]').tooltip()
 			})</script>
-			Total Pages: {!! $results->lastPage() !!}
 
-			<div class="pagination pull-right {{($results->lastPage()==0)?'hidden':''}}">
-				<a href="{{$results->url(1)}}" class="{{($results->currentPage()==1) ? 'hidden':''}}">&laquo;</a>
-				<a href="{{$results->url($results->currentPage()-1)}}" class="{{($results->currentPage()==1) ? 'hidden':''}}">Prev</a>
-				@for($i=1; $i<=$results->lastPage(); $i++)
-					<a href="{{$results->url($i)}}" class="{{($results->currentPage()==$i)? 'active':''}}">{{$i}}</a>
-				@endfor
-				<a href="{{$results->url($results->currentPage()+1)}}" class="{{($results->currentPage()==$results->lastPage())?'hidden' : ''}}">Next</a>
-				<a href="{{$results->url($results->lastPage())}}" class="{{($results->currentPage()==$results->lastPage())?'hidden' : ''}}">&raquo;</a>
+			<div class="total_page col-md-3">
+				Total Pages: {!! $results->lastPage() !!}
+			</div>
+
+			<div class="col-md-6 ">
+				<ul class="pagination">
+                    <li class="{{($results->currentPage()==1) ? 'hidden':''}}">
+                    	<a href="{{$results->appends(Request::only('search'))->url($results->currentPage()-1)}}"><span>«</span></a>
+                    </li>
+                    <li class="{{($results->currentPage()==1)?'hidden':''}}">
+                    	<a href="{{$results->appends(Request::only('search'))->url(1)}}"><span>1</span></a>
+                    </li>
+					<li class="{{($results->currentPage()<=2)?'hidden':''}}">
+						<span>...</span>
+					</li>
+					@for($i=1; $i<=$results->lastPage(); $i++)
+						<li class="{{($results->currentPage()==$i)? 'active':'hidden'}}">
+							<a href="{{$results->url($i)}}" ><span>{{$i}}</span></a>
+						</li>
+					@endfor
+					<li class="{{($results->currentPage()>=$results->lastPage()-1)?'hidden' : ''}}">
+						<span>...</span>
+					</li>
+					<li class="{{($results->currentPage()>=$results->lastPage())?'hidden':''}}">
+						<a href="{{$results->appends(Request::only('search'))->url($results->lastPage())}}"><span>{{$results->lastPage()}}</span></a>
+					</li>
+					<li class="{{($results->currentPage()==$results->lastPage())?'hidden' : ''}}">
+						<a href="{{$results->appends(Request::only('search'))->url($results->currentPage()+1)}}"><span>»</span></a>
+					</li>
+   				</ul>
 			</div>
 		</div>
 	</div>

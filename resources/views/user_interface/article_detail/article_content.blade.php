@@ -20,9 +20,6 @@
 			        <div class="col-sm-8 blog-main overflow">
 
 			            <div class="blog-post">
-				            <h2 class=""><a>{{$data->tittle}}</a></h2>
-				            <p class="blog-post-meta">Created <i class="{{(isset(Auth::user()->name) && Auth::user()->level<2) ? '':'hidden'}}">{{$data->created_at->format('H:i:s d-m-Y')}}</i><i class="{{(isset(Auth::user()->name) && Auth::user()->level==2) ? '':'hidden'}}">{{$data->created_at->format('d-m-Y')}}</i><i class="{{(isset(Auth::user()->name)) ? 'hidden':''}}">{{$data->created_at->format('d-m-Y')}}</i>
-				            </p>
 				            <!-- Like Share -->
 							<p><i class="text-success">Like and Share Website</i></p>
 							<div class="facebook_button">
@@ -32,6 +29,9 @@
 								<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
 							</div><br>
 							<!-- End Like Share -->
+				            <h2 class=""><a>{{$data->tittle}}</a></h2>
+				            <p class="blog-post-meta">Created <i class="{{(isset(Auth::user()->name) && Auth::user()->level<2) ? '':'hidden'}}">{{$data->created_at->format('H:i:s d-m-Y')}}</i><i class="{{(isset(Auth::user()->name) && Auth::user()->level==2) ? '':'hidden'}}">{{$data->created_at->format('d-m-Y')}}</i><i class="{{(isset(Auth::user()->name)) ? 'hidden':''}}">{{$data->created_at->format('d-m-Y')}}</i>
+				            </p>
 
 				            <span><i>{!!htmlspecialchars_decode($data->introduce)!!}</i></span>
 				            <div class="reading_content">

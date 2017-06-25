@@ -2,14 +2,14 @@
 <!-- Modal Edit Cate-->
 
 <div id="editdetailModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog modal-lg modal-dialog-detail">
+    <div class="modal-dialog modal-lg modal-dialog-listening">
         <div class="content modal_background">
             <div class="panel-title">
                 <h3 class="modal_header" align="center">Edit Detail</h3>
             </div>
 
             <form method="POST" class="form-horizontal" role="form"  name="validate_edit_detail" id="validate_edit_detail" enctype="multipart/form-data">
-                <div class="modal-body modal-body-detail">
+                <div class="modal-body modal-body-listening">
 
                     <input type="text" name="old_id_edit_detail" id="old_id_edit_detail" class="hidden">
                     <div class="form-group">

@@ -2,14 +2,14 @@
 <!-- Modal Add listening-->
 
 <div id="addlisteningModal" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-lg modal-dialog-detail">
+    <div class="modal-dialog modal-lg modal-dialog-listening">
         <div class="content modal_background">
             <div class="panel-title">
                 <h3 class="modal_header" align="center">Add listening</h3>
             </div>
 
             <form method="POST" class="form-horizontal" role="form"  name="validate_add_listening" id="validate_add_listening" enctype="multipart/form-data">
-                <div class="modal-body modal-body-detail">
+                <div class="modal-body modal-body-listening">
                     <input type="text" name="cate_listening" id="cate_listening" class="hidden">
                     <div class="form-group">
                         <label class="col-md-1 control-label">Tittle</label>

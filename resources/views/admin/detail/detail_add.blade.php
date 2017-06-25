@@ -2,14 +2,14 @@
 <!-- Modal Add Detail-->
 
 <div id="adddetailModal" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-lg modal-dialog-detail">
+    <div class="modal-dialog modal-lg modal-dialog-listening">
         <div class="content modal_background">
             <div class="panel-title">
                 <h3 class="modal_header" align="center">Add Detail</h3>
             </div>
 
             <form method="POST" class="form-horizontal" role="form"  name="validate_add_detail" id="validate_add_detail" enctype="multipart/form-data">
-                <div class="modal-body modal-body-detail">
+                <div class="modal-body modal-body-listening">
 					<div class="form-group">
 						<label class="col-md-1 control-label">Category</label>
 						<div class="col-md-10">

@@ -232,7 +232,7 @@
 				<div class="agileinfo-w3lsrow login-top">
 					<h3 class="w3ls-hdg">Register Form</h3>
 						<form id="validate_register" action="" method="POST">
-							<h3 class="col-md-6 col-md-offset-3 error successRegister flash text-center text-danger"></h3>
+							<h3 class="col-md-8 col-md-offset-2 error successRegister flash text-center text-danger"></h3>
 
 							<input id="name" type="text" name="name" class="name active" placeholder="Your Name" autofocus />
 								<div class="has-error"><i><span class="help-block error errorName"></span></i></div>

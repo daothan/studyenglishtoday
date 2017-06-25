@@ -50,17 +50,37 @@
 				<script>$(function () {
 				  $('[data-toggle="tooltip"]').tooltip()
 				})</script>
+				<div class="total_page col-md-3">
 					Total Pages: {!! $new_post->lastPage() !!}
+				</div>
 
-					<div class="pagination pull-right {{($new_post->lastPage()==0)?'hidden':''}}">
-						<a href="{{$new_post->url(1)}}" class="{{($new_post->currentPage()==1) ? 'hidden':''}}">&laquo;</a>
-						<a href="{{$new_post->url($new_post->currentPage()-1)}}" class="{{($new_post->currentPage()==1) ? 'hidden':''}}">Prev</a>
+				<div class="col-md-6 ">
+					<ul class="pagination">
+	                    <li class="{{($new_post->currentPage()==1) ? 'hidden':''}}">
+	                    	<a href="{{$new_post->url($new_post->currentPage()-1)}}"><span>«</span></a>
+	                    </li>
+	                    <li class="{{($new_post->currentPage()==1)?'hidden':''}}">
+	                    	<a href="{{$new_post->url(1)}}"><span>1</span></a>
+	                    </li>
+						<li class="{{($new_post->currentPage()<=2)?'hidden':''}}">
+							<span>...</span>
+						</li>
 						@for($i=1; $i<=$new_post->lastPage(); $i++)
-							<a href="{{$new_post->url($i)}}" class="{{($new_post->currentPage()==$i)? 'active':''}}">{{$i}}</a>
+							<li class="{{($new_post->currentPage()==$i)? 'active':'hidden'}}">
+								<a href="{{$new_post->url($i)}}" ><span>{{$i}}</span></a>
+							</li>
 						@endfor
-						<a href="{{$new_post->url($new_post->currentPage()+1)}}" class="{{($new_post->currentPage()==$new_post->lastPage())?'hidden' : ''}}">Next</a>
-						<a href="{{$new_post->url($new_post->lastPage())}}" class="{{($new_post->currentPage()==$new_post->lastPage())?'hidden' : ''}}">&raquo;</a>
-					</div>
+						<li class="{{($new_post->currentPage()>=$new_post->lastPage()-1)?'hidden' : ''}}">
+							<span>...</span>
+						</li>
+						<li class="{{($new_post->currentPage()>=$new_post->lastPage())?'hidden':''}}">
+							<a href="{{$new_post->url($new_post->lastPage())}}"><span>{{$new_post->lastPage()}}</span></a>
+						</li>
+						<li class="{{($new_post->currentPage()==$new_post->lastPage())?'hidden' : ''}}">
+							<a href="{{$new_post->url($new_post->currentPage()+1)}}"><span>»</span></a>
+						</li>
+       				</ul>
+				</div>
 			</div>
 		</div>
 	</div>

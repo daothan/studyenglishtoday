@@ -123,10 +123,10 @@
 					barPlayed.width( ( theAudio.currentTime / theAudio.duration ) * 100 + '%' );
 				});
 
-			/*Space key pause play audio*/
+			/*Tab key pause play audio*/
 		        $("body").on("keydown", function (e) {
 		            var charCode = (e.charCode) ? e.charCode : ((e.which) ? e.which : e.keyCode);
-		            if (charCode == 35) {
+		            if (charCode == 9) {
 		                if( thePlayer.hasClass( cssClass.playing ) )
 						{
 							$( ".audioplayer" ).attr( 'title_audio', params.strPlay ).find( 'a' ).html( params.strPlay );
