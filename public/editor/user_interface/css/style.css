@@ -14,7 +14,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 body{
   margin:0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif !important;
   background: #fff;
 }
 body a{
@@ -73,7 +73,7 @@ a.tooltips span {
     z-index: 1;
     bottom: 125%;
     left: -36%;
-    margin-left: -55px;
+    margin-left: -85px;
     opacity: 0;
     transition: opacity 1s;
 }
@@ -94,7 +94,7 @@ a.tooltips span:after {
     border-style: solid;
     border-color: rgb(85, 153, 212) transparent transparent transparent;
 }
-a:hover.tooltips span {
+a:hover.tooltips span{
   visibility: visible;
     opacity: 1;
 }
@@ -122,6 +122,25 @@ input[type=text] {
 input[type=text]:focus {
     width: 100%;
     margin:auto;
+}
+
+.search_error{
+    font-style: italic;
+    font-size: 23px;
+    color: #e44185;
+}
+#search-error{
+  padding-left: 10px;
+  font-size: initial;
+  color: white;
+}
+@media(max-width: 800px){
+  .search_error{
+    font-size: 18px;
+  }
+  #search-error{
+    color: #b12121;
+  }
 }
 /* View category User Home*/
 
@@ -260,7 +279,7 @@ input[type=text]:focus {
 
 /* MD_3 */
 .md_3{
-  height: 240px;
+  height: 255px;
   margin-left: 50px;
   margin-top: 60px;
 }
@@ -470,6 +489,27 @@ input[type=text]:focus {
     width:220px;
   }
 }
+
+/* Guide */
+.guide-grid {
+    background: rgba(39, 174, 191, 0.09); /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(rgba(39, 174, 191, 0.09), rgba(101, 174, 181, 0.16)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgba(39, 174, 191, 0.09), rgba(101, 174, 181, 0.16)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(39, 174, 191, 0.09), rgba(101, 174, 181, 0.16)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(39, 174, 191, 0.09), rgba(101, 174, 181, 0.16)); /* Standard syntax */
+    padding: 3em;
+}
+@media(max-width: 800px){
+  .guide-grid{
+    padding: 1em;
+  }
+  .contact_grid3 {
+    padding: 1.5em 2em 1.5em 2em !important;
+  }
+}
+/* Guide */
+
+
 /* Dictation */
 .cke_chrome{
   visibility: hidden;
@@ -760,9 +800,11 @@ h2{
     padding-bottom: 10em;
 }
 /* End content */
+
+
 .grid_3.grid_4 {
-    border-top: 10px solid rgba(192, 204, 206, 0.69);
-    border-bottom: 10px solid #212435;
+    border-top: 10px solid rgba(127, 184, 193, 0.69);
+    border-bottom: 10px solid rgba(2, 121, 191, 0.91);
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -775,11 +817,11 @@ h2{
     background-image: -webkit-linear-gradient(top, #3acfd5 0%, #3a4ed5 100%), -webkit-linear-gradient(top, #3acfd5 0%, #3a4ed5 100%);
     background-image: -moz-linear-gradient(top, #3acfd5 0%, #3a4ed5 100%), -moz-linear-gradient(top, #3acfd5 0%, #3a4ed5 100%);
     background-image: -o-linear-gradient(top, #3acfd5 0%, #3a4ed5 100%), -o-linear-gradient(top, #3acfd5 0%, #3a4ed5 100%);
-    background-image: linear-gradient(to bottom, rgba(192, 204, 206, 0.69) 0%, #212435 100%), linear-gradient(to bottom, rgba(192, 204, 206, 0.69) 0%, #212435 100%);
+    background-image: linear-gradient(to bottom, rgba(127, 184, 193, 0.69) 0%, rgba(2, 121, 191, 0.91) 100%), linear-gradient(to bottom, rgba(127, 184, 193, 0.69) 0%, rgba(2, 121, 191, 0.91) 100%);
 }
 .register.grid_4 {
-    border-top: 10px solid rgba(192, 204, 206, 0.69);
-    border-bottom: 10px solid #212435;
+    border-top: 10px solid rgba(127, 184, 193, 0.69);
+    border-bottom: 10px solid rgba(2, 121, 191, 0.91);
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -792,7 +834,7 @@ h2{
     background-image: -webkit-linear-gradient(top, #3acfd5 0%, #3a4ed5 100%), -webkit-linear-gradient(top, #3acfd5 0%, #3a4ed5 100%);
     background-image: -moz-linear-gradient(top, #3acfd5 0%, #3a4ed5 100%), -moz-linear-gradient(top, #3acfd5 0%, #3a4ed5 100%);
     background-image: -o-linear-gradient(top, #3acfd5 0%, #3a4ed5 100%), -o-linear-gradient(top, #3acfd5 0%, #3a4ed5 100%);
-    background-image: linear-gradient(to bottom, rgba(192, 204, 206, 0.69) 0%, #212435 100%), linear-gradient(to bottom, rgba(192, 204, 206, 0.69) 0%, #212435 100%);
+    background-image: linear-gradient(to bottom, rgba(127, 184, 193, 0.69) 0%, rgba(2, 121, 191, 0.91) 100%), linear-gradient(to bottom, rgba(127, 184, 193, 0.69) 0%, rgba(2, 121, 191, 0.91) 100%);
 }
 
 /* Post Comment */
@@ -986,6 +1028,12 @@ h2{
 }
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
+
+/* Pagination comment */
+.pagination_comment{
+  float: none !important;
+}
+/* Pagination comment */
 
 @media(max-width: 800px){
   .pagination {
@@ -1200,7 +1248,7 @@ h3.w3ls-hdg {
     background: #fff;
 }
 .contact_grid3 {
-    padding: 3.5em 4em 3.5em 4em !important;
+    padding: 3.5em 4em 3.5em 4em;
     background: #fff;
 }
 .contact_tittle{

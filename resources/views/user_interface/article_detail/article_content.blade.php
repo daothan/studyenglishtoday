@@ -39,7 +39,6 @@
 				            </div>
 			            </div><!-- /.blog-post -->
 						<!-- Comment -->
-
 						<hr>
 				        <div class="comment">
 				        <!-- Show Form Add Comments-->
@@ -70,11 +69,9 @@
 						    @endif
 							@foreach($comment_info as $comment)
 							<!-- Delete-->
-							<!-- Delete-->
 							<div class="delete_comment_admin {{((isset(Auth::user()->name) && (Auth::user()->level < 2 || Auth::user()->name == $comment->user_comment)) ? '':'hidden')}}">
 				           	 	<a href="{{route('delete_comment',$comment->id)}}"><button type="button" class="btn_user danger">Delete</button></a>
 							</div>
-							<!-- Delete-->
 							<!-- Delete-->
 				            <div class="panel panel-white post panel-shadow">
 				                <div class="post-heading">
@@ -100,17 +97,39 @@
 				                </div>
 				            </div>
 				            @endforeach
-			            	Total Pages: {!! $comment_info->lastPage() !!}
-							<div class="pagination pull-right {{($comment_info->lastPage()==0)?'hidden':''}}">
-								<a href="{{$comment_info->url(1)}}" class="{{($comment_info->currentPage()==1) ? 'hidden':''}}">&laquo;</a>
-								<a href="{{$comment_info->url($comment_info->currentPage()-1)}}" class="{{($comment_info->currentPage()==1) ? 'hidden':''}}">Prev</a>
-								@for($i=1; $i<=$comment_info->lastPage(); $i++)
-									<a href="{{$comment_info->url($i)}}" class="{{($comment_info->currentPage()==$i)? 'active':''}}">{{$i}}</a>
-								@endfor
-								<a href="{{$comment_info->url($comment_info->currentPage()+1)}}" class="{{($comment_info->currentPage()==$comment_info->lastPage())?'hidden' : ''}}">Next</a>
-								<a href="{{$comment_info->url($comment_info->lastPage())}}" class="{{($comment_info->currentPage()==$comment_info->lastPage())?'hidden' : ''}}">&raquo;</a>
+				            <div class="total_page col-md-3">
+								Comments: {{$comment_count}}
+							</div>
+
+							<div class="col-md-6 ">
+								<ul class="pagination pagination_comment {{$comment_info->lastPage() == 0 ? 'hidden' : ''}}">
+				                    <li class="{{($comment_info->currentPage()==1) ? 'hidden':''}}">
+				                    	<a href="{{$comment_info->url($comment_info->currentPage()-1)}}"><span>«</span></a>
+				                    </li>
+				                    <li class="{{($comment_info->currentPage()==1)?'hidden':''}}">
+				                    	<a href="{{$comment_info->url(1)}}"><span>1</span></a>
+				                    </li>
+									<li class="{{($comment_info->currentPage()<=2)?'hidden':''}}">
+										<span>...</span>
+									</li>
+									@for($i=1; $i<=$comment_info->lastPage(); $i++)
+										<li class="{{($comment_info->currentPage()==$i)? 'active':'hidden'}}">
+											<a href="{{$comment_info->url($i)}}" ><span>{{$i}}</span></a>
+										</li>
+									@endfor
+									<li class="{{($comment_info->currentPage()>=$comment_info->lastPage()-1)?'hidden' : ''}}">
+										<span>...</span>
+									</li>
+									<li class="{{($comment_info->currentPage()>=$comment_info->lastPage())?'hidden':''}}">
+										<a href="{{$comment_info->url($comment_info->lastPage())}}"><span>{{$comment_info->lastPage()}}</span></a>
+									</li>
+									<li class="{{($comment_info->currentPage()==$comment_info->lastPage())?'hidden' : ''}}">
+										<a href="{{$comment_info->url($comment_info->currentPage()+1)}}"><span>»</span></a>
+									</li>
+			       				</ul>
 							</div>
 				        </div>
+						<!-- Comment -->
 
 			        </div><!-- /.blog-main -->
 

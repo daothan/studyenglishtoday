@@ -159,6 +159,26 @@ Route::group(['prefix' => 'admin', 'middleware'=>'checkadmin'], function(){
 		Route::post('delete',['as'=>'admin.banner.delete','uses'=>'BannerController@post_delete_banner']);
 	});
 
+	/*Gudie Pages*/
+	Route::group(['prefix' => 'guide'], function(){
+		/*Show Gudie*/
+		Route::get('show', ['as'=>'admin.guide.show', 'uses'=>'GuideController@show']);
+
+		/*View Gudie Details*/
+		Route::get('detail',['as'=>'admin.guide.detail','uses'=>'GuideController@view_guide_detail']);
+
+		/*Add Gudie*/
+		Route::post('add',['as'=>'admin.guide.addbanner','uses'=>'GuideController@post_add_guide']);
+
+		/*Edit Gudie*/
+		Route::get('edit',['as'=>'admin.guide.edit','uses'=>'GuideController@get_edit_guide']);
+		Route::post('edit',['as'=>'admin.guide.edit','uses'=>'GuideController@post_edit_guide']);
+
+		/*Delete Gudie*/
+		Route::get('delete',['as'=>'admin.guide.delete','uses'=>'GuideController@get_delete_guide']);
+		Route::post('delete',['as'=>'admin.guide.delete','uses'=>'GuideController@post_delete_guide']);
+	});
+
 	/*Contact Pages*/
 	Route::group(['prefix'=>'contact'], function(){
 		/*Show Contacts info*/

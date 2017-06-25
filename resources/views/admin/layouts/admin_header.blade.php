@@ -135,6 +135,9 @@
                                     <a href="{{route('admin.contact.show')}}">Contacts</a>
                                 </li>
                                 <li>
+                                    <a href="{{route('admin.guide.show')}}">Guide</a>
+                                </li>
+                                <li>
                                     <a href="{{route('admin.detail.show')}}">Libraries</a>
                                 </li>
                                 <li>
@@ -207,6 +210,7 @@
         <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_listening_checkbox.js')}}"></script>
         <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_comment_checkbox.js')}}"></script>
         <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_file_checkbox.js')}}"></script>
+        <script type="text/javascript" src="{{URL::asset('public/editor/admin_interface/js/admin_guide_checkbox.js')}}"></script>
 
 
 

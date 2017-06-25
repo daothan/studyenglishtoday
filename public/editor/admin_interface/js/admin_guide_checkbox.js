@@ -1,19 +1,19 @@
-/*Checkbox Modal bannergory*/
+/*Checkbox Modal guidegory*/
 
-/*Show and hide banner button*/
+/*Show and hide guide button*/
 
-	$('#view_banner').fadeOut(2000);
-	$('#edit_banner').fadeOut(2000);
-	$('#delete_banner').fadeOut(2000);
+	$('#view_guide').fadeOut(2000);
+	$('#edit_guide').fadeOut(2000);
+	$('#delete_guide').fadeOut(2000);
 
 	var checkBoxes = $('input[type=checkbox]');
 	var checked=0;
 
 	$('.table tr').click(function(event) {
     	checked=1;
-    	$('#view_banner').fadeIn(1000);
-		$('#edit_banner').fadeIn(1000);
-		$('#delete_banner').fadeIn(1000);
+    	$('#view_guide').fadeIn(1000);
+		$('#edit_guide').fadeIn(1000);
+		$('#delete_guide').fadeIn(1000);
 
 	    if (event.target.type !== 'checkbox') {
     		$(':checkbox', this).trigger('click');
@@ -101,13 +101,11 @@ function ckeditor(name, config, toolbar){
 
 /*Show editor and ckfinder on Modal*/
 //console.log('#tittle'.length);
-if($('#introduce_banner').length){
-	ckeditor("introduce_banner", "config", "basic")
-	ckeditor("content_banner", "config", "standard")
+if($('#content_guide').length){
+	ckeditor("content_guide", "config", "standard")
 }
-if($('#introduce_banner_edit').length){
-	ckeditor("introduce_banner_edit", "config", "basic")
-	ckeditor("content_banner_edit", "config", "standard")
+if($('#content_guide_edit').length){
+	ckeditor("content_guide_edit", "config", "standard")
 }
 $.fn.modal.Constructor.prototype.enforceFocus = function () {
     modal_this = this
@@ -123,29 +121,28 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 for (instance in CKEDITOR.instances) {
     CKEDITOR.instances[instance].updateElement();
 }
-	/*View detail banner*/
-	$('#view_banner').click(function(event){
+	/*View detail guide*/
+	$('#view_guide').click(function(event){
 		event.preventDefault();
 		if(checked==0){
-			$('#viewbanner_errorModal').modal('show');
+			$('#viewguide_errorModal').modal('show');
 		}
 		if(checked==1){
-			$('#viewbannerModal').modal('show');
+			$('#viewguideModal').modal('show');
 			$('.table input:checkbox:checked').map(function(){
 				var searchIDs = [];
 				searchIDs.push($(this).val());
 				id = searchIDs[0];
 
 				$.ajax({
-					url: '/laravel1/admin/banner/detail',
+					url: '/laravel1/admin/guide/detail',
 					type: "GET",
 					data:{"id":id},
 					success:function(result){
 						//console.log(result);
-						$('#view_title_banner').text(result.tittle);
-						$('#view_banner_tittle').text(result.tittle);
-						$('#view_banner_introduce').html(result.introduce);
-						$('#view_banner_content').html(result.content);
+						$('#view_title_guide').text(result.tittle);
+						$('#view_guide_tittle').text(result.tittle);
+						$('#view_guide_content').html(result.content);
 
 				        var d = new Date();
 							var my_date_format = function(input){
@@ -158,30 +155,26 @@ for (instance in CKEDITOR.instances) {
 							  return (time + " " + date);
 
 						};
-						$('#view_banner_created').text(my_date_format(result.created_at));
+						$('#view_guide_created').text(my_date_format(result.created_at));
 					}
 				})
 			})
 		}
 	})
 
-	/*Add Banner*/
-	$('#add_banner').click(function(){
-		$('#addbannerModal').modal('show');
+	/*Add guide*/
+	$('#add_guide').click(function(){
+		$('#addguideModal').modal('show');
 
-		$('#validate_add_banner').validate({
+		$('#validate_add_guide').validate({
 			ignore:[],
 			rules:{
-				tittle_banner:{
+				tittle_guide:{
 					required:true,
 					minlength:5,
 					maxlength:30
 				},
-				introduce_banner:{
-					required:true,
-					minlength:20
-				},
-				content_banner:{
+				content_guide:{
 					required:true,
 					minlength:30
 				}
@@ -194,26 +187,25 @@ for (instance in CKEDITOR.instances) {
 				    }
 				});
 				$.ajax({
-					url: '/laravel1/admin/banner/add',
+					url: '/laravel1/admin/guide/add',
 					type: 'POST',
 					data:{
-						'tittle_banner'  	: $('#tittle_banner').val(),
-						'introduce_banner'  : $('#introduce_banner').val(),
-						'content_banner'    : $('#content_banner').val()
+						'tittle_guide'  : $('#tittle_guide').val(),
+						'content_guide' : $('#content_guide').val()
 					},
 					success:function(data){
-						if(data.error_add_banner == true){
+						if(data.error_add_guide == true){
 							$('.error').hide();
-							if(data.messages.tittle_banner != undefined){
-								$('.error_tittle_add_banner').show().text(data.messages.tittle_banner[0]);
+							if(data.messages.tittle_guide != undefined){
+								$('.error_tittle_add_guide').show().text(data.messages.tittle_guide[0]);
 							}
 						}
-						if(data.add_banner == true){
-							$('#banner_table').load('/laravel1/admin/banner/show #banner_table');
-							setTimeout(function() { $('#addbannerModal').modal('hide');}, 200);
-							setTimeout(function(){ $("#add_banner_success").modal('show');},1000);
-							setTimeout(function(){ $("#add_banner_success").modal('hide'); },3000);
-							setTimeout(function() { window.location.href = "/laravel1/admin/banner/show";}, 4000);
+						if(data.add_guide == true){
+							$('#guide_table').load('/laravel1/admin/guide/show #guide_table');
+							setTimeout(function() { $('#addguideModal').modal('hide');}, 200);
+							setTimeout(function(){ $("#add_guide_success").modal('show');},1000);
+							setTimeout(function(){ $("#add_guide_success").modal('hide'); },3000);
+							setTimeout(function() { window.location.href = "/laravel1/admin/guide/show";}, 4000);
 						}
 					}
 				})
@@ -221,14 +213,14 @@ for (instance in CKEDITOR.instances) {
 		})
 	})
 
-	/*Edit Banner*/
-	$('#edit_banner').click(function(event){
+	/*Edit guide*/
+	$('#edit_guide').click(function(event){
 		event.preventDefault();
 		if(checked==0){
-			$('#viewbanner_errorModal').modal('show');
+			$('#viewguide_errorModal').modal('show');
 		}
 		if(checked==1){
-			$('#editbannerModal').modal('show');
+			$('#editguideModal').modal('show');
 
 			$('.table input:checkbox:checked').map(function(){
 				var searchIDs = [];
@@ -236,29 +228,24 @@ for (instance in CKEDITOR.instances) {
 				id = searchIDs[0];
 
 				$.ajax({
-					url:'/laravel1/admin/banner/edit',
+					url:'/laravel1/admin/guide/edit',
 					type:'GET',
 					data:{"id":id},
 					success:function(result){
-						//console.log(result);
-						$('#old_id_banner').val(result.id);
-						$('#tittle_banner_edit').val(result.tittle);
-						CKEDITOR.instances['introduce_banner_edit'].setData(result.introduce);
-						CKEDITOR.instances['content_banner_edit'].setData(result.content);
+						console.log(result);
+						$('#old_id_guide').val(result.id);
+						$('#tittle_guide_edit').val(result.tittle);
+						CKEDITOR.instances['content_guide_edit'].setData(result.content);
 
-						$('#validate_edit_banner').validate({
+						$('#validate_edit_guide').validate({
 							ignore:[],
 							rules:{
-								tittle_banner_edit:{
+								tittle_guide_edit:{
 									required:true,
 									minlength:5,
 									maxlength:30
 								},
-								introduce_banner_edit:{
-									required:true,
-									minlength:20
-								},
-								content_banner_edit:{
+								content_guide_edit:{
 									required:true,
 									minlength:30
 								}
@@ -270,27 +257,26 @@ for (instance in CKEDITOR.instances) {
 								    }
 								});
 								$.ajax({
-									'url' : '/laravel1/admin/banner/edit',
+									'url' : '/laravel1/admin/guide/edit',
 									'type' :'POST',
 									'data': {
-										'old_id_banner'			:$('#old_id_banner').val(),
-										'tittle_banner_edit' 	:$('#tittle_banner_edit').val(),
-										'introduce_banner_edit' :$('#introduce_banner_edit').val(),
-										'content_banner_edit'   :$('#content_banner_edit').val()
+										'old_id_guide'			:$('#old_id_guide').val(),
+										'tittle_guide_edit' 	:$('#tittle_guide_edit').val(),
+										'content_guide_edit'   :$('#content_guide_edit').val()
 									},
 									success:function(data){
-										if(data.error_edit_banner == true){
+										if(data.error_edit_guide == true){
 											$('.error').hide();
-											if(data.messages.tittle_banner_edit != undefined){
-												$('.error_tittle_edit_banner').show().text(data.messages.tittle_banner_edit[0]);
+											if(data.messages.tittle_guide_edit != undefined){
+												$('.error_tittle_edit_guide').show().text(data.messages.tittle_guide_edit[0]);
 											}
 										}
-										if(data.edit_banner==true){
-											$('#banner_table').load('/laravel1/admin/banner/show #banner_table');
-											setTimeout(function() { $('#editbannerModal').modal('hide');}, 200);
-											setTimeout(function(){ $("#edit_banner_success").modal('show');},1000);
-											setTimeout(function(){ $("#edit_banner_success").modal('hide'); },3000);
-											setTimeout(function() { window.location.href = "/laravel1/admin/banner/show";}, 3300);
+										if(data.edit_guide==true){
+											$('#guide_table').load('/laravel1/admin/guide/show #guide_table');
+											setTimeout(function() { $('#editguideModal').modal('hide');}, 200);
+											setTimeout(function(){ $("#edit_guide_success").modal('show');},1000);
+											setTimeout(function(){ $("#edit_guide_success").modal('hide'); },3000);
+											setTimeout(function() { window.location.href = "/laravel1/admin/guide/show";}, 3300);
 										}
 									}
 								})
@@ -302,14 +288,14 @@ for (instance in CKEDITOR.instances) {
 		}
 	})
 
-	/*Delete banner*/
-	$('#delete_banner').click(function(event){
+	/*Delete guide*/
+	$('#delete_guide').click(function(event){
 		event.preventDefault();
 		if(checked==0){
-			$('#viewbanner_errorModal').modal('show');
+			$('#viewguide_errorModal').modal('show');
 		}
 		if(checked==1){
-			$('#deletebannerModal').modal('show');
+			$('#deleteguideModal').modal('show');
 			$(".table input:checkbox:checked").map(function(){
 		    	var searchIDs = [];
 		        searchIDs.push($(this).val());
@@ -317,30 +303,30 @@ for (instance in CKEDITOR.instances) {
 		    	id = searchIDs[0];
 			})
 			$.ajax({
-				url: '/laravel1/admin/banner/delete',
+				url: '/laravel1/admin/guide/delete',
 				type:"GET",
 				data: {"id":id},
 				success:function(result){
-					$('.name_delete_banner').show().html(result.tittle);
+					$('.name_delete_guide').show().html(result.tittle);
 					//console.log(result);
-					$('#deletebannerModal').find('#confirmdelete').on('click',function(){
+					$('#deleteguideModal').find('#confirmdelete').on('click',function(){
 						$.ajaxSetup({
 						    headers: {
 						        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 						    }
 						});
 						$.ajax({
-							url: '/laravel1/admin/banner/delete',
+							url: '/laravel1/admin/guide/delete',
 							method:"POST",
 							data: {id:id},
 							success:function(){
-								$('#deletebannerModal').modal('hide');
+								$('#deleteguideModal').modal('hide');
 								for(var i=0; i<id.length; i++){
 									$('tr#'+id+'').css('background-color','#ccc');
 									$('tr#'+id+'').fadeOut(1000);
 
 								}
-								setTimeout(function() { window.location.href = "/laravel1/admin/banner/show";}, 1200);
+								setTimeout(function() { window.location.href = "/laravel1/admin/guide/show";}, 1200);
 							}
 						})
 					})

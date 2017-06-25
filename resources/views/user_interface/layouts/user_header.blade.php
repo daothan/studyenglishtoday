@@ -95,11 +95,14 @@
 						<!-- - -->
 						<!-- Reading -->
 							<!-- <li class="{{((url()->current())==route('home')) ? '' : 'hidden'}}"><a href="#reading_cate" class="scroll">Reading</a></li>
-							<li class="{{((url()->current())!=route('home')) ? '' : 'hidden'}}"><a href="{{route('home')}}#reading_cate">Reading</a></li> 
+							<li class="{{((url()->current())!=route('home')) ? '' : 'hidden'}}"><a href="{{route('home')}}#reading_cate">Reading</a></li>
 							<li><a href="{{route('reading')}}">Reading</a></li>-->
 						<!-- - -->
 						<!-- Contact -->
 							<li><a data-toggle="modal" data-target="" onclick="contact_us()">Contact</a></li>
+						<!-- - -->
+						<!-- Guide -->
+							<li class="{{$guide_count==0 ? 'hidden':''}}"><a data-toggle="modal" data-target="" onclick="guide()">Huong dan</a></li>
 						<!-- - -->
 						</ul>
 
@@ -330,7 +333,7 @@
 
 	<!-- //banner -->
 <div class="form_search form_search col-md-10 col-md-offset-1">
-	<form >
+	<form id="search_form">
 	  <input type="text" name="search" placeholder="Search ...">
 	</form>
 </div>
@@ -341,21 +344,26 @@
 @endif
 
 @yield('content')
+
 <!-- Contact -->
 @extends('user_interface.layouts.contact')
+<!-- End Contact -->
 
+<!-- Guide -->
+@extends('user_interface.layouts.guide')
+<!-- End Guide -->
 
 
 	<!-- footer -->
 	<!-- Like Share -->
-		<div style="padding-left: 100px;" class="facebook_button">
-			<p align=""><i>Like and Share Website</i></p>
-			<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
-		</div>
-		<div style="padding-left: 100px;" class="facebook_button1">
-			<p align=""><i>Like and Share Website</i></p>
-			<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
-		</div>
+	<div style="padding-left: 100px;" class="facebook_button">
+		<p align=""><i>Like and Share Website</i></p>
+		<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+	</div>
+	<div style="padding-left: 100px;" class="facebook_button1">
+		<p align=""><i>Like and Share Website</i></p>
+		<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+	</div>
 	<!-- End Like Share -->
 	<div class="footer">
 		<div class="container">

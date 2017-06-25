@@ -5,11 +5,11 @@
 	<!-- Newest Post -->
 	<div class="codes agileitsbg5">
 	<!-- Like Share -->
-		<div style="padding-left: 120px; padding-bottom: 20px;" class="facebook_button">
+		<div style="padding-left: 120px; padding-bottom: 20px; margin-top: 10px;" class="facebook_button">
 			<p align=""><i>Like and Share Website</i></p>
 			<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
 		</div>
-		<div style="padding-left: 120px; padding-bottom: 20px;" class="facebook_button1">
+		<div style="padding-left: 120px; padding-bottom: 20px; margin-top: 10px;" class="facebook_button1">
 			<p align=""><i>Like and Share Website</i></p>
 			<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
 		</div>

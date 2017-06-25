@@ -64,6 +64,21 @@ function myFunction(x) {
     }
 
 })(jQuery);
+
+/*Validate search form*/
+$("#search_form").validate({
+	rules:{
+		search:{
+			required:true,
+		}
+	},
+
+	messages:{
+		search:{
+			required: "Please enter keywords for searching.",
+		}
+	}
+});
 /*Validate Form Login Jquery*/
 
 $("#validate_login").validate({
@@ -343,6 +358,11 @@ $("#validate_register").validate({
 		    })
 	}
 
+/*Guide*/
+function guide(){
+	$('#guideModal').modal('show');
+}
+
 /*Contact*/
 function contact_us(){
 		$('#contactModal').modal('show');
@@ -535,7 +555,7 @@ $(window).resize(checkWidth);
 $('a').addClass('overflow');
 
 /*Show comment form*/
-function comment_form() {
+/*function comment_form() {
     if ($window.width() <= 1080) {
         $('.comment').removeClass('').addClass('col-sm-6');
     };
@@ -544,7 +564,7 @@ function comment_form() {
         $('.comment').removeClass('col-sm-6').addClass('');
     }
 }
-comment_form();
+comment_form();*/
 
 /*Get length audio*/
 /*window.onload = function() {
