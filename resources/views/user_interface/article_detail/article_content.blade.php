@@ -3,7 +3,7 @@
 
 	<div class="codes agileitsbg5">
 		<div class="container">
-			<div class="grid_3 grid_5 w3-agileits">
+			<div class="grid_3 grid_5 w3-agileits" style="background-color: rgb(240, 241, 243);">
 
 			    <div class="row">
 					@foreach($detail_article as $data)
@@ -17,7 +17,7 @@
 						{{($data->type=="writing") ? 'Knowlegde Library' : 'Reading Practice'}}
 					</h3>
 
-			        <div class="col-sm-8 blog-main overflow">
+			        <div class="col-sm-8 blog-main overflow" style="background-color: rgb(255, 255, 255);">
 
 			            <div class="blog-post">
 				            <!-- Like Share -->

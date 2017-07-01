@@ -18,7 +18,7 @@
 			{{Session::get('error_search')}}
 		@endif
 		<div class="container">
-			<div id="newest_post" class="grid_3 grid_5 w3-agileits">
+			<div id="newest_post" class="grid_3 grid_5 w3-agileits" style="padding: 2.5em 3em 8.5em;">
 				<br>
 				<h2><p class="agiletext-border agiletext-style">Newest Article...</p></h2><br>
 				<?php $no=0;?>
@@ -37,7 +37,7 @@
 									</div>
 									<div class="article_type_md10 level1_type" align="center">
 										@if($detail->type=="audio")
-											<b class="label label_article">{{$detail->type}}</b>
+											<b class="label label_audio">{{$detail->type}}</b>
 										@endif
 										@if($detail->type=="library")
 											<b class="label label_article">{{$detail->type}}</b>
@@ -78,7 +78,7 @@
 									</div>
 									<div class="article_type_md5 level2_type" align="center">
 										@if($detail->type=="audio")
-											<b class="label label_article">{{$detail->type}}</b>
+											<b class="label label_audio">{{$detail->type}}</b>
 										@endif
 										@if($detail->type=="library")
 											<b class="label label_article">{{$detail->type}}</b>
@@ -119,7 +119,7 @@
 									</div>
 									<div class="article_type_md3">
 										@if($detail->type=="audio")
-											<b class="label label_article">{{$detail->type}}</b>
+											<b class="label label_audio">{{$detail->type}}</b>
 										@endif
 										@if($detail->type=="library")
 											<b class="label label_article">{{$detail->type}}</b>

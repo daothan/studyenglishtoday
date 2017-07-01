@@ -2,7 +2,7 @@
 @section('content')
 	<div class="codes agileitsbg5">
 		<div class="container">
-			<div class="grid_3 grid_5 w3-agileits">
+			<div class="grid_3 grid_5 w3-agileits" style="padding: 2.5em 3em 8.5em;">
 				<h3 class="w3ls-hdg">Practice Listening</h3><br>
 					@foreach($audio as $detail)
 						<div class="col-md-8 col-md-offset-1 md_8 each_page">
@@ -16,7 +16,7 @@
 										</a>
 									</div>
 									<div class="article_type_md8 each_page_type" align="center">
-										<b class="label label_article">audio</b>
+										<b class="label label_audio">audio</b>
 										<i class="label label_date"><b>{{$detail->created_at->format('d-m-Y')}}</b></i>
 										<!-- Total words-->
 										<div class="total_word">
@@ -46,7 +46,7 @@
 					Total Pages: {!! $audio->lastPage() !!}
 				</div>
 
-				<div class="col-md-6 ">
+				<div class=" ">
 					<ul class="pagination">
 	                    <li class="{{($audio->currentPage()==1) ? 'hidden':''}}">
 	                    	<a href="{{$audio->url($audio->currentPage()-1)}}"><span>«</span></a>

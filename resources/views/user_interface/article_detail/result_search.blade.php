@@ -3,7 +3,7 @@
 @section('content')
 <div class="codes agileitsbg5">
 	<div class="container">
-		<div id="" class="grid_3 grid_5 w3-agileits">
+		<div id="" class="grid_3 grid_5 w3-agileits" style="padding: 2.5em 3em 8.5em;">
 			<h2><p class="agiletext-border agiletext-style">Searching results...</p></h2>
 			<div class="{{$results_count== $total_post ? '':'hidden'}} search_error col-md-12">
 				<div class="col-md-offset-4">
@@ -27,7 +27,7 @@
 							</div>
 							<div class="article_type_md8 each_page_type" align="center">
 								@if($detail->type=="audio")
-									<b class="label label_article">{{$detail->type}}</b>
+									<b class="label label_audio">{{$detail->type}}</b>
 								@endif
 								@if($detail->type=="library")
 									<b class="label label_article">{{$detail->type}}</b>
@@ -65,7 +65,7 @@
 					Total Pages: {!! $results->lastPage() !!}
 				</div>
 
-				<div class="col-md-6 ">
+				<div class="">
 					<ul class="pagination">
 	                    <li class="{{($results->currentPage()==1) ? 'hidden':''}}">
 	                    	<a href="{{$results->appends(Request::only('search'))->url($results->currentPage()-1)}}"><span>«</span></a>

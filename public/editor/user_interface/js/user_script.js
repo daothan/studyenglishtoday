@@ -350,7 +350,7 @@ $("#validate_register").validate({
 								}
 							}else{
 								setTimeout(function() { $('#editModal').modal('hide');}, 500);
-			   					setTimeout(function() { window.location.href = "/laravel1/home";}, 500);
+			   					setTimeout(function() { window.location.href = "/laravel1";}, 500);
 							}
 						}
 					});
@@ -499,6 +499,7 @@ function checkWidth() {
 				html:$(this).html()
 			});
 		});
+
     };
 
     if ($window.width() > 1024) {
@@ -547,6 +548,7 @@ function checkWidth() {
 
         $('.facebook_button').removeClass('hide_style').addClass('show_style');
         $('.facebook_button1').removeClass('show_style').addClass('hide_style');
+
     }
 }
 checkWidth();
@@ -575,3 +577,19 @@ comment_form();*/
 	var seconds = parseInt(time % 60, 10);
 	$("#length_audio").text(minutes+":"+seconds);
 }*/
+
+/*Show guide English Vietnamese*/
+	$(document).ready(function(){
+      $("#EN").addClass('hide');
+
+      $("#btn_vi").click(function(){
+        $("#EN").removeClass('show').addClass('hide');
+        $("#VI").removeClass('hide').addClass('show');
+      });
+
+      $("#btn_en").click(function(){
+        $("#EN").removeClass('hide').addClass('show');
+        $("#VI").removeClass('show').addClass('hide');
+      });
+
+    });

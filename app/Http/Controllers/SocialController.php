@@ -7,6 +7,7 @@ use Auth;
 use Socialite;
 use App\User;
 use App\Social;
+use Session;
 
 class SocialController extends Controller
 {
@@ -33,7 +34,7 @@ class SocialController extends Controller
         if($facebook){ /*If has user the login*/
         	$user_facebook = User::where('email_social', $email_social)->first();
         	Auth::login($user_facebook);
-        	return redirect()->back();
+        	return redirect()->route('home');
         }else{/*If user is not exists in table socials, then create*/
 
         	$new_user_facebook = new Social;
@@ -54,10 +55,8 @@ class SocialController extends Controller
 			$new_user_facebook->user_id = $user->id;
 			$new_user_facebook->save();
 
-
-			Auth::login($user);
-
-			return redirect()->back();
+			if(Auth::login($user))
+			return redirect()->route('home');
    		}
     }
 
@@ -78,7 +77,7 @@ class SocialController extends Controller
         if($google){ /*If has user the login*/
         	$user_google = User::where('email_social', $email_social)->first();
         	Auth::login($user_google);
-        	return redirect()->route('user.home');
+        	return redirect()->route('home');
 
         }else{/*If user is not exists in table socials, then create*/
 
@@ -101,7 +100,7 @@ class SocialController extends Controller
 			$new_user_google->save();
 
 			Auth::login($user);
-			return redirect()->route('user.home');
+			return redirect()->route('home');
    		}
  	}
 }

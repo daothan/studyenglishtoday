@@ -2,7 +2,7 @@
 @section('content')
 	<div class="codes agileitsbg5">
 		<div class="container">
-			<div class="grid_3 grid_5 w3-agileits">
+			<div class="grid_3 grid_5 w3-agileits" style="padding: 2.5em 3em 8.5em;">
 				<h3 class="w3ls-hdg">Knowledge Library</h3><br>
 					@foreach($library as $detail)
 						<div class="col-md-8 col-md-offset-1 md_8 each_page">
@@ -39,7 +39,7 @@
 					Total Pages: {!! $library->lastPage() !!}
 				</div>
 
-				<div class="col-md-6 ">
+				<div class="">
 					<ul class="pagination">
 	                    <li class="{{($library->currentPage()==1) ? 'hidden':''}}">
 	                    	<a href="{{$library->url($library->currentPage()-1)}}"><span>«</span></a>

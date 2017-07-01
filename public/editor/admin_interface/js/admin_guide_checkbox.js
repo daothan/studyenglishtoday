@@ -171,12 +171,10 @@ for (instance in CKEDITOR.instances) {
 			rules:{
 				tittle_guide:{
 					required:true,
-					minlength:5,
-					maxlength:30
+					minlength:5
 				},
 				content_guide:{
-					required:true,
-					minlength:30
+					required:true
 				}
 
 			},
@@ -242,12 +240,10 @@ for (instance in CKEDITOR.instances) {
 							rules:{
 								tittle_guide_edit:{
 									required:true,
-									minlength:5,
-									maxlength:30
+									minlength:5
 								},
 								content_guide_edit:{
-									required:true,
-									minlength:30
+									required:true
 								}
 							},
 							submitHandler:function(){

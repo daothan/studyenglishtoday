@@ -30,8 +30,8 @@
 				            <p class="blog-post-meta">Created <i class="{{(isset(Auth::user()->name) && Auth::user()->level<2) ? '':'hidden'}}">{{$data->created_at->format('H:i:s d-m-Y')}}</i><i class="{{(isset(Auth::user()->name) && Auth::user()->level==2) ? '':'hidden'}}">{{$data->created_at->format('d-m-Y')}}</i><i class="{{(isset(Auth::user()->name)) ? 'hidden':''}}">{{$data->created_at->format('d-m-Y')}}</i>
 				            </p>
 				            <p>{!!htmlspecialchars_decode($data->introduce)!!}</p>
-				            <div class="">
-								<audio preload="auto" controls>
+				            <div class="audio_listening">
+								<audio preload="auto" controls id="audio_listening_article">
 								    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$data->audio_path}}"/>
 								    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$data->audio_path}}" />
 									<source id="oggSource" type="audio/wav" src="{{'/laravel1/'.$data->audio_path}}">

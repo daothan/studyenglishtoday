@@ -2,7 +2,7 @@
 @section('content')
 	<div class="codes agileitsbg5">
 		<div class="container">
-			<div class="grid_3 grid_5 w3-agileits">
+			<div class="grid_3 grid_5 w3-agileits" style="padding: 2.5em 3em 8.5em;">
 				<h3 class="w3ls-hdg">Study English Today</h3><br>
 					@foreach($new_post as $detail)
 						<div class="col-md-8 col-md-offset-3 md_8 each_page">
@@ -17,7 +17,7 @@
 								</div>
 								<div class="article_type_md8 each_page_type" align="center">
 									@if($detail->type=="audio")
-										<b class="label label_article">{{$detail->type}}</b>
+										<b class="label label_audio">{{$detail->type}}</b>
 									@endif
 									@if($detail->type=="library")
 										<b class="label label_article">{{$detail->type}}</b>
@@ -54,7 +54,7 @@
 					Total Pages: {!! $new_post->lastPage() !!}
 				</div>
 
-				<div class="col-md-6 ">
+				<div class=" ">
 					<ul class="pagination">
 	                    <li class="{{($new_post->currentPage()==1) ? 'hidden':''}}">
 	                    	<a href="{{$new_post->url($new_post->currentPage()-1)}}"><span>«</span></a>

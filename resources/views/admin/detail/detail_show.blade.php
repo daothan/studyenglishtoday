@@ -52,9 +52,9 @@
 								<!-- Show User -->
 								<td>
 									<?php
-										$user = DB::table('users')->where('id', $data["user_id"])->first();
-										echo $user->email;
-									?>
+                                        $user = DB::table('users')->where('id', $data["user_id"])->first();
+                                        echo $user->name;
+                                    ?>
 								</td>
 							</tr>
 							@endforeach

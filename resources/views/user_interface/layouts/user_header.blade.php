@@ -98,11 +98,11 @@
 							<li class="{{((url()->current())!=route('home')) ? '' : 'hidden'}}"><a href="{{route('home')}}#reading_cate">Reading</a></li>
 							<li><a href="{{route('reading')}}">Reading</a></li>-->
 						<!-- - -->
+						<!-- Guide -->
+							<li class="{{$guide_count==0 ? 'hidden':''}}"><a data-toggle="modal" data-target="" onclick="guide()">Guide</a></li>
+						<!-- - -->
 						<!-- Contact -->
 							<li><a data-toggle="modal" data-target="" onclick="contact_us()">Contact</a></li>
-						<!-- - -->
-						<!-- Guide -->
-							<li class="{{$guide_count==0 ? 'hidden':''}}"><a data-toggle="modal" data-target="" onclick="guide()">Huong dan</a></li>
 						<!-- - -->
 						</ul>
 

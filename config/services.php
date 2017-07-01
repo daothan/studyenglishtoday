@@ -36,13 +36,13 @@ return [
     ],
 
     'facebook' => [
-        'client_id'     => '1919352095011212',
-        'client_secret' => 'a9ff582344af8287ac6b56b61f307f25',
+        'client_id'     => '127909734464044',
+        'client_secret' => 'cc36e90c51780504f9de27215237c74c',
         'redirect'      => 'http://localhost/laravel1/facebook/callback',
     ],
     'google' => [
         'client_id'     => '761218673365-e45nusp7mk3jo9ujvdcu4opj6b21aopt.apps.googleusercontent.com',
         'client_secret' => '91fR57ImkHanNtrqG7kDzpfi',
-        'redirect'      => 'http://localhost/laravel1/user/google/callback',
+        'redirect'      => 'http://localhost/laravel1/google/callback',
     ],
 ];

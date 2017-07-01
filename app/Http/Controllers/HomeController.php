@@ -43,9 +43,10 @@ class HomeController extends Controller
         $max_id_contact = Contact::max('id');
         $last_contact   = Contact::where('id',$max_id_contact)->get();
         $guide_count    = Guide::count();
-        $guide          = Guide::orderBy('id','DESC')->get();
+        $guide_vi = Guide::where('tittle','like','%'.'('.'vi'.')'.'%')->get();
+        $guide_en = Guide::where('tittle','like','%'.'('.'en'.')'.'%')->get();
 
-        return view('user_interface.article_detail.result_search',compact('results','banner','contact','last_contact','results_count','total_post','guide_count','guide'));
+        return view('user_interface.article_detail.result_search',compact('results','banner','contact','last_contact','results_count','total_post','guide_count','guide_en', 'guide_vi'));
     }
     /*Show details*/
     public function user_home(Request $request){
@@ -62,7 +63,8 @@ class HomeController extends Controller
         $max_id_contact    = Contact::max('id');
         $last_contact      = Contact::where('id',$max_id_contact)->get();
         $guide_count       = Guide::count();
-        $guide          = Guide::orderBy('id','DESC')->get();
+        $guide_vi = Guide::where('tittle','like','%'.'('.'vi'.')'.'%')->get();
+        $guide_en = Guide::where('tittle','like','%'.'('.'en'.')'.'%')->get();
 
         /*Search*/
         if($request->has('search')){
@@ -74,7 +76,7 @@ class HomeController extends Controller
         }
         /*EndSearch*/
 
-        return view('user_interface.user_home', compact('newest_post','listening_article', 'audio','reading_article', 'library_article','banner','contact','last_contact','guide_count','guide'));
+        return view('user_interface.user_home', compact('newest_post','listening_article', 'audio','reading_article', 'library_article','banner','contact','last_contact','guide_count','guide_en', 'guide_vi'));
     }
     /*New post Page*/
     public function new_post(Request $request){
@@ -85,14 +87,15 @@ class HomeController extends Controller
         $max_id_contact    = Contact::max('id');
         $last_contact      = Contact::where('id',$max_id_contact)->get();
         $guide_count       = Guide::count();
-        $guide          = Guide::orderBy('id','DESC')->get();
+        $guide_vi = Guide::where('tittle','like','%'.'('.'vi'.')'.'%')->get();
+        $guide_en = Guide::where('tittle','like','%'.'('.'en'.')'.'%')->get();
 
         /*Search*/
         if($request->has('search')){
             return redirect()->route('search',['search='.$request->get('search')]);
         }
         /*EndSearch*/
-        return view('user_interface.article_detail.new_post', compact('new_post','banner','contact','last_contact','guide_count','guide'));
+        return view('user_interface.article_detail.new_post', compact('new_post','banner','contact','last_contact','guide_count','guide_en', 'guide_vi'));
     }
     /*Library Page*/
     public function library(Request $request){
@@ -103,14 +106,15 @@ class HomeController extends Controller
         $max_id_contact    = Contact::max('id');
         $last_contact      = Contact::where('id',$max_id_contact)->get();
         $guide_count       = Guide::count();
-        $guide          = Guide::orderBy('id','DESC')->get();
+        $guide_vi = Guide::where('tittle','like','%'.'('.'vi'.')'.'%')->get();
+        $guide_en = Guide::where('tittle','like','%'.'('.'en'.')'.'%')->get();
 
         /*Search*/
         if($request->has('search')){
             return redirect()->route('search',['search='.$request->get('search')]);
         }
         /*EndSearch*/
-        return view('user_interface.article_detail.library_page',compact('library','banner','contact','last_contact','guide_count','guide'));
+        return view('user_interface.article_detail.library_page',compact('library','banner','contact','last_contact','guide_count','guide_en', 'guide_vi'));
     }
 
     /*Listening Page*/
@@ -122,14 +126,15 @@ class HomeController extends Controller
         $max_id_contact = Contact::max('id');
         $last_contact   = Contact::where('id',$max_id_contact)->get();
         $guide_count    = Guide::count();
-        $guide          = Guide::orderBy('id','DESC')->get();
+        $guide_vi = Guide::where('tittle','like','%'.'('.'vi'.')'.'%')->get();
+        $guide_en = Guide::where('tittle','like','%'.'('.'en'.')'.'%')->get();
 
         /*Search*/
         if($request->has('search')){
             return redirect()->route('search',['search='.$request->get('search')]);
         }
         /*EndSearch*/
-        return view('user_interface.article_detail.listening_page',compact('listening','banner','contact','last_contact','guide_count','guide'));
+        return view('user_interface.article_detail.listening_page',compact('listening','banner','contact','last_contact','guide_count','guide_en', 'guide_vi'));
     }
     /*Listening Page*/
     public function practice_listening(Request $request){
@@ -140,14 +145,15 @@ class HomeController extends Controller
         $max_id_contact = Contact::max('id');
         $last_contact   = Contact::where('id',$max_id_contact)->get();
         $guide_count    = Guide::count();
-        $guide          = Guide::orderBy('id','DESC')->get();
+        $guide_vi = Guide::where('tittle','like','%'.'('.'vi'.')'.'%')->get();
+        $guide_en = Guide::where('tittle','like','%'.'('.'en'.')'.'%')->get();
 
         /*Search*/
         if($request->has('search')){
             return redirect()->route('search',['search='.$request->get('search')]);
         }
         /*EndSearch*/
-        return view('user_interface.article_detail.audio_page',compact('audio','banner','contact','last_contact','guide_count','guide'));
+        return view('user_interface.article_detail.audio_page',compact('audio','banner','contact','last_contact','guide_count','guide_en', 'guide_vi'));
     }
     /*Reading Page*/
     public function reading(Request $request){
@@ -158,8 +164,8 @@ class HomeController extends Controller
         $max_id_contact    = Contact::max('id');
         $last_contact      = Contact::where('id',$max_id_contact)->get();
         $guide_count       = Guide::count();
-        $guide             = Guide::orderBy('id','DESC')->get();
-
+        $guide_vi = Guide::where('tittle','like','%'.'('.'vi'.')'.'%')->get();
+        $guide_en = Guide::where('tittle','like','%'.'('.'en'.')'.'%')->get();
         /*Search*/
         if($request->has('search')){
             return redirect()->route('search',['search='.$request->get('search')]);
@@ -184,7 +190,8 @@ class HomeController extends Controller
         $max_id_contact = Contact::max('id');
         $last_contact   = Contact::where('id',$max_id_contact)->get();
         $guide_count    = Guide::count();
-        $guide          = Guide::orderBy('id','DESC')->get();
+        $guide_vi = Guide::where('tittle','like','%'.'('.'vi'.')'.'%')->get();
+        $guide_en = Guide::where('tittle','like','%'.'('.'en'.')'.'%')->get();
 
         /*Search*/
         if($request->has('search')){
@@ -192,7 +199,7 @@ class HomeController extends Controller
         }
         /*EndSearch*/
 
-        return view('user_interface.article_detail.article_content', compact('detail_article','relate_article','banner','contact','last_contact','comment_info','comment_count','guide_count','guide'));
+        return view('user_interface.article_detail.article_content', compact('detail_article','relate_article','banner','contact','last_contact','comment_info','comment_count','guide_count','guide_en', 'guide_vi'));
     }
 
      /*Show detail article*/
@@ -213,7 +220,8 @@ class HomeController extends Controller
         $max_id_contact = Contact::max('id');
         $last_contact   = Contact::where('id',$max_id_contact)->get();
         $guide_count    = Guide::count();
-        $guide          = Guide::orderBy('id','DESC')->get();
+        $guide_vi = Guide::where('tittle','like','%'.'('.'vi'.')'.'%')->get();
+        $guide_en = Guide::where('tittle','like','%'.'('.'en'.')'.'%')->get();
 
         /*Search*/
         if($request->has('search')){
@@ -221,7 +229,7 @@ class HomeController extends Controller
         }
         /*EndSearch*/
 
-        return view('user_interface.article_detail.audio_content', compact('detail_audio','relate_audio','banner','contact','last_contact','comment_info','comment_count','guide_count','guide'));
+        return view('user_interface.article_detail.audio_content', compact('detail_audio','relate_audio','banner','contact','last_contact','comment_info','comment_count','guide_count','guide_en', 'guide_vi'));
     }
 
     /*Contact*/

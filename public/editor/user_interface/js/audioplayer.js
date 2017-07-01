@@ -129,15 +129,13 @@
 		            if (charCode == 9) {
 		                if( thePlayer.hasClass( cssClass.playing ) )
 						{
-							$( ".audioplayer" ).attr( 'title_audio', params.strPlay ).find( 'a' ).html( params.strPlay );
+							document.getElementById('audio_listening_article').pause();
 							thePlayer.removeClass( cssClass.playing );
-							isSupport ? theAudio.pause() : theAudio.Stop();
 						}
 						else
 						{
-							$( ".audioplayer" ).attr( 'title_audio', params.strPause ).find( 'a' ).html( params.strPause );
+							document.getElementById('audio_listening_article').play();
 							thePlayer.addClass( cssClass.playing );
-							isSupport ? theAudio.play() : theAudio.Play();
 						}
 						return false;
 		            }
