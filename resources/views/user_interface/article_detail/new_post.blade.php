@@ -1,56 +1,199 @@
 @extends('user_interface.layouts.user_header')
 @section('content')
-	<div class="codes agileitsbg5">
-		<div class="container">
-			<div class="grid_3 grid_5 w3-agileits" style="padding: 2.5em 3em 8.5em;">
-				<h3 class="w3ls-hdg">Study English Today</h3><br>
-					@foreach($new_post as $detail)
-						<div class="col-md-8 col-md-offset-3 md_8 each_page">
-							<div class="article_item_md8 each_page_item">
-								<div class="article_info_md8 each_page_info">
-									<h3 class="w3t-text" align="center"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h3>
-								</div>
-								<div class="article_img_md8 each_page_img">
-									<a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">
-										<img class="article_img_md8 img_thumbnail each_page_img" src="{{$detail->image_path}}">
-									</a>
-								</div>
-								<div class="article_type_md8 each_page_type" align="center">
-									@if($detail->type=="audio")
-										<b class="label label_audio">{{$detail->type}}</b>
-									@endif
-									@if($detail->type=="library")
-										<b class="label label_article">{{$detail->type}}</b>
-									@endif
-									@if($detail->type=="reading")
-										<b class="label label_article">{{$detail->type}}</b>
-									@endif
-									<i class="label label_date"><b>{{$detail->created_at->format('d-m-Y')}}</b></i>
-									<!-- Total words-->
-									<div class="{{($detail->type=="audio") ? 'total_word':'hidden'}}">
+ <main role="main-inner-wrapper" class="container">
+
+            <div class="row">
+            	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+
+                	<article role="pge-title-content" class="blog-header">
+
+                    	<header>
+
+                        	<h2><span>Studyenglishtoday</span> Improve your English everyday</h2>
+
+                        </header>
+
+                    </article>
+
+                    <ul class="grid-lod effect-2" id="grid">
+                        <li>
+						<?php $no=0;?>
+						@foreach($new_post as $detail)
+						<?php $no++;?>
+						@if($no>=2 && $no%2==0 && $no<=8 )
+
+                            <section class="blog-content">
+
+                            	<a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">
+
+                                <figure>
+
+                                    <div class="post-date">
+
+                                        <h4 align="center">
+				                            @if($detail->type=="audio")
+												Audio
+											@endif
+											@if($detail->type=="library")
+												Library
+											@endif
+										</h4 align="center">
+			                            <h4 align="center">{{$detail->created_at->format('d-m-Y')}}</h4>
+
+                                    </div>
+                                     <div class="post-date-right {{($detail->type=="audio") ? '':'hidden'}}">
 										<?php
-		                                $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
-		                                $dictation="";
-		                                $length="";
-		                                foreach($str as $str){
+			                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+			                            $dictation="";
+			                            $length="";
+			                            foreach($str as $str){
 											$dictation = $str->dictation;
 											$length    = $str->audio_length;
-		                                }
-		                                $total = str_word_count($dictation);
+			                            }
+			                            $total = str_word_count($dictation);
 			                            ?>
-										<span align="center" class="text-success total_word_font" style="padding-right: 15px;">Length: <?php echo $length; ?></span>
-										<span align="center" class="text-success total_word_font">Total words: <?php echo $total; ?></span>
-									</div>
-								</div>
-							</div>
-						</div>
-					@endforeach
-				<div class="clearfix">
-				</div>
-				<script>$(function () {
-				  $('[data-toggle="tooltip"]').tooltip()
-				})</script>
-				<div class="total_page col-md-3">
+			                            <h4 align="center">Length <?php echo $length; ?></h4>
+			                            <h4 align="center">Total words <?php echo $total; ?></h4>
+			                        </div>
+
+                                    <img class="article_img_md8 img_thumbnail each_page_img new_post" src="{{$detail->image_path}}">
+
+
+                                </figure>
+
+                                </a>
+
+                                <article>
+
+                                    {{$detail->tittle}}
+
+                                </article>
+
+                            </section>
+                            @endif
+                        @endforeach
+                    	</ul>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+                	<ul class="grid-lod effect-2" id="grid">
+						@foreach($new_post as $detail)
+						@if($detail->id == $last_post)
+                		<li>
+
+                        	<section class="blog-content">
+
+                            	<a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">
+
+                                <figure>
+
+                                    <div class="post-date">
+
+                                        <h4 align="center">
+			                            	@if($detail->type=="audio")
+												Audio
+											@endif
+											@if($detail->type=="library")
+												Library
+											@endif
+										</h4>
+			                            <h4 align="center">{{$detail->created_at->format('d-m-Y')}}</h4>
+
+                                    </div>
+                                    <div class="post-date-right {{($detail->type=="audio") ? '':'hidden'}}">
+										<?php
+			                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+			                            $dictation="";
+			                            $length="";
+			                            foreach($str as $str){
+											$dictation = $str->dictation;
+											$length    = $str->audio_length;
+			                            }
+			                            $total = str_word_count($dictation);
+			                            ?>
+			                            <h4 align="center">Length <?php echo $length; ?></h4>
+			                            <h4 align="center">Total words <?php echo $total; ?></h4>
+			                        </div>
+
+                                     <img class="article_img_md8 img_thumbnail each_page_img new_post" src="{{$detail->image_path}}">
+
+                                </figure>
+
+                                </a>
+
+                                <article>
+
+                                    {{$detail->tittle}}
+
+                                </article>
+
+                            </section>
+						@endif
+                    	@endforeach
+                    	<?php $no=0;?>
+						@foreach($new_post as $detail)
+						<?php $no++;?>
+						@if($no>=2 && $no%2!=0 && $no<=11 )
+                            <section class="blog-content">
+
+                            	<a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">
+
+                                <figure>
+
+                                    <div class="post-date">
+
+                                        <h4 align="center">
+			                            	@if($detail->type=="audio")
+												Audio
+											@endif
+											@if($detail->type=="library")
+												Library
+											@endif
+										</h4>
+			                            <h4 align="center">{{$detail->created_at->format('d-m-Y')}}</h4>
+
+                                    </div>
+                                    <div class="post-date-right {{($detail->type=="audio") ? '':'hidden'}}">
+										<?php
+			                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+			                            $dictation="";
+			                            $length="";
+			                            foreach($str as $str){
+											$dictation = $str->dictation;
+											$length    = $str->audio_length;
+			                            }
+			                            $total = str_word_count($dictation);
+			                            ?>
+			                            <h4 align="center">Length <?php echo $length; ?></h4>
+			                            <h4 align="center">Total words <?php echo $total; ?></h4>
+			                        </div>
+
+                                    <img class="article_img_md8 img_thumbnail each_page_img new_post" src="{{$detail->image_path}}">
+
+                                </figure>
+
+                                </a>
+
+                                <article>
+
+                                    {{$detail->tittle}}
+
+                                </article>
+
+                            </section>
+                            @endif
+                            @endforeach
+
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+            <div class="total_page col-md-3">
 					Total Pages: {!! $new_post->lastPage() !!}
 				</div>
 
@@ -81,9 +224,6 @@
 						</li>
        				</ul>
 				</div>
-			</div>
-		</div>
-	</div>
 
-
+        </main>
 @stop

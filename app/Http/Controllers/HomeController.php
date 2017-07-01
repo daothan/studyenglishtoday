@@ -35,7 +35,7 @@ class HomeController extends Controller
 
     /*Search*/
     public function search(Request $request){
-        $results        = Detail::where('tittle','like','%'.$request->get('search').'%')->orderBy('id', 'DESC')->paginate(6);
+        $results        = Detail::where('tittle','like','%'.$request->get('search').'%')->orderBy('id', 'DESC')->paginate(9);
         $banner         = Banner::select('id','tittle','introduce','content')->get();
         $results_count  = Detail::where('tittle','like','%'.$request->get('search').'%')->count();
         $total_post     = Detail::count();
@@ -51,8 +51,9 @@ class HomeController extends Controller
     /*Show details*/
     public function user_home(Request $request){
         $newest_post       = Detail::orderBy('id', 'DESC')->get();
+        $last_post         = Detail::max('id');
 
-        $audio             = Listening::orderBy('id','DESC')->paginate(6);
+        $audio             = Listening::orderBy('id','DESC')->paginate(9);
         $listening_article = Detail::where('type','listening')->orderBy('id','DESC')->get();
         $reading_article   = Detail::where('type','reading')->orderBy('id','DESC')->get();
         $library_article   = Detail::where('type','library')->orderBy('id','DESC')->get();
@@ -76,11 +77,12 @@ class HomeController extends Controller
         }
         /*EndSearch*/
 
-        return view('user_interface.user_home', compact('newest_post','listening_article', 'audio','reading_article', 'library_article','banner','contact','last_contact','guide_count','guide_en', 'guide_vi'));
+        return view('user_interface.article_detail.user_home', compact('newest_post','listening_article', 'audio','reading_article', 'library_article','banner','contact','last_contact','last_post','guide_count','guide_en', 'guide_vi'));
     }
     /*New post Page*/
     public function new_post(Request $request){
-        $new_post = Detail::orderBy('id','DESC')->paginate(6);
+        $new_post = Detail::orderBy('id','DESC')->paginate(9);
+        $last_post         = Detail::max('id');
         $banner            = Banner::select('id','tittle','introduce','content')->get();
 
         $contact           = Contact::where('prior',1)->get();
@@ -95,11 +97,12 @@ class HomeController extends Controller
             return redirect()->route('search',['search='.$request->get('search')]);
         }
         /*EndSearch*/
-        return view('user_interface.article_detail.new_post', compact('new_post','banner','contact','last_contact','guide_count','guide_en', 'guide_vi'));
+        return view('user_interface.article_detail.new_post', compact('new_post','banner','contact','last_contact','guide_count','guide_en', 'guide_vi','last_post'));
     }
     /*Library Page*/
     public function library(Request $request){
-        $library           = Detail::where('type','library')->orderBy('id','DESC')->paginate(6);
+        $library           = Detail::where('type','library')->orderBy('id','DESC')->paginate(9);
+        $last_post         = Detail::where('type','library')->max('id');
         $banner            = Banner::select('id','tittle','introduce','content')->get();
 
         $contact           = Contact::where('prior',1)->get();
@@ -114,12 +117,13 @@ class HomeController extends Controller
             return redirect()->route('search',['search='.$request->get('search')]);
         }
         /*EndSearch*/
-        return view('user_interface.article_detail.library_page',compact('library','banner','contact','last_contact','guide_count','guide_en', 'guide_vi'));
+        return view('user_interface.article_detail.library_page',compact('library','banner','contact','last_contact','guide_count','guide_en', 'guide_vi','last_post'));
     }
 
     /*Listening Page*/
     public function listening(Request $request){
-        $listening      = Detail::where('type','listening')->orderBy('id','DESC')->paginate(6);
+        $listening      = Detail::where('type','listening')->orderBy('id','DESC')->paginate(9);
+        $last_post      = Detail::where('type','listening')->max('id');
         $banner         = Banner::select('id','tittle','introduce','content')->get();
 
         $contact        = Contact::where('prior',1)->get();
@@ -134,12 +138,12 @@ class HomeController extends Controller
             return redirect()->route('search',['search='.$request->get('search')]);
         }
         /*EndSearch*/
-        return view('user_interface.article_detail.listening_page',compact('listening','banner','contact','last_contact','guide_count','guide_en', 'guide_vi'));
+        return view('user_interface.article_detail.listening_page',compact('listening','banner','contact','last_contact','guide_count','guide_en', 'guide_vi','last_post'));
     }
     /*Listening Page*/
     public function practice_listening(Request $request){
-        $audio          = Listening::orderBy('id','DESC')->paginate(6);
-
+        $audio          = Listening::orderBy('id','DESC')->paginate(9);
+        $last_post      = Listening::max('id');
         $banner         = Banner::select('id','tittle','introduce','content')->get();
         $contact        = Contact::where('prior',1)->get();
         $max_id_contact = Contact::max('id');
@@ -153,11 +157,11 @@ class HomeController extends Controller
             return redirect()->route('search',['search='.$request->get('search')]);
         }
         /*EndSearch*/
-        return view('user_interface.article_detail.audio_page',compact('audio','banner','contact','last_contact','guide_count','guide_en', 'guide_vi'));
+        return view('user_interface.article_detail.audio_page',compact('audio','banner','contact','last_contact','guide_count','guide_en', 'guide_vi','last_post'));
     }
     /*Reading Page*/
     public function reading(Request $request){
-        $reading = Detail::where('type','reading')->orderBy('id','DESC')->paginate(6);
+        $reading = Detail::where('type','reading')->orderBy('id','DESC')->paginate(9);
         $banner            = Banner::select('id','tittle','introduce','content')->get();
 
         $contact           = Contact::where('prior',1)->get();
