@@ -2,7 +2,7 @@
 @section('content')
  <main role="main-inner-wrapper" class="container">
 
-            <div class="row">
+            <div class="row" style="margin-top: 70px;">
             	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
 
                 	<article role="pge-title-content" class="blog-header">
@@ -20,15 +20,15 @@
 						<?php $no=0;?>
 						@foreach($new_post as $detail)
 						<?php $no++;?>
-						@if($no>=2 && $no%2==0 && $no<=8 )
+						@if($no%2==0)
 
-                            <section class="blog-content">
+                            <section class="blog-content" >
 
                             	<a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">
 
-                                <figure>
+                                <figure style="{{$detail->type=="audio" ? 'background-color: rgba(157, 0, 255, 0.81);' : 'background-color: rgba(42, 78, 123, 0.55)'}}">
 
-                                    <div class="post-date">
+                                    <div class="post-date {{$detail->type=="audio" ? 'post-date-audio':''}}">
 
                                         <h4 align="center">
 				                            @if($detail->type=="audio")
@@ -56,7 +56,7 @@
 			                            <h4 align="center">Total words <?php echo $total; ?></h4>
 			                        </div>
 
-                                    <img class="article_img_md8 img_thumbnail each_page_img new_post" src="{{$detail->image_path}}">
+                                    <img class=" img_thumbnail  new_post" src="{{$detail->image_path}}">
 
 
                                 </figure>
@@ -78,70 +78,18 @@
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 
                 	<ul class="grid-lod effect-2" id="grid">
-						@foreach($new_post as $detail)
-						@if($detail->id == $last_post)
-                		<li>
 
-                        	<section class="blog-content">
-
-                            	<a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">
-
-                                <figure>
-
-                                    <div class="post-date">
-
-                                        <h4 align="center">
-			                            	@if($detail->type=="audio")
-												Audio
-											@endif
-											@if($detail->type=="library")
-												Library
-											@endif
-										</h4>
-			                            <h4 align="center">{{$detail->created_at->format('d-m-Y')}}</h4>
-
-                                    </div>
-                                    <div class="post-date-right {{($detail->type=="audio") ? '':'hidden'}}">
-										<?php
-			                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
-			                            $dictation="";
-			                            $length="";
-			                            foreach($str as $str){
-											$dictation = $str->dictation;
-											$length    = $str->audio_length;
-			                            }
-			                            $total = str_word_count($dictation);
-			                            ?>
-			                            <h4 align="center">Length <?php echo $length; ?></h4>
-			                            <h4 align="center">Total words <?php echo $total; ?></h4>
-			                        </div>
-
-                                     <img class="article_img_md8 img_thumbnail each_page_img new_post" src="{{$detail->image_path}}">
-
-                                </figure>
-
-                                </a>
-
-                                <article>
-
-                                    {{$detail->tittle}}
-
-                                </article>
-
-                            </section>
-						@endif
-                    	@endforeach
-                    	<?php $no=0;?>
+                 	<?php $no=0;?>
 						@foreach($new_post as $detail)
 						<?php $no++;?>
-						@if($no>=2 && $no%2!=0 && $no<=11 )
+						@if($no%2!=0)
                             <section class="blog-content">
 
                             	<a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">
 
-                                <figure>
+                                <figure style="{{$detail->type=="audio" ? 'background-color: rgba(157, 0, 255, 0.81);' : 'background-color: rgba(42, 78, 123, 0.55)'}}">
 
-                                    <div class="post-date">
+                                    <div class="post-date {{$detail->type=="audio" ? 'post-date-audio':''}}">
 
                                         <h4 align="center">
 			                            	@if($detail->type=="audio")
@@ -169,7 +117,7 @@
 			                            <h4 align="center">Total words <?php echo $total; ?></h4>
 			                        </div>
 
-                                    <img class="article_img_md8 img_thumbnail each_page_img new_post" src="{{$detail->image_path}}">
+                                    <img class=" img_thumbnail new_post" src="{{$detail->image_path}}">
 
                                 </figure>
 

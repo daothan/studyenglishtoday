@@ -1,45 +1,109 @@
 @extends('user_interface.layouts.user_header')
 @section('content')
-	<div class="codes agileitsbg5">
-		<div class="container">
-			<div class="grid_3 grid_5 w3-agileits" style="padding: 2.5em 3em 8.5em;">
-				<h3 class="w3ls-hdg">Knowledge Library</h3><br>
-					@foreach($library as $detail)
-						<div class="col-md-8 col-md-offset-1 md_8 each_page">
-								<div class="article_item_md8_library each_page_item">
-									<div class="article_info_md8 each_page_info">
-										<h3 class="w3t-text" align="center"><a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h3>
-									</div>
-									<div class="article_img_md8 each_page_img">
-										<a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">
-											<img class="article_img_md8 img_thumbnail each_page_img" src="{{$detail->image_path}}">
-										</a>
-									</div>
-									<div class="article_type_md8 each_page_type" align="center">
-										@if($detail->type=="audio")
-											<b class="label label_article">{{$detail->type}}</b>
-										@endif
-										@if($detail->type=="library")
-											<b class="label label_article">{{$detail->type}}</b>
-										@endif
-										@if($detail->type=="reading")
-											<b class="label label_article"">{{$detail->type}}</b>
-										@endif
-										<i class="label label_date each_label"><b>{{$detail->created_at->format('d-m-Y')}}</b></i>
-									</div>
-								</div>
-							</div>
-					@endforeach
-				<div class="clearfix">
-				</div>
-				<script>$(function () {
-				  $('[data-toggle="tooltip"]').tooltip()
-				})</script>
-				<div class="total_page col-md-3">
+ <main role="main-inner-wrapper" class="container">
+
+            <div class="row" style="margin-top: 70px;">
+            	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+
+                	<article role="pge-title-content" class="blog-header">
+
+                    	<header>
+
+                        	<h2><span>Studyenglishtoday</span> Improve your English everyday</h2>
+
+                        </header>
+
+                    </article>
+
+                    <ul class="grid-lod effect-2" id="grid">
+                        <li>
+						<?php $no=0;?>
+						@foreach($library as $detail)
+						<?php $no++;?>
+						@if($no%2==0)
+
+                            <section class="blog-content">
+
+                            	<a href="{{route('detail_article',[$detail->type,$detail->alias])}}">
+
+                                <figure>
+
+                                    <div class="post-date">
+
+                                        <h4 align="center">library
+										</h4 align="center">
+			                            <h4 align="center">{{$detail->created_at->format('d-m-Y')}}</h4>
+
+                                    </div>
+                                    <img class=" img_thumbnail  library_post" src="{{$detail->image_path}}">
+
+
+                                </figure>
+
+                                </a>
+
+                                <article>
+
+                                    {{$detail->tittle}}
+
+                                </article>
+
+                            </section>
+                            @endif
+                        @endforeach
+                    	</ul>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+                	<ul class="grid-lod effect-2" id="grid">
+                    	<?php $no=0;?>
+						@foreach($library as $detail)
+						<?php $no++;?>
+						@if($no%2!=0)
+                            <section class="blog-content">
+
+                            	<a href="{{route('detail_article',[$detail->type,$detail->alias])}}">
+
+                                <figure>
+
+                                    <div class="post-date">
+
+                                        <h4 align="center">
+			                            	library
+										</h4>
+			                            <h4 align="center">{{$detail->created_at->format('d-m-Y')}}</h4>
+
+                                    </div>
+                                    <img class=" img_thumbnail  library_post" src="{{$detail->image_path}}">
+
+                                </figure>
+
+                                </a>
+
+                                <article>
+
+                                    {{$detail->tittle}}
+
+                                </article>
+
+                            </section>
+                            @endif
+                            @endforeach
+
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+            <div class="total_page col-md-3">
 					Total Pages: {!! $library->lastPage() !!}
 				</div>
 
-				<div class="">
+				<div class=" ">
 					<ul class="pagination">
 	                    <li class="{{($library->currentPage()==1) ? 'hidden':''}}">
 	                    	<a href="{{$library->url($library->currentPage()-1)}}"><span>«</span></a>
@@ -66,8 +130,6 @@
 						</li>
        				</ul>
 				</div>
-			</div>
-		</div>
-	</div>
 
+        </main>
 @stop

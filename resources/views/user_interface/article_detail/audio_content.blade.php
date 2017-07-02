@@ -4,7 +4,7 @@
 		<div class="container">
 			<div class="grid_3 grid_5 w3-agileits">
 
-			    <div class="row">
+			    <div class="row" style="margin-top: 70px;">
 					@foreach($detail_audio as $data)
 					<?php $user = DB::table('users')->where('id', $data->user_id)->get();
 						foreach($user as $user){
@@ -26,15 +26,15 @@
 								<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
 							</div><br>
 							<!-- End Like Share -->
-				            <h2 class="blog-post-title"><a>{{$data->tittle}}</a></h2>
+				            <h2 class="blog-post-title" style="font-weight: 400;"><a>{{$data->tittle}}</a></h2>
 				            <p class="blog-post-meta">Created <i class="{{(isset(Auth::user()->name) && Auth::user()->level<2) ? '':'hidden'}}">{{$data->created_at->format('H:i:s d-m-Y')}}</i><i class="{{(isset(Auth::user()->name) && Auth::user()->level==2) ? '':'hidden'}}">{{$data->created_at->format('d-m-Y')}}</i><i class="{{(isset(Auth::user()->name)) ? 'hidden':''}}">{{$data->created_at->format('d-m-Y')}}</i>
 				            </p>
 				            <p>{!!htmlspecialchars_decode($data->introduce)!!}</p>
 				            <div class="audio_listening">
 								<audio preload="auto" controls id="audio_listening_article">
-								    <source id="mp3Source" type="audio/mp3" src="{{'/laravel1/'.$data->audio_path}}"/>
-								    <source id="oggSource" type="audio/ogg" src="{{'/laravel1/'.$data->audio_path}}" />
-									<source id="oggSource" type="audio/wav" src="{{'/laravel1/'.$data->audio_path}}">
+								    <source id="mp3Source" type="audio/mp3" src="{{'/studyenglishtoday/'.$data->audio_path}}"/>
+								    <source id="oggSource" type="audio/ogg" src="{{'/studyenglishtoday/'.$data->audio_path}}" />
+									<source id="oggSource" type="audio/wav" src="{{'/studyenglishtoday/'.$data->audio_path}}">
 								</audio>
 				            </div>
 				            <div class="hint">
@@ -188,11 +188,11 @@
 				              	<li class="li_relate">
 									<div class="media-block horizontal width-img size-4">
 										<a href="{{route('tittle_audio',[tittle($relate->tittle)])}}" class="img-wrap" title="{{$relate->tittle}}">
-											<img class="relate_image" src="/laravel1/{{$relate->image_path}}">
+											<img class="relate_image" src="/studyenglishtoday/{{$relate->image_path}}">
 										</a>
 										<div class="content_relate">
 											<a href="{{route('tittle_audio',[tittle($relate->tittle)])}}">
-												<h4><span class="title">{{$relate->tittle}}</span></h4>
+												<h4 style="font-weight: 400;"><span class="title">{{$relate->tittle}}</span></h4>
 											</a>
 										</div>
 									</div>

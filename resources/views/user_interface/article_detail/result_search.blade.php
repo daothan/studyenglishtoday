@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="codes agileitsbg5">
-	<div class="container">
-		<div id="" class="grid_3 grid_5 w3-agileits" style="padding: 2.5em 3em 8.5em;">
-			<h2><p class="agiletext-border agiletext-style">Searching results...</p></h2>
+	<div class="container result_container">
+		<div class="grid_3 grid_5 w3-agileits result_grid" >
+			<h2><p class="agiletext-border agiletext-style col-md-8 col-md-offset-1">Searching results...</p></h2>
 			<div class="{{$results_count== $total_post ? '':'hidden'}} search_error col-md-12">
 				<div class="col-md-offset-4">
 					Opp! Please enter somethings ...

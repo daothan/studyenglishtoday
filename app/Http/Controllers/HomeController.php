@@ -35,7 +35,7 @@ class HomeController extends Controller
 
     /*Search*/
     public function search(Request $request){
-        $results        = Detail::where('tittle','like','%'.$request->get('search').'%')->orderBy('id', 'DESC')->paginate(9);
+        $results        = Detail::where('tittle','like','%'.$request->get('search').'%')->orderBy('id', 'DESC')->paginate(7);
         $banner         = Banner::select('id','tittle','introduce','content')->get();
         $results_count  = Detail::where('tittle','like','%'.$request->get('search').'%')->count();
         $total_post     = Detail::count();
@@ -81,7 +81,7 @@ class HomeController extends Controller
     }
     /*New post Page*/
     public function new_post(Request $request){
-        $new_post = Detail::orderBy('id','DESC')->paginate(9);
+        $new_post = Detail::orderBy('id','DESC')->paginate(7);
         $last_post         = Detail::max('id');
         $banner            = Banner::select('id','tittle','introduce','content')->get();
 
@@ -101,7 +101,7 @@ class HomeController extends Controller
     }
     /*Library Page*/
     public function library(Request $request){
-        $library           = Detail::where('type','library')->orderBy('id','DESC')->paginate(9);
+        $library           = Detail::where('type','library')->orderBy('id','DESC')->paginate(7);
         $last_post         = Detail::where('type','library')->max('id');
         $banner            = Banner::select('id','tittle','introduce','content')->get();
 
@@ -122,7 +122,7 @@ class HomeController extends Controller
 
     /*Listening Page*/
     public function listening(Request $request){
-        $listening      = Detail::where('type','listening')->orderBy('id','DESC')->paginate(9);
+        $listening      = Detail::where('type','listening')->orderBy('id','DESC')->paginate(7);
         $last_post      = Detail::where('type','listening')->max('id');
         $banner         = Banner::select('id','tittle','introduce','content')->get();
 
@@ -142,7 +142,7 @@ class HomeController extends Controller
     }
     /*Listening Page*/
     public function practice_listening(Request $request){
-        $audio          = Listening::orderBy('id','DESC')->paginate(9);
+        $audio          = Listening::orderBy('id','DESC')->paginate(7);
         $last_post      = Listening::max('id');
         $banner         = Banner::select('id','tittle','introduce','content')->get();
         $contact        = Contact::where('prior',1)->get();
@@ -161,7 +161,7 @@ class HomeController extends Controller
     }
     /*Reading Page*/
     public function reading(Request $request){
-        $reading = Detail::where('type','reading')->orderBy('id','DESC')->paginate(9);
+        $reading = Detail::where('type','reading')->orderBy('id','DESC')->paginate(7);
         $banner            = Banner::select('id','tittle','introduce','content')->get();
 
         $contact           = Contact::where('prior',1)->get();

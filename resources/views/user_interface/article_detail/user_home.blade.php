@@ -15,7 +15,6 @@
 	<!-- End Like Share -->
         <main role="main-home-wrapper" class="container">
             <div class="row">
-           
             	<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
 
                 	<article role="pge-title-content">
@@ -29,11 +28,11 @@
                     </article>
 
                 </section>
-                <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
-					@foreach($newest_post as $detail)
-					@if($detail->id == $last_post)
-                	<figure class="effect-oscar">
-						<div class="post-date">
+				@foreach($newest_post as $detail)
+				@if($detail->id == $last_post)
+                <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid" >
+                	<figure class="effect-oscar" style="{{$detail->type=="audio" ? 'background-color: rgba(157, 0, 255, 0.81);' : ''}}">
+						<div class="post-date {{$detail->type=="audio" ? 'post-date-audio':''}}">
                             <h4>
                             	@if($detail->type=="audio")
 									Audio
@@ -58,7 +57,7 @@
                             <h4>Length <?php echo $length; ?></h4>
                             <h4>Total words <?php echo $total; ?></h4>
                         </div>
-                    	<img class="article_img_md8 img_thumbnail each_page_img" src="{{$detail->image_path}}">
+                    	<img class=" img_thumbnail " src="{{$detail->image_path}}">
 
 
                         <figcaption>
@@ -69,10 +68,10 @@
                         </figcaption>
 
                     </figure>
-                    @endif
-					@endforeach
 
                 </section>
+                @endif
+				@endforeach
 
                 <div class="clearfix"></div>
 
@@ -85,8 +84,8 @@
 						@if($no>=2 && $no%2==0 && $no<=6 )
                     	<li>
 
-                        	<figure class="effect-oscar">
-							<div class="post-date">
+                        	<figure class="effect-oscar" style="{{$detail->type=="audio" ? 'background-color: rgba(157, 0, 255, 0.81);' : ''}}">
+							<div class="post-date {{$detail->type=="audio" ? 'post-date-audio':''}}">
 	                            <h4>
 		                            @if($detail->type=="audio")
 										Audio
@@ -111,7 +110,7 @@
 	                            <h4>Length <?php echo $length; ?></h4>
 	                            <h4>Total words <?php echo $total; ?></h4>
 	                        </div>
-                            <img class="article_img_md8 img_thumbnail each_page_img" src="{{$detail->image_path}}">
+                            <img class=" img_thumbnail " src="{{$detail->image_path}}">
 
                             <figcaption>
 
@@ -141,8 +140,8 @@
 
                     	<li>
 
-                        	<figure class="effect-oscar">
-							<div class="post-date">
+                        	<figure class="effect-oscar" style="{{$detail->type=="audio" ? 'background-color: rgba(157, 0, 255, 0.81);' : ''}}">
+							<div class="post-date {{$detail->type=="audio" ? 'post-date-audio':''}}">
 	                            <h4>
 	                            	@if($detail->type=="audio")
 										Audio
@@ -167,7 +166,7 @@
 	                            <h4>Length <?php echo $length; ?></h4>
 	                            <h4>Total words <?php echo $total; ?></h4>
 	                        </div>
-                            <img class="article_img_md8 img_thumbnail each_page_img" src="{{$detail->image_path}}">
+                            <img class="img_thumbnail " src="{{$detail->image_path}}">
 
                              <figcaption>
 
