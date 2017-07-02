@@ -21,7 +21,7 @@
 
                     	<header>
 
-                        	<h2><span>Studyenglishtoday</span> Improve your English everyday</h2>
+                        	<h2 align="center"><span>Studyenglishtoday</span> Improve your English everyday</h2>
 
                         </header>
 

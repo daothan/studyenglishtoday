@@ -18,7 +18,6 @@
 				</div>
 			</div>
 			<div class="content2-agile contact-w3lsright w3llist-grids-btm2" style="padding-top: 100px;">
-				<h6><span>Free English </span>where you can improve your English skills . </h6>
 				<div class="col-xs-6 address-row">
 					<div class="col-xs-12 address-right">
 						<h5>Visit Us</h5>

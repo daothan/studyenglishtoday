@@ -329,7 +329,7 @@ p.copyright-agileits a:hover {
 
 @media (max-width:1440px) {
 textarea#message {
-	width:93%;	
+	width:93%;
 }
 input#username_contact, input#email_contact {
 	width:88.2%;
@@ -341,7 +341,7 @@ input#username_contact, input#email_contact {
     width: 88.5%;
 }
 .content-w3ls {
-    width: 75%;
+    width: 75% !important;
 }
 }
 
@@ -434,8 +434,8 @@ textarea#message {
 
 @media (max-width: 768px) {
 .content-w3ls {
-    width: 65%;
-}	
+    width: 78% !important;
+}
 .content-w3ls .content1-agile, .content-w3ls .content2-agile {
     width: 100%;
     float: left;
@@ -460,7 +460,7 @@ input.sign-in {
 }
 p.agileinfo:before {
 	left: 23px;
-	width: 36%;
+	width: 30%;
 }
 p.agileinfo:after {
 	right: 23px;
@@ -539,7 +539,7 @@ h1.w3layouts {
     padding: 20px 0;
 }
 .content-w3ls {
-    width: 85%;
+    width: 95% !important;
 }
 .info-w3l {
     padding: 20px 0px;
@@ -564,12 +564,12 @@ p.agileinfo {
 }
 p.agileinfo:before {
     left: 25px;
-    width: 35%;
+    width: 20%;
     top: 35px;
 }
 p.agileinfo:after {
     right: 25px;
-    width: 35%;
+    width: 20%;
     top: 35px;
 }
 .content-w3ls .content2-agile {

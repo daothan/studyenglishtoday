@@ -739,7 +739,7 @@ table > tbody > tr>td>p> span, table > tbody > tr>td>p> span>span {
 .modal-content {
     position: relative;
     background-color: #fefefe;
-  margin: 6% auto; /* 15% from the top and centered */
+    margin: 6% auto; /* 15% from the top and centered */
     padding: 0;
     border-radius: 0px !important;
     border: none;
@@ -749,6 +749,18 @@ table > tbody > tr>td>p> span, table > tbody > tr>td>p> span>span {
     animation-name: animatetop;
     animation-duration: 0.7s;
     margin-top: -57px !important;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+@media(max-width: 769px){
+  .modal-content{
+    width: 80% !important;
+  }
+}
+@media(max-width: 480px){
+  .modal-content{
+    width: 95% !important;
+  }
 }
 .modal_background {
     background: #fff;
@@ -772,30 +784,56 @@ table > tbody > tr>td>p> span, table > tbody > tr>td>p> span>span {
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
+    width: 95%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    margin:auto;
 }
 
 /* Modal Content */
-.modal-content {
-    position: relative;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 0;
-    border: 1px solid #888;
-    width: 80%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s
-}
 .modal:focus{
   header[role="header"] nav ul > li > a
 }
+
+
+/* Scroll */
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #e1e1e1;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #000000;
+}
+::-webkit-scrollbar-track {
+  background: #666666;
+  border: 0px none #ffffff;
+  border-radius: 33px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+::-webkit-scrollbar-track:active {
+  background: #333333;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+
 /* Add Animation */
 @-webkit-keyframes animatetop {
     from {top:-300px; opacity:0} 
@@ -1372,9 +1410,9 @@ hr{
 
 main[role="main-home-wrapper"],main[role="main-inner-wrapper"] { padding-bottom:90px}
 
-main[role="main-home-wrapper"] article[role="pge-title-content"],main[role="main-inner-wrapper"] article[role="pge-title-content"]{ padding-left:13%}
+main[role="main-home-wrapper"] article[role="pge-title-content"],main[role="main-inner-wrapper"] article[role="pge-title-content"]{ padding-left:0%}
 
-main[role="main-home-wrapper"] article[role="pge-title-content"] header,main[role="main-inner-wrapper"] article[role="pge-title-content"] header{ padding-bottom:19px; padding-top:100px}
+main[role="main-home-wrapper"] article[role="pge-title-content"] header,main[role="main-inner-wrapper"] article[role="pge-title-content"] header{ padding-bottom:19px; padding-top:50px}
 
 main[role="main-home-wrapper"] article[role="pge-title-content"] header h2,main[role="main-inner-wrapper"] article[role="pge-title-content"] header h2{ font-size:31px !important; line-height:53px; color:rgba(153, 51, 183, 0.86); font-weight:800;font-style: italic;}
 
