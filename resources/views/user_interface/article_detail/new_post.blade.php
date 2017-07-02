@@ -1,6 +1,6 @@
 @extends('user_interface.layouts.user_header')
 @section('content')
- <main role="main-inner-wrapper" class="container">
+		<main role="main-inner-wrapper" class="container">
 
             <div class="row" style="margin-top: 70px;">
             	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
@@ -16,12 +16,12 @@
                     </article>
 
                     <ul class="grid-lod effect-2" id="grid">
-                        <li>
 						<?php $no=0;?>
 						@foreach($new_post as $detail)
 						<?php $no++;?>
 						@if($no%2==0)
 
+                        <li>
                             <section class="blog-content" >
 
                             	<a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">
@@ -70,6 +70,7 @@
                                 </article>
 
                             </section>
+                        </li>
                             @endif
                         @endforeach
                     	</ul>
@@ -83,6 +84,7 @@
 						@foreach($new_post as $detail)
 						<?php $no++;?>
 						@if($no%2!=0)
+						<li>
                             <section class="blog-content">
 
                             	<a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">
@@ -130,12 +132,9 @@
                                 </article>
 
                             </section>
+                            </li>
                             @endif
                             @endforeach
-
-
-                        </li>
-
                     </ul>
 
                 </div>
@@ -172,6 +171,4 @@
 						</li>
        				</ul>
 				</div>
-
-        </main>
 @stop

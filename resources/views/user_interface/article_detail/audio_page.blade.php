@@ -16,12 +16,12 @@
                     </article>
 
                     <ul class="grid-lod effect-2" id="grid">
-                        <li>
 						<?php $no=0;?>
 						@foreach($audio as $detail)
 						<?php $no++;?>
 						@if($no%2==0)
 
+                        <li>
                             <section class="blog-content">
 
                             	<a href="{{route('tittle_audio',[tittle($detail->tittle)])}}">
@@ -66,6 +66,7 @@
                             </section>
                             @endif
                         @endforeach
+                        </li>
                     	</ul>
                 </div>
 
@@ -76,6 +77,7 @@
 						@foreach($audio as $detail)
 						<?php $no++;?>
 						@if($no%2!=0)
+							<li>
                             <section class="blog-content">
 
                             	<a href="{{route('tittle_audio',[tittle($detail->tittle)])}}">
@@ -118,12 +120,9 @@
                                 </article>
 
                             </section>
+	                        </li>
                             @endif
                             @endforeach
-
-
-                        </li>
-
                     </ul>
 
                 </div>

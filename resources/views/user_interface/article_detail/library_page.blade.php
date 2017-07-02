@@ -16,12 +16,12 @@
                     </article>
 
                     <ul class="grid-lod effect-2" id="grid">
-                        <li>
-						<?php $no=0;?>
-						@foreach($library as $detail)
-						<?php $no++;?>
-						@if($no%2==0)
+                        <?php $no=0;?>
+                        @foreach($library as $detail)
+                        <?php $no++;?>
+                        @if($no%2==0)
 
+                        <li>
                             <section class="blog-content">
 
                             	<a href="{{route('detail_article',[$detail->type,$detail->alias])}}">
@@ -49,6 +49,7 @@
                                 </article>
 
                             </section>
+                        </li>
                             @endif
                         @endforeach
                     	</ul>
@@ -61,6 +62,7 @@
 						@foreach($library as $detail)
 						<?php $no++;?>
 						@if($no%2!=0)
+                        <li>
                             <section class="blog-content">
 
                             	<a href="{{route('detail_article',[$detail->type,$detail->alias])}}">
@@ -88,11 +90,9 @@
                                 </article>
 
                             </section>
+                            </li>
                             @endif
-                            @endforeach
-
-
-                        </li>
+                            @endforeach>
 
                     </ul>
 
