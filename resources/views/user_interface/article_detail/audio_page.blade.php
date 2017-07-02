@@ -3,7 +3,7 @@
  <main role="main-inner-wrapper" class="container">
 
             <div class="row" style="margin-top: 70px;">
-            	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+            	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 " style="margin-bottom: 75px;">
 
                 	<article role="pge-title-content" class="blog-header">
 

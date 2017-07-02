@@ -1511,6 +1511,9 @@ figure .post-date-right{     /* text-align: center; */
     padding-top: 5px;
     z-index: 50;}
 @media (max-width: 800px){
+  figure .post-date-audio {
+    background-color: rgba(177, 14, 52, 0.72) !important;
+  }
 	figure .post-date{
 		color: #FFF;
 	    font-weight: 800;

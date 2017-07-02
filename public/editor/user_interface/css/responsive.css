@@ -80,9 +80,9 @@
 
 	article[role="pge-title-content"].blog-header,article[role="pge-title-content"].contact-header{ padding-bottom:30px}
 
-	section.blog-content figure .post-date{ padding-top:20px; height:100px; width:100px}
 
-	section.blog-content article{ padding:2% 5%; font-size:18px; line-height:24px;font-family: 'proxima_nova_cn_rgregular';}
+
+	section.blog-content article{ font-family: 'Yanone Kaffeesatz', sans-serif !important;padding:2% 5%; font-size:18px; line-height:24px;font-family: 'proxima_nova_cn_rgregular';}
 
 	article.contact-header[role="pge-title-content"] p a{ font-size:18px; padding-right:10px}
 
