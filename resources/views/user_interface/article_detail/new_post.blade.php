@@ -63,7 +63,7 @@
 
                                 </a>
 
-                                <article>
+                                <article align="center">
 
                                     {{$detail->tittle}}
 
@@ -125,7 +125,7 @@
 
                                 </a>
 
-                                <article>
+                                <article align="center">
 
                                     {{$detail->tittle}}
 

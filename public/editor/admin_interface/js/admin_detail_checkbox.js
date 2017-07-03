@@ -39,8 +39,8 @@ function ckeditor(name, config, toolbar){
 
 	config = {};
 	config.entities_latin = false;
-	config.filebrowserBrowseUrl ='/laravel1/public/editor/ckfinder/ckfinder.html';
-	config.filebrowserImageBrowseUrl = '/laravel1/public/editor/ckfinder/ckfinder.html';
+	config.filebrowserBrowseUrl ='/studyenglishtoday/public/editor/ckfinder/ckfinder.html';
+	config.filebrowserImageBrowseUrl = '/studyenglishtoday/public/editor/ckfinder/ckfinder.html';
 	config.extraPlugins = 'youtube';
 
 	if(toolbar == 'standard'){
@@ -210,13 +210,13 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 		    	//console.log(searchIDs[0]);
 		    	id = searchIDs[0];
 			    	$.ajax({
-			    		url:'/laravel1/admin/detail/content',
+			    		url:'/studyenglishtoday/admin/detail/content',
 			    		type: "GET",
 			    		data: {"id":id,},
 			    		success:function(result){
 			    			$('#viewdetailModal').modal('show');
 			    			$('#detail_image').html(result.image);
-			    			var path_img = "http://localhost/laravel1/"+result.image_path;
+			    			var path_img = "http://localhost/studyenglishtoday/"+result.image_path;
 		    					$("#image_detail").attr("src", path_img);
 			    			$('#detail_tittle').html(result.tittle);
 			    			$('#detail_introduce').html(result.introduce);
@@ -231,7 +231,7 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 /*Add Detail*/
 /*Show cate parent and cate*/
     $.ajax({
-    	url: '/laravel1/admin/detail/add',
+    	url: '/studyenglishtoday/admin/detail/add',
     	type: "GET",
     	success: function(result){
 		    //console.log(result.length);
@@ -305,7 +305,7 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 				    }
 				});
 				$.ajax({
-					url: '/laravel1/admin/detail/add',
+					url: '/studyenglishtoday/admin/detail/add',
 					type: "POST",
 				    async: true,
 				    dataType: "json", // or html if you want...
@@ -327,11 +327,11 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 							}
 						}
 						if(data.add_detail == true){
-							$('#detail_table').load('/laravel1/admin/detail/show #detail_table');
+							$('#detail_table').load('/studyenglishtoday/admin/detail/show #detail_table');
 							setTimeout(function() { $('#adddetailModal').modal('hide');}, 200);
 							setTimeout(function(){ $("#add_detail_success").modal('show');},1000);
 							setTimeout(function(){ $("#add_detail_success").modal('hide'); },3000);
-							setTimeout(function() { window.location.href = "/laravel1/admin/detail/show";}, 3200);
+							setTimeout(function() { window.location.href = "/studyenglishtoday/admin/detail/show";}, 3200);
 						}
 					}
 				})
@@ -348,7 +348,7 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 		if(checked==1){
 			$('#editdetailModal').modal('show');
 			$('#close').click(function(){/*Reload data select*/
-				$('#edit_category').load('/laravel1/admin/cate/show #edit_category');
+				$('#edit_category').load('/studyenglishtoday/admin/cate/show #edit_category');
 			})
 		    $(".table input:checkbox:checked").map(function(){
 		    	var searchIDs = [];
@@ -357,7 +357,7 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 		    	id = searchIDs[0];
 
 		    	$.ajax({
-				url:'/laravel1/admin/detail/edit',
+				url:'/studyenglishtoday/admin/detail/edit',
 				type: "GET",
 				data:{"id":id},
 					success: function(result){
@@ -402,7 +402,7 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 						$('#old_id_edit_detail').val(result[0].info_detail.id);
 						$('#edit_type_article').val(result[0].info_detail.type);
 						$('#old_image_detail_edit').html(result[0].info_detail.image);
-						var path_img = "http://localhost/laravel1/"+result[0].info_detail.image_path;
+						var path_img = "http://localhost/studyenglishtoday/"+result[0].info_detail.image_path;
 		    				$("#old_image_detail_edit_view").attr("src", path_img);
 						$('#edit_tittle').val(result[0].info_detail.tittle);
 						CKEDITOR.instances['edit_introduce'].setData(result[0].info_detail.introduce);
@@ -436,7 +436,7 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 								    }
 								});
 								$.ajax({
-									'url' : '/laravel1/admin/detail/edit',
+									'url' : '/studyenglishtoday/admin/detail/edit',
 									type: "POST",
 								    async: true,
 								    dataType: "json", // or html if you want...
@@ -457,11 +457,11 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 											}
 										}
 										if(data.edit_detail == true){
-										    $('#detail_table').load('/laravel1/admin/detail/show #detail_table');
+										    $('#detail_table').load('/studyenglishtoday/admin/detail/show #detail_table');
 											setTimeout(function(){$('#editdetailModal').modal('hide');}, 200);
 											setTimeout(function(){$("#edit_detail_success").modal('show');},1000);
 											setTimeout(function(){$("#edit_detail_success").modal('hide');},3000);
-											setTimeout(function(){ window.location.href = "/laravel1/admin/detail/show";}, 3200);
+											setTimeout(function(){ window.location.href = "/studyenglishtoday/admin/detail/show";}, 3200);
 										}
 									}
 								})
@@ -486,7 +486,7 @@ $('#delete_detail').click(function(event){
     	//console.log(searchIDs[0]);
     	id = searchIDs[0];
     		$.ajax({
-				url: '/laravel1/admin/detail/delete',
+				url: '/studyenglishtoday/admin/detail/delete',
 				type:"GET",
 				data: {"id":id},
 				success:function(result){
@@ -503,7 +503,7 @@ $('#delete_detail').click(function(event){
 							    }
 							});
 							$.ajax({
-								url: '/laravel1//admin/detail/delete',
+								url: '/studyenglishtoday//admin/detail/delete',
 								method:"POST",
 								data: {id:id},
 								beforeSend:function(){
@@ -519,7 +519,7 @@ $('#delete_detail').click(function(event){
 										$('tr#'+id+'').fadeOut(1000);
 
 									}
-									setTimeout(function() { window.location.href = "/laravel1/admin/detail/show";}, 1000);
+									setTimeout(function() { window.location.href = "/studyenglishtoday/admin/detail/show";}, 1000);
 								}
 							})
 						})

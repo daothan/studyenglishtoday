@@ -49,7 +49,7 @@
 		    	id = searchIDs[0];
 
 				$.ajax({
-				    url: '/laravel1/admin/cate/catedetail',
+				    url: '/studyenglishtoday/admin/cate/catedetail',
 				    type:"GET",
 				    data: {"id":id},
 				    success: function(result){
@@ -88,7 +88,7 @@
 	/*Add Cate*/
 	/*Show cate parent and cate*/
     $.ajax({
-    	url: '/laravel1/admin/cate/add',
+    	url: '/studyenglishtoday/admin/cate/add',
     	type: "GET",
     	success: function(result){
 		    //console.log(result.length);
@@ -156,7 +156,7 @@
 				    }
 				});
 				$.ajax({
-					url  :'/laravel1/admin/cate/add',
+					url  :'/studyenglishtoday/admin/cate/add',
 					type :'POST',
 					data: {
 						'add_parent'     : $('#add_parent').val(),
@@ -179,11 +179,11 @@
 							}
 						}
 						if(data.add_cate == true){
-							$('#cate_table').load('/laravel1/admin/cate/show #cate_table');
+							$('#cate_table').load('/studyenglishtoday/admin/cate/show #cate_table');
 							setTimeout(function(){ $('#addcateModal').modal('hide');}, 200);
 							setTimeout(function(){ $("#add_cate_success").modal('show');},1000);
 							setTimeout(function(){ $("#add_cate_success").modal('hide');},3000);
-							setTimeout(function(){ window.location.href = "/laravel1/admin/cate/show";}, 4000);
+							setTimeout(function(){ window.location.href = "/studyenglishtoday/admin/cate/show";}, 4000);
 						}
 					}
 				})
@@ -203,7 +203,7 @@
 		    	//console.log(searchIDs[0]);
 		    	id = searchIDs[0];
 		    	$.ajax({
-					url:'/laravel1/admin/cate/edit',
+					url:'/studyenglishtoday/admin/cate/edit',
 					type: "GET",
 					data:{"id":id},
 						success: function(result){
@@ -214,7 +214,7 @@
 								var id_edit = result[0].id_edit.id;
 								$('#editcateModal').modal('show');
 								$('#close').click(function(){/*Reload data select*/
-									$('#edit_parent').load('/laravel1/admin/cate/show #edit_parent');
+									$('#edit_parent').load('/studyenglishtoday/admin/cate/show #edit_parent');
 								})
 
 								/*Show category choosing*/
@@ -279,7 +279,7 @@
 										  }
 										});
 										$.ajax({
-											'url' : '/laravel1/admin/cate/edit',
+											'url' : '/studyenglishtoday/admin/cate/edit',
 											'type' :'POST',
 											'data': {
 												'old_id_edit':$("#old_id_edit").val(),
@@ -296,11 +296,11 @@
 													}
 												}
 												if(data.edit_cate == true){
-													$('#cate_table').load('/laravel1/admin/cate/show #cate_table');
+													$('#cate_table').load('/studyenglishtoday/admin/cate/show #cate_table');
 													setTimeout(function() { $('#editcateModal').modal('hide');}, 200);
 													setTimeout(function(){$("#edit_cate_success").modal('show');},1000);
 													setTimeout(function(){$("#edit_cate_success").modal('hide');},3000);
-												   setTimeout(function() { window.location.href = "/laravel1/admin/cate/show";}, 4000);
+												   setTimeout(function() { window.location.href = "/studyenglishtoday/admin/cate/show";}, 4000);
 												}
 											}
 										})
@@ -326,7 +326,7 @@
 	    	//console.log(searchIDs[0]);
 	    	id = searchIDs[0];
 		    	$.ajax({
-					url: '/laravel1/admin/cate/delete_view',
+					url: '/studyenglishtoday/admin/cate/delete_view',
 					type:"GET",
 					data: {"id":id},
 					success:function(result){
@@ -344,7 +344,7 @@
 								    }
 								});
 								$.ajax({
-									url: '/laravel1/admin/cate/delete',
+									url: '/studyenglishtoday/admin/cate/delete',
 									method:"POST",
 									data: {id:id},
 									success:function(){
@@ -354,7 +354,7 @@
 											$('tr#'+id+'').fadeOut(1000);
 
 										}
-										setTimeout(function() { window.location.href = "/laravel1/admin/cate/show";}, 1200);
+										setTimeout(function() { window.location.href = "/studyenglishtoday/admin/cate/show";}, 1200);
 									}
 								});
 							});

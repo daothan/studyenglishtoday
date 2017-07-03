@@ -27,8 +27,8 @@ function ckeditor(name, config, toolbar){
 
 	config = {};
 	config.entities_latin = false;
-	config.filebrowserBrowseUrl ='/laravel1/public/editor/ckfinder/ckfinder.html';
-	config.filebrowserImageBrowseUrl = '/laravel1/public/editor/ckfinder/ckfinder.html';
+	config.filebrowserBrowseUrl ='/studyenglishtoday/public/editor/ckfinder/ckfinder.html';
+	config.filebrowserImageBrowseUrl = '/studyenglishtoday/public/editor/ckfinder/ckfinder.html';
 	config.extraPlugins = 'youtube';
 
 
@@ -189,7 +189,7 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 		$('#addlisteningModal').modal('show');
 
 		$.ajax({
-	    	url: '/laravel1/admin/listening/add',
+	    	url: '/studyenglishtoday/admin/listening/add',
 	    	type: "GET",
 	    	success: function(result){
 	    		//console.log(result);
@@ -226,7 +226,7 @@ for (instance in CKEDITOR.instances) {
 						});
 
 						$.ajax({
-						    url: '/laravel1/admin/listening/add',
+						    url: '/studyenglishtoday/admin/listening/add',
 						    type: "POST",
 						    async: true,
 						    dataType: "json", // or html if you want...
@@ -248,11 +248,11 @@ for (instance in CKEDITOR.instances) {
 									}
 								}
 								if(data.add_listening == true){
-									$('#listening_table').load('/laravel1/admin/listening/show #listening_table');
+									$('#listening_table').load('/studyenglishtoday/admin/listening/show #listening_table');
 									setTimeout(function() { $('#addlisteningModal').modal('hide');}, 200);
 									setTimeout(function(){ $("#add_listening_success").modal('show');},1000);
 									setTimeout(function(){ $("#add_listening_success").modal('hide'); },3000);
-									setTimeout(function() { window.location.href = "/laravel1/admin/listening/show";}, 3200);
+									setTimeout(function() { window.location.href = "/studyenglishtoday/admin/listening/show";}, 3200);
 								}
 						    },
 						})
@@ -277,7 +277,7 @@ for (instance in CKEDITOR.instances) {
 	    	//console.log(searchIDs[0]);
 	    	id = searchIDs[0];
 		    	$.ajax({
-		    		url:'/laravel1/admin/listening/detail',
+		    		url:'/studyenglishtoday/admin/listening/detail',
 		    		type: "GET",
 		    		data: {"id":id,},
 		    		success:function(result){
@@ -291,10 +291,10 @@ for (instance in CKEDITOR.instances) {
 		    			$('#listening_length').html(result.audio_length);
 		    			$('#listening_transcript').html(result.transcript);
 
-		    			var path_img = "http://localhost/laravel1/"+result.image_path;
+		    			var path_img = "http://localhost/studyenglishtoday/"+result.image_path;
 		    			$("#image").attr("src", path_img);
 
-		    			var path = "http://localhost/laravel1/"+result.audio_path;
+		    			var path = "http://localhost/studyenglishtoday/"+result.audio_path;
 		    			$("#oggSource").attr("src", path).detach().appendTo("#audioPlayer");
 		    		}
 		    	})
@@ -318,7 +318,7 @@ $("#edit_listening").click(function(event){
 		    	id = searchIDs[0];
 
 		    	$.ajax({
-				url:'/laravel1/admin/listening/edit',
+				url:'/studyenglishtoday/admin/listening/edit',
 				type: "GET",
 				data:{"id":id},
 					success: function(result){
@@ -327,7 +327,7 @@ $("#edit_listening").click(function(event){
 						$('#old_id_edit_detail1').val(result[0].id_detail[0].id);
 						$('#tittle_listening_edit').val(result[0].info_audio.tittle);
 						$('#old_image').html(result[0].info_audio.image);
-						var path_img = "http://localhost/laravel1/"+result[0].info_audio.image_path;
+						var path_img = "http://localhost/studyenglishtoday/"+result[0].info_audio.image_path;
 		    				$("#old_image_view").attr("src", path_img);
 						$('#old_audio').html(result[0].info_audio.audio);
 						$('#length_listening_edit').val(result[0].info_audio.audio_length);
@@ -362,7 +362,7 @@ $("#edit_listening").click(function(event){
 								    }
 								});
 								$.ajax({
-									url: '/laravel1/admin/listening/edit',
+									url: '/studyenglishtoday/admin/listening/edit',
 								    type: "POST",
 								    async: true,
 								    dataType: "json", // or html if you want...
@@ -383,11 +383,11 @@ $("#edit_listening").click(function(event){
 											}
 										}
 										if(data.edit_listening == true){
-										    $('#listening_table').load('/laravel1/admin/listening/show #listening_table');
+										    $('#listening_table').load('/studyenglishtoday/admin/listening/show #listening_table');
 											setTimeout(function(){$('#editlisteningModal').modal('hide');}, 200);
 											setTimeout(function(){$("#edit_listening_success").modal('show');},1000);
 											setTimeout(function(){$("#edit_listening_success").modal('hide');},3000);
-											setTimeout(function(){ window.location.href = "/laravel1/admin/listening/show";}, 3200);
+											setTimeout(function(){ window.location.href = "/studyenglishtoday/admin/listening/show";}, 3200);
 										}
 									}
 								})
@@ -424,7 +424,7 @@ $('#delete_listening').click(function(event){
     	id = searchIDs[0];
     		$('#deletelisteningModal').modal('show');
     		$.ajax({
-				url: '/laravel1/admin/listening/delete',
+				url: '/studyenglishtoday/admin/listening/delete',
 				type:"GET",
 				data: {"id":id},
 				success:function(result){
@@ -442,7 +442,7 @@ $('#delete_listening').click(function(event){
 							    }
 							});
 							$.ajax({
-								url: '/laravel1/admin/listening/delete',
+								url: '/studyenglishtoday/admin/listening/delete',
 								method:"POST",
 								data: {
 									"id":id,
@@ -461,7 +461,7 @@ $('#delete_listening').click(function(event){
 										$('tr#'+id+'').fadeOut(1000);
 
 									}
-									setTimeout(function() { window.location.href = "/laravel1/admin/listening/show";}, 1200);
+									setTimeout(function() { window.location.href = "/studyenglishtoday/admin/listening/show";}, 1200);
 								}
 							});
 						})

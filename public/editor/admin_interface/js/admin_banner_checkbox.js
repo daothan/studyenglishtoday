@@ -29,8 +29,8 @@ function ckeditor(name, config, toolbar){
 
 	config = {};
 	config.entities_latin = false;
-	config.filebrowserBrowseUrl ='/laravel1/public/editor/ckfinder/ckfinder.html';
-	config.filebrowserImageBrowseUrl = '/laravel1/public/editor/ckfinder/ckfinder.html';
+	config.filebrowserBrowseUrl ='/studyenglishtoday/public/editor/ckfinder/ckfinder.html';
+	config.filebrowserImageBrowseUrl = '/studyenglishtoday/public/editor/ckfinder/ckfinder.html';
 	config.extraPlugins = 'youtube';
 
 	if(toolbar == 'standard'){
@@ -137,7 +137,7 @@ for (instance in CKEDITOR.instances) {
 				id = searchIDs[0];
 
 				$.ajax({
-					url: '/laravel1/admin/banner/detail',
+					url: '/studyenglishtoday/admin/banner/detail',
 					type: "GET",
 					data:{"id":id},
 					success:function(result){
@@ -194,7 +194,7 @@ for (instance in CKEDITOR.instances) {
 				    }
 				});
 				$.ajax({
-					url: '/laravel1/admin/banner/add',
+					url: '/studyenglishtoday/admin/banner/add',
 					type: 'POST',
 					data:{
 						'tittle_banner'  	: $('#tittle_banner').val(),
@@ -209,11 +209,11 @@ for (instance in CKEDITOR.instances) {
 							}
 						}
 						if(data.add_banner == true){
-							$('#banner_table').load('/laravel1/admin/banner/show #banner_table');
+							$('#banner_table').load('/studyenglishtoday/admin/banner/show #banner_table');
 							setTimeout(function() { $('#addbannerModal').modal('hide');}, 200);
 							setTimeout(function(){ $("#add_banner_success").modal('show');},1000);
 							setTimeout(function(){ $("#add_banner_success").modal('hide'); },3000);
-							setTimeout(function() { window.location.href = "/laravel1/admin/banner/show";}, 4000);
+							setTimeout(function() { window.location.href = "/studyenglishtoday/admin/banner/show";}, 4000);
 						}
 					}
 				})
@@ -236,7 +236,7 @@ for (instance in CKEDITOR.instances) {
 				id = searchIDs[0];
 
 				$.ajax({
-					url:'/laravel1/admin/banner/edit',
+					url:'/studyenglishtoday/admin/banner/edit',
 					type:'GET',
 					data:{"id":id},
 					success:function(result){
@@ -270,7 +270,7 @@ for (instance in CKEDITOR.instances) {
 								    }
 								});
 								$.ajax({
-									'url' : '/laravel1/admin/banner/edit',
+									'url' : '/studyenglishtoday/admin/banner/edit',
 									'type' :'POST',
 									'data': {
 										'old_id_banner'			:$('#old_id_banner').val(),
@@ -286,11 +286,11 @@ for (instance in CKEDITOR.instances) {
 											}
 										}
 										if(data.edit_banner==true){
-											$('#banner_table').load('/laravel1/admin/banner/show #banner_table');
+											$('#banner_table').load('/studyenglishtoday/admin/banner/show #banner_table');
 											setTimeout(function() { $('#editbannerModal').modal('hide');}, 200);
 											setTimeout(function(){ $("#edit_banner_success").modal('show');},1000);
 											setTimeout(function(){ $("#edit_banner_success").modal('hide'); },3000);
-											setTimeout(function() { window.location.href = "/laravel1/admin/banner/show";}, 3300);
+											setTimeout(function() { window.location.href = "/studyenglishtoday/admin/banner/show";}, 3300);
 										}
 									}
 								})
@@ -317,7 +317,7 @@ for (instance in CKEDITOR.instances) {
 		    	id = searchIDs[0];
 			})
 			$.ajax({
-				url: '/laravel1/admin/banner/delete',
+				url: '/studyenglishtoday/admin/banner/delete',
 				type:"GET",
 				data: {"id":id},
 				success:function(result){
@@ -330,7 +330,7 @@ for (instance in CKEDITOR.instances) {
 						    }
 						});
 						$.ajax({
-							url: '/laravel1/admin/banner/delete',
+							url: '/studyenglishtoday/admin/banner/delete',
 							method:"POST",
 							data: {id:id},
 							success:function(){
@@ -340,7 +340,7 @@ for (instance in CKEDITOR.instances) {
 									$('tr#'+id+'').fadeOut(1000);
 
 								}
-								setTimeout(function() { window.location.href = "/laravel1/admin/banner/show";}, 1200);
+								setTimeout(function() { window.location.href = "/studyenglishtoday/admin/banner/show";}, 1200);
 							}
 						})
 					})

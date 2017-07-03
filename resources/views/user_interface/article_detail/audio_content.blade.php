@@ -62,7 +62,7 @@
 			                    </div>
 
 			                    <!-- View score -->
-			                    <button class="btn_user success collapsed" onclick="result_ditation()" data-toggle="collapse" data-target="#score" aria-expanded="false">Your score</button>
+			                    <button class="btn_user success collapsed" onclick="result_ditation()" data-toggle="collapse" data-target="#score" aria-expanded="false"><i>Your score</i></button>
 								<div class="collapse" id="score">
 									<div class="panel-body">
 										<p><b>Total words :</b> <i class="total-text"></i></p>

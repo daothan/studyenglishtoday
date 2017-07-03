@@ -36,7 +36,7 @@
 		        searchIDs.push($(this).val());
 		    	id = searchIDs[0];
 			    	$.ajax({
-			    		url:'/laravel1/admin/comment/detail',
+			    		url:'/studyenglishtoday/admin/comment/detail',
 			    		type: "GET",
 			    		data: {"id":id,},
 			    		success:function(result){
@@ -68,7 +68,7 @@ $('#delete_comment').click(function(event){
     	id = searchIDs[0];
     		$('#deletecommentModal').modal('show');
 			$.ajax({
-				url: '/laravel1/admin/comment/delete',
+				url: '/studyenglishtoday/admin/comment/delete',
 				type:"GET",
 				data: {"id":id},
 				success:function(result){
@@ -79,7 +79,7 @@ $('#delete_comment').click(function(event){
 						    }
 						});
 						$.ajax({
-							url: '/laravel1/admin/comment/delete',
+							url: '/studyenglishtoday/admin/comment/delete',
 							method:"POST",
 							data: {id:id},
 							success:function(){
@@ -89,7 +89,7 @@ $('#delete_comment').click(function(event){
 									$('tr#'+id+'').fadeOut(1000);
 
 								}
-								setTimeout(function() { window.location.href = "/laravel1/admin/comment/show";}, 1200);
+								setTimeout(function() { window.location.href = "/studyenglishtoday/admin/comment/show";}, 1200);
 							}
 						});
 					})
