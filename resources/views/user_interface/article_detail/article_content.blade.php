@@ -60,8 +60,8 @@
 							    </form>
 							</div>
 							<div class="well {{(isset(Auth::user()->name) ? 'hidden' : '')}}">
-								<p align="center">Login to comment:<br>
-								<a data-toggle="modal" data-target="#login">Login <span class="glyphicon glyphicon-log-in"></span></a></p>
+								<p align="center" style="font-size: 16px;">Login to comment:<br>
+								<a data-toggle="modal" data-target="#login" style="font-size: 16px;">Login <span class="glyphicon glyphicon-log-in"></span></a></p>
 							</div>
 							<!-- Show Comments-->
 							@if(session('success_comment'))

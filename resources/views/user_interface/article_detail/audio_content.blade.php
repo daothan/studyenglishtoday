@@ -104,8 +104,8 @@
 							    </form>
 							</div>
 							<div class="well {{(isset(Auth::user()->name) ? 'hidden' : '')}}">
-								<p align="center"><b>Login to comment:</b><br>
-								<a data-toggle="modal" data-target="#login">Login <span class="glyphicon glyphicon-log-in"></span></a></p>
+								<p align="center"><b style="font-size: 16px;">Login to comment:</b><br>
+								<a data-toggle="modal" data-target="#login" style="font-size: 16px;">Login <span class="glyphicon glyphicon-log-in"></span></a></p>
 							</div>
 							<!-- Show Comments-->
 							@if(session('success_comment'))

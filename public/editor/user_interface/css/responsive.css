@@ -69,7 +69,6 @@
 		font-size: 27px;
 	}
 
-
 	main[role="main-home-wrapper"] article{ padding-bottom:0px}
 
 	main[role="main-home-wrapper"] article p br{ display:none}
@@ -86,7 +85,8 @@
 
 
 
-	section.blog-content article{ font-family: 'Yanone Kaffeesatz', sans-serif !important;padding:2% 5%; font-size:18px; line-height:24px;font-family: 'proxima_nova_cn_rgregular';}
+	section.blog-content article{ padding:2% 5%; font-size:18px; line-height:24px;font-family: 'proxima_nova_cn_rgregular';}
+	
 
 	article.contact-header[role="pge-title-content"] p a{ font-size:18px; padding-right:10px}
 

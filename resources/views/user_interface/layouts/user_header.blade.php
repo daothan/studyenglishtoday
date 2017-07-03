@@ -1,4 +1,4 @@
-
+<!DOCTYPE HTML>
 
  <html>
 
@@ -223,10 +223,10 @@
 
 						<!-- Other connect -->
 						<p><i><strong style="color: #fff;">or Connect with.... </strong></i></p>
-						<div class="social-bottons-w3ls">
-							<a href="{{route('facebook')}}" class="hvr-shutter-out-vertical facebook"><i align="center" class="fa fa-facebook" aria-hidden="true"></i><span align="center">Sign in with Facebook</span></a>
-							<a href="{{route('google')}}" class="hvr-shutter-out-vertical google"><i align="center" class="fa fa-google" aria-hidden="true"></i><span align="center">Sign in with Google</span></a>
-						</div>
+						<ul class="social-w3-agileits">
+							<li style="padding-right: 5px;"><a href="{{route('facebook')}}"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="{{route('google')}}"><i class="fa fa-google-plus"></i></a></li>
+						</ul>
 					</form>
 					<div class="clearfix"> </div>
 				</div>

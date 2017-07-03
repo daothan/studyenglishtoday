@@ -110,7 +110,7 @@ $("#validate_login").validate({
 		    }
 		});
 		$.ajax({
-			'url' : '/login',
+			'url' : '/studyenglishtoday/login',
 			'data': {
 				'username' : $('#username').val(),
 				'user_password':$('#user_password').val()
@@ -183,7 +183,7 @@ $("#validate_register").validate({
 		    }
 		});
 		$.ajax({
-			'url' : '/register',
+			'url' : '/studyenglishtoday/register',
 			'data': {
 				'name' : $('#name').val(),
 				'email' : $('#email').val(),
@@ -232,7 +232,7 @@ $("#validate_register").validate({
 		$('#viewModal').modal('show');
 		//console.log(id);
 		$.ajax({
-			url:'/information',
+			url:'/studyenglishtoday/information',
 			type:"GET",
 			data:{"id":id},
 			success:function(result){
@@ -295,7 +295,7 @@ $("#validate_register").validate({
 	function edit_user(id){
 		$('#edituser').modal('show');
 			$.ajax({
-		        url: '/edit',
+		        url: '/studyenglishtoday/edit',
 		        type:"GET",
 		        data: {"id":id},
 					success:function(result){
@@ -325,7 +325,7 @@ $("#validate_register").validate({
 					    }
 					});
 					$.ajax({
-						'url' : '/edit',
+						'url' : '/studyenglishtoday/edit',
 						'data': {
 							'old_id' : $('#old_id_login').val(),
 							'name' : $('#old_name_login').val(),
@@ -350,7 +350,7 @@ $("#validate_register").validate({
 								}
 							}else{
 								setTimeout(function() { $('#editModal').modal('hide');}, 500);
-			   					setTimeout(function() { window.location.href = "/laravel1";}, 500);
+			   					setTimeout(function() { window.location.href = "/studyenglishtoday";}, 500);
 							}
 						}
 					});
@@ -398,7 +398,7 @@ function contact_us(){
 				    }
 				});
 				$.ajax({
-					'url':'/contact',
+					'url':'/studyenglishtoday/contact',
 					'data':{
 						'name_contact'		:$('#name_contact').val(),
 						'email_contact'		:$('#email_contact').val(),

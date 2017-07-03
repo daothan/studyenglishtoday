@@ -4,17 +4,19 @@
 			<div class="content1-agile">
 				<div class="info-w3l">
 					<h2 class="wthree">Contact Us</h2>
-					<form action="#" method="post" class="form-agileits">
-						<input type="text" id="username_contact" name="username" placeholder="Username" title="Please enter your First Name" required="">
-						<input type="email" id="email_contact" name="email" placeholder="mail@example.com" title="Please enter a Valid Email Address" required="">
-						<textarea id="message" name="message" placeholder="Your Message" title="Please enter Your Comments"></textarea>
+
+					<form action="" method="post" class="form-agileits" id="contact_validate">
+						<h4 class="loading" align="center"></h4>
+						<input type="text" id="name_contact" name="name_contact" placeholder="Username" title="Please enter your First Name">
+						<input type="email" id="email_contact" name="email_contact" placeholder="mail@example.com" title="Please enter a Valid Email Address" >
+						<textarea id="message_contact" name="message_contact" placeholder="Your Message" title="Please enter Your Comments"></textarea>
 						<input type="submit" class="sign-in" value="Submit">
 					</form>
 					<p class="agileinfo">Or Login</p>
-					<ul class="social-w3-agileits">
-						<li><a href="{{route('facebook')}}"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="{{route('google')}}"><i class="fa fa-google-plus"></i></a></li>
-					</ul>
+					<div class="social-bottons-w3ls">
+						<a href="{{route('facebook')}}" class="hvr-shutter-out-vertical facebook"><i align="center" class="fa fa-facebook" aria-hidden="true"></i><span align="center">Sign in with Facebook</span></a>
+						<a href="{{route('google')}}" class="hvr-shutter-out-vertical google"><i align="center" class="fa fa-google" aria-hidden="true"></i><span align="center">Sign in with Google</span></a>
+					</div>
 				</div>
 			</div>
 			<div class="content2-agile contact-w3lsright w3llist-grids-btm2" style="padding-top: 100px;">

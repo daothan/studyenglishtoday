@@ -217,8 +217,8 @@ figure.effect-oscar figcaption {
 	background-color: rgba(35, 82, 124, 0.12);
 
 }
-figure:hover .post-date, figure:hover .post-date-right,figure:hover .post-date-new, figure:hover .post-date-audio{
-	background-color: rgba(35, 82, 124, 0.12);
+figure:hover .post-date, figure:hover .post-date-right,figure:hover .post-date-new{
+	background-color: rgba(35, 82, 124, 0.12) !important;
 
 }
 
@@ -259,9 +259,11 @@ font-weight:400;	margin: 20% 0 10px 0;
 }
 
 @media(max-width: 800px){
-	figure.effect-oscar h2 {
 
-font-weight:400;	margin: 40% 0 10px 0;
+
+	figure.effect-oscar h2, figure.effect-oscar h3 {
+
+font-weight:400;	margin: 35% 5px 17px 5px;
 
 	-webkit-transition: -webkit-transform 0.35s;
 
