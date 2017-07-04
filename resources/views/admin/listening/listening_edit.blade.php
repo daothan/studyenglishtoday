@@ -21,7 +21,21 @@
                         </div>
                         <div class="has-error"><i><span class="help-block errortittle_listening_edit"></span></i></div>
                     </div>
-
+                     <div class="form-group">
+                        <label class="col-md-1 control-label">Type Audio</label>
+                        <div class="col-md-10">
+                           <select name="audio_type_edit" id="audio_type_edit" class="form-control" >
+                                <option disabled selected hidden>Please Choose Type Of Article...</option>
+                                <option value="education">Education</option>
+                                <option value="health">Health</option>
+                                <option value="nature">Nature</option>
+                                <option value="animal">Animal</option>
+                                <option value="sport">Sport</option>
+                                <option value="technology">Technonoly</option>
+                                <option value="other">Other</option>
+                           </select>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label class="col-md-1 control-label">Introduce</label>
                         <div class="col-md-10">

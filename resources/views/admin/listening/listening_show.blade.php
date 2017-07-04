@@ -25,7 +25,8 @@
                             <tr>
                             	<th class="text-center hidden">ID</th>
 								<th class="text-center">No</th>
-								<th class="text-center">Tittle</th>
+                                <th class="text-center">Tittle</th>
+								<th class="text-center">Audio Type</th>
 								<th class="text-center">Date</th>
 								<th class="text-center">User</th>
                             </tr>
@@ -37,7 +38,8 @@
 							<tr id="{{$data["id"]}}">
 								<td class="hidden"><input type="checkbox" value="{{$data->id}}" name="checkbox" class="checkbox"></td>
 								<th class="text-center">{{$no}}</th>
-								<td class="text-center">{!!($data->tittle)!!}</td>
+                                <td class="text-center">{!!($data->tittle)!!}</td>
+								<td class="text-center">{!!($data->audio_type)!!}</td>
 
 								<!-- Show Date -->
 								<td class="text-center">

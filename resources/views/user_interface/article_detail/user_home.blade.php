@@ -35,7 +35,12 @@
 						<div class="post-date {{$detail->type=="audio" ? 'post-date-audio':''}}">
                             <h4>
                             	@if($detail->type=="audio")
-									Audio
+									Audio <br>
+									(<?php $audio_type=DB::table('listenings')->where('tittle', $detail->tittle)->get();
+										  foreach($audio_type as $audio_type){
+										  	echo $audio_type->audio_type;
+										  }
+									?>)
 								@endif
 								@if($detail->type=="library")
 									Library

@@ -237,6 +237,20 @@ table.dataTable thead .sorting:after {
 .huge {
   font-size: 40px;
 }
+.panel-total {
+  border-color: rgba(117, 39, 142, 0.73);
+}
+.panel-total > .panel-heading {
+  border-color: rgba(117, 39, 142, 0.73);
+  color: white;
+  background-color: rgba(117, 39, 142, 0.73);
+}
+.panel-total > a {
+  color: rgba(117, 39, 142, 0.73);
+}
+.panel-total > a:hover {
+  color: rgba(117, 39, 142, 0.73);
+}
 .panel-green {
   border-color: #5cb85c;
 }

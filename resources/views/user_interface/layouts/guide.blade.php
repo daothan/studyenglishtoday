@@ -3,7 +3,7 @@
 
       <div class="container content-w3ls" style="padding: 50px 0px 50px 0px;">
           <div class="contact-row agileits-w3layouts  grid_3 grid_4 contact_grid3 col-md-10 col-md-offset-1" style="background-color: rgba(27, 32, 88, 0.75)">
-          <button id="reset" type="reset" class="close" data-dismiss="modal" style="color:black;"><span class="glyphicon glyphicon-remove"></span></button>
+          <button id="reset" type="reset" class="close" data-dismiss="modal" style="color:black;padding: 15px 0px;"><span class="glyphicon glyphicon-remove"></span></button>
               <div style="width: 260px; margin:auto; padding-bottom: 25px; padding-top: 20px;" class="button_guide">
                   <button class="btn_user info" id="btn_vi">Vietnamese</button>
                   <button class="btn_user info" id="btn_en">English</button>

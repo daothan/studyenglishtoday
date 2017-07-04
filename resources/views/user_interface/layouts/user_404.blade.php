@@ -27,21 +27,14 @@
 	<title>404</title>
 </head>
 <body>
-	<div class="pages_agile_info_w3l page_error">
-	<!-- /login -->
-		<div class="over_lay_agile_pages_w3ls error">
-			<div class="registration error">
-				<h2>404</h2>
-				<h3>Oops! Page Not Found.</h3>
-				<h4 class="text-primary"><a href="{{route('home')}}">Back To Home</a></h4>
-			</div>
-		<!--copy rights start here-->
-			<div class="copyrights_agile error">
-				<p>© 2017 Free English. </p>
-			</div>
-		<!--copy rights end here-->
-		</div>
+	<div class="w3-main">
+	<div class="agile-info">
+		<h2>404</h2>
+		<h3>SORRY</h3>
+		<p>The Page You're Looking for Was Not Found.</p>
+		<a href="{{route('home')}}""><i class="fa fa-angle-double-left" aria-hidden="true"></i>go back</a>
 	</div>
+</div>
 
 </body>
 </html>

@@ -88,6 +88,7 @@ class ListeningController extends Controller
                 $listening = new Listening;
                 /*Request data*/
                 $listening->tittle       = $request->tittle_listening;
+                $listening->audio_type   = $request->audio_type;
                 $listening->introduce    = $request->introduce_listening;
                 $listening->audio        = $file_name_audio;
                 $listening->audio_path   = $folder.'/'.$file_name_audio;
@@ -208,6 +209,7 @@ class ListeningController extends Controller
 
             /*Request data*/
             $listening->tittle       = $request->tittle_listening_edit;
+            $listening->audio_type   = $request->audio_type_edit;
             $listening->introduce    = $request->introduce_listening_edit;
             $listening->audio_length = $request->length_listening_edit;
             $listening->dictation    = $request->dictation_listening_edit;

@@ -322,10 +322,11 @@ $("#edit_listening").click(function(event){
 				type: "GET",
 				data:{"id":id},
 					success: function(result){
-						//console.log(result);
+						console.log(result);
 						$('#old_id_edit_listening').val(result[0].info_audio.id);
 						$('#old_id_edit_detail1').val(result[0].id_detail[0].id);
 						$('#tittle_listening_edit').val(result[0].info_audio.tittle);
+						$('#audio_type_edit').val(result[0].info_audio.audio_type);
 						$('#old_image').html(result[0].info_audio.image);
 						var path_img = "http://localhost/studyenglishtoday/"+result[0].info_audio.image_path;
 		    				$("#old_image_view").attr("src", path_img);

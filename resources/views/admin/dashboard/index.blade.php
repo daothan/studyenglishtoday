@@ -10,34 +10,27 @@
     </div>
     <!-- /.row -->
     <div class="row">
-    <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-101334555-1', 'auto');
-  ga('send', 'pageview');
-console.log(ga);
-</script>
 
         <div class="col-lg-3 col-md-6">
-            <div class="panel panel-primary">
+            <div class="panel panel-total">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-comments fa-5x"></i>
+                            <i class="fa fa-tasks fa-5x" aria-hidden="true"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge"><?php echo $count = DB::table('comments')->count();?></div>
-                            <div>Total Comments!</div>
+                            <?php $count1 = DB::table('details')->where('type','!=',"audio")->count();
+                                  $count2 = DB::table('listenings')->count();
+                            ?>
+                            <div class="huge"><?php echo $count1+$count2; ?></div>
+                            <div>Total Posts!</div>
                         </div>
                     </div>
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <a href="{{route('admin.comment.show')}}">
-                            <span class="pull-left">Total Details</span>
+                        <a>
+                            <span class="pull-left">View Details</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                             <div class="clearfix"></div>
                         </a>
@@ -86,6 +79,30 @@ console.log(ga);
                     <div class="panel-footer">
                         <a href="{{route('admin.listening.show')}}">
                             <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </a>
+                    </div>
+                </a>
+            </div>
+        </div>
+         <div class="col-lg-3 col-md-6" >
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-comments fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge"><?php echo $count = DB::table('comments')->count();?></div>
+                            <div>Total Comments!</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#">
+                    <div class="panel-footer">
+                        <a href="{{route('admin.comment.show')}}">
+                            <span class="pull-left">Total Details</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                             <div class="clearfix"></div>
                         </a>

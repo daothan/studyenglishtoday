@@ -19,7 +19,7 @@
 						<?php $no=0;?>
 						@foreach($audio as $detail)
 						<?php $no++;?>
-						@if($no%2==0)
+						@if($no<=3)
 
                         <li>
                             <section class="blog-content">
@@ -76,7 +76,7 @@
                     	<?php $no=0;?>
 						@foreach($audio as $detail)
 						<?php $no++;?>
-						@if($no%2!=0)
+						@if(3<$no && $no<=7)
 							<li>
                             <section class="blog-content">
 

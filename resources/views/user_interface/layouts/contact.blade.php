@@ -1,6 +1,7 @@
 
 	<div id="contactModal"  class="modal fade contact" role="dialog">
 		<div class="content-w3ls">
+			<button id="reset" type="reset" class="close" data-dismiss="modal" style="color:black; padding: 20px;"><span class="glyphicon glyphicon-remove"></span></button>
 			<div class="content1-agile">
 				<div class="info-w3l">
 					<h2 class="wthree">Contact Us</h2>
