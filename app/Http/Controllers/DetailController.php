@@ -64,15 +64,16 @@ class DetailController extends Controller
             $detail = new Detail;
 
             /*Request data*/
-            $detail->tittle     = $request->tittle;
-            $detail->alias      = tittle(($request->tittle));
-            $detail->type       = $request->type_article;
-            $detail->introduce  = $request->introduce;
-            $detail->image      = $file_detail_image;
-            $detail->image_path = $folder_img.'/'.$file_detail_image;;
-            $detail->content    = $request->content;
-            $detail->user_id    = Auth::user()->id;
-            $detail->cate_id    = $request->category;
+            $detail->tittle       = $request->tittle;
+            $detail->alias        = tittle(($request->tittle));
+            $detail->type         = "library";
+            $detail->library_type = $request->type_article;
+            $detail->introduce    = $request->introduce;
+            $detail->image        = $file_detail_image;
+            $detail->image_path   = $folder_img.'/'.$file_detail_image;;
+            $detail->content      = $request->content;
+            $detail->user_id      = Auth::user()->id;
+            $detail->cate_id      = $request->category;
 
             $data = [
                 'name'=>Auth::user()->name." added article",
@@ -177,12 +178,12 @@ class DetailController extends Controller
             }
 
             /*Request data*/
-            $detail->tittle    = $request->edit_tittle;
-            $detail->alias     = tittle(($request->edit_tittle));
-            $detail->type      =$request->edit_type_article;
-            $detail->introduce =$request->edit_introduce;
-            $detail->content   =$request->edit_content;
-            $detail->cate_id   = $request->edit_category;
+            $detail->tittle       = $request->edit_tittle;
+            $detail->alias        = tittle(($request->edit_tittle));
+            $detail->library_type = $request->edit_type_article;
+            $detail->introduce    = $request->edit_introduce;
+            $detail->content      = $request->edit_content;
+            $detail->cate_id      = $request->edit_category;
 
             if($detail->save()){
                 return response()->json([

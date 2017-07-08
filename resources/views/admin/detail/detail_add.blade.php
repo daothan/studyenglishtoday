@@ -25,8 +25,10 @@
                         <div class="col-md-10">
                            <select name="type_article" id="type_article" class="form-control" >
                                 <option disabled selected hidden>Please Choose Type Of Article...</option>
-                                <option value="library">Knowledge Library</option>
-                                <option value="listening">Listening</option>
+                                <option value="grammar">Grammar</option>
+                                <option value="synonyms">Synonyms</option>
+                                <option value="common-phrases">Common Phrases</option>
+                                <option value="other">Other</option>
                            </select>
                         </div>
                     </div>

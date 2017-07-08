@@ -13,10 +13,10 @@
 						<textarea id="message_contact" name="message_contact" placeholder="Your Message" title="Please enter Your Comments"></textarea>
 						<input type="submit" class="sign-in" value="Submit">
 					</form>
-					<p class="agileinfo">Or Login</p>
+					<p class="agileinfo">Or via</p>
 					<div class="social-bottons-w3ls">
-						<a href="{{route('facebook')}}" class="hvr-shutter-out-vertical facebook"><i align="center" class="fa fa-facebook" aria-hidden="true"></i><span align="center">Sign in with Facebook</span></a>
-						<a href="{{route('google')}}" class="hvr-shutter-out-vertical google"><i align="center" class="fa fa-google" aria-hidden="true"></i><span align="center">Sign in with Google</span></a>
+						<a href="https://www.facebook.com/Study-English-Today-135874613661322/" target="_blank" class="hvr-shutter-out-vertical facebook"><i align="center" class="fa fa-facebook" aria-hidden="true"></i><span align="center">Contact us via Facebook</span></a>
+						<a href="{{route('google')}}" class="hvr-shutter-out-vertical google"><i align="center" class="fa fa-google" aria-hidden="true"></i><span align="center">Contact us via Google</span></a>
 					</div>
 				</div>
 			</div>

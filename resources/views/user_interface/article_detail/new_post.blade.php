@@ -65,6 +65,9 @@
 			                            ?>
 			                            <p align="center">{{$audio_type}}</p>
 			                        </div>
+			                        <div class="post-date-bottom {{($detail->type=="library") ? '':'hidden'}}">
+			                        	<p align="center">{{$detail->library_type}}</p>
+			                        </div>
                                     <img class=" img_thumbnail  new_post" src="{{$detail->image_path}}">
 
 
@@ -126,6 +129,9 @@
 			                            ?>
 			                            <h4 align="center">Length <?php echo $length; ?></h4>
 			                            <h4 align="center">Total words <?php echo $total; ?></h4>
+			                        </div>
+			                        <div class="post-date-bottom {{($detail->type=="library") ? '':'hidden'}}">
+			                        	<p align="center">{{$detail->library_type}}</p>
 			                        </div>
                                     <img class=" img_thumbnail new_post" src="{{$detail->image_path}}">
 

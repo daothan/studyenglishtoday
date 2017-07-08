@@ -3,6 +3,17 @@
  <main role="main-inner-wrapper" class="container">
 
             <div class="row" style="margin-top: 70px;">
+                <section class="col-md-6 col-md-offset-3" style="margin-top: 10px;">
+                    <figure class="effect-oscar" style="background-color: rgba(36, 13, 162, 0.25);padding: 6px;">
+                        <h4 style="font-size: 25px;color: rgba(192, 14, 224, 0.94); " align="center">Detail Topics</h4>
+                        <div class="listening-topics">
+                            <a href="{{route('library_topic','grammar')}}"><button class="btn_user topic"><h4>Grammar</h4></button></a>
+                            <a href="{{route('library_topic','synonyms')}}"><button class="btn_user topic"><h4>Synonyms</h4></button></a>
+                            <a href="{{route('library_topic','common-phrases')}}"><button class="btn_user topic"><h4>Common Phrases</h4></button></a>
+                            <a href="{{route('library_topic','other')}}"><button class="btn_user topic"><h4>Other</h4></button></a>
+                        </div>
+                    </figure>
+                </section>
             	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 " style="margin-bottom: 75px;">
 
                 	<article role="pge-title-content" class="blog-header">
@@ -34,6 +45,16 @@
 										</h4 align="center">
 			                            <h4 align="center">{{$detail->created_at->format('d-m-Y')}}</h4>
 
+                                    </div>
+                                    <div class="post-date-bottom">
+                                        <?php
+                                        $str = DB::table('details')->where('tittle',$detail->tittle)->get();
+                                        $library_topic="";
+                                        foreach($str as $str){
+                                             $library_topic = $str->library_type;
+                                        }
+                                        ?>
+                                        <p align="center">{{$library_topic}}</p>
                                     </div>
                                     <img class=" img_thumbnail  library_post" src="{{$detail->image_path}}">
 
@@ -76,6 +97,16 @@
 										</h4>
 			                            <h4 align="center">{{$detail->created_at->format('d-m-Y')}}</h4>
 
+                                    </div>
+                                    <div class="post-date-bottom">
+                                        <?php
+                                        $str = DB::table('details')->where('tittle',$detail->tittle)->get();
+                                        $library_topic="";
+                                        foreach($str as $str){
+                                             $library_topic = $str->library_type;
+                                        }
+                                        ?>
+                                        <p align="center">{{$library_topic}}</p>
                                     </div>
                                     <img class=" img_thumbnail  library_post" src="{{$detail->image_path}}">
 

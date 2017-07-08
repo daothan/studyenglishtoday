@@ -400,7 +400,7 @@ $.fn.modal.Constructor.prototype.enforceFocus = function () {
 						/*Send values to edit cate form*/
 						//console.log(result[0].info_detail);
 						$('#old_id_edit_detail').val(result[0].info_detail.id);
-						$('#edit_type_article').val(result[0].info_detail.type);
+						$('#edit_type_article').val(result[0].info_detail.library_type);
 						$('#old_image_detail_edit').html(result[0].info_detail.image);
 						var path_img = "http://localhost/studyenglishtoday/"+result[0].info_detail.image_path;
 		    				$("#old_image_detail_edit_view").attr("src", path_img);

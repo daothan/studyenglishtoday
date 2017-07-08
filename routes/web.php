@@ -65,7 +65,10 @@
 		Route::get('checkword',['as'=>'checkword', 'uses'=>'CheckwordController@checkword']);
 
 	/*Listening Topics*/
-		Route::get('topic/{topic}',['as'=>'topic', 'uses'=>'HomeController@topic']);
+		Route::get('audio_topic/{topic}',['as'=>'audio_topic', 'uses'=>'HomeController@audio_topic']);
+
+	/*Listening Topics*/
+		Route::get('library_topic/{topic}',['as'=>'library_topic', 'uses'=>'HomeController@library_topic']);
 
 
 /*Admin Page*/

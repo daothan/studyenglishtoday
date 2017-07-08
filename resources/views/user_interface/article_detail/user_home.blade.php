@@ -66,6 +66,9 @@
                             }
                             ?>
                         </div>
+                        <div class="post-date-bottom {{($detail->type=="library") ? '':'hidden'}}">
+                        	{{$detail->library_type}}
+                        </div>
                     	<img class=" img_thumbnail " src="{{$detail->image_path}}">
 
 
@@ -127,6 +130,9 @@
 									echo $audio_type = $str->audio_type;
 	                            }
 	                            ?>
+	                        </div>
+	                        <div class="post-date-bottom {{($detail->type=="library") ? '':'hidden'}}">
+	                        	{{$detail->library_type}}
 	                        </div>
                             <img class=" img_thumbnail " src="{{$detail->image_path}}">
 
@@ -192,6 +198,9 @@
 										echo $audio_type = $str->audio_type;
 		                            }
 		                            ?>
+		                        </div>
+		                        <div class="post-date-bottom {{($detail->type=="library") ? '':'hidden'}}">
+		                        	{{$detail->library_type}}
 		                        </div>
 	                            <img class="img_thumbnail " src="{{$detail->image_path}}">
 
