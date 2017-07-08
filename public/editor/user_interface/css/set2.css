@@ -217,7 +217,13 @@ figure.effect-oscar figcaption {
 	background-color: rgba(35, 82, 124, 0.12);
 
 }
-figure:hover .post-date, figure:hover .post-date-right,figure:hover .post-date-new{
+.effect-oscar:hover .post-date-bottom{
+	background-color: rgba(35, 82, 124, 0.12);
+    transition: opacity 0.6s ease-out;
+    opacity: 0;
+
+}
+figure:hover .post-date, figure:hover .post-date-right,figure:hover .post-date-new,figure:hover .post-date-bottom{
 	background-color: rgba(35, 82, 124, 0.12) !important;
 
 }

@@ -26,7 +26,7 @@
 								<div class="fb-like" data-href="http://studyenglishtoday.org/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
 							</div><br>
 							<!-- End Like Share -->
-				            <h2 class="blog-post-title" style="font-weight: 400;"><a>{{$data->tittle}}</a></h2>
+				            <h2 class="blog-post-title" style="font-weight: 400;"><p style="color: rgba(15, 17, 115, 0.69);">{{$data->tittle}}</p></h2>
 				            <p class="blog-post-meta">Created <i class="{{(isset(Auth::user()->name) && Auth::user()->level<2) ? '':'hidden'}}">{{$data->created_at->format('H:i:s d-m-Y')}}</i><i class="{{(isset(Auth::user()->name) && Auth::user()->level==2) ? '':'hidden'}}">{{$data->created_at->format('d-m-Y')}}</i><i class="{{(isset(Auth::user()->name)) ? 'hidden':''}}">{{$data->created_at->format('d-m-Y')}}</i>
 				            </p>
 				            <p>{!!htmlspecialchars_decode($data->introduce)!!}</p>

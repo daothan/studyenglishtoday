@@ -24,7 +24,7 @@
                            <select name="audio_type" id="audio_type" class="form-control" >
                                 <option disabled selected hidden>Please Choose Type Of Article...</option>
                                 <option value="education">Education</option>
-                                <option value="health">Health</option>
+                                <option value="health-medicine">Health - Medicine</option>
                                 <option value="nature">Nature</option>
                                 <option value="animal">Animal</option>
                                 <option value="sport">Sport</option>

@@ -35,12 +35,7 @@
 						<div class="post-date {{$detail->type=="audio" ? 'post-date-audio':''}}">
                             <h4>
                             	@if($detail->type=="audio")
-									Audio <br>
-									(<?php $audio_type=DB::table('listenings')->where('tittle', $detail->tittle)->get();
-										  foreach($audio_type as $audio_type){
-										  	echo $audio_type->audio_type;
-										  }
-									?>)
+									Audio
 								@endif
 								@if($detail->type=="library")
 									Library
@@ -61,6 +56,15 @@
                             ?>
                             <h4>Length <?php echo $length; ?></h4>
                             <h4>Total words <?php echo $total; ?></h4>
+                        </div>
+                        <div class="post-date-bottom {{($detail->type=="audio") ? '':'hidden'}}">
+							<?php
+                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+                            $audio_type="";
+                            foreach($str as $str){
+								echo $audio_type = $str->audio_type;
+                            }
+                            ?>
                         </div>
                     	<img class=" img_thumbnail " src="{{$detail->image_path}}">
 
@@ -115,6 +119,15 @@
 	                            <h4>Length <?php echo $length; ?></h4>
 	                            <h4>Total words <?php echo $total; ?></h4>
 	                        </div>
+	                        <div class="post-date-bottom {{($detail->type=="audio") ? '':'hidden'}}">
+								<?php
+	                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+	                            $audio_type="";
+	                            foreach($str as $str){
+									echo $audio_type = $str->audio_type;
+	                            }
+	                            ?>
+	                        </div>
                             <img class=" img_thumbnail " src="{{$detail->image_path}}">
 
                             <figcaption>
@@ -146,47 +159,54 @@
                     	<li>
 
                         	<figure class="effect-oscar" style="{{$detail->type=="audio" ? 'background-color: rgba(157, 0, 255, 0.81);' : ''}}">
-							<div class="post-date {{$detail->type=="audio" ? 'post-date-audio':''}}">
-	                            <h4>
-	                            	@if($detail->type=="audio")
-										Audio
-									@endif
-									@if($detail->type=="library")
-										Library
-									@endif
-								</h4>
-	                            <h4>{{$detail->created_at->format('d-m-Y')}}</h4>
-	                        </div>
-	                        <div class="post-date-right {{($detail->type=="audio") ? '':'hidden'}}">
-								<?php
-	                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
-	                            $dictation="";
-	                            $length="";
-	                            foreach($str as $str){
-									$dictation = $str->dictation;
-									$length    = $str->audio_length;
-	                            }
-	                            $total = str_word_count($dictation);
-	                            ?>
-	                            <h4>Length <?php echo $length; ?></h4>
-	                            <h4>Total words <?php echo $total; ?></h4>
-	                        </div>
-                            <img class="img_thumbnail " src="{{$detail->image_path}}">
+								<div class="post-date {{$detail->type=="audio" ? 'post-date-audio':''}}">
+		                            <h4>
+		                            	@if($detail->type=="audio")
+											Audio
+										@endif
+										@if($detail->type=="library")
+											Library
+										@endif
+									</h4>
+		                            <h4>{{$detail->created_at->format('d-m-Y')}}</h4>
+		                        </div>
+		                        <div class="post-date-right {{($detail->type=="audio") ? '':'hidden'}}">
+									<?php
+		                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+		                            $dictation="";
+		                            $length="";
+		                            foreach($str as $str){
+										$dictation = $str->dictation;
+										$length    = $str->audio_length;
+		                            }
+		                            $total = str_word_count($dictation);
+		                            ?>
+		                            <h4>Length <?php echo $length; ?></h4>
+		                            <h4>Total words <?php echo $total; ?></h4>
+		                        </div>
+		                        <div class="post-date-bottom {{($detail->type=="audio") ? '':'hidden'}}">
+									<?php
+		                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+		                            $audio_type="";
+		                            foreach($str as $str){
+										echo $audio_type = $str->audio_type;
+		                            }
+		                            ?>
+		                        </div>
+	                            <img class="img_thumbnail " src="{{$detail->image_path}}">
 
-                             <figcaption>
+	                             <figcaption>
 
-                                <h3><a style="color: #fff" href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h3>
+	                                <h3><a style="color: #fff" href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">{!!remove_dash(htmlspecialchars_decode($detail->tittle))!!} </a></h3>
 
-                                <a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">View more</a>
+	                                <a href="{{($detail->type=="audio")?  route('tittle_audio',[tittle($detail->tittle)]) : route('detail_article',[$detail->type,$detail->alias])}}">View more</a>
 
-                            </figcaption>
-
-                        </figure>
+	                            </figcaption>
+	                        </figure>
 
                         </li>
                         @endif
                         @endforeach
-
                     </ul>
 
                 </section>

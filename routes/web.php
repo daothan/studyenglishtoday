@@ -64,6 +64,9 @@
 	/*Check word*/
 		Route::get('checkword',['as'=>'checkword', 'uses'=>'CheckwordController@checkword']);
 
+	/*Listening Topics*/
+		Route::get('topic/{topic}',['as'=>'topic', 'uses'=>'HomeController@topic']);
+
 
 /*Admin Page*/
 

@@ -188,7 +188,15 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<!-- Like Button -->
-
+	<!-- Face Page -->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.9&appId=127909734464044";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 
 
 <!-- Login Form -->
@@ -400,37 +408,44 @@
             <!-- nav -->
 
             <nav role="footer-nav">
+				<div class="col-md-8">
+					<nav>
+		            	<ul>
 
-            	<ul>
+		                	 <!-- Knowledge Library -->
+								<li><a href="{{route('library')}}">Knowledge-Library</a></li>
+							<!-- - -->
+							<!-- Listening -->
+								<li><a href="{{route('practice_listening')}}">Listening-Dictation</a></li>
+							<!-- - -->
+							<!-- Guide -->
+								<li class="{{$guide_count==0 ? 'hidden':''}}"><a data-toggle="modal" data-target="" onclick="guide()" style="cursor: pointer;">Guide</a></li>
+							<!-- - -->
+							<!-- Contact -->
+								<li><a data-toggle="modal" data-target="" onclick="contact_us()" style="cursor: pointer;">Contact</a></li>
+							<!-- - -->
 
-                	 <!-- Knowledge Library -->
-						<li><a href="{{route('library')}}">Knowledge-Library</a></li>
-					<!-- - -->
-					<!-- Listening -->
-						<li><a href="{{route('practice_listening')}}">Listening-Dictation</a></li>
-					<!-- - -->
-					<!-- Guide -->
-						<li class="{{$guide_count==0 ? 'hidden':''}}"><a data-toggle="modal" data-target="" onclick="guide()" style="cursor: pointer;">Guide</a></li>
-					<!-- - -->
-					<!-- Contact -->
-						<li><a data-toggle="modal" data-target="" onclick="contact_us()" style="cursor: pointer;">Contact</a></li>
-					<!-- - -->
+		                </ul>
 
-                </ul>
+		            </nav>
+		            <!-- nav -->
 
-            </nav>
+		            <ul role="social-icons">
+		            	<h4 style="color:rgba(0, 20, 255, 0.85);">Or Login with</h4>
 
-            <!-- nav -->
+		                <li><a href="{{route('facebook')}}" ><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 
-            <ul role="social-icons">
-            	<h4 style="color:rgba(0, 20, 255, 0.85);">Or Login with</h4>
+		                <li><a href="{{route('google')}}"><i class="fa fa-google" aria-hidden="true"></i></a></li>
+		            </ul>
+				</div>
 
-                <li><a href="{{route('facebook')}}" ><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+				<div class="col-md-4">
+				    <div class="fb-page embed-responsive-Item"  style="margin:auto;" data-href="https://www.facebook.com/Study-English-Today-135874613661322/?fref=nf" data-tabs="timeline" data-width="400px" data-height="130px" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Study-English-Today-135874613661322/?fref=nf" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Study-English-Today-135874613661322/?fref=nf">Study English Today</a></blockquote></div>
+				</div>
+				<div class="col-md-10 md-col-offset-2" style="margin-top: 15px;">
+            		<p class="copy-right">&copy; 2017 Studying English Pages</p>
+				</div>
 
-                <li><a href="{{route('google')}}"><i class="fa fa-google" aria-hidden="true"></i></a></li>
-            </ul>
-
-            <p class="copy-right">&copy; 2017 Studying English Pages</p>
         </footer>
 
         <!-- footer -->

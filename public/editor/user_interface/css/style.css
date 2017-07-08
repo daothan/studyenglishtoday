@@ -17,6 +17,18 @@ body{
     background: -moz-linear-gradient(rgb(39, 174, 191), #fff);
     background: linear-gradient(rgb(39, 174, 191), #fff);
 }
+
+#ascrail2000 div {
+  position: relative;
+    top: 79px;
+    float: right;
+    width: 8px;
+    height: 180px;
+    background-color: rgba(84, 11, 165, 0.72) !important;
+    border: 0px;
+    background-clip: padding-box;
+    border-radius: 0px !important;
+}
 .row{
 	background-color: rgba(250, 250, 255, 0.86);
     padding: 50px;
@@ -383,6 +395,7 @@ blockquote:before, blockquote:after, q:before, q:after {
     transition: width 0.4s ease-in-out;
     margin: auto;
     color: #2650c5;
+    transition: all 0.5s;
   }
 .error{
    color: rgba(255, 177, 0, 0.83);font-style: italic;
@@ -390,8 +403,15 @@ blockquote:before, blockquote:after, q:before, q:after {
 #search_form_type:focus {
     width: 90%;
     margin:auto;
+    background-color: #e7eef5;
+    border: 2px solid #b7bcc7;
+    box-shadow: 7px 4px 8px 0px rgba(0,0,0,0.24), 2px 17px 56px 0px rgba(0,0,0,0.19);
 }
-
+#search_form_type-error{
+  margin: 0 5% 0 5%;
+  font-size: 18px;
+  color: #850892 !important;
+}
 .search_error{
     font-style: italic;
     font-size: 23px;
@@ -503,32 +523,32 @@ p{
 }
 /*-- banner --*/
 .carousel .item.item{
-    background:-webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/studyenglishtoday/storage/uploads/interface_images/panel/english.jpg) no-repeat top center fixed;
-    background:-moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/studyenglishtoday/storage/uploads/interface_images/panel/english.jpg) no-repeat top center fixed;
-    background:-ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/studyenglishtoday/storage/uploads/interface_images/panel/english.jpg) no-repeat top center fixed;
-    background:linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/studyenglishtoday/storage/uploads/interface_images/panel/english.jpg) no-repeat top center fixed;
+    background:-webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/studyenglishtoday/storage/uploads/interface_images/panel/everyday.jpg) no-repeat top center fixed;
+    background:-moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/studyenglishtoday/storage/uploads/interface_images/panel/everyday.jpg) no-repeat top center fixed;
+    background:-ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/studyenglishtoday/storage/uploads/interface_images/panel/everyday.jpg) no-repeat top center fixed;
+    background:linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/studyenglishtoday/storage/uploads/interface_images/panel/everyday.jpg) no-repeat top center fixed;
     background-size:cover;
 }
 .carousel .item.item2{
-  background:url(/studyenglishtoday/storage/uploads/interface_images/panel/studying_english.jpg) no-repeat top center fixed; 
+  background:url(/studyenglishtoday/storage/uploads/interface_images/panel/listening.jpg) no-repeat top center fixed; 
   background-size:cover;
 }
 .carousel .item.item3{
-  background:url(/studyenglishtoday/storage/uploads/interface_images/panel/listening.jpg) no-repeat top center fixed;
+  background:url(/studyenglishtoday/storage/uploads/interface_images/panel/reading.jpg) no-repeat top center fixed;
   background-size:cover;
 }
 .carousel .item.item4{
-  background:-webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/studyenglishtoday/storage/uploads/interface_images/panel/reading.jpg) no-repeat top center fixed;
-  background:-moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/studyenglishtoday/storage/uploads/interface_images/panel/reading.jpg) no-repeat top center fixed;
-  background:-ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/studyenglishtoday/storage/uploads/interface_images/panel/reading.jpg) no-repeat top center fixed;
-  background:linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/studyenglishtoday/storage/uploads/interface_images/panel/reading.jpg) no-repeat top center fixed;
-  background-size:cover;
-}
-.carousel .item.item5{
   background:-webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/studyenglishtoday/storage/uploads/interface_images/panel/writing.jpg) no-repeat top center fixed;
   background:-moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/studyenglishtoday/storage/uploads/interface_images/panel/writing.jpg) no-repeat top center fixed;
   background:-ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/studyenglishtoday/storage/uploads/interface_images/panel/writing.jpg) no-repeat top center fixed;
   background:linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/studyenglishtoday/storage/uploads/interface_images/panel/writing.jpg) no-repeat top center fixed;
+  background-size:cover;
+}
+.carousel .item.item5{
+  background:-webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/studyenglishtoday/storage/uploads/interface_images/panel/practice.jpg) no-repeat top center fixed;
+  background:-moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/studyenglishtoday/storage/uploads/interface_images/panel/practice.jpg) no-repeat top center fixed;
+  background:-ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/studyenglishtoday/storage/uploads/interface_images/panel/practice.jpg) no-repeat top center fixed;
+  background:linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/studyenglishtoday/storage/uploads/interface_images/panel/practice.jpg) no-repeat top center fixed;
   background-size:cover;
 }
 .navbar {
@@ -959,6 +979,17 @@ table > tbody > tr>td>p> span, table > tbody > tr>td>p> span>span {
   header[role="header"] nav ul > li > a
 }
 
+/* Listening Topic */
+.listening-topics{
+  width: 100%;
+  margin:auto;
+}
+@media(max-width: 800px){
+  .listening-topics{
+    width: 75%;
+    margin:auto;
+  }
+}
 
 /* Scroll */
 ::-webkit-scrollbar {
@@ -1317,7 +1348,6 @@ hr{
     line-height: 1.42857143;
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 4px;
     -webkit-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
@@ -1545,6 +1575,9 @@ hr{
 .success {background-color: #4CAF50;} /* Green */
 .success:hover {background-color: rgba(76, 175, 80, 0.62);}
 
+.topic {background-color: rgba(146, 76, 175, 0.84);} /* Green */
+.topic:hover {background-color: rgba(56, 24, 119, 0.84);}
+
 .info {background-color: #2d7ab7;} /* Blue */
 .info:hover {background: rgba(45, 122, 183, 0.74);}
 
@@ -1591,7 +1624,9 @@ main[role="main-home-wrapper"] article[role="pge-title-content"] p,main[role="ma
 
 /*===== footer ===*/
 
-footer[role="footer"]{ background-color:#FFF; padding-top:20px; padding-bottom:50px}
+footer[role="footer"]{     background-color: rgba(181, 154, 179, 0.22);
+    padding-top: 20px;
+    padding-bottom: 255px;}
 
 footer[role="footer"] > h1 a{ margin:0 auto; display:block; max-width:66px;}
 
@@ -1732,6 +1767,25 @@ figure .post-date-right{     /* text-align: center; */
     z-index: 50;
     transition: all 0.5s;
   }
+  .post-date-bottom{
+    color: #FFF;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 18px;
+    display: block;
+    background-color: rgba(0, 127, 209, 0.46);
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    z-index: 50;
+    transition: all 0.5s;
+    margin: auto;
+    display: block;
+    height: 23px;
+    position: absolute;
+    bottom: 0;
+    padding: 2px;
+  }
 @media (max-width: 800px){
   figure .post-date-audio {
     background-color: rgba(177, 14, 52, 0.72) !important;
@@ -1782,8 +1836,8 @@ figure .post-date-right{     /* text-align: center; */
 }
 section.blog-content figure .post-date span{ font-size:50px; line-height:35px; display:block}
 
-section.blog-content  article{ font-size:21px; line-height:30px; color:#FFF;  font-weight:800; color:#343434; padding:12px; padding-top:20px; padding-bottom:20px;background-color: rgba(129, 95, 162, 0.44);}
-
+section.blog-content  article{transition: all 1s;font-family: 'Roboto', sans-serif !important; font-size:21px; line-height:30px;  font-weight:800; color:rgba(18, 64, 154, 0.92); padding:12px; padding-top:20px; padding-bottom:20px;background-color: rgba(129, 95, 162, 0.44);}
+section.blod-content:hover article{color:#FFF; }
 section.blog-content:hover figure img{ opacity:0.5}
 
 /*===== Contact ===*/

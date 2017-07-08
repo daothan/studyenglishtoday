@@ -3,6 +3,24 @@
  <main role="main-inner-wrapper" class="container">
 
             <div class="row" style="margin-top: 70px;">
+            	<section class="col-md-10 col-md-offset-1">
+
+                	<figure class="effect-oscar" style="background-color: rgba(36, 13, 162, 0.25);padding: 6px;">
+                		<h4 style="font-size: 25px;color: rgba(192, 14, 224, 0.94); " align="center">Listening Topics</h4>
+                		<div class="listening-topics">
+	                    	<a href="{{route('topic','education')}}"><button class="btn_user topic"><h4>Education</h4></button></a>
+	                    	<a href="{{route('topic','health-medicine')}}"><button class="btn_user topic"><h4>Health Medicine</h4></button></a>
+	                    	<a href="{{route('topic','nature')}}"><button class="btn_user topic"><h4>Nature</h4></button></a>
+	                    	<a href="{{route('topic','animal')}}"><button class="btn_user topic"><h4>Animal</h4></button></a>
+	                    	<a href="{{route('topic','sport')}}"><button class="btn_user topic"><h4>Sport</h4></button></a>
+	                    	<a href="{{route('topic','technology')}}"><button class="btn_user topic"><h4>Technonoly</h4></button></a>
+	                    	<a href="{{route('topic','other')}}"><button class="btn_user topic"><h4>Other</h4></button></a>
+                		</div>
+
+                    </figure>
+
+                </section>
+                <div class="clearfix"></div>
             	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 " style="margin-bottom: 75px;">
 
                 	<article role="pge-title-content" class="blog-header">
@@ -49,7 +67,16 @@
 			                            <h4 align="center">Length <?php echo $length; ?></h4>
 			                            <h4 align="center">Total words <?php echo $total; ?></h4>
 			                        </div>
-
+									<div class="post-date-bottom">
+										<?php
+			                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+			                            $audio_type="";
+			                            foreach($str as $str){
+											 $audio_type = $str->audio_type;
+			                            }
+			                            ?>
+			                            <p align="center">{{$audio_type}}</p>
+			                        </div>
                                     <img class=" img_thumbnail  audio_post" src="{{$detail->image_path}}">
 
 
@@ -106,7 +133,16 @@
 			                            <h4 align="center">Length <?php echo $length; ?></h4>
 			                            <h4 align="center">Total words <?php echo $total; ?></h4>
 			                        </div>
-
+									<div class="post-date-bottom">
+										<?php
+			                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+			                            $audio_type="";
+			                            foreach($str as $str){
+											 $audio_type = $str->audio_type;
+			                            }
+			                            ?>
+			                            <p align="center">{{$audio_type}}</p>
+			                        </div>
                                     <img class=" img_thumbnail  audio_post" src="{{$detail->image_path}}">
 
                                 </figure>

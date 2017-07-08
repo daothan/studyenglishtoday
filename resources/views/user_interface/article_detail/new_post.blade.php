@@ -55,7 +55,16 @@
 			                            <h4 align="center">Length <?php echo $length; ?></h4>
 			                            <h4 align="center">Total words <?php echo $total; ?></h4>
 			                        </div>
-
+									<div class="post-date-bottom {{($detail->type=="audio") ? '':'hidden'}}">
+										<?php
+			                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+			                            $audio_type="";
+			                            foreach($str as $str){
+											 $audio_type = $str->audio_type;
+			                            }
+			                            ?>
+			                            <p align="center">{{$audio_type}}</p>
+			                        </div>
                                     <img class=" img_thumbnail  new_post" src="{{$detail->image_path}}">
 
 
@@ -118,9 +127,18 @@
 			                            <h4 align="center">Length <?php echo $length; ?></h4>
 			                            <h4 align="center">Total words <?php echo $total; ?></h4>
 			                        </div>
-
                                     <img class=" img_thumbnail new_post" src="{{$detail->image_path}}">
 
+									<div class="post-date-bottom {{($detail->type=="audio") ? '':'hidden'}}">
+										<?php
+			                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+			                            $audio_type="";
+			                            foreach($str as $str){
+											 $audio_type = $str->audio_type;
+			                            }
+			                            ?>
+			                            <p align="center">{{$audio_type}}</p>
+			                        </div>
                                 </figure>
 
                                 </a>

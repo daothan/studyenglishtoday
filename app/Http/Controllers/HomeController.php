@@ -142,7 +142,7 @@ class HomeController extends Controller
     }
     /*Listening Page*/
     public function practice_listening(Request $request){
-        $audio          = Listening::orderBy('id','DESC')->paginate(7);
+        $audio          = Detail::where('type','audio')->orderBy('id','DESC')->paginate(7);
         $last_post      = Listening::max('id');
         $banner         = Banner::select('id','tittle','introduce','content')->get();
         $contact        = Contact::where('prior',1)->get();
@@ -234,6 +234,28 @@ class HomeController extends Controller
         /*EndSearch*/
 
         return view('user_interface.article_detail.audio_content', compact('detail_audio','relate_audio','banner','contact','last_contact','comment_info','comment_count','guide_count','guide_en', 'guide_vi'));
+    }
+
+    /*Listening Topics*/
+    public function topic(Request $request, $type){
+        $topics = Listening::where('audio_type',$type)->orderBy('id','DESC')->paginate(6);
+
+        $banner         = Banner::select('id','tittle','introduce','content')->get();
+        $contact        = Contact::where('prior',1)->get();
+        $max_id_contact = Contact::max('id');
+        $last_contact   = Contact::where('id',$max_id_contact)->get();
+        $guide_count    = Guide::count();
+        $guide_vi = Guide::where('tittle','like','%'.'('.'vi'.')'.'%')->get();
+        $guide_en = Guide::where('tittle','like','%'.'('.'en'.')'.'%')->get();
+
+        /*Search*/
+        if($request->has('search')){
+            return redirect()->route('search',['search='.$request->get('search')]);
+        }
+        /*EndSearch*/
+
+        return view('user_interface.article_detail.listening_topic', compact('topics','banner','contact','last_contact','comment_info','comment_count','guide_count','guide_en', 'guide_vi'));
+
     }
 
     /*Contact*/
