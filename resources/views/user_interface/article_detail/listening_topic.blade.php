@@ -51,7 +51,14 @@
 
                                         <h4 align="center">Audio
 										</h4 align="center">
-			                            <h4 align="center">{{$detail->created_at->format('d-m-Y')}}</h4>
+			                            <?php
+			                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+			                            $audio_type="";
+			                            foreach($str as $str){
+											 $audio_type = $str->audio_type;
+			                            }
+			                            ?>
+			                            <p align="center">{{$audio_type}}</p>
 
                                     </div>
                                      <div class="post-date-right ">
@@ -67,16 +74,6 @@
 			                            ?>
 			                            <h4 align="center">Length <?php echo $length; ?></h4>
 			                            <h4 align="center">Total words <?php echo $total; ?></h4>
-			                        </div>
-									<div class="post-date-bottom">
-										<?php
-			                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
-			                            $audio_type="";
-			                            foreach($str as $str){
-											 $audio_type = $str->audio_type;
-			                            }
-			                            ?>
-			                            <p align="center">{{$audio_type}}</p>
 			                        </div>
                                     <img class=" img_thumbnail  audio_post" src="../{{$detail->image_path}}">
 
@@ -117,7 +114,14 @@
                                         <h4 align="center">
 			                            	Audio
 										</h4>
-			                            <h4 align="center">{{$detail->created_at->format('d-m-Y')}}</h4>
+			                            <?php
+			                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+			                            $audio_type="";
+			                            foreach($str as $str){
+											 $audio_type = $str->audio_type;
+			                            }
+			                            ?>
+			                            <p align="center">{{$audio_type}}</p>
 
                                     </div>
                                     <div class="post-date-right ">
@@ -133,16 +137,6 @@
 			                            ?>
 			                            <h4 align="center">Length <?php echo $length; ?></h4>
 			                            <h4 align="center">Total words <?php echo $total; ?></h4>
-			                        </div>
-									<div class="post-date-bottom">
-										<?php
-			                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
-			                            $audio_type="";
-			                            foreach($str as $str){
-											 $audio_type = $str->audio_type;
-			                            }
-			                            ?>
-			                            <p align="center">{{$audio_type}}</p>
 			                        </div>
                                     <img class=" img_thumbnail  audio_post" src="../{{$detail->image_path}}">
 

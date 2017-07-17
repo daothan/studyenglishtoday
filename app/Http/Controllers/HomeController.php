@@ -180,12 +180,13 @@ class HomeController extends Controller
 
     /*Show detail article*/
     public function detail_article(Request $request,$type,$tittle){
-        $relate_article = Detail::where('type',$type)->where('alias','!=',$tittle)->orderBy('id','DESC')->get();
 
         $detail_article = Detail::where('alias',$tittle)->get();
         foreach($detail_article as $id_article){
-            $article_id = $id_article->id;
+            $article_id   = $id_article->id;
+            $library_type = $id_article->library_type;
         }
+        $relate_article = Detail::where('type',$type)->where('library_type',$library_type)->where('alias','!=',$tittle)->orderBy('id','DESC')->get();
         $comment_info   = Comment::where('article_type','listening')->orWhere('article_type','reading')->orWhere('article_type','library')->where('article_id',$article_id)->orderBy('id','DESC')->paginate(10);
         $comment_count  = Comment::where('article_type','listening')->orWhere('article_type','reading')->orWhere('article_type','library')->where('article_id',$article_id)->count();
 
@@ -208,13 +209,16 @@ class HomeController extends Controller
 
      /*Show detail article*/
     public function tittle_audio(Request $request,$tittle_audio){
-        $relate_audio = Listening::where('tittle','!=',convert_tittle($tittle_audio))->orderBy('id','DESC')->get();
 
         $detail_audio = Listening::where('tittle',convert_tittle($tittle_audio))->get();
         $detail_article = Detail::where('alias',$tittle_audio)->get();
         foreach($detail_article as $id_audio){
-            $audio_id = $id_audio->id;
+            $audio_id   = $id_audio->id;
         }
+        foreach($detail_audio as $audio){
+            $audio_type = $audio->audio_type;
+        }
+        $relate_audio = Listening::where('tittle','!=',convert_tittle($tittle_audio))->where('audio_type',$audio_type)->orderBy('id','DESC')->get();
 
         $comment_info   = Comment::where('article_type','audio')->where('article_id',$audio_id)->orderBy('id','DESC')->paginate(10);
         $comment_count  = Comment::where('article_type','audio')->where('article_id',$audio_id)->count();
@@ -238,7 +242,7 @@ class HomeController extends Controller
 
     /*Listening Topics*/
     public function audio_topic(Request $request, $type){
-        $topics         = Listening::where('audio_type',$type)->orderBy('id','DESC')->paginate(6);
+        $topics         = Listening::where('audio_type',$type)->orderBy('id','DESC')->paginate(7);
         $banner         = Banner::select('id','tittle','introduce','content')->get();
         $contact        = Contact::where('prior',1)->get();
         $max_id_contact = Contact::max('id');
@@ -259,7 +263,7 @@ class HomeController extends Controller
 
     /*Library Topics*/
     public function library_topic(Request $request, $type){
-        $topics         = Detail::where('library_type',$type)->orderBy('id','DESC')->paginate(6);
+        $topics         = Detail::where('library_type',$type)->orderBy('id','DESC')->paginate(7);
         $banner         = Banner::select('id','tittle','introduce','content')->get();
         $contact        = Contact::where('prior',1)->get();
         $max_id_contact = Contact::max('id');

@@ -291,7 +291,7 @@ blockquote:before, blockquote:after, q:before, q:after {
 
 .post .post-heading {
     height: 60px;
-    padding: 15px 15px;
+    margin: 15px 15px;
 }
 .post .post-heading .avatar {
   width: 60px;
@@ -1797,7 +1797,7 @@ figure .post-date-right{     /* text-align: center; */
 	    line-height: 18px;
 	    display: block;
 	    background-color: rgba(14, 19, 177, 0.58);
-	    width: 90px;
+	    width: 140px;
 	    height: 62px;
 	    position: absolute;
 	    left: 0;

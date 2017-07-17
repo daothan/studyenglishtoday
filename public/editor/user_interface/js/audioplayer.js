@@ -143,7 +143,7 @@
 			/*Space left key to rewird audio 4 seconds*/
 				$("body").on("keydown", function (e) {
 		            var charCode = (e.charCode) ? e.charCode : ((e.which) ? e.which : e.keyCode);
-		            if (charCode == 37) {
+		            if (charCode == 219) {
 				        if (theAudio.duration > 4.0) {
 					        theAudio.currentTime -= 4.0;
 					    }else{
@@ -161,7 +161,7 @@
 			/*Space right key to foward audio 4 seconds*/
 				$("body").on("keydown", function (e) {
 		            var charCode = (e.charCode) ? e.charCode : ((e.which) ? e.which : e.keyCode);
-		            if (charCode == 39) {
+		            if (charCode == 221) {
 				        if (theAudio.duration - theAudio.currentTime > 4.0) {
 					        theAudio.currentTime += 4.0;
 					    }else{

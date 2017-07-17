@@ -11,7 +11,7 @@
                 			<a href="{{route('library')}}"><button class="btn_user topic"><h4>All</h4></button></a>
 	                    	<a href="{{route('library_topic','grammar')}}"><button class="btn_user topic"><h4>Grammar</h4></button></a>
                             <a href="{{route('library_topic','synonyms')}}"><button class="btn_user topic"><h4>Synonyms</h4></button></a>
-                            <a href="{{route('library_topic','common-phrases')}}"><button class="btn_user topic"><h4>Common Phrases</h4></button></a>
+                            <a href="{{route('library_topic','common-phrases')}}"><button class="btn_user topic" style="width: 120px;"><h4>Common Phrases</h4></button></a>
                             <a href="{{route('library_topic','other')}}"><button class="btn_user topic"><h4>Other</h4></button></a>
                 		</div>
 
@@ -40,33 +40,16 @@
                         <li>
                             <section class="blog-content">
 
-                            	<a href="{{route('tittle_audio',[tittle($detail->tittle)])}}">
+                            	<a href="{{route('detail_article',[$detail->type,$detail->alias])}}">
 
                                 <figure>
 
-                                    <div class="post-date post-date-audio">
+                                    <div class="post-date">
 
-                                        <h4 align="center">Audio
-										</h4 align="center">
-			                            <h4 align="center">{{$detail->created_at->format('d-m-Y')}}</h4>
-
-                                    </div>
-                                     <div class="post-date-right ">
-										<?php
-			                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
-			                            $dictation="";
-			                            $length="";
-			                            foreach($str as $str){
-											$dictation = $str->dictation;
-											$length    = $str->audio_length;
-			                            }
-			                            $total = str_word_count($dictation);
-			                            ?>
-			                            <h4 align="center">Length <?php echo $length; ?></h4>
-			                            <h4 align="center">Total words <?php echo $total; ?></h4>
-			                        </div>
-									<div class="post-date-bottom">
-										<?php
+                                        <h4 align="center">
+			                            	Library
+										</h4>
+			                            <?php
 			                            $str = DB::table('details')->where('tittle',$detail->tittle)->get();
 			                            $library_topic="";
 			                            foreach($str as $str){
@@ -74,7 +57,8 @@
 			                            }
 			                            ?>
 			                            <p align="center">{{$library_topic}}</p>
-			                        </div>
+
+                                    </div>
                                     <img class=" img_thumbnail  audio_post" src="../{{$detail->image_path}}">
 
 
@@ -105,34 +89,16 @@
 							<li>
                             <section class="blog-content">
 
-                            	<a href="{{route('tittle_audio',[tittle($detail->tittle)])}}">
+                            	<a href="{{route('detail_article',[$detail->type,$detail->alias])}}">
 
                                 <figure>
 
-                                    <div class="post-date post-date-audio">
+                                    <div class="post-date">
 
                                         <h4 align="center">
-			                            	Audio
+			                            	Library
 										</h4>
-			                            <h4 align="center">{{$detail->created_at->format('d-m-Y')}}</h4>
-
-                                    </div>
-                                    <div class="post-date-right ">
-										<?php
-			                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
-			                            $dictation="";
-			                            $length="";
-			                            foreach($str as $str){
-											$dictation = $str->dictation;
-											$length    = $str->audio_length;
-			                            }
-			                            $total = str_word_count($dictation);
-			                            ?>
-			                            <h4 align="center">Length <?php echo $length; ?></h4>
-			                            <h4 align="center">Total words <?php echo $total; ?></h4>
-			                        </div>
-									<div class="post-date-bottom">
-										<?php
+			                            <?php
 			                            $str = DB::table('details')->where('tittle',$detail->tittle)->get();
 			                            $library_topic="";
 			                            foreach($str as $str){
@@ -140,7 +106,8 @@
 			                            }
 			                            ?>
 			                            <p align="center">{{$library_topic}}</p>
-			                        </div>
+
+                                    </div>
                                     <img class=" img_thumbnail  audio_post" src="../{{$detail->image_path}}">
 
                                 </figure>

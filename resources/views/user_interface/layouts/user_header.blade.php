@@ -216,7 +216,7 @@
 		                <div><h3 class="col-md-6 col-md-offset-3 error errorLogin flash text-center text-danger" style="width:100%;"></h3></div>
 
 						<!-- Username -->
-						<i class="fa fa-envelope fa-2x" aria-hidden="true" style="color:#fff; padding-right: 30px;"></i>
+						<i class="fa fa-user fa-2x" aria-hidden="true" style="color:#fff; padding-right: 35px;"></i>
 						<input id="username" type="text" name="username" placeholder="Username">
 							<div class="has-error"><i><span class="help-block error errorUserName"></span></i></div>
 						<!-- Password -->
@@ -225,7 +225,7 @@
 							<div class="has-error"><i>
 								<span class="help-block error errorUserPassword"></span></i>
 							</div>
-						<div id="loading_login" style="width: 55px;margin: auto; display: none;"><img src="/studyenglishtoday/storage/uploads/loading_images/loading_login.gif"></div>
+						<div id="loading_login" style="width: 120px;margin: auto; display: none;"><img src="/studyenglishtoday/storage/uploads/loading_images/loading_login.gif"></div>
 						<!-- Submit-->
 						<input id="login_modal" type="submit" value="Sign In">
 						<input type="reset" value="Reset">

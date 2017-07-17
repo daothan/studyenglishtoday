@@ -41,7 +41,14 @@
 									Library
 								@endif
 							</h4>
-                            <h4>{{$detail->created_at->format('d-m-Y')}}</h4>
+							<?php
+                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+                            $audio_type="";
+                            foreach($str as $str){
+								echo $audio_type = $str->audio_type;
+                            }
+                            ?>
+                            {{$detail->library_type}}
                         </div>
                         <div class="post-date-right {{($detail->type=="audio") ? '':'hidden'}}">
 							<?php
@@ -56,17 +63,6 @@
                             ?>
                             <h4>Length <?php echo $length; ?></h4>
                             <h4>Total words <?php echo $total; ?></h4>
-                        </div>
-                        <div class="post-date-bottom {{($detail->type=="audio") ? '':'hidden'}}">
-							<?php
-                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
-                            $audio_type="";
-                            foreach($str as $str){
-								echo $audio_type = $str->audio_type;
-                            }
-                            ?>
-                        </div>
-                        <div class="post-date-bottom {{($detail->type=="library") ? '':'hidden'}}">
                         	{{$detail->library_type}}
                         </div>
                     	<img class=" img_thumbnail " src="{{$detail->image_path}}">
@@ -106,7 +102,14 @@
 										Library
 									@endif
 								</h4>
-	                            <h4>{{$detail->created_at->format('d-m-Y')}}</h4>
+								<?php
+	                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+	                            $audio_type="";
+	                            foreach($str as $str){
+									echo $audio_type = $str->audio_type;
+	                            }
+	                            ?>
+	                            {{$detail->library_type}}
 	                        </div>
 	                        <div class="post-date-right {{($detail->type=="audio") ? '':'hidden'}}">
 								<?php
@@ -121,18 +124,6 @@
 	                            ?>
 	                            <h4>Length <?php echo $length; ?></h4>
 	                            <h4>Total words <?php echo $total; ?></h4>
-	                        </div>
-	                        <div class="post-date-bottom {{($detail->type=="audio") ? '':'hidden'}}">
-								<?php
-	                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
-	                            $audio_type="";
-	                            foreach($str as $str){
-									echo $audio_type = $str->audio_type;
-	                            }
-	                            ?>
-	                        </div>
-	                        <div class="post-date-bottom {{($detail->type=="library") ? '':'hidden'}}">
-	                        	{{$detail->library_type}}
 	                        </div>
                             <img class=" img_thumbnail " src="{{$detail->image_path}}">
 
@@ -174,7 +165,14 @@
 											Library
 										@endif
 									</h4>
-		                            <h4>{{$detail->created_at->format('d-m-Y')}}</h4>
+		                            <?php
+		                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
+		                            $audio_type="";
+		                            foreach($str as $str){
+										echo $audio_type = $str->audio_type;
+		                            }
+		                            ?>
+		                            {{$detail->library_type}}
 		                        </div>
 		                        <div class="post-date-right {{($detail->type=="audio") ? '':'hidden'}}">
 									<?php
@@ -189,18 +187,6 @@
 		                            ?>
 		                            <h4>Length <?php echo $length; ?></h4>
 		                            <h4>Total words <?php echo $total; ?></h4>
-		                        </div>
-		                        <div class="post-date-bottom {{($detail->type=="audio") ? '':'hidden'}}">
-									<?php
-		                            $str = DB::table('listenings')->where('tittle',$detail->tittle)->get();
-		                            $audio_type="";
-		                            foreach($str as $str){
-										echo $audio_type = $str->audio_type;
-		                            }
-		                            ?>
-		                        </div>
-		                        <div class="post-date-bottom {{($detail->type=="library") ? '':'hidden'}}">
-		                        	{{$detail->library_type}}
 		                        </div>
 	                            <img class="img_thumbnail " src="{{$detail->image_path}}">
 

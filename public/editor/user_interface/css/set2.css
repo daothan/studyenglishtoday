@@ -216,18 +216,20 @@ figure.effect-oscar figcaption {
 .effect-oscar:hover .post-date-new{
 	background-color: rgba(35, 82, 124, 0.12);
 
-}
-.effect-oscar:hover .post-date-bottom{
+}.effect-oscar:hover .post-date-bottom{
 	background-color: rgba(35, 82, 124, 0.12);
-    transition: opacity 0.6s ease-out;
-    opacity: 0;
 
 }
-figure:hover .post-date, figure:hover .post-date-right,figure:hover .post-date-new,figure:hover .post-date-bottom{
+figure:hover .post-date, figure:hover .post-date-right,figure:hover .post-date-new, figure:hover .post-date-audio, figure:hover .post-date-bottom{
 	background-color: rgba(35, 82, 124, 0.12) !important;
 
 }
-
+.post-date-bottom{
+	transition: all 0.6s !important;
+}
+figure:hover .post-date-bottom{
+	margin-bottom: 10px;
+}
 
 
 figure.effect-oscar figcaption::before {

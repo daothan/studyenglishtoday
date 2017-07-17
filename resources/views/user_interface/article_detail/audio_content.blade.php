@@ -40,8 +40,8 @@
 				            <div class="hint">
 				            	<span align="center">
 				            		<i>Tab key or <span class="glyphicon glyphicon-play"></span></i>&nbsp&nbsp: Play / Pause <br>
-				            		<i>Left key or <span class="glyphicon glyphicon-backward"></span></i>&nbsp &nbsp: backward 4 seconds <br>
-				            		<i>Right key or <span class="glyphicon glyphicon-forward"></span></i> : forward 4 seconds
+				            		<i>[ key or <span class="glyphicon glyphicon-backward"></span></i>&nbsp &nbsp: backward 4 seconds <br>
+				            		<i>] key or <span class="glyphicon glyphicon-forward"></span></i> : forward 4 seconds
 				            	</span>
 				            </div>
 

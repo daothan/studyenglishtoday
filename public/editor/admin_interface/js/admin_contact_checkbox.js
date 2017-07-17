@@ -85,9 +85,7 @@
 					maxlength:100
 				},
 				phone_contact:{
-					required:true,
-					minlength:9,
-					maxlength:15
+					required:true
 				},
 				email_contact:{
 					required:true,
@@ -178,9 +176,7 @@
 									maxlength:100
 								},
 								phone_contact_edit:{
-									required:true,
-									minlength:9,
-									maxlength:15
+									required:true
 								},
 								email_contact_edit:{
 									required:true,
